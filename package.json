@@ -1,7 +1,7 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-diamond-2",
-  "description": "Alga CSS is a scope-first CSS toolkit for quickly mix or compose CSS references and share CSS properties between components",
+  "version": "1.0.0-diamond-3",
+  "description": "Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties",
   "main": "./src/index.js",
   "scripts": {
     "test": "jest",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tedirghazali/alga-css.git"
+    "url": "git+https://github.com/algacss/algacss.git"
   },
   "keywords": [
     "css-framework",
@@ -25,9 +25,9 @@
   "author": "Tedir Ghazali",
   "license": "SEE LICENSE IN license.txt",
   "bugs": {
-    "url": "https://github.com/tedirghazali/alga-css/issues"
+    "url": "https://github.com/algacss/algacss/issues"
   },
-  "homepage": "https://github.com/tedirghazali/alga-css#readme",
+  "homepage": "https://github.com/algacss/algacss#readme",
   "devDependencies": {
     "eslint": "^8.7.0",
     "jest": "^27.4.7",

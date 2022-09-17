@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://algacss.gitlab.io/docs/" target="_blank" rel="noopener noreferrer">
+  <a href="https://algacss.tedir.dev" target="_blank" rel="noopener noreferrer">
     <img width="180" src="alga-css-logo.png" alt="Alga CSS logo">
   </a>
 </p>
@@ -35,7 +35,7 @@ yarn add alga-css@next
 If you use tool that support PostCSS out of the box like Vite for instance, you just need to create a new config file which is `postcss.config.cjs` and add the code below to that file.
 
 ```js
-const algacss = require('alga-css')
+const algacss = require('algacss')
 
 module.exports = {
   plugins: [
