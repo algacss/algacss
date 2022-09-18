@@ -12,7 +12,7 @@
 <br/>
 
 # Alga CSS
-Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [algacss.tedir.dev](algacss.tedir.dev 'Alga CSS')
+Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](algacss.com 'Alga CSS')
 
 All the main features:
 1. Created for scoped CSS
@@ -35,7 +35,7 @@ yarn add alga-css@next
 If you use tool that support PostCSS out of the box like Vite for instance, you just need to create a new config file which is `postcss.config.cjs` and add the code below to that file.
 
 ```js
-const algacss = require('algacss')
+const algacss = require('alga-css')
 
 module.exports = {
   plugins: [

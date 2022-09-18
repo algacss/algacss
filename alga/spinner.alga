@@ -1,0 +1,25 @@
+/* https://codepen.io/mrsahar/pen/pMxyrE */
+@define refs {
+  name: spinner;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
+    ref: display-block position-absolute top-50pct left-50pct borderRadius-50pct;
+    ref-height: 25px;
+    ref-width: 25px;
+    ref-margin: -12.5px 0 0 -12.5px;
+    ref-border: 5px rgba(255, 255, 255, 0.75) solid;
+    ref-border-top: 5px #f77372 solid;
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    from {
+      ref-transform: rotate(0deg);
+    }
+    to {
+      ref-transform: rotate(359deg);
+    }
+  }
+}
