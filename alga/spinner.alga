@@ -1,16 +1,22 @@
-/* https://codepen.io/mrsahar/pen/pMxyrE */
 @define refs {
   name: spinner;
+}
+
+@define props {
+  size: 25px;
+  borderSize: 5px;
 }
 
 @alga {refs.name} {
   .{refs.name} {
     ref: display-block position-absolute top-50pct left-50pct borderRadius-50pct;
-    ref-height: 25px;
-    ref-width: 25px;
-    ref-margin: -12.5px 0 0 -12.5px;
-    ref-border: 5px rgba(255, 255, 255, 0.75) solid;
-    ref-border-top: 5px #f77372 solid;
+    ref: marginRight-0px marginBottom-0px;
+    ref-height: {props.size};
+    ref-width: {props.size};
+    ref-marginTop: div({props.size},2);
+    ref-marginLeft: div({props.size},2);
+    ref-border: {props.borderSize} solid rgba(255, 255, 255, 0.75);
+    ref-border-top: {props.borderSize} solid #f77372;
     animation: spin 1s infinite linear;
   }
   

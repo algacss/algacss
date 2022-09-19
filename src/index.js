@@ -5,6 +5,7 @@ const preset = require('./configs/preset.js')
 const screen = require('./configs/screen.js')
 const state = require('./configs/state.js')
 const prefers = require('./configs/prefers.js')
+const color = require('./configs/color.js')
 
 // Cores
 const component = require('./cores/component.js')
@@ -22,13 +23,13 @@ function algacss(options) {
     screen: Object.assign({}, screen, options?.screen),
     state: Object.assign({}, state, options?.state),
     prefers: Object.assign({}, prefers, options?.prefers),
-    /*color: Object.assign({}, color, options.color),*/
+    color: Object.assign({}, color, options?.color),
     components: {},
     extract: {raws: [], rules: []},
     helpers: []
   }
   
-  const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers}
+  const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers, color: config.color}
   
   const watcher = chokidar.watch(options?.extract, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
@@ -120,7 +121,8 @@ function algacss(options) {
             {
               screen: config.screen,
               state: config.state, 
-              prefers: config.prefers
+              prefers: config.prefers, 
+              color: config.color
             })
           ]
           const newRoot = config.components[param]['root']
@@ -161,7 +163,8 @@ function algacss(options) {
             {
               screen: config.screen,
               state: config.state, 
-              prefers: config.prefers
+              prefers: config.prefers, 
+              color: config.color
             })
           ]
           const newRoot = config.components[param]['root']

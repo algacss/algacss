@@ -66,7 +66,7 @@
       
       .navEnd {
         ref: display-flex justifyContent-spaceBetween flexWrap-nowrap alignItems-center flexGrow-1 paddingLeft-0.75rem;
-        screen-ss: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc(_{props.sizeY}_*2+26px);
+        screen-ss: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({props.sizeY}*2+26px);
         
         .navMenu {
           ref: display-flex justifyContent-flexStart flexWrap-nowrap alignItems-center;

@@ -16,8 +16,8 @@ module.exports = (value, opt = {}) => {
   else if(Object.keys(newColor).includes(newValue.trim())) {
     newValue = newColor[newValue.trim()]
   }
-  if(newValue.startsWith('lighten(') || newValue.startsWith('darken(')) {
-    const splitValues = newValue.split(/\(|\)|\,/g)
+  if(newValue.trim().startsWith('lighten(') || newValue.trim().startsWith('darken(')) {
+    const splitValues = newValue.trim().split(/\(|\)|\,/g)
     let colorValue = splitValues[1]
     let amtValue = splitValues[2]
     if(colorValue.includes('hex')) {
@@ -31,18 +31,37 @@ module.exports = (value, opt = {}) => {
     }
     newValue = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
   }
-  else if(newValue.startsWith('calc(')) {
-    newValue = newValue.split('_').map(item => {
-      if(item.startsWith('refs(') || item.startsWith('props(')) {
-        const splitValues = item.split(/\(|\)/g)
-        item = opt[splitValues[0]][splitValues[1]] || item
+  else if(newValue.trim().startsWith('calc(')) {
+    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+      if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+        const splitValues = item.trim().split(/\(|\)/g)
+        item = opt[splitValues[0]][splitValues[1]].value || item
       }
       return item
     }).join('')
   }
-  else if(newValue.startsWith('refs(') || newValue.startsWith('props(')) {
-    const splitValues = newValue.split(/\(|\)/g)
-    newValue = opt[splitValues[0]][splitValues[1]] || newValue
+  else if(newValue.trim().startsWith('add(') || newValue.trim().startsWith('sub(') || newValue.trim().startsWith('div(') || newValue.trim().startsWith('times(')) {
+    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+      if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+        const splitValues = item.trim().split(/\(|\)/g)
+        item = opt[splitValues[0]][splitValues[1]].value || item
+      }
+      return item
+    }).join('')
+    
+    if(newValue.trim().startsWith('add(')) {
+      newValue = newValue.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+    } else if(newValue.trim().startsWith('sub(')) {
+      newValue = newValue.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+    } else if(newValue.trim().startsWith('div(')) {
+      newValue = newValue.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+    } else if(newValue.trim().startsWith('times(')) {
+      newValue = newValue.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+    }
+  }
+  else if(newValue.trim().startsWith('refs(') || newValue.trim().startsWith('props(')) {
+    const splitValues = newValue.trim().split(/\(|\)/g)
+    newValue = opt[splitValues[0]][splitValues[1]].value || newValue
   } else if(!specialValues.includes(newValue)) {
     newValue = camelDash(newValue)
   }

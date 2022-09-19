@@ -1,6 +1,8 @@
 const postcss = require('postcss')
 const flatScreen = require('../helpers/flatScreen.js')
 const statusValue = require('../helpers/statusValue.js')
+const color = require('../configs/color.js')
+const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 
 const declaration = (body, defs, opts) => {
   const refs = defs.refs
@@ -9,6 +11,7 @@ const declaration = (body, defs, opts) => {
   const screen = Object.assign({}, flatScreen(opts.screen))
   const state = Object.assign({}, statusValue(opts.state))
   const prefers = Object.assign({}, statusValue(opts.prefers))
+  const newColor = opts?.color || color
   let ruleArray = []
   let atRuleArray = []
   
@@ -83,10 +86,50 @@ const declaration = (body, defs, opts) => {
                 declVal = postcss.decl({ prop: key.trim(), value: newDeclVal, source: sourceItemVal })
               }
             } else {
-              declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
+              declVal = postcss.decl({ prop: key.trim(), value: val.value.trim().split(' ').map(i => {
                 if(i.startsWith('refs(') || i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
+                  const splitValues = i.split(/\(|\)|\,/g)
+                  let colorValue = splitValues[1]
+                  let amtValue = splitValues[2]
+                  if(colorValue.includes('hex')) {
+                    colorValue = colorValue.replaceAll('hex', '')
+                  }
+                  if(Object.keys(newColor).includes(colorValue)) {
+                    colorValue = newColor[colorValue]
+                  }
+                  if(splitValues[0] === 'darken') {
+                    amtValue = '-' + amtValue
+                  }
+                  i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
+                } else if(i.startsWith('calc(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                  
+                  if(i.startsWith('add(')) {
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                  } else if(i.startsWith('sub(')) {
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                  } else if(i.startsWith('div(')) {
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                  } else if(i.startsWith('times(')) {
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                  }
                 }
                 return i
               }).join(' ').trim(), source: sourceItemVal })
