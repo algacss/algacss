@@ -7,9 +7,14 @@ module.exports = {
     media: 'prefers-color-scheme',
     prefers: 'light'
   },
-  mode: {
+  toDark: {
     media: 'prefers-color-scheme',
     selector: '[data-mode=dark]',
+    prefers: 'light'
+  },
+  toLight: {
+    media: 'prefers-color-scheme',
+    selector: '[data-mode=light]',
     prefers: 'dark'
   },
   reduce: {

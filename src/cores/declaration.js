@@ -196,6 +196,46 @@ const declaration = (body, defs, opts) => {
                 if(i.startsWith('refs(') || i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
+                  const splitValues = i.split(/\(|\)|\,/g)
+                  let colorValue = splitValues[1]
+                  let amtValue = splitValues[2]
+                  if(colorValue.includes('hex')) {
+                    colorValue = colorValue.replaceAll('hex', '')
+                  }
+                  if(Object.keys(newColor).includes(colorValue)) {
+                    colorValue = newColor[colorValue]
+                  }
+                  if(splitValues[0] === 'darken') {
+                    amtValue = '-' + amtValue
+                  }
+                  i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
+                } else if(i.startsWith('calc(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                  
+                  if(i.startsWith('add(')) {
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                  } else if(i.startsWith('sub(')) {
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                  } else if(i.startsWith('div(')) {
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                  } else if(i.startsWith('times(')) {
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                  }
                 }
                 return i
               }).join(' ').trim(), source: val.source })
@@ -226,7 +266,10 @@ const declaration = (body, defs, opts) => {
             return i
           }).filter(i => i !== '').join('')
         }
-        const newRule = postcss.rule({ selector: selectorItemKey, source: entryVal.source })
+        let newRule = postcss.rule({ selector: selectorItemKey, source: entryVal.source })
+        if(entryVal?.selector) {
+          newRule = postcss.rule({ selector: entryVal.selector +' '+ selectorItemKey, source: entryVal.source })
+        }
         for(let [key, val] of Object.entries(itemValue)) {
           if(typeof val.value === 'string') {
             let declVal = undefined
@@ -237,6 +280,46 @@ const declaration = (body, defs, opts) => {
                 if(i.startsWith('refs(') || i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
+                  const splitValues = i.split(/\(|\)|\,/g)
+                  let colorValue = splitValues[1]
+                  let amtValue = splitValues[2]
+                  if(colorValue.includes('hex')) {
+                    colorValue = colorValue.replaceAll('hex', '')
+                  }
+                  if(Object.keys(newColor).includes(colorValue)) {
+                    colorValue = newColor[colorValue]
+                  }
+                  if(splitValues[0] === 'darken') {
+                    amtValue = '-' + amtValue
+                  }
+                  i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
+                } else if(i.startsWith('calc(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                    }
+                    return item
+                  }).join('')
+                  
+                  if(i.startsWith('add(')) {
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                  } else if(i.startsWith('sub(')) {
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                  } else if(i.startsWith('div(')) {
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                  } else if(i.startsWith('times(')) {
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                  }
                 }
                 return i
               }).join(' ').trim(), source: val.source })
