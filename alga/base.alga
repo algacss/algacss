@@ -1,4 +1,30 @@
+@define props {
+  bgLight: #fff;
+  bgDark: #242424;
+  fgLight: #15181c;
+  fgDark: #e2e2e2;
+  fontFamily: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
+  fontSize: 1rem;
+  fontWeight: 400;
+  lineHeight: 1.5;
+  charset: false;
+}
+
 @alga base {
+  @if charset is true {
+    @charset "UTF-8";
+  }
+  
+  :root {
+    ref-fontFamily: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
+    ref: fontSize-16px lineHeight-24px fontWeight-400 textRendering-optimizeLegibility;
+    ref-colorScheme: light dark;
+    ref: backgroundColor-{props.bgLight} color-{props.fgLight} fontSynthesis-none;
+    webkit-fontSmoothing: antialiased;
+    moz-ostFontSmoothing: grayscale;
+    webkit-textSizeAdjust: 100%;
+  }
+  
   *, ::after, ::before {
     ref: boxSizing-borderBox;
   }
@@ -8,9 +34,11 @@
   }
   
   body {
-    ref-fontFamily: 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
-    ref: backgroundColor-hexffffff margin-0px padding-0px fontSize-1rem fontWeight-400 lineHeight-1.5 color-hex15181c;
-    prefers-dark: backgroundColor-hex242424 color-hexe2e2e2;
+    ref-fontFamily: {props.fontFamily};
+    ref: backgroundColor-{props.bgLight} margin-0px padding-0px fontSize-{props.fontSize} fontWeight-{props.fontWeight} lineHeight-{props.lineHeight} color-{props.fgLight};
+    prefers-dark: backgroundColor-{props.bgDark} color-{props.fgDark};
+    prefers-toDark: backgroundColor-{props.bgDark} color-{props.fgDark};
+    prefers-toLight: backgroundColor-{props.bgLight} color-{props.fgLight};
   }
   
   hr {

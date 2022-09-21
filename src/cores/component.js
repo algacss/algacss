@@ -83,6 +83,22 @@ function readPath(rp, opts) {
           let prefersObj = {}
           prefersObj[dnode.prop] = Object.assign({}, prefersObj[dnode.prop], reference(dnode, refOpt))
           defineObj[param].value = Object.assign({}, defineObj[param].value, prefersObj)
+        } else if(dnode.type === 'decl' && dnode.prop.startsWith('webkit-')) {
+          let splitRefs = dnode.prop.split('-')[1]
+          let splitRefsObj = {}
+          splitRefsObj['-webkit-'+camelDash(splitRefs)] = {
+            value: dnode.value,
+            source: dnode.source
+          }
+          defineObj[param].value = Object.assign({}, defineObj[param].value, splitRefsObj)
+        } else if(dnode.type === 'decl' && dnode.prop.startsWith('moz-')) {
+          let splitRefs = dnode.prop.split('-')[1]
+          let splitRefsObj = {}
+          splitRefsObj['-moz-'+camelDash(splitRefs)] = {
+            value: dnode.value,
+            source: dnode.source
+          }
+          defineObj[param].value = Object.assign({}, defineObj[param].value, splitRefsObj)
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('if-')) {
           let conditionalObj = {}
           conditionalObj[dnode.prop] = Object.assign({}, conditionalObj[dnode.prop], reference(dnode, refOpt))

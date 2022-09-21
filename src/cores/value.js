@@ -3,7 +3,7 @@ const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 const values = require('../configs/values.js')
 const units = require('../configs/units.js')
 const color = require('../configs/color.js')
-const specialValues = ['currentColor']
+const specialValues = ['currentColor', 'optimizeLegibility']
 
 module.exports = (value, opt = {}) => {
   let newValue = value.replaceAll('_', ' ')

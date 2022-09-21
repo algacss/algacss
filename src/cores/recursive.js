@@ -52,6 +52,22 @@ function recursiveFunc(root, prm, opt = {}) {
         let prefersObj = {}
         prefersObj[node.prop] = Object.assign({}, prefersObj[node.prop], reference(node, opt))
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, prefersObj)
+      } else if(node.type === 'decl' && node.prop.startsWith('webkit-')) {
+        let splitRefs = node.prop.split('-')[1]
+        let splitRefsObj = {}
+        splitRefsObj['-webkit-'+camelDash(splitRefs)] = {
+          value: node.value,
+          source: node.source
+        }
+        recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, splitRefsObj)
+      } else if(node.type === 'decl' && node.prop.startsWith('moz-')) {
+        let splitRefs = node.prop.split('-')[1]
+        let splitRefsObj = {}
+        splitRefsObj['-moz-'+camelDash(splitRefs)] = {
+          value: node.value,
+          source: node.source
+        }
+        recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, splitRefsObj)
       } else if(node.type === 'decl' && node.prop.startsWith('if-')) {
         let conditionalObj = {}
         conditionalObj[node.prop] = Object.assign({}, conditionalObj[node.prop], reference(node, opt))
