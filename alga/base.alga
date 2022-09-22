@@ -11,10 +11,6 @@
 }
 
 @alga base {
-  @if charset is true {
-    @charset "UTF-8";
-  }
-  
   :root {
     ref-fontFamily: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
     ref: fontSize-16px lineHeight-24px fontWeight-400 textRendering-optimizeLegibility;

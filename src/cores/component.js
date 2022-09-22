@@ -1,6 +1,7 @@
 const postcss = require('postcss')
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
 const screen = require('../configs/screen.js')
 const camelDash = require('../helpers/camelDash.js')
 const randomChar = require('../helpers/randomChar.js')
@@ -218,12 +219,12 @@ function readPath(rp, opts) {
 module.exports = (paths, opts) => {
   let component = {}
   
-  const coreFiles = fs.readdirSync(__dirname.toString().replace('src/cores', 'alga') + '/')
+  const coreFiles = fs.readdirSync(path.resolve(__dirname, './../../alga'))
   if(coreFiles) {
     for(let file of coreFiles) {
       if(file.endsWith('alga.css') || file.endsWith('.alga')) {
         if(file.includes(opts.componentName)) {
-          component = Object.assign({}, component, readPath(__dirname.toString().replace('src/cores', 'alga') + '/' + file, opts))
+          component = Object.assign({}, component, readPath(path.resolve(__dirname, './../../alga') + '/' + file, opts))
           break;
         }
       }

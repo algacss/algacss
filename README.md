@@ -12,7 +12,7 @@
 <br/>
 
 # Alga CSS
-Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](algacss.com 'Alga CSS')
+Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](https://algacss.com 'Alga CSS')
 
 All the main features:
 1. Created for scoped CSS
