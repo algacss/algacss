@@ -4,6 +4,9 @@
 
 @define props {
   divider: "/";
+  parentColor: #0d6efd;
+  activeColor: #4a5568;
+  dividerColor: inherit;
 }
 
 @alga {refs.name} {
@@ -16,7 +19,8 @@
   }
     
   .{refs.name}Item + .{refs.name}Item::before {
-    ref: float-left paddingRight-0.5rem color-hex6c757d;
+    ref: float-left paddingRight-0.5rem;
+    ref-color: {props.dividerColor};
     ref-content: {props.divider};
   }
     
@@ -26,10 +30,12 @@
     
   .{refs.name}Item.active a,
   .{refs.name}Item.disabled a {
-    ref: pointerEvents-none color-hex4a5568;
+    ref: pointerEvents-none;
+    ref-color: {props.activeColor};
   }
     
   .{refs.name}Item:not(.active):not(.disabled):hover a {
-    ref: color-hex0d6efd textDecoration-underline;
+    ref-color: {props.parentColor};
+    ref: textDecoration-underline;
   }
 }

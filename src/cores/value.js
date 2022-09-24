@@ -32,8 +32,8 @@ module.exports = (value, opt = {}) => {
     newValue = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
   }
   else if(newValue.trim().startsWith('calc(')) {
-    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-      if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+    newValue = newValue.replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+      if(item.trim().startsWith('refs(')) {
         const splitValues = item.trim().split(/\(|\)/g)
         item = opt[splitValues[0]][splitValues[1]].value || item
       }
@@ -41,8 +41,8 @@ module.exports = (value, opt = {}) => {
     }).join('')
   }
   else if(newValue.trim().startsWith('add(') || newValue.trim().startsWith('sub(') || newValue.trim().startsWith('div(') || newValue.trim().startsWith('times(')) {
-    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-      if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+    newValue = newValue.replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
+      if(item.trim().startsWith('refs(')) {
         const splitValues = item.trim().split(/\(|\)/g)
         item = opt[splitValues[0]][splitValues[1]].value || item
       }
@@ -59,10 +59,10 @@ module.exports = (value, opt = {}) => {
       newValue = newValue.replace('times', 'calc').replace(/\,|\s\,/g, '*')
     }
   }
-  else if(newValue.trim().startsWith('refs(') || newValue.trim().startsWith('props(')) {
+  else if(newValue.trim().startsWith('refs(')) {
     const splitValues = newValue.trim().split(/\(|\)/g)
     newValue = opt[splitValues[0]][splitValues[1]].value || newValue
-  } else if(!specialValues.includes(newValue)) {
+  } else if(!specialValues.includes(newValue) && !newValue.includes('props')) {
     newValue = camelDash(newValue)
   }
   if(isNaN(newValue) === false && opt?.property) {

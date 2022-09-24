@@ -58,13 +58,14 @@ test('Testing sideBar component', async () => {
 .sideAvatar .avatarTitle {
     margin-top: 0.5rem;
     margin-bottom: 0px;
-    color: #4c4c4c;
+    color: inherit;
     font-size: 1rem
 }
 .sideAvatar .avatarDescription {
     margin-top: 0.15rem;
     margin-bottom: 0px;
-    color: #2d2d2d;
+    color: inherit;
+    opacity: 0.7;
     font-size: 0.75rem
 }
 .sideTitle {
@@ -90,6 +91,14 @@ test('Testing sideBar component', async () => {
     font-size: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem
+}
+.sideMenu > .sideItem.active {
+    background-color: rgba(0, 0, 0, 0.375);
+    border-radius: 0.375rem;
+    color: inherit;
+    font-weight: 700;
+    margin-top: 2px;
+    margin-bottom: 2px
 }
 .sideNav > .navItem, .sideNav > .navToggler {
     padding-right: 0.5rem;
