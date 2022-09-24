@@ -5,10 +5,16 @@
 @alga list {
   .list {
     ref: width-100pct backgroundColor-hexfff border-1px_solid_hexd9d9d9 borderRadius-0.375rem;
+    prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
     
     .listWrap {
       ref: padding-0.5rem;
       ref-borderBottom: 1px solid #d9d9d9;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
     .listGroup {
@@ -19,6 +25,9 @@
     .listItem {
       ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9 textDecoration-none color-hex283541;
       ref: cursor-default;
+      prefers-dark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
+      prefers-toDark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
+      prefers-toLight: borderBottomColor-hexd9d9d9 color-hex283541;
     }
     
     .listItem:last-child {
@@ -26,7 +35,10 @@
     }
     
     .listItem:hover {
-      ref: backgroundColor-hexededed;;
+      ref: backgroundColor-hexededed;
+      prefers-dark: backgroundColor-hex242424;
+      prefers-toDark: backgroundColor-hex242424;
+      prefers-toLight: backgroundColor-hexededed;
     }
     
     .listItem.active {

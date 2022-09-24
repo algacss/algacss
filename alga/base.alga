@@ -15,7 +15,7 @@
     ref-fontFamily: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
     ref: fontSize-16px lineHeight-24px fontWeight-400 textRendering-optimizeLegibility;
     ref-colorScheme: light dark;
-    ref: backgroundColor-{props.bgLight} color-{props.fgLight} fontSynthesis-none;
+    ref: fontSynthesis-none;
     webkit-fontSmoothing: antialiased;
     moz-ostFontSmoothing: grayscale;
     webkit-textSizeAdjust: 100%;

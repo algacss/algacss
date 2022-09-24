@@ -9,8 +9,6 @@ test('Testing base component', async () => {
     font-weight: 400;
     text-rendering: optimizeLegibility;
     color-scheme: light dark;
-    background-color: #fff;
-    color: #15181c;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     -moz-ost-font-smoothing: grayscale;
