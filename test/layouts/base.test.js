@@ -125,6 +125,9 @@ summary {
     color: #fff;
     padding: .1875em .375rem
 }
+img, svg {
+    vertical-align: middle
+}
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #242424;

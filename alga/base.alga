@@ -149,4 +149,8 @@
     ref: backgroundColor-hex707070 borderRadius-0.25rem color-hexfff;
     ref-padding: .1875em .375rem;
   }
+  
+  img, svg {
+    ref: verticalAlign-middle;
+  }
 }
