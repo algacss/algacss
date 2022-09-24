@@ -29,7 +29,8 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #15181c
+    color: #15181c;
+    min-height: 100vh
 }
 hr {
     height: 0;

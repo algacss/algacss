@@ -31,7 +31,7 @@
   
   body {
     ref-fontFamily: {props.fontFamily};
-    ref: backgroundColor-{props.bgLight} margin-0px padding-0px fontSize-{props.fontSize} fontWeight-{props.fontWeight} lineHeight-{props.lineHeight} color-{props.fgLight};
+    ref: backgroundColor-{props.bgLight} margin-0px padding-0px fontSize-{props.fontSize} fontWeight-{props.fontWeight} lineHeight-{props.lineHeight} color-{props.fgLight} minHeight-100vh;
     prefers-dark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toDark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toLight: backgroundColor-{props.bgLight} color-{props.fgLight};

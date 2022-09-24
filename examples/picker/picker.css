@@ -1,11 +1,11 @@
 .picker {
     width: auto
 }
-.pickerContent {
+.pickerOverlay {
     display: block;
     position: relative
 }
-.picker.dropdown .pickerContent {
+.picker.dropdown .pickerOverlay {
     display: inline-block
 }
 .pickerBackdrop {
@@ -24,62 +24,132 @@
 }
 .select.pickerToggler {
     padding-left: 0.75rem;
-    padding-right: 0.75rem
+    padding-right: 0.75rem;
+    cursor: default
 }
-.pickerBody, .pickerMenu {
+.pickerContent {
     position: absolute;
     z-index: 6;
     top: 2.5rem;
     left: 0;
-    width: 240px;
+    min-width: 240px;
     background-color: #fff;
     border: 1px solid #d9d9d9;
-    display: none
-}
-.pickerBody {
-    padding: 0.75rem;
+    display: none;
     border-radius: 0.375rem
 }
-.pickerMenu {
-    border-radius: 0.375rem
-}
-.pickerMenu .pickerWrap {
+.pickerContent .pickerHeader {
     padding: 0.5rem;
     border-bottom: 1px solid #d9d9d9
 }
-.pickerMenu .pickerGroup {
-    overflow-y: auto;
-    max-height: calc(10 * 36px)
+.pickerContent .pickerBody {
+    padding: 0.75rem
 }
-.pickerMenu .pickerItem {
+.pickerContent .pickerMenu {
+    overflow-y: auto;
+    max-height: calc(10 * 42px)
+}
+.pickerContent .pickerItem {
     display: block;
-    padding: 0.5rem 0.75rem;
+    padding: 0.675rem 0.75rem;
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
-    color: #283541
+    color: #283541;
+    cursor: default
 }
-.pickerMenu .pickerItem:last-child {
+.pickerContent .pickerItem:last-child {
     border-bottom: 0
 }
-.pickerMenu.pickerSizing {
+.pickerContent .pickerItem:hover {
+    background-color: #ededed
+}
+.pickerContent .pickerItem.active {
+    pointer-events: none;
+    border-color: #4890eb;
+    background-color: #4c9bff;
+    color: #fff
+}
+.pickerContent .pickerFooter {
+    padding: 0.5rem;
+    border-top: 1px solid #d9d9d9
+}
+.pickerContent.pickerSizing {
     overflow-y: auto;
-    max-height: calc(10 * 36px)
+    max-height: calc(10 * 42px)
 }
-.suggestion .pickerMenu, .fill .pickerBody {
-    width: 100%
+.suggestion .pickerContent, .fill .pickerContent {
+    width: 100%;
+    min-width: auto
 }
-.pickerEnd .pickerBody, .pickerEnd .pickerMenu {
+.pickerEnd .pickerContent {
     right: 0;
     left: auto
 }
-.picker.active .input.pickerToggler, .picker.active .select.pickerToggler {
+.picker.suggestion.active .input.pickerToggler, .picker.suggestion.active .select.pickerToggler {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0
 }
-.picker.active .pickerMenu {
+.picker.suggestion.active .pickerContent {
     border-top-right-radius: 0;
     border-top-left-radius: 0
 }
-.picker.active .pickerBody, .picker.active .pickerMenu {
+.picker.active .pickerContent {
     display: block
+}
+@media (prefers-color-scheme: dark) {
+    .pickerContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    .pickerContent .pickerHeader {
+        border-bottom-color: #5f5f5f
+    }
+    .pickerContent .pickerItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    .pickerContent .pickerItem:hover {
+        background-color: #242424
+    }
+    .pickerContent .pickerFooter {
+        border-top-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .pickerContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    [data-mode=dark] .pickerContent .pickerHeader {
+        border-bottom-color: #5f5f5f
+    }
+    [data-mode=dark] .pickerContent .pickerItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    [data-mode=dark] .pickerContent .pickerItem:hover {
+        background-color: #242424
+    }
+    [data-mode=dark] .pickerContent .pickerFooter {
+        border-top-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .pickerContent {
+        background-color: #fff;
+        border-color: #d9d9d9
+    }
+    [data-mode=light] .pickerContent .pickerHeader {
+        border-bottom-color: #d9d9d9
+    }
+    [data-mode=light] .pickerContent .pickerItem {
+        border-bottom-color: #d9d9d9;
+        color: #283541
+    }
+    [data-mode=light] .pickerContent .pickerItem:hover {
+        background-color: #ededed
+    }
+    [data-mode=light] .pickerContent .pickerFooter {
+        border-top-color: #d9d9d9
+    }
 }

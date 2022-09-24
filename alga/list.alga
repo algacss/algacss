@@ -9,7 +9,7 @@
     prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
     
-    .listWrap {
+    .listHeader {
       ref: padding-0.5rem;
       ref-borderBottom: 1px solid #d9d9d9;
       prefers-dark: borderBottomColor-hex5f5f5f;
@@ -17,7 +17,7 @@
       prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
-    .listGroup {
+    .listMenu {
       ref: overflowY-auto;
       props-maxHeight: calc(menu * 36px);
     }
@@ -43,6 +43,14 @@
     
     .listItem.active {
       ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff color-hexfff;
+    }
+    
+    .listFooter {
+      ref: padding-0.5rem;
+      ref-borderTop: 1px solid #d9d9d9;
+      prefers-dark: borderTopColor-hex5f5f5f;
+      prefers-toDark: borderTopColor-hex5f5f5f;
+      prefers-toLight: borderTopColor-hexd9d9d9;
     }
   }
   

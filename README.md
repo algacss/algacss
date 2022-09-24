@@ -14,12 +14,14 @@
 # Alga CSS
 Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](https://algacss.com 'Alga CSS')
 
+Older version only work on Unix/Linux based operating system, if you're using Windows, that mean you need to use the newest version otherwise the default directives won't work (I mean all the CSS components from alga directory not being read), this is because of bug that I have fixed now.
+
 All the main features:
 1. Created for scoped CSS
 2. As a PostCSS plugin
 3. Composing or mixing CSS components
 5. Custom CSS helpers (preset, define, color, screen, etc.)
-6. Extract classes from HTML (Petite-Vue, Alpine.js), Vue, Svelte, and Astro
+6. Extract classes from Vue, HTML (Petite-Vue, Alpine.js), Astro, and Svelte
 
 ## Installation and Setup
 Alga CSS built on top of PostCSS, so before installing Alga CSS, you need to have PostCSS first and after that you can use NPM or Yarn to install this Alga CSS.
@@ -40,7 +42,8 @@ const algacss = require('alga-css')
 module.exports = {
   plugins: [
     algacss({
-      extract: ['./src/**/*.vue', './src/**/*.html', './src/**/*.astro', './src/**/*.svelte']
+      extract: ['./src/**/*.vue', './src/**/*.html', './src/**/*.astro', './src/**/*.svelte'],
+      src: './src/styles/*.alga'
     })
   ]
 }
