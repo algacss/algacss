@@ -31,7 +31,15 @@ function algacss(options) {
   
   const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers, color: config.color}
   
-  const watcher = chokidar.watch(options?.extract, {
+  let watchFiles = []
+  if(options?.extract) {
+    watchFiles = [...watchFiles, ...Array.from(options.extract)]
+  }
+  if(options?.src) {
+    watchFiles = [...watchFiles, ...Array.from(options.src)]
+  }
+  
+  const watcher = chokidar.watch(watchFiles, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
     persistent: true
   })
