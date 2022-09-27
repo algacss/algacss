@@ -26,7 +26,10 @@
   }
   
   html {
-	  ref: lineHeight-1.15 tabSize-4;
+	  ref: lineHeight-1.15 tabSize-4 backgroundColor-{props.bgLight} color-{props.fgLight};
+    prefers-dark: backgroundColor-{props.bgDark} color-{props.fgDark};
+    prefers-toDark: backgroundColor-{props.bgDark} color-{props.fgDark};
+    prefers-toLight: backgroundColor-{props.bgLight} color-{props.fgLight};
   }
   
   body {

@@ -11,6 +11,7 @@ const color = require('./configs/color.js')
 const component = require('./cores/component.js')
 const declaration = require('./cores/declaration.js')
 const extraction = require('./cores/extraction.js')
+const render = require('./cores/render.js')
 const packages = require('./cores/package.js')
 
 // Helpers
@@ -137,6 +138,16 @@ function algacss(options) {
           newRoot.removeAll()
           newRoot.append(...newNodes)
           rule.replaceWith(newRoot)
+        } else {
+          rule.remove()
+        }
+      })
+      
+      root.walkAtRules('ref', rule => {
+        let params = rule.params.trim().split(',')
+        if(params.length >= 1) {
+          let newRender = render(params, rule.source, {...opts})
+          rule.replaceWith(newRender)
         } else {
           rule.remove()
         }

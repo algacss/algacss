@@ -19,7 +19,9 @@ test('Testing base component', async () => {
 }
 html {
     line-height: 1.15;
-    tab-size: 4
+    tab-size: 4;
+    background-color: #fff;
+    color: #15181c
 }
 body {
     font-family: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -128,18 +130,30 @@ img, svg {
     vertical-align: middle
 }
 @media (prefers-color-scheme: dark) {
+    html {
+        background-color: #242424;
+        color: #e2e2e2
+    }
     body {
         background-color: #242424;
         color: #e2e2e2
     }
 }
 @media (prefers-color-scheme: light) {
+    [data-mode=dark] html {
+        background-color: #242424;
+        color: #e2e2e2
+    }
     [data-mode=dark] body {
         background-color: #242424;
         color: #e2e2e2
     }
 }
 @media (prefers-color-scheme: dark) {
+    [data-mode=light] html {
+        background-color: #fff;
+        color: #15181c
+    }
     [data-mode=light] body {
         background-color: #fff;
         color: #15181c

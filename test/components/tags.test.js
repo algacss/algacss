@@ -8,13 +8,13 @@ test('Testing tags, tag input, and badge component', async () => {
     border-radius: 0.375rem;
     text-decoration: none;
     cursor: pointer;
-    background-color: #283541;
-    color: #fff;
+    background-color: #f2f2f2;
+    color: #2f2f2f;
     font-size: 0.75rem;
     line-height: 1.5;
     font-weight: bold;
     padding: 3px 10px;
-    border: 1px solid #192229
+    border: 1px solid #d9d9d9
 }
 .tag.groupItem:first-child {
     cursor: default
@@ -32,10 +32,31 @@ test('Testing tags, tag input, and badge component', async () => {
     justify-content: start;
     gap: 0.5rem
 }
+@media (prefers-color-scheme: dark) {
+    .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .tag {
+        background-color: #f2f2f2;
+        color: #2f2f2f;
+        border-color: #d9d9d9
+    }
+}
 .taggable {
     width: auto
 }
-.tagContent {
+.tagWrap {
     display: block;
     position: relative;
     z-index: 6
@@ -62,7 +83,7 @@ test('Testing tags, tag input, and badge component', async () => {
     width: 100px;
     outline: 0
 }
-.tagList {
+.tagContent {
     position: absolute;
     z-index: 7;
     top: 100%;
@@ -76,27 +97,66 @@ test('Testing tags, tag input, and badge component', async () => {
     border-top-width: 0px;
     max-height: calc(10 * 36px)
 }
-.tagList .tagOption {
+.tagContent .tagItem {
     display: block;
     padding: 0.675rem 0.75rem;
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
     color: #283541
 }
-.tagList .tagOption:last-child {
+.tagContent .tagItem:last-child {
     border-bottom: 0
 }
-.tagList .tagOption:hover {
+.tagContent .tagItem:hover {
     background-color: #ededed
 }
 .taggable.active .input.tagToggler {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0
 }
-.taggable.active .tagList {
+.taggable.active .tagContent {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     display: block
+}
+@media (prefers-color-scheme: dark) {
+    .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    [data-mode=dark] .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    [data-mode=dark] .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .tagContent {
+        background-color: #fff;
+        border-color: #d9d9d9
+    }
+    [data-mode=light] .tagContent .tagItem {
+        border-bottom-color: #d9d9d9;
+        color: #283541
+    }
+    [data-mode=light] .tagContent .tagItem:hover {
+        background-color: #ededed
+    }
 }
 .badge {
     display: inline;

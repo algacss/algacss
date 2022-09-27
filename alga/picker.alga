@@ -7,11 +7,11 @@
     ref: width-auto;
   }
     
-  .pickerOverlay {
+  .pickerWrap {
     ref: display-block position-relative;
   }
     
-  .picker.dropdown .pickerOverlay {
+  .picker.dropdown .pickerWrap {
     ref: display-inlineBlock;
   }
     

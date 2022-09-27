@@ -5,11 +5,11 @@ test('Testing picker or dropdown component', async () => {
   const output = `.picker {
     width: auto
 }
-.pickerOverlay {
+.pickerWrap {
     display: block;
     position: relative
 }
-.picker.dropdown .pickerOverlay {
+.picker.dropdown .pickerWrap {
     display: inline-block
 }
 .pickerBackdrop {
