@@ -10,6 +10,6 @@ test('Reading css classes from file', async () => {
         './test/js-html/**/*.js'
       ]
     })
-  ]).process(`@use helpers;`, { from: undefined })
+  ]).process(`@use helpers; @ref objectFit-cover verticalAlign-middle;`, { from: undefined })
   console.log(result.css)
 })

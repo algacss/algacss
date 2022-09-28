@@ -144,7 +144,7 @@ function algacss(options) {
       })
       
       root.walkAtRules('ref', rule => {
-        let params = rule.params.trim().split(',')
+        let params = rule.params.trim().split(' ')
         if(params.length >= 1) {
           let newRender = render(params, rule.source, {...opts})
           rule.replaceWith(newRender)
