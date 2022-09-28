@@ -34,10 +34,10 @@ function algacss(options) {
   
   let watchFiles = []
   if(options?.extract) {
-    watchFiles = [...watchFiles, ...Array.from(options.extract)]
+    watchFiles = watchFiles.concat(options?.extract || [])
   }
   if(options?.src) {
-    watchFiles = [...watchFiles, ...Array.from(options.src)]
+    watchFiles = watchFiles.concat(options?.src || [])
   }
   
   const watcher = chokidar.watch(watchFiles, {
