@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const screen = require('../configs/screen.js')
 const camelDash = require('../helpers/camelDash.js')
+const randomChar = require('../helpers/randomChar.js')
 const reference = require('./reference.js')
 const recursive = require('./recursive.js')
 
@@ -66,6 +67,9 @@ function readPath(rp, opts) {
           defineObj[param].value = Object.assign({}, defineObj[param].value, reference(dnode, refOpt))
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('ref-')) {
           let splitRefs = dnode.prop.split('-')[1]
+          if('preset' in opts && Object.keys(opts.preset).includes(splitRefs)) {
+            splitRefs = opts.preset[splitRefs]
+          }
           let splitRefsObj = {}
           splitRefsObj[camelDash(splitRefs)] = {
             value: dnode.value,
@@ -216,6 +220,7 @@ function readPath(rp, opts) {
       const newParams = param.split(',').filter(i => i !== '')
       for(let dnode of newParams) {
         if(component[componentName]['modules'][dnode.trim()]) {
+          component[componentName]['modules'][dnode.trim()]['inits'].push(rnode.clone({ params: dnode.trim() }))
           component[dnode.trim()] = component[componentName]['modules'][dnode.trim()]
         }
       }

@@ -44,7 +44,7 @@
         }
         
         .{refs.name}Title {
-          ref: color-hex333;
+          ref: color-inherit;
         }
         
         .{refs.name}Text {

@@ -72,7 +72,7 @@ function algacss(options) {
     const newComponent = packages(newPlugins, opts)
     config.components = Object.assign({}, config.components, newComponent)
     for(let keyComponent of Object.keys(newComponent)) {
-      if(newComponent[keyComponent]['inits']) {
+      if(!keyComponent.includes('package') && newComponent[keyComponent]['inits']) {
         for(let init of newComponent[keyComponent]['inits']) {
           if(!config.inits.map(i => i.params).includes(init.params)) {
             config.inits.push(init)

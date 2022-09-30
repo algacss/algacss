@@ -41,7 +41,7 @@ test('Testing dropzone component', async () => {
     margin: 0px
 }
 .dropZone .dropZoneWrap .dropZoneBody .dropZoneTitle {
-    color: #333
+    color: inherit
 }
 .dropZone .dropZoneWrap .dropZoneBody .dropZoneText {
     color: #737373
