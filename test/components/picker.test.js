@@ -14,7 +14,7 @@ test('Testing picker or dropdown component', async () => {
 }
 .pickerBackdrop {
     position: fixed;
-    z-index: 5;
+    z-index: 74;
     inset: 0 3em 3em 0;
     width: 100vw;
     height: 100vh;
@@ -33,7 +33,7 @@ test('Testing picker or dropdown component', async () => {
 }
 .pickerContent {
     position: absolute;
-    z-index: 6;
+    z-index: 75;
     top: 2.5rem;
     left: 0;
     min-width: 240px;

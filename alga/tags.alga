@@ -39,11 +39,11 @@
     }
       
     .tagWrap {
-      ref: display-block position-relative zIndex-6;
+      ref: display-block position-relative;
     }
      
     .tagBackdrop {
-      ref: position-fixed zIndex-5 inset-0_3em_3em_0 width-100vw height-100vh display-none;
+      ref: position-fixed zIndex-74 inset-0_3em_3em_0 width-100vw height-100vh display-none;
     }
       
     .taggable.active .tagBackdrop {
@@ -59,7 +59,7 @@
     }
       
     .tagContent {
-      ref: position-absolute zIndex-7 top-100pct left-0 backgroundColor-hexfff border-1px_solid_hexd9d9d9;
+      ref: position-absolute zIndex-75 top-100pct left-0 backgroundColor-hexfff border-1px_solid_hexd9d9d9;
       ref: width-100pct borderRadius-0.375rem overflowY-auto display-none borderTopWidth-0px;
       props-maxHeight: calc(menu * 36px);
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;

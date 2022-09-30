@@ -1,6 +1,7 @@
 const postcss = require('postcss')
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
 const screen = require('../configs/screen.js')
 const camelDash = require('../helpers/camelDash.js')
 const reference = require('./reference.js')
@@ -35,7 +36,7 @@ function readPath(rp, opts) {
       } else {
         newPrmUrl = './node_modules/'+paramParentFolder+'/'+param
       }
-      component[componentName]['modules'] = Object.assign({}, component[componentName]['modules'], readPath(newPrmUrl, opts))
+      component[componentName]['modules'] = Object.assign({}, component[componentName]['modules'], readPath(path.resolve(newPrmUrl), opts))
     } else if(rnode.type === 'atrule' && rnode.name === 'define' && 'nodes' in rnode) {
       const param = rnode.params.trim()
       const defineObj = {}

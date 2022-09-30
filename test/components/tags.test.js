@@ -58,12 +58,11 @@ test('Testing tags, tag input, and badge component', async () => {
 }
 .tagWrap {
     display: block;
-    position: relative;
-    z-index: 6
+    position: relative
 }
 .tagBackdrop {
     position: fixed;
-    z-index: 5;
+    z-index: 74;
     inset: 0 3em 3em 0;
     width: 100vw;
     height: 100vh;
@@ -85,7 +84,7 @@ test('Testing tags, tag input, and badge component', async () => {
 }
 .tagContent {
     position: absolute;
-    z-index: 7;
+    z-index: 75;
     top: 100%;
     left: 0;
     background-color: #fff;
