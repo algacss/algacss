@@ -21,7 +21,7 @@
     }
     
     .tag.groupItem:last-child {
-      ref: paddingRight-5px paddingLeft-5px;
+      ref: paddingRight-5px paddingLeft-5px cursor-pointer;
     }
     
     .tag.groupItem svg {
@@ -67,7 +67,8 @@
       prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
       
       .tagItem {
-        ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9 textDecoration-none color-hex283541;
+        ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9;
+        ref: textDecoration-none color-hex283541 cursor-pointer;
         prefers-dark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
         prefers-toDark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
         prefers-toLight: borderBottomColor-hexd9d9d9 color-hex283541;

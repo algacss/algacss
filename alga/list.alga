@@ -23,8 +23,8 @@
     }
     
     .listItem {
-      ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9 textDecoration-none color-hex283541;
-      ref: cursor-default;
+      ref: display-block padding-0.675rem_0.75rem borderBottom-1px_solid_hexd9d9d9;
+      ref: textDecoration-none color-hex283541 cursor-pointer;
       prefers-dark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
       prefers-toDark: borderBottomColor-hex5f5f5f color-hexf2f2f2;
       prefers-toLight: borderBottomColor-hexd9d9d9 color-hex283541;
@@ -42,7 +42,8 @@
     }
     
     .listItem.active {
-      ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff color-hexfff;
+      ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff;
+      ref: color-hexfff cursor-default;
     }
     
     .listFooter {

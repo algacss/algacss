@@ -22,7 +22,7 @@ test('Testing list group component', async () => {
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
     color: #283541;
-    cursor: default
+    cursor: pointer
 }
 .list .listItem:last-child {
     border-bottom: 0
@@ -34,7 +34,8 @@ test('Testing list group component', async () => {
     pointer-events: none;
     border-color: #4890eb;
     background-color: #4c9bff;
-    color: #fff
+    color: #fff;
+    cursor: default
 }
 .list .listFooter {
     padding: 0.5rem;

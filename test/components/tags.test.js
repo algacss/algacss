@@ -21,7 +21,8 @@ test('Testing tags, tag input, and badge component', async () => {
 }
 .tag.groupItem:last-child {
     padding-right: 5px;
-    padding-left: 5px
+    padding-left: 5px;
+    cursor: pointer
 }
 .tag.groupItem svg {
     pointer-events: none
@@ -101,7 +102,8 @@ test('Testing tags, tag input, and badge component', async () => {
     padding: 0.675rem 0.75rem;
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
-    color: #283541
+    color: #283541;
+    cursor: pointer
 }
 .tagContent .tagItem:last-child {
     border-bottom: 0
