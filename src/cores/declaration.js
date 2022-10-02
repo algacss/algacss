@@ -157,7 +157,7 @@ const declaration = (body, defs, opts) => {
         }
       }
       
-      if(newRule.nodes.length >= 1) {
+      if((newRule?.nodes?.length || 0) >= 1) {
         ruleArray.push(newRule)
       }
     }

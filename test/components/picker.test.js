@@ -21,11 +21,11 @@ test('Testing picker or dropdown component', async () => {
     display: none
 }
 .picker.active .pickerBackdrop {
-    display: block;
-    user-select: none
+    display: block
 }
 .pickerToggler {
-    padding: 0.5rem
+    padding: 0.5rem;
+    user-select: none
 }
 .select.pickerToggler {
     padding-left: 0.75rem;
