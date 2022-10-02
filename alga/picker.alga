@@ -24,7 +24,7 @@
   }
     
   .pickerToggler {
-    ref: padding-0.5rem;
+    ref: padding-0.5rem userSelect-none;
   }
     
   .select.pickerToggler {

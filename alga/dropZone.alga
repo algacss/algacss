@@ -7,6 +7,8 @@
   borderType: dashed;
   borderColor: currentColor;
   shadow: -1px 5px 25px -9px rgba(0, 0, 0, 0.2);
+  paddingTop: 1.5rem;
+  paddingBottom: 2.5rem;
 }
 
 @alga {refs.name} {
@@ -28,7 +30,7 @@
       
       .{refs.name}Label {
         ref: display-grid placeItems-center width-100pct height-100pct;
-        ref: paddingTop-1.5rem paddingBottom-2.5rem cursor-pointer;
+        ref: paddingTop-{props.paddingTop} paddingBottom-{props.paddingBottom} cursor-pointer;
       }
         
       .{refs.name}Image {
