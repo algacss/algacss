@@ -109,13 +109,19 @@ function algacss(options) {
           let newNodes = []
           if(rule?.nodes) {
             for(let node of rule.nodes) {
-              if(node.type === 'rule' && rule.nodes.length >= 1) {
+              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
                 const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
                 for(let ruleNode of node.nodes) {
-                  config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+                  if(ruleNodeName === 'props') {
+                    if(ruleNode.prop in config.components[param][ruleNodeName]) {
+                      config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+                    }
+                  }
                 }
               } else {
-                config.components[param]['props'][node.prop].value = node.value
+                if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
+                  config.components[param]['props'][node.prop].value = node.value
+                }
               }
             }
           }
@@ -168,7 +174,20 @@ function algacss(options) {
           let newNodes = []
           if(rule?.nodes) {
             for(let node of rule.nodes) {
-              config.components[param]['props'][node.prop] = node.value
+              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
+                const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
+                for(let ruleNode of node.nodes) {
+                  if(ruleNodeName === 'props') {
+                    if(ruleNode.prop in config.components[param][ruleNodeName]) {
+                      config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+                    }
+                  }
+                }
+              } else {
+                if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
+                  config.components[param]['props'][node.prop].value = node.value
+                }
+              }
             }
           }
           newNodes = [

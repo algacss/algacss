@@ -1,0 +1,64 @@
+@define refs {
+  name: define;
+  class: editor;
+}
+
+@define props {
+  bg: #360f29;
+  fg: #c7c7c7;
+  marginX: 2rem;
+}
+
+@alga {refs.name} {
+  .{refs.class} {
+    ref: mnh-100vh bgColor-{props.bg} fg-{props.fg};
+    ref-bgImage: linear-gradient(to top right, {props.bg}, #97414d);
+
+    &SideBar {
+      ref: w-240px bgColor-{props.bg} fg-{props.fg};
+      ref-backgroundImage: linear-gradient(to top left, {props.bg}, #97414d77);
+    }
+
+    &Content {
+
+      .{refs.class}Header {
+        ref: ml-{props.marginX} mr-{props.marginX};
+
+        h1 {
+          ref: mt-0px mb-0px;
+        }
+      }
+
+      .{refs.class}Body {
+        ref-ml: {props.marginX};
+        ref-mr: {props.marginX};
+
+        .{refs.class}Row {
+          ref: d-flex justify-between flexWrap-wrap;
+        }
+
+        .{refs.class}Left {
+          ref: w-100pct bg-hexf67372 fg-white p-10px;
+          screen-md: w-2/3 p-20px;
+        }
+
+        .{refs.class}Right {
+          ref: w-100pct bg-hexb2eef9 fg-hexf67372 p-10px;
+          screen-md: w-1/3 p-20px;
+        }
+
+        .input {
+          ref: fg-black;
+        }
+
+        .pickerToggler {
+          ref: userSelect-none;
+        }
+        
+        label.dropZoneLabel {
+          ref: pt-1rem pb-1rem;
+        }
+      }
+    }
+  }
+}

@@ -36,6 +36,9 @@ module.exports = (value, opt = {}) => {
       if(item.trim().startsWith('refs(')) {
         const splitValues = item.trim().split(/\(|\)/g)
         item = opt[splitValues[0]][splitValues[1]].value || item
+        if(splitValues[2]) {
+          item = item + splitValues[2]
+        }
       }
       return item
     }).join('')
@@ -45,6 +48,9 @@ module.exports = (value, opt = {}) => {
       if(item.trim().startsWith('refs(')) {
         const splitValues = item.trim().split(/\(|\)/g)
         item = opt[splitValues[0]][splitValues[1]].value || item
+        if(splitValues[2]) {
+          item = item + splitValues[2]
+        }
       }
       return item
     }).join('')
@@ -62,7 +68,10 @@ module.exports = (value, opt = {}) => {
   else if(newValue.trim().startsWith('refs(')) {
     const splitValues = newValue.trim().split(/\(|\)/g)
     newValue = opt[splitValues[0]][splitValues[1]].value || newValue
-  } else if(!specialValues.includes(newValue) && !newValue.includes('props')) {
+    if(splitValues[2]) {
+      newValue = newValue + splitValues[2]
+    }
+  } else if(!specialValues.includes(newValue) && !newValue.includes('props') && !newValue.includes('refs')) {
     newValue = camelDash(newValue)
   }
   if(isNaN(newValue) === false && opt?.property) {

@@ -90,6 +90,9 @@ const declaration = (body, defs, opts) => {
                 if(i.startsWith('refs(') || i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -109,6 +112,9 @@ const declaration = (body, defs, opts) => {
                     if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')
@@ -117,6 +123,9 @@ const declaration = (body, defs, opts) => {
                     if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')
@@ -193,9 +202,12 @@ const declaration = (body, defs, opts) => {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
             } else {
               declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
-                if(i.startsWith('refs(') || i.startsWith('props(')) {
+                if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -211,18 +223,24 @@ const declaration = (body, defs, opts) => {
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
                 } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')
                 } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')
@@ -277,9 +295,12 @@ const declaration = (body, defs, opts) => {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
             } else {
               declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
-                if(i.startsWith('refs(') || i.startsWith('props(')) {
+                if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -295,18 +316,24 @@ const declaration = (body, defs, opts) => {
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
                 } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')
                 } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
                       const splitValues = item.trim().split(/\(|\)/g)
                       item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
                     }
                     return item
                   }).join('')

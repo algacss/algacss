@@ -1,0 +1,63 @@
+@define refs {
+  name: provide;
+  class: editor;
+}
+
+@provide overlay {
+  prefers-dark: bgColor-hexf67372 bdColor-hexde5352;
+  prefers-toDark: bgColor-hexf67372 bdColor-hexde5352;
+}
+
+@provide overlayItem {
+  prefers-dark: bdColor-hexde5352;
+  prefers-toDark: bdColor-hexde5352;
+}
+
+@provide overlayHover {
+  prefers-dark: bgColor-hexde5352;
+  prefers-toDark: bgColor-hexde5352;
+}
+
+@alga {refs.name} {
+  .{refs.class} {
+    ref-bgImage: linear-gradient(to top right, #360f29, #97414d);
+
+    .pickerContent {
+      inject: overlay;
+
+      .pickerHeader,
+      .pickerItem,
+      .pickerFooter {
+        inject: overlayItem;
+      }
+
+      .pickerItem:hover {
+        inject: overlayHover;
+      }
+    }
+
+    .tag {
+      inject: overlay;
+
+      &:hover {
+        inject: overlayHover;
+      }
+    }
+
+    .tagContent {
+      inject: overlay;
+
+      .tagItem {
+        inject: overlayItem;
+            
+        &:hover {
+          inject: overlayHover;
+        }
+      }
+    }
+
+    label.dropZoneLabel {
+      ref: pt-1rem pb-1rem;
+    }
+  }
+}
