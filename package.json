@@ -1,13 +1,15 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-ruby-7",
+  "version": "1.0.0-ruby-8",
   "description": "Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties",
   "main": "./src/index.js",
+  "bin": "./bin/algac",
   "scripts": {
     "test": "jest",
     "lint": "eslint js"
   },
   "files": [
+    "bin",
     "src",
     "alga"
   ],
@@ -35,6 +37,7 @@
   },
   "dependencies": {
     "chokidar": "^3.5.3",
-    "glob": "^7.2.0"
+    "glob": "^7.2.0",
+    "minimist": "^1.2.6"
   }
 }

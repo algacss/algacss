@@ -1,0 +1,61 @@
+.editor {
+    min-height: 100vh;
+    background-color: #360f29;
+    color: #c7c7c7;
+    background-image: linear-gradient(to top right, #360f29, #97414d)
+}
+.editorSideBar {
+    width: 240px;
+    background-color: #360f29;
+    color: #c7c7c7;
+    background-image: linear-gradient(to top left, #360f29, #97414d77)
+}
+.editorContent .editorHeader {
+    margin-left: 2rem;
+    margin-right: 2rem
+}
+.editorContent .editorHeader h1 {
+    margin-top: 0px;
+    margin-bottom: 0px
+}
+.editorContent .editorBody {
+    margin-left: 2rem;
+    margin-right: 2rem
+}
+.editorContent .editorBody .editorRow {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+.editorContent .editorBody .editorLeft {
+    width: 100%;
+    background: #f67372;
+    color: #ffffff;
+    padding: 10px
+}
+.editorContent .editorBody .editorRight {
+    width: 100%;
+    background: #b2eef9;
+    color: #f67372;
+    padding: 10px
+}
+.editorContent .editorBody .input {
+    color: #000000
+}
+.editorContent .editorBody .pickerToggler {
+    user-select: none
+}
+.editorContent .editorBody label.dropZoneLabel {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+@media (min-width: 1024px) {
+    .editorContent .editorBody .editorLeft {
+        width: 66.666667%;
+        padding: 20px
+    }
+    .editorContent .editorBody .editorRight {
+        width: 33.333333%;
+        padding: 20px
+    }
+}

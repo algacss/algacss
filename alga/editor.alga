@@ -1,16 +1,29 @@
+@define refs {
+  name: editor;
+}
+
 @provide bar {
   ref: display-flex justifyContent-spaceBetween alignItems-center flexWrap-wrap;
-  ref: padding-0.5rem_0.5rem backgroundColor-hexfff;
+  ref: padding-0.5rem_0.5rem backgroundColor-hexfff color-inherit;
+  prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+  prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+  prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
 }
 
 @provide block {
   ref: position-relative display-flex flexDirection-column border-1px_solid_hexd9d9d9;
-  ref: borderRadius-0.25rem boxShadow-1px_1px_4px_hexd9d9d9 zIndex-5;
+  ref: borderRadius-0.25rem zIndex-15;
+  prefers-dark: borderColor-hex5f5f5f;
+  prefers-toDark: borderColor-hex5f5f5f;
+  prefers-toLight: borderColor-hexd9d9d9;
 }
 
-@alga editor {
-  .editor {
+@alga {refs.name} {
+  .{refs.name} {
     ref: width-100pct backgroundColor-hexfff backgroundClip-borderBox wordWrap-breakWord;
+    prefers-dark: backgroundColor-hex2f2f2f;
+    prefers-toDark: backgroundColor-hex2f2f2f;
+    prefers-toLight: backgroundColor-hexfff;
       
     & > *:first-child {
       ref: borderTopRightRadius-0.25rem borderTopLeftRadius-0.25rem;
@@ -21,77 +34,107 @@
     }
   }
   
-  .editorToolbar {
+  .{refs.name}Toolbar {
     ref: borderBottom-1px_solid_hexd9d9d9;
     inject: bar;
   }
     
-  .editorStatusbar {
+  .{refs.name}Statusbar {
     ref: borderTop-1px_solid_hexd9d9d9;
     inject: bar;
   }
     
-  .editorContent {
-    ref: flex-1_1_auto padding-1rem_0.75rem outline-0 display-block position-relative;
+  .{refs.name}Content {
+    ref: flex-1_1_auto padding-1rem_0.75rem outline-0 display-block position-relative zIndex-14;
+    ref: backgroundColor-hexfff borderColor-hexd9d9d9;
+    prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
   }
     
-  .editorMenu {
+  .{refs.name}Menu {
     ref: display-flex paddingLeft-0 margin-0 listStyle-none gap-5px;
   }
     
-  .editorItem {
+  .{refs.name}Item {
     ref: display-block padding-0.25rem_0.25rem borderRadius-0.25rem color-hex4a5568;
-    ref: textDecoration-none cursor-default;
+    ref: textDecoration-none cursor-pointer border-1px_solid_transparent;
     ref-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    prefers-dark: color-hexd9d9d9;
+    prefers-toDark: color-hexd9d9d9;
+    prefers-toLight: color-hex4a5568;
+    
+    &:not(.active):not(.plain):hover {
+      ref: backgroundColor-hexf2f2f2 color-inherit borderColor-hexd9d9d9;
+      prefers-dark: backgroundColor-hex5f5f5f color-hexd9d9d9 borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex5f5f5f color-hexd9d9d9 borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf2f2f2 color-inherit borderColor-hexd9d9d9;
+    }
     
     &.active {
-      ref: backgroundColor-hexe7eefa border-1px_solid_hexb8e7fd;
+      ref: backgroundColor-hexe7eefa color-inherit borderColor-hexb8e7fd;
+      prefers-dark: backgroundColor-hex4a5568 color-hexb8e7fd borderColor-hexb8e7fd;
+      prefers-toDark: backgroundColor-hex4a5568 color-hexb8e7fd borderColor-hexb8e7fd;
+      prefers-toLight: backgroundColor-hexe7eefa color-inherit borderColor-hexb8e7fd;
+    }
+    
+    &.plain {
+      ref: cursor-default;
     }
   }
      
-  .editorText {
+  .{refs.name}Text {
     inject: block;
   }
     
-  .editorTooltip {
+  .{refs.name}Tooltip {
     ref: position-relative display-flex flexDirection-column;
   }
   
-  .editorSection {
+  .{refs.name}Section {
     ref: borderTopLeftRadius-0px;
     
-    .editorBlock {
+    .{refs.name}Block {
       inject: block;
       ref: borderTopLeftRadius-0px marginTop-47px;
       
-      .editorToolbar {
+      .{refs.name}Toolbar {
         ref: position-absolute top-n37px left-n1px border-1px_solid_hexd9d9d9;
-        ref: borderTopRightRadius-0.25rem borderTopLeftRadius-0.25rem zIndex-4;
+        ref: borderTopRightRadius-0.25rem borderTopLeftRadius-0.25rem zIndex-13;
+        prefers-dark: borderColor-hex5f5f5f;
+        prefers-toDark: borderColor-hex5f5f5f;
+        prefers-toLight: borderColor-hexd9d9d9;
       }
     }
   }
   
-  .editorBackdrop {
+  .{refs.name}Backdrop {
     ref: position-fixed zIndex-25 inset-0_3em_3em_0 width-100vw height-100vh display-none; 
   }
     
-  .editorInline {
+  .{refs.name}Inline {
     ref: position-relative display-inlineBlock;
     
-    .editorToolbar {
-      ref: visibility-hidden position-absolute zIndex-30 bottom-n47px left-0px display-inlineBlock;
+    .{refs.name}Toolbar {
+      ref: visibility-hidden position-absolute zIndex-75 bottom-n47px left-0px display-inlineBlock;
       ref: border-1px_solid_hexd9d9d9 borderRadius-0.25rem;
+      prefers-dark: borderColor-hex5f5f5f;
+      prefers-toDark: borderColor-hex5f5f5f;
+      prefers-toLight: borderColor-hexd9d9d9;
     }
     
-    &:hover .editorToolbar {
+    &:hover .{refs.name}Toolbar {
       ref: visibility-visible;
     }
     
-    .editorToolbar:after {
+    .{refs.name}Toolbar:after {
       ref-content: "";
-      ref: position-absolute zIndex-29 top-n16px left-20px marginLeft-n10px borderWidth-8px;
+      ref: position-absolute zIndex-74 top-n16px left-20px marginLeft-n10px borderWidth-8px;
       ref: borderStyle-solid transform-rotate(180deg);
-      ref-border-color: #d9d9d9 transparent transparent transparent;
+      ref-borderColor: #d9d9d9 transparent transparent transparent;
+      prefers-dark: borderColor-hex5f5f5f_transparent_transparent_transparent;
+      prefers-toDark: borderColor-hex5f5f5f_transparent_transparent_transparent;
+      prefers-toLight: borderColor-hexd9d9d9_transparent_transparent_transparent;
     }
   }
 }

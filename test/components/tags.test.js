@@ -30,7 +30,7 @@ test('Testing tags, tag input, and badge component', async () => {
 .tags {
     display: inline-flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 0.5rem
 }
 @media (prefers-color-scheme: dark) {
@@ -75,7 +75,7 @@ test('Testing tags, tag input, and badge component', async () => {
 .input.tagToggler {
     padding: 0.5rem;
     display: flex;
-    justify-content: start
+    justify-content: flex-start
 }
 .tagInput {
     background-color: transparent;

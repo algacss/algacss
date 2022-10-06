@@ -29,7 +29,7 @@
     }
     
     .tags {
-      ref: display-inlineFlex flexWrap-wrap justifyContent-start gap-0.5rem;
+      ref: display-inlineFlex flexWrap-wrap justifyContent-flexStart gap-0.5rem;
     }
   }  
   
@@ -51,7 +51,7 @@
     }
       
     .input.tagToggler {
-      ref: padding-0.5rem display-flex justifyContent-start;
+      ref: padding-0.5rem display-flex justifyContent-flexStart;
     }
     
     .tagInput {

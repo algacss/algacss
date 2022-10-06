@@ -1,0 +1,65 @@
+.editor {
+    background-image: linear-gradient(to top right, #360f29, #97414d)
+}
+.editor label.dropZoneLabel {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+@media (prefers-color-scheme: dark) {
+    .editor .pickerContent {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    .editor .pickerContent .pickerHeader, .editor .pickerContent .pickerItem, .editor .pickerContent .pickerFooter {
+        border-color: #de5352
+    }
+    .editor .pickerContent .pickerItem:hover {
+        background-color: #de5352
+    }
+    .editor .tag {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    .editor .tag:hover {
+        background-color: #de5352
+    }
+    .editor .tagContent {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    .editor .tagContent .tagItem {
+        border-color: #de5352
+    }
+    .editor .tagContent .tagItem:hover {
+        background-color: #de5352
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .editor .pickerContent {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    [data-mode=dark] .editor .pickerContent .pickerHeader, .editor .pickerContent .pickerItem, .editor .pickerContent .pickerFooter {
+        border-color: #de5352
+    }
+    [data-mode=dark] .editor .pickerContent .pickerItem:hover {
+        background-color: #de5352
+    }
+    [data-mode=dark] .editor .tag {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    [data-mode=dark] .editor .tag:hover {
+        background-color: #de5352
+    }
+    [data-mode=dark] .editor .tagContent {
+        background-color: #f67372;
+        border-color: #de5352
+    }
+    [data-mode=dark] .editor .tagContent .tagItem {
+        border-color: #de5352
+    }
+    [data-mode=dark] .editor .tagContent .tagItem:hover {
+        background-color: #de5352
+    }
+}

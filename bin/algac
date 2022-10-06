@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const postcss = require('postcss')
+const algacss = require('../src/')
+const argv = require('minimist')(process.argv.slice(2), { string: ['_'] })
+const cwd = process.cwd()
+
+const sourceFile = argv._[0]
+const targetFile = argv._[1]
+
+const processStyle = (value = '') => {
+  let option = {}
+  if(value !== '') {
+    option = {
+      src: value
+    }
+  }
+  
+  let result = postcss([
+    algacss(option)
+  ]).process(`@use ${path.basename(value).split('.')[0]};`, { from: undefined })
+  
+  return result.css
+}
+
+if(sourceFile) {
+  if(sourceFile?.endsWith('.alga') || sourceFile?.endsWith('.alga.css')) {
+    let content = processStyle(sourceFile)
+    let targetPath = targetFile || sourceFile.replace('.alga.css', '').replace('.alga', '') + '.css'
+    
+    if(targetFile) {
+      targetPath = path.join(cwd, targetPath)
+    }
+    
+    if(!targetPath.endsWith('.css')) {
+      targetPath = targetPath + new Date().toJSON().replace(/T|Z|-|\:|\./g, '') +'.css'
+    }
+    
+    fs.writeFileSync(targetPath, content)
+    console.log('Source: '+ sourceFile)
+    console.log('Target: '+ targetPath)
+    console.log('Status: created')
+  } else {
+    let content = processStyle(sourceFile)
+    let targetPath = targetFile || sourceFile.replace('.alga.css', '').replace('.alga', '') + '.css'
+    
+    if(targetFile) {
+      targetPath = path.join(cwd, targetPath)
+    }
+    
+    if(!targetPath.endsWith('.css')) {
+      targetPath = targetPath + new Date().toJSON().replace(/T|Z|-|\:|\./g, '') +'.css'
+    }
+    
+    fs.writeFileSync(targetPath, content)
+    console.log('Source: '+ sourceFile)
+    console.log('Target: '+ targetPath)
+    console.log('Status: created')
+  }
+}
+
+process.exit()
