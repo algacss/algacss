@@ -131,13 +131,13 @@ const declaration = (body, defs, opts) => {
                   }).join('')
                   
                   if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
                   } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
                   } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
                   } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
                   }
                 }
                 return i
@@ -246,13 +246,13 @@ const declaration = (body, defs, opts) => {
                   }).join('')
                   
                   if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
                   } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
                   } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
                   } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
                   }
                 }
                 return i
@@ -339,13 +339,13 @@ const declaration = (body, defs, opts) => {
                   }).join('')
                   
                   if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
                   } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
                   } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
                   } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
                   }
                 }
                 return i

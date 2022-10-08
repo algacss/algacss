@@ -56,13 +56,13 @@ module.exports = (value, opt = {}) => {
     }).join('')
     
     if(newValue.trim().startsWith('add(')) {
-      newValue = newValue.replace('add', 'calc').replace(/\,|\s\,/g, '+')
+      newValue = newValue.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
     } else if(newValue.trim().startsWith('sub(')) {
-      newValue = newValue.replace('sub', 'calc').replace(/\,|\s\,/g, '-')
+      newValue = newValue.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
     } else if(newValue.trim().startsWith('div(')) {
-      newValue = newValue.replace('div', 'calc').replace(/\,|\s\,/g, '/')
+      newValue = newValue.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
     } else if(newValue.trim().startsWith('times(')) {
-      newValue = newValue.replace('times', 'calc').replace(/\,|\s\,/g, '*')
+      newValue = newValue.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
     }
   }
   else if(newValue.trim().startsWith('refs(')) {

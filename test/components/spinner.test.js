@@ -12,8 +12,8 @@ test('Testing spinner component', async () => {
     margin-bottom: 0px;
     height: 25px;
     width: 25px;
-    margin-top: calc(25px/2);
-    margin-left: calc(25px/2);
+    margin-top: calc(25px / 2);
+    margin-left: calc(25px / 2);
     border: 5px solid #f77372
 }
 @keyframes spin {
