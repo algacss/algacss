@@ -15,13 +15,20 @@ function readPath(rp) {
     replaceData = data.replace(/\[|\]|',|,\s|'|\<|\>|\{|\}/ig, ' ').replace(/\s+/ig, ' ')
     classes = [...replaceData.matchAll(regexp)].map(i => i[0].split(' ').filter(w => w !== '')).flat(2).filter(i => i.includes('-'))
   } else if(rp.endsWith('.svelte')) {
-    regexp = /class:([\w]+|[\s\w]+|[\s\w\-_.:\d\(\)]+)\s/g
-    replaceData = data.replace(/=|\>/ig, ' ')
-    classes = [...replaceData.matchAll(regexp)].flat().filter(i => i.indexOf('class') === -1)
-  } else { //.html, .astro, .edge, .blade.php, .twig
-    regexp = /(v-bind:class|x-bind:class|:class|class)="([\w]+|[\s\w]+|[\s\w\-_\.:\d\(\)]+)"/g
+    regexp = /(?<=class:).*?(?=\>|\s|=)|(?<=class=").*?(?=")/gs
+    replaceData = data.replace(/\[|\]|',|,\s|'|\<|\>|\{|\}/ig, ' ').replace(/\s+/ig, ' ')
+    classes = [...replaceData.matchAll(regexp)].map(i => i[0].split(' ').filter(w => w !== '')).flat(2).filter(i => i.includes('-'))
+  } else if(rp.endsWith('.jsx') || rp.endsWith('.tsx')) {
+    regexp = /(?<=className="|class=").*?(?=")/gs
+    replaceData = data.replace(/\[|\]|',|,\s|'|\<|\>|\{|\}/ig, ' ').replace(/\s+/ig, ' ')
+    classes = [...replaceData.matchAll(regexp)].map(i => i[0].split(' ').filter(w => w !== '')).flat(2).filter(i => i.includes('-'))
+  } else { //.html, .astro, .edge, .blade.php, .twig, .js, or .ts
+    /*regexp = /(v-bind:class|x-bind:class|:class|class|className)="([\w]+|[\s\w]+|[\s\w\-_\.:\d\(\)]+)"/g
     replaceData = data.replace(/\[|\]|',|,\s|'|\(|\)|\<|\>|\{|\}/ig, ' ').replace(/:\s/ig, '')
-    classes = [...replaceData.matchAll(regexp)].flat().filter(i => i.indexOf('class') === -1)
+    classes = [...replaceData.matchAll(regexp)].flat().filter(i => i.indexOf('class') === -1)*/
+    regexp = /(?<=v-bind:class="|x-bind:class="|:class="|class="|className=").*?(?=")/gs
+    replaceData = data.replace(/\[|\]|',|,\s|'|\<|\>|\{|\}/ig, ' ').replace(/\s+/ig, ' ')
+    classes = [...replaceData.matchAll(regexp)].map(i => i[0].split(' ').filter(w => w !== '')).flat(2).filter(i => i.includes('-'))
   }
   if(classes) {
     const uniqClasses = Array.from(new Set(classes.map(i => i.split(' ')).flat())).filter(i => i !== '')

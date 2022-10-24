@@ -104,7 +104,7 @@ test('Testing rich text editor component', async () => {
 }
 .editorSection .editorBlock .editorToolbar {
     position: absolute;
-    top: -37px;
+    top: -45px;
     left: -1px;
     border: 1px solid #d9d9d9;
     border-top-right-radius: 0.25rem;

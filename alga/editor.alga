@@ -99,7 +99,7 @@
       ref: borderTopLeftRadius-0px marginTop-47px;
       
       .{refs.name}Toolbar {
-        ref: position-absolute top-n37px left-n1px border-1px_solid_hexd9d9d9;
+        ref: position-absolute top-n45px left-n1px border-1px_solid_hexd9d9d9;
         ref: borderTopRightRadius-0.25rem borderTopLeftRadius-0.25rem zIndex-13;
         prefers-dark: borderColor-hex5f5f5f;
         prefers-toDark: borderColor-hex5f5f5f;

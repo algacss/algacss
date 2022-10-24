@@ -21,7 +21,7 @@ All the main features:
 2. As a PostCSS plugin
 3. Composing or mixing CSS components
 5. Custom CSS helpers (preset, define, color, screen, etc.)
-6. Extract classes from Vue, HTML (Petite-Vue, Alpine.js), Astro, and Svelte
+6. Extract classes from Vue, HTML (Petite-Vue, Alpine.js), Astro, Svelte, and JSX/TSX
 
 ## Installation and Setup
 Alga CSS built on top of PostCSS, so before installing Alga CSS, you need to have PostCSS first and after that you can use NPM or Yarn to install this Alga CSS.
@@ -42,7 +42,14 @@ const algacss = require('alga-css')
 module.exports = {
   plugins: [
     algacss({
-      extract: ['./src/**/*.vue', './src/**/*.html', './src/**/*.astro', './src/**/*.svelte'],
+      extract: [
+        './src/**/*.vue', 
+        './src/**/*.html', 
+        './src/**/*.astro', 
+        './src/**/*.svelte', 
+        './src/**/*.jsx', 
+        './src/**/*.tsx'
+      ],
       src: './src/styles/*.alga'
     })
   ]
@@ -66,17 +73,26 @@ justifyContent-spaceBetween
 
 /* class structure: unit size (pct is unit size in percent) */
 width-100pct
+height-250px
+padding-1.75rem
 
 /* class structure: screen, ss (extra small), sr (smaller), sm (small), md (medium), lg (large), lr (larger), ls (largest), wd (wide), wr (wider) */
 ss:paddingLeft-3px
 
 /* class structure: mode */
-dark:backgroundColor-hex333
-light:backgroundColor-hexfff
+dark:backgroundColor-hex242424
+light:backgroundColor-hexf2f2f2
+
+/* (prefers-color-scheme: light) { [data-mode=dark] .backgroundColor-hex242424 {} } */
+toDark:backgroundColor-hex242424
+
+/* (prefers-color-scheme: dark) { [data-mode=light] .backgroundColor-hexf2f2f2 {} } */
+toLight:backgroundColor-hexf2f2f2
 
 mode:backgroundColor-hexfff /* for [data-mode=dark] .backgroundColor-hexfff {} */
 
 /* class structure: state */
+hover:backgroundColor-hex2f2f2f
 facus:paddingLeft-3px
 ```
 
