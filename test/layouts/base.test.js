@@ -140,7 +140,7 @@ img, svg {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] html {
+    html[data-mode=dark] {
         background-color: #242424;
         color: #e2e2e2
     }
@@ -150,7 +150,7 @@ img, svg {
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] html {
+    html[data-mode=light] {
         background-color: #fff;
         color: #15181c
     }

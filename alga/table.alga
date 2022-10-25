@@ -1,22 +1,10 @@
-@alga table {
-  .table {
+@define refs {
+  name: table;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
     ref: width-100pct borderCollapse-collapse;
-    
-    tr {
-      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
-    }
-    
-    thead {
-      ref: borderBottom-3px_solid_rgba(0,0,0,0.25);
-    }
-    
-    tfoot {
-      ref: borderTop-3px_solid_rgba(0,0,0,0.25);
-    }
-    
-    tr:last-child {
-      ref: borderBottomWidth-0px;
-    }
     
     tr th,
     tr td {
@@ -24,15 +12,46 @@
     }
   }
 
-  .tableBorder {
+  .{refs.name}Border {
     ref: borderTop-1px_solid_rgba(0,0,0,0.25) borderRight-1px_solid_rgba(0,0,0,0.25) borderBottom-1px_solid_rgba(0,0,0,0.25);
+    prefers-dark: borderTopColor-rgba(255,255,255,0.25) borderRightColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25);
+    prefers-toDark: borderTopColor-rgba(255,255,255,0.25) borderRightColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25);
+    prefers-toLight: borderTopColor-rgba(0,0,0,0.25) borderRightColor-rgba(0,0,0,0.25) borderBottomColor-rgba(0,0,0,0.25);
+    
+    thead {
+      ref: borderBottom-3px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+    }
+    
+    tfoot {
+      ref: borderTop-3px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderTopColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderTopColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderTopColor-rgba(0,0,0,0.25);
+    }
+    
+    tr {
+      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+    }
+    
+    tr:last-child {
+      ref: borderBottomWidth-0px;
+    }
     
     th, td {
       ref: borderLeft-1px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderLeftColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderLeftColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderLeftColor-rgba(0,0,0,0.25);
     }
   }
    
-  .tableResponsive {
+  .{refs.name}Responsive {
     ref: overflowX-auto;
   }
 }

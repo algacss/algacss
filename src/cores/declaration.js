@@ -286,7 +286,11 @@ const declaration = (body, defs, opts) => {
         }
         let newRule = postcss.rule({ selector: selectorItemKey, source: entryVal.source })
         if(entryVal?.selector) {
-          newRule = postcss.rule({ selector: entryVal.selector +' '+ selectorItemKey, source: entryVal.source })
+          if(selectorItemKey.trim() === 'html') {
+            newRule = postcss.rule({ selector: selectorItemKey+''+entryVal.selector, source: entryVal.source })
+          } else {
+            newRule = postcss.rule({ selector: entryVal.selector +' '+ selectorItemKey, source: entryVal.source })
+          }
         }
         for(let [key, val] of Object.entries(itemValue)) {
           if(typeof val.value === 'string') {
