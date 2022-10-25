@@ -19,6 +19,9 @@
     .pagination.dense .item .link {
       ref: borderStyle-solid borderColor-hexcbcbcb borderTopWidth-1px borderBottomWidth-1px borderRightWidth-0px;
       ref: borderLeftWidth-1px minWidth-10px textAlign-center;
+      prefers-dark: borderColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderColor-hexcbcbcb;
     }
   
     .pagination.dense .item:first-child .link {
@@ -32,12 +35,18 @@
     .pagination.dense .item.ellipsis .link {
       ref: pointerEvents-none paddingLeft-0.675rem paddingRight-0.675rem borderRightColor-hexededed borderTopColor-hexededed;
       ref: borderBottomColor-hexededed backgroundColor-hexf4f4f4 color-hex4a5568;
+      prefers-dark: borderRightColor-rgba(255,255,255,0.25) borderTopColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25) backgroundColor-hex2f2f2f color-inherit;
+      prefers-toDark: borderRightColor-rgba(255,255,255,0.25) borderTopColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25) backgroundColor-hex2f2f2f color-inherit;
+      prefers-toLight: borderRightColor-hexededed borderTopColor-hexededed borderBottomColor-hexededed backgroundColor-hexf4f4f4 color-hex4a5568;
     }
   }
     
   @if type has sparse {
     .pagination.sparse .item .link {
       ref: border-1px_solid_hexcbcbcb marginLeft-0.25rem marginRight-0.25rem borderRadius-5px minWidth-10px textAlign-center;
+      prefers-dark: borderColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderColor-hexcbcbcb;
     }
     
     .pagination.sparse .item:first-child .link {
@@ -53,12 +62,18 @@
     }
   }
   
-  .pagination .item:hover .link {
+  .pagination .item:not(.active):not(.ellipsis):hover .link {
     ref: backgroundColor-hexeeeeee;
+    prefers-dark: backgroundColor-rgba(255,255,255,0.25);
+    prefers-toDark: backgroundColor-rgba(255,255,255,0.25);
+    prefers-toLight: backgroundColor-hexeeeeee;
   }
     
   .pagination .item.disabled .link {
     ref: pointerEvents-none backgroundColor-hexeeeeee color-hex4a5568;
+    prefers-dark: backgroundColor-rgba(255,255,255,0.25) color-inherit;
+    prefers-toDark: backgroundColor-rgba(255,255,255,0.25) color-inherit;
+    prefers-toLight: backgroundColor-hexeeeeee color-hex4a5568;
   }
     
   .pagination .item.active .link {

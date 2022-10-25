@@ -289,7 +289,10 @@ const declaration = (body, defs, opts) => {
           if(selectorItemKey.trim() === 'html') {
             newRule = postcss.rule({ selector: selectorItemKey+''+entryVal.selector, source: entryVal.source })
           } else {
-            newRule = postcss.rule({ selector: entryVal.selector +' '+ selectorItemKey, source: entryVal.source })
+            const splittedSelectors = selectorItemKey.split(', ').map(item => {
+              return entryVal.selector +' '+ item
+            }).join(', ')
+            newRule = postcss.rule({ selector: splittedSelectors, source: entryVal.source })
           }
         }
         for(let [key, val] of Object.entries(itemValue)) {

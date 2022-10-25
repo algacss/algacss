@@ -49,6 +49,42 @@ test('Testing pagination component', async () => {
     background-color: #f4f4f4;
     color: #4a5568
 }
+@media (prefers-color-scheme: dark) {
+    .pagination.dense .item .link {
+        border-color: rgba(255,255,255,0.25)
+    }
+    .pagination.dense .item.ellipsis .link {
+        border-right-color: rgba(255,255,255,0.25);
+        border-top-color: rgba(255,255,255,0.25);
+        border-bottom-color: rgba(255,255,255,0.25);
+        background-color: #2f2f2f;
+        color: inherit
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .pagination.dense .item .link {
+        border-color: rgba(255,255,255,0.25)
+    }
+    [data-mode=dark] .pagination.dense .item.ellipsis .link {
+        border-right-color: rgba(255,255,255,0.25);
+        border-top-color: rgba(255,255,255,0.25);
+        border-bottom-color: rgba(255,255,255,0.25);
+        background-color: #2f2f2f;
+        color: inherit
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .pagination.dense .item .link {
+        border-color: #cbcbcb
+    }
+    [data-mode=light] .pagination.dense .item.ellipsis .link {
+        border-right-color: #ededed;
+        border-top-color: #ededed;
+        border-bottom-color: #ededed;
+        background-color: #f4f4f4;
+        color: #4a5568
+    }
+}
 .pagination.sparse .item .link {
     border: 1px solid #cbcbcb;
     margin-left: 0.25rem;
@@ -69,7 +105,22 @@ test('Testing pagination component', async () => {
     padding-left: 0.25rem;
     padding-right: 0.25rem
 }
-.pagination .item:hover .link {
+@media (prefers-color-scheme: dark) {
+    .pagination.sparse .item .link {
+        border-color: rgba(255,255,255,0.25)
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .pagination.sparse .item .link {
+        border-color: rgba(255,255,255,0.25)
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .pagination.sparse .item .link {
+        border-color: #cbcbcb
+    }
+}
+.pagination .item:not(.active):not(.ellipsis):hover .link {
     background-color: #eeeeee
 }
 .pagination .item.disabled .link {
@@ -82,6 +133,33 @@ test('Testing pagination component', async () => {
     border-color: #4890eb;
     background-color: #4c9bff;
     color: #fff
+}
+@media (prefers-color-scheme: dark) {
+    .pagination .item:not(.active):not(.ellipsis):hover .link {
+        background-color: rgba(255,255,255,0.25)
+    }
+    .pagination .item.disabled .link {
+        background-color: rgba(255,255,255,0.25);
+        color: inherit
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-mode=dark] .pagination .item:not(.active):not(.ellipsis):hover .link {
+        background-color: rgba(255,255,255,0.25)
+    }
+    [data-mode=dark] .pagination .item.disabled .link {
+        background-color: rgba(255,255,255,0.25);
+        color: inherit
+    }
+}
+@media (prefers-color-scheme: dark) {
+    [data-mode=light] .pagination .item:not(.active):not(.ellipsis):hover .link {
+        background-color: #eeeeee
+    }
+    [data-mode=light] .pagination .item.disabled .link {
+        background-color: #eeeeee;
+        color: #4a5568
+    }
 }`
   await execute(input, output, {log: false, file: './examples/pagination/pagination.css'})
 })

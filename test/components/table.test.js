@@ -68,7 +68,7 @@ test('Testing table component', async () => {
     [data-mode=dark] .tableBorder tr {
         border-bottom-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .tableBorder th, .tableBorder td {
+    [data-mode=dark] .tableBorder th, [data-mode=dark] .tableBorder td {
         border-left-color: rgba(255,255,255,0.25)
     }
 }
@@ -87,7 +87,7 @@ test('Testing table component', async () => {
     [data-mode=light] .tableBorder tr {
         border-bottom-color: rgba(0,0,0,0.25)
     }
-    [data-mode=light] .tableBorder th, .tableBorder td {
+    [data-mode=light] .tableBorder th, [data-mode=light] .tableBorder td {
         border-left-color: rgba(0,0,0,0.25)
     }
 }`

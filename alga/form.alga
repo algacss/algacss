@@ -16,22 +16,30 @@
       ref: color-inherit border-1px_solid_hexd9d9d9 borderRadius-0.375rem outline-0;
       ref-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
       prefers-dark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf9f9f9 borderColor-hexd9d9d9;
     }
       
     .input::placeholder, .select::placeholder {
       ref: color-hex555555;
       prefers-dark: color-hexd4d4d4;
+      prefers-toDark: color-hexd4d4d4;
+      prefers-toLight: color-hex555555;
     }
       
     .input:focus, .select:focus {
       ref: borderColor-hex1d84b6 backgroundColor-hexf7faff;
       prefers-dark: backgroundColor-hex242424;
+      prefers-toDark: backgroundColor-hex242424;
+      prefers-toLight: backgroundColor-hexf7faff;
     }
       
     .input[disabled], .input[readonly], .input.disabled,
     .select[disabled], .select[readonly], .select.disabled {
       ref: borderColor-hexd6d6d6 backgroundColor-hexf0f0f0 cursor-default;
       prefers-dark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf0f0f0 borderColor-hexd6d6d6;
     }
       
     .input[disabled], .input.disabled,
@@ -42,6 +50,8 @@
     .input.plainText {
       ref: backgroundColor-transparent borderColor-transparent paddingLeft-0 paddingRight-0;
       prefers-dark: backgroundColor-transparent borderColor-transparent;
+      prefers-toDark: backgroundColor-transparent borderColor-transparent;
+      prefers-toLight: backgroundColor-transparent borderColor-transparent;
     }
       
     .input.valid,
@@ -53,6 +63,8 @@
       ref-backgroundPosition: right calc(.375em + .1875rem) center;
       ref-backgroundSize: calc(.75em + .375rem) calc(.75em + .375rem);
       prefers-dark: backgroundColor-hex242424;
+      prefers-toDark: backgroundColor-hex242424;
+      prefers-toLight: backgroundColor-hexf1fff8;
     }
       
     .validMessage {
@@ -74,6 +86,8 @@
       ref-backgroundPosition: right calc(.375em + .1875rem) center;
       ref-backgroundSize: calc(.75em + .375rem) calc(.75em + .375rem);
       prefers-dark: backgroundColor-hex242424;
+      prefers-toDark: backgroundColor-hex242424;
+      prefers-toLight: backgroundColor-hexfbf1f2;
     }
       
     .invalidMessage {
@@ -118,8 +132,10 @@
     }
       
     .check .checkInput {
-      ref: width-1.5em height-1.5em appearance-none border-1px_solid_hexd9d9d9;
+      ref: width-1.5em height-1.5em appearance-none backgroundColor-hexf9f9f9 border-1px_solid_hexd9d9d9;
       prefers-dark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex242424 borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf9f9f9 borderColor-hexd9d9d9;
     }
       
     .check .checkInput[type="checkbox"] {
@@ -137,11 +153,15 @@
     .check .checkInput[disabled], .check .checkInput.disabled {
       ref: borderColor-hexd6d6d6 backgroundColor-hexf0f0f0 pointerEvents-none;
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf0f0f0 borderColor-hexd6d6d6;
     }
       
     .check .checkInput:checked[disabled], .check .checkInput:checked.disabled {
       ref: backgroundColor-hexbbb;
       prefers-dark: backgroundColor-hex2f2f2f;
+      prefers-toDark: backgroundColor-hex2f2f2f;
+      prefers-toLight: backgroundColor-hexbbb;
     }
       
     .check .checkInput[disabled] ~ .checkLabel, .check .checkInput.disabled ~ .checkLabel {
@@ -211,6 +231,8 @@
       ref: border-1px_solid_hexd6d6d6 padding-0.5rem_0.75rem fontSize-1rem borderRadius-0.375rem;
       ref-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f color-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f color-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf0f0f0 borderColor-hexd6d6d6 color-hex283541;
     }
       
     .button:hover {
