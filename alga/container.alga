@@ -1,105 +1,109 @@
+@define refs {
+  name: container;
+}
+
 @define props {
   size: medium;
 }
 
-@alga container {
-  .container {
-    ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-    screen-sr: width-576px marginLeft-auto marginRight-auto;
-    screen-sm: width-720px marginLeft-auto marginRight-auto;
-    screen-md: width-864px marginLeft-auto marginRight-auto;
-    screen-lg: width-1080px marginLeft-auto marginRight-auto;
-    screen-lr: width-1200px marginLeft-auto marginRight-auto;
-    screen-ls: width-1440px marginLeft-auto marginRight-auto;
-    screen-wd: width-2048px marginLeft-auto marginRight-auto;
-    screen-wr: width-3440px marginLeft-auto marginRight-auto;
+@alga {refs.name} {
+  .{refs.name} {
+    ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+    screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+    screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+    screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+    screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
+    screen-lr: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
+    screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
+    screen-wd: width-100pct maxWidth-2048px marginLeft-auto marginRight-auto;
+    screen-wr: width-100pct maxWidth-3440px marginLeft-auto marginRight-auto;
   }
   
-  .containerFluid {
-    ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
+  .{refs.name}Fluid {
+    ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
   }
   
   @if size is smaller {
-    .containerSmaller {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
+    .{refs.name}Smaller {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is small {
-    .containerSmall {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
+    .{refs.name}Small {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is medium {
-    .containerMedium {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
+    .{refs.name}Medium {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is large {
-    .containerLarge {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
-      screen-lg: width-1080px marginLeft-auto marginRight-auto;
+    .{refs.name}Large {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is larger {
-    .containerLarger {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
-      screen-lg: width-1080px marginLeft-auto marginRight-auto;
-      screen-lr: width-1200px marginLeft-auto marginRight-auto;
+    .{refs.name}Larger {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is largest {
-    .containerLargest {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
-      screen-lg: width-1080px marginLeft-auto marginRight-auto;
-      screen-lr: width-1200px marginLeft-auto marginRight-auto;
-      screen-ls: width-1440px marginLeft-auto marginRight-auto;
+    .{refs.name}Largest {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is wide {
-    .containerWide {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
-      screen-lg: width-1080px marginLeft-auto marginRight-auto;
-      screen-lr: width-1200px marginLeft-auto marginRight-auto;
-      screen-ls: width-1440px marginLeft-auto marginRight-auto;
-      screen-wd: width-2048px marginLeft-auto marginRight-auto;
+    .{refs.name}Wide {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
+      screen-wd: width-100pct maxWidth-2048px marginLeft-auto marginRight-auto;
     }
   }
   
   @if size is wider {
-    .containerWider {
-      ref: width-auto marginLeft-0.375rem marginRight-0.375rem;
-      screen-sr: width-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-720px marginLeft-auto marginRight-auto;
-      screen-md: width-864px marginLeft-auto marginRight-auto;
-      screen-lg: width-1080px marginLeft-auto marginRight-auto;
-      screen-lr: width-1200px marginLeft-auto marginRight-auto;
-      screen-ls: width-1440px marginLeft-auto marginRight-auto;
-      screen-wd: width-2048px marginLeft-auto marginRight-auto;
-      screen-wr: width-3440px marginLeft-auto marginRight-auto;
+    .{refs.name}Wider {
+      ref: width-100pct maxWidth-auto marginLeft-0.375rem marginRight-0.375rem;
+      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-864px marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-1080px marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
+      screen-wd: width-100pct maxWidth-2048px marginLeft-auto marginRight-auto;
+      screen-wr: width-100pct maxWidth-3440px marginLeft-auto marginRight-auto;
     }
   }
 }
