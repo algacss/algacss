@@ -1,33 +1,43 @@
+@define refs {
+  name: menu;
+}
+
 @define props {
   type: custom, tab;
 }
 
-@alga menu {
-  .nav, .menu {
+@alga {refs.name} {
+  .nav, .{refs.name} {
     ref: display-flex flexWrap-wrap paddingLeft-0 margin-0 listStyle-none;
   }
     
-  .menu {
+  .{refs.name} {
     ref: flexDirection-column;
   }
     
   .nav > .item > .link,
-  .menu > .item > .link {
-    ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex4a5568 textDecoration-none;
+  .{refs.name} > .item > .link {
+    ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex2f2f2f textDecoration-none;
     ref-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    prefers-dark: color-inherit;
+    prefers-toDark: color-inherit;
+    prefers-toLight: color-hex2f2f2f;
   }
     
   .nav > .item:hover > .link,
-  .menu > .item:hover > .link {
-    ref: backgroundColor-hexf6f8f9;
+  .{refs.name} > .item:hover > .link {
+    ref: backgroundColor-hexededed;
+    prefers-dark: backgroundColor-hex5f5f5f;
+    prefers-toDark: backgroundColor-hex5f5f5f;
+    prefers-toLight: backgroundColor-hexededed;
   }
     
   .nav > .item.active > .link,
-  .menu > .item.active > .link {
+  .{refs.name} > .item.active > .link {
     ref: backgroundColor-hex0d6efd color-hexfff;
   }
     
-  .menu > .item > .link {
+  .{refs.name} > .item > .link {
     ref: paddingTop-0.75rem paddingBottom-0.75rem;
   }
     
@@ -40,39 +50,64 @@
       ref: borderTop-2px_solid_transparent borderBottom-4px_solid_transparent;
     }
     
-    .menu.custom > .item > .link {
+    .{refs.name}.custom > .item > .link {
       ref: borderRight-2px_solid_transparent borderLeft-4px_solid_transparent;
     }
     
-    .nav.custom > .item:hover > .link {
+    .nav.custom > .item:not(.active):hover > .link {
       ref: borderBottomColor-hex7d8ca4 backgroundColor-hexf1f2f3 color-hex363d46;
+      prefers-dark: backgroundColor-hex2f2f2f color-inherit;
+      prefers-toDark: backgroundColor-hex2f2f2f color-inherit;
+      prefers-toLight: backgroundColor-hexf6f8f9 color-hex363d46;
     }
     
     .nav.custom > .item.active > .link {
       ref: borderBottomColor-hex0d6efd backgroundColor-hexebf4ff color-hex0d6efd;
+      prefers-dark: backgroundColor-hex2f2f2f;
+      prefers-toDark: backgroundColor-hex2f2f2f;
+      prefers-toLight: backgroundColor-hexebf4ff;
     }
     
-    .menu.custom > .item:hover > .link {
+    .{refs.name}.custom > .item:not(.active):hover > .link {
       ref: borderLeftColor-hex7d8ca4 backgroundColor-hexf6f8f9 color-hex363d46;
+      prefers-dark: backgroundColor-hex2f2f2f color-inherit;
+      prefers-toDark: backgroundColor-hex2f2f2f color-inherit;
+      prefers-toLight: backgroundColor-hexf6f8f9 color-hex363d46;
     }
     
-    .menu.custom > .item.active > .link {
+    .{refs.name}.custom > .item.active > .link {
       ref: borderLeftColor-hex0d6efd backgroundColor-hexebf4ff color-hex0d6efd;
+      prefers-dark: backgroundColor-hex2f2f2f;
+      prefers-toDark: backgroundColor-hex2f2f2f;
+      prefers-toLight: backgroundColor-hexebf4ff;
     }
   }
   
   @if type has tab {
     .nav.tab {
       ref: borderBottom-1px_solid_hexdee2e6;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexdee2e6;
     }
     
     .nav.tab > .item > .link {
-      ref: borderTopLeftRadius-0.25rem borderTopRightRadius-0.25rem backgroundColor-transparent;
+      ref: borderRadius-0px borderTopLeftRadius-0.25rem borderTopRightRadius-0.25rem backgroundColor-transparent;
       ref: border-1px_solid_transparent marginBottom-n1px;
     }
     
+    .nav.tab > .item:not(.active):hover > .link {
+      ref: backgroundColor-hexededed;
+      prefers-dark: backgroundColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexededed;
+    }
+    
     .nav.tab > .item.active > .link {
-      ref: color-hex495057 backgroundColor-hexfff borderColor-hexdee2e6_hexdee2e6_hexfff;
+      ref: color-inherit backgroundColor-hexfff borderColor-hexdee2e6_hexdee2e6_transparent;
+      prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f_hex5f5f5f_transparent;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f_hex5f5f5f_transparent;
+      prefers-toLight: backgroundColor-hexfff borderColor-hexdee2e6_hexdee2e6_transparent;
     }
   }
   
