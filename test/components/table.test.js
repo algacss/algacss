@@ -54,40 +54,40 @@ test('Testing table component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .tableBorder {
+    html[data-mode=dark] .tableBorder {
         border-top-color: rgba(255,255,255,0.25);
         border-right-color: rgba(255,255,255,0.25);
         border-bottom-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .tableBorder thead {
+    html[data-mode=dark] .tableBorder thead {
         border-bottom-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .tableBorder tfoot {
+    html[data-mode=dark] .tableBorder tfoot {
         border-top-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .tableBorder tr {
+    html[data-mode=dark] .tableBorder tr {
         border-bottom-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .tableBorder th, [data-mode=dark] .tableBorder td {
+    html[data-mode=dark] .tableBorder th, html[data-mode=dark] .tableBorder td {
         border-left-color: rgba(255,255,255,0.25)
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .tableBorder {
+    html[data-mode=light] .tableBorder {
         border-top-color: rgba(0,0,0,0.25);
         border-right-color: rgba(0,0,0,0.25);
         border-bottom-color: rgba(0,0,0,0.25)
     }
-    [data-mode=light] .tableBorder thead {
+    html[data-mode=light] .tableBorder thead {
         border-bottom-color: rgba(0,0,0,0.25)
     }
-    [data-mode=light] .tableBorder tfoot {
+    html[data-mode=light] .tableBorder tfoot {
         border-top-color: rgba(0,0,0,0.25)
     }
-    [data-mode=light] .tableBorder tr {
+    html[data-mode=light] .tableBorder tr {
         border-bottom-color: rgba(0,0,0,0.25)
     }
-    [data-mode=light] .tableBorder th, [data-mode=light] .tableBorder td {
+    html[data-mode=light] .tableBorder th, html[data-mode=light] .tableBorder td {
         border-left-color: rgba(0,0,0,0.25)
     }
 }`

@@ -122,40 +122,40 @@ test('Testing picker or dropdown component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .pickerContent {
+    html[data-mode=dark] .pickerContent {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .pickerContent .pickerHeader {
+    html[data-mode=dark] .pickerContent .pickerHeader {
         border-bottom-color: #5f5f5f
     }
-    [data-mode=dark] .pickerContent .pickerItem {
+    html[data-mode=dark] .pickerContent .pickerItem {
         border-bottom-color: #5f5f5f;
         color: #f2f2f2
     }
-    [data-mode=dark] .pickerContent .pickerItem:hover {
+    html[data-mode=dark] .pickerContent .pickerItem:hover {
         background-color: #242424
     }
-    [data-mode=dark] .pickerContent .pickerFooter {
+    html[data-mode=dark] .pickerContent .pickerFooter {
         border-top-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .pickerContent {
+    html[data-mode=light] .pickerContent {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .pickerContent .pickerHeader {
+    html[data-mode=light] .pickerContent .pickerHeader {
         border-bottom-color: #d9d9d9
     }
-    [data-mode=light] .pickerContent .pickerItem {
+    html[data-mode=light] .pickerContent .pickerItem {
         border-bottom-color: #d9d9d9;
         color: #283541
     }
-    [data-mode=light] .pickerContent .pickerItem:hover {
+    html[data-mode=light] .pickerContent .pickerItem:hover {
         background-color: #ededed
     }
-    [data-mode=light] .pickerContent .pickerFooter {
+    html[data-mode=light] .pickerContent .pickerFooter {
         border-top-color: #d9d9d9
     }
 }`

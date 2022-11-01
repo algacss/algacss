@@ -80,34 +80,34 @@ test('Testing menu component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .nav.custom > .item:not(.active):hover > .link {
+    html[data-mode=dark] .nav.custom > .item:not(.active):hover > .link {
         background-color: #2f2f2f;
         color: inherit
     }
-    [data-mode=dark] .nav.custom > .item.active > .link {
+    html[data-mode=dark] .nav.custom > .item.active > .link {
         background-color: #2f2f2f
     }
-    [data-mode=dark] .menu.custom > .item:not(.active):hover > .link {
+    html[data-mode=dark] .menu.custom > .item:not(.active):hover > .link {
         background-color: #2f2f2f;
         color: inherit
     }
-    [data-mode=dark] .menu.custom > .item.active > .link {
+    html[data-mode=dark] .menu.custom > .item.active > .link {
         background-color: #2f2f2f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .nav.custom > .item:not(.active):hover > .link {
+    html[data-mode=light] .nav.custom > .item:not(.active):hover > .link {
         background-color: #f6f8f9;
         color: #363d46
     }
-    [data-mode=light] .nav.custom > .item.active > .link {
+    html[data-mode=light] .nav.custom > .item.active > .link {
         background-color: #ebf4ff
     }
-    [data-mode=light] .menu.custom > .item:not(.active):hover > .link {
+    html[data-mode=light] .menu.custom > .item:not(.active):hover > .link {
         background-color: #f6f8f9;
         color: #363d46
     }
-    [data-mode=light] .menu.custom > .item.active > .link {
+    html[data-mode=light] .menu.custom > .item.active > .link {
         background-color: #ebf4ff
     }
 }
@@ -143,25 +143,25 @@ test('Testing menu component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .nav.tab {
+    html[data-mode=dark] .nav.tab {
         border-bottom-color: #5f5f5f
     }
-    [data-mode=dark] .nav.tab > .item:not(.active):hover > .link {
+    html[data-mode=dark] .nav.tab > .item:not(.active):hover > .link {
         background-color: #5f5f5f
     }
-    [data-mode=dark] .nav.tab > .item.active > .link {
+    html[data-mode=dark] .nav.tab > .item.active > .link {
         background-color: #2f2f2f;
         border-color: #5f5f5f #5f5f5f transparent
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .nav.tab {
+    html[data-mode=light] .nav.tab {
         border-bottom-color: #dee2e6
     }
-    [data-mode=light] .nav.tab > .item:not(.active):hover > .link {
+    html[data-mode=light] .nav.tab > .item:not(.active):hover > .link {
         background-color: #ededed
     }
-    [data-mode=light] .nav.tab > .item.active > .link {
+    html[data-mode=light] .nav.tab > .item.active > .link {
         background-color: #fff;
         border-color: #dee2e6 #dee2e6 transparent
     }
@@ -175,18 +175,18 @@ test('Testing menu component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .nav > .item > .link, [data-mode=dark] .menu > .item > .link {
+    html[data-mode=dark] .nav > .item > .link, html[data-mode=dark] .menu > .item > .link {
         color: inherit
     }
-    [data-mode=dark] .nav > .item:hover > .link, [data-mode=dark] .menu > .item:hover > .link {
+    html[data-mode=dark] .nav > .item:hover > .link, html[data-mode=dark] .menu > .item:hover > .link {
         background-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .nav > .item > .link, [data-mode=light] .menu > .item > .link {
+    html[data-mode=light] .nav > .item > .link, html[data-mode=light] .menu > .item > .link {
         color: #2f2f2f
     }
-    [data-mode=light] .nav > .item:hover > .link, [data-mode=light] .menu > .item:hover > .link {
+    html[data-mode=light] .nav > .item:hover > .link, html[data-mode=light] .menu > .item:hover > .link {
         background-color: #ededed
     }
 }`

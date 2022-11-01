@@ -41,14 +41,14 @@ test('Testing tags, tag input, and badge component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .tag {
+    html[data-mode=dark] .tag {
         background-color: #2f2f2f;
         color: #fff;
         border-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .tag {
+    html[data-mode=light] .tag {
         background-color: #f2f2f2;
         color: #2f2f2f;
         border-color: #d9d9d9
@@ -134,28 +134,28 @@ test('Testing tags, tag input, and badge component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .tagContent {
+    html[data-mode=dark] .tagContent {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .tagContent .tagItem {
+    html[data-mode=dark] .tagContent .tagItem {
         border-bottom-color: #5f5f5f;
         color: #f2f2f2
     }
-    [data-mode=dark] .tagContent .tagItem:hover {
+    html[data-mode=dark] .tagContent .tagItem:hover {
         background-color: #242424
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .tagContent {
+    html[data-mode=light] .tagContent {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .tagContent .tagItem {
+    html[data-mode=light] .tagContent .tagItem {
         border-bottom-color: #d9d9d9;
         color: #283541
     }
-    [data-mode=light] .tagContent .tagItem:hover {
+    html[data-mode=light] .tagContent .tagItem:hover {
         background-color: #ededed
     }
 }

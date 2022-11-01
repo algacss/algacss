@@ -90,28 +90,28 @@ test('Testing modal dialog component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .modalContent {
+    html[data-mode=dark] .modalContent {
         background-color: #2f2f2f;
         color: #f2f2f2;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .modalHeader {
+    html[data-mode=dark] .modalHeader {
         border-bottom-color: #242424
     }
-    [data-mode=dark] .modalFooter {
+    html[data-mode=dark] .modalFooter {
         border-top-color: #242424
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .modalContent {
+    html[data-mode=light] .modalContent {
         background-color: #fff;
         color: #d9d9d9;
         border-color: #fff
     }
-    [data-mode=light] .modalHeader {
+    html[data-mode=light] .modalHeader {
         border-bottom-color: #d9d9d9
     }
-    [data-mode=light] .modalFooter {
+    html[data-mode=light] .modalFooter {
         border-top-color: #d9d9d9
     }
 }`

@@ -194,92 +194,92 @@ test('Testing rich text editor component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .editor {
+    html[data-mode=dark] .editor {
         background-color: #2f2f2f
     }
-    [data-mode=dark] .editorToolbar {
+    html[data-mode=dark] .editorToolbar {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorStatusbar {
+    html[data-mode=dark] .editorStatusbar {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorContent {
+    html[data-mode=dark] .editorContent {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorItem {
+    html[data-mode=dark] .editorItem {
         color: #d9d9d9
     }
-    [data-mode=dark] .editorItem:not(.active):not(.plain):hover {
+    html[data-mode=dark] .editorItem:not(.active):not(.plain):hover {
         background-color: #5f5f5f;
         color: #d9d9d9;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorItem.active {
+    html[data-mode=dark] .editorItem.active {
         background-color: #4a5568;
         color: #b8e7fd;
         border-color: #b8e7fd
     }
-    [data-mode=dark] .editorText {
+    html[data-mode=dark] .editorText {
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorSection .editorBlock {
+    html[data-mode=dark] .editorSection .editorBlock {
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorSection .editorBlock .editorToolbar {
+    html[data-mode=dark] .editorSection .editorBlock .editorToolbar {
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorInline .editorToolbar {
+    html[data-mode=dark] .editorInline .editorToolbar {
         border-color: #5f5f5f
     }
-    [data-mode=dark] .editorInline .editorToolbar:after {
+    html[data-mode=dark] .editorInline .editorToolbar:after {
         border-color: #5f5f5f transparent transparent transparent
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .editor {
+    html[data-mode=light] .editor {
         background-color: #fff
     }
-    [data-mode=light] .editorToolbar {
+    html[data-mode=light] .editorToolbar {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorStatusbar {
+    html[data-mode=light] .editorStatusbar {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorContent {
+    html[data-mode=light] .editorContent {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorItem {
+    html[data-mode=light] .editorItem {
         color: #4a5568
     }
-    [data-mode=light] .editorItem:not(.active):not(.plain):hover {
+    html[data-mode=light] .editorItem:not(.active):not(.plain):hover {
         background-color: #f2f2f2;
         color: inherit;
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorItem.active {
+    html[data-mode=light] .editorItem.active {
         background-color: #e7eefa;
         color: inherit;
         border-color: #b8e7fd
     }
-    [data-mode=light] .editorText {
+    html[data-mode=light] .editorText {
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorSection .editorBlock {
+    html[data-mode=light] .editorSection .editorBlock {
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorSection .editorBlock .editorToolbar {
+    html[data-mode=light] .editorSection .editorBlock .editorToolbar {
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorInline .editorToolbar {
+    html[data-mode=light] .editorInline .editorToolbar {
         border-color: #d9d9d9
     }
-    [data-mode=light] .editorInline .editorToolbar:after {
+    html[data-mode=light] .editorInline .editorToolbar:after {
         border-color: #d9d9d9 transparent transparent transparent
     }
 }`

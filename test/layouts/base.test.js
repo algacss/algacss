@@ -144,7 +144,7 @@ img, svg {
         background-color: #242424;
         color: #e2e2e2
     }
-    [data-mode=dark] body {
+    html[data-mode=dark] body {
         background-color: #242424;
         color: #e2e2e2
     }
@@ -154,7 +154,7 @@ img, svg {
         background-color: #fff;
         color: #15181c
     }
-    [data-mode=light] body {
+    html[data-mode=light] body {
         background-color: #fff;
         color: #15181c
     }

@@ -62,10 +62,10 @@ test('Testing pagination component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .pagination.dense .item .link {
+    html[data-mode=dark] .pagination.dense .item .link {
         border-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .pagination.dense .item.ellipsis .link {
+    html[data-mode=dark] .pagination.dense .item.ellipsis .link {
         border-right-color: rgba(255,255,255,0.25);
         border-top-color: rgba(255,255,255,0.25);
         border-bottom-color: rgba(255,255,255,0.25);
@@ -74,10 +74,10 @@ test('Testing pagination component', async () => {
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .pagination.dense .item .link {
+    html[data-mode=light] .pagination.dense .item .link {
         border-color: #cbcbcb
     }
-    [data-mode=light] .pagination.dense .item.ellipsis .link {
+    html[data-mode=light] .pagination.dense .item.ellipsis .link {
         border-right-color: #ededed;
         border-top-color: #ededed;
         border-bottom-color: #ededed;
@@ -111,12 +111,12 @@ test('Testing pagination component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .pagination.sparse .item .link {
+    html[data-mode=dark] .pagination.sparse .item .link {
         border-color: rgba(255,255,255,0.25)
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .pagination.sparse .item .link {
+    html[data-mode=light] .pagination.sparse .item .link {
         border-color: #cbcbcb
     }
 }
@@ -144,19 +144,19 @@ test('Testing pagination component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .pagination .item:not(.active):not(.ellipsis):hover .link {
+    html[data-mode=dark] .pagination .item:not(.active):not(.ellipsis):hover .link {
         background-color: rgba(255,255,255,0.25)
     }
-    [data-mode=dark] .pagination .item.disabled .link {
+    html[data-mode=dark] .pagination .item.disabled .link {
         background-color: rgba(255,255,255,0.25);
         color: inherit
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .pagination .item:not(.active):not(.ellipsis):hover .link {
+    html[data-mode=light] .pagination .item:not(.active):not(.ellipsis):hover .link {
         background-color: #eeeeee
     }
-    [data-mode=light] .pagination .item.disabled .link {
+    html[data-mode=light] .pagination .item.disabled .link {
         background-color: #eeeeee;
         color: #4a5568
     }

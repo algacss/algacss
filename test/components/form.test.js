@@ -157,54 +157,54 @@ select.select:not([multiple]) {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .input, [data-mode=dark] .select {
+    html[data-mode=dark] .input, html[data-mode=dark] .select {
         background-color: #242424;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .input::placeholder, [data-mode=dark] .select::placeholder {
+    html[data-mode=dark] .input::placeholder, html[data-mode=dark] .select::placeholder {
         color: #d4d4d4
     }
-    [data-mode=dark] .input:focus, [data-mode=dark] .select:focus {
+    html[data-mode=dark] .input:focus, [data-mode=dark] .select:focus {
         background-color: #242424
     }
-    [data-mode=dark] .input[disabled], [data-mode=dark] .input[readonly], [data-mode=dark] .input.disabled, [data-mode=dark] .select[disabled], [data-mode=dark] .select[readonly], [data-mode=dark] .select.disabled {
+    html[data-mode=dark] .input[disabled], html[data-mode=dark] .input[readonly], html[data-mode=dark] .input.disabled, html[data-mode=dark] .select[disabled], html[data-mode=dark] .select[readonly], html[data-mode=dark] .select.disabled {
         background-color: #242424;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .input.plainText {
+    html[data-mode=dark] .input.plainText {
         background-color: transparent;
         border-color: transparent
     }
-    [data-mode=dark] .input.valid, [data-mode=dark] .validated :valid {
+    html[data-mode=dark] .input.valid, html[data-mode=dark] .validated :valid {
         background-color: #242424
     }
-    [data-mode=dark] .input.invalid, [data-mode=dark] .validated :invalid {
+    html[data-mode=dark] .input.invalid, html[data-mode=dark] .validated :invalid {
         background-color: #242424
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .input, [data-mode=light] .select {
+    html[data-mode=light] .input, html[data-mode=light] .select {
         background-color: #f9f9f9;
         border-color: #d9d9d9
     }
-    [data-mode=light] .input::placeholder, [data-mode=light] .select::placeholder {
+    html[data-mode=light] .input::placeholder, html[data-mode=light] .select::placeholder {
         color: #555555
     }
-    [data-mode=light] .input:focus, [data-mode=light] .select:focus {
+    html[data-mode=light] .input:focus, html[data-mode=light] .select:focus {
         background-color: #f7faff
     }
-    [data-mode=light] .input[disabled], [data-mode=light] .input[readonly], [data-mode=light] .input.disabled, [data-mode=light] .select[disabled], [data-mode=light] .select[readonly], [data-mode=light] .select.disabled {
+    html[data-mode=light] .input[disabled], html[data-mode=light] .input[readonly], [data-mode=light] .input.disabled, [data-mode=light] .select[disabled], [data-mode=light] .select[readonly], [data-mode=light] .select.disabled {
         background-color: #f0f0f0;
         border-color: #d6d6d6
     }
-    [data-mode=light] .input.plainText {
+    html[data-mode=light] .input.plainText {
         background-color: transparent;
         border-color: transparent
     }
-    [data-mode=light] .input.valid, [data-mode=light] .validated :valid {
+    html[data-mode=light] .input.valid, html[data-mode=light] .validated :valid {
         background-color: #f1fff8
     }
-    [data-mode=light] .input.invalid, [data-mode=light] .validated :invalid {
+    html[data-mode=light] .input.invalid, html[data-mode=light] .validated :invalid {
         background-color: #fbf1f2
     }
 }
@@ -280,28 +280,28 @@ select.select:not([multiple]) {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .check .checkInput {
+    html[data-mode=dark] .check .checkInput {
         background-color: #242424;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .check .checkInput[disabled], [data-mode=dark] .check .checkInput.disabled {
+    html[data-mode=dark] .check .checkInput[disabled], html[data-mode=dark] .check .checkInput.disabled {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .check .checkInput:checked[disabled], [data-mode=dark] .check .checkInput:checked.disabled {
+    html[data-mode=dark] .check .checkInput:checked[disabled], html[data-mode=dark] .check .checkInput:checked.disabled {
         background-color: #2f2f2f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .check .checkInput {
+    html[data-mode=light] .check .checkInput {
         background-color: #f9f9f9;
         border-color: #d9d9d9
     }
-    [data-mode=light] .check .checkInput[disabled], [data-mode=light] .check .checkInput.disabled {
+    html[data-mode=light] .check .checkInput[disabled], html[data-mode=light] .check .checkInput.disabled {
         background-color: #f0f0f0;
         border-color: #d6d6d6
     }
-    [data-mode=light] .check .checkInput:checked[disabled], [data-mode=light] .check .checkInput:checked.disabled {
+    html[data-mode=light] .check .checkInput:checked[disabled], html[data-mode=light] .check .checkInput:checked.disabled {
         background-color: #bbb
     }
 }
@@ -361,14 +361,14 @@ select.select:not([multiple]) {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .button {
+    html[data-mode=dark] .button {
         background-color: #2f2f2f;
         border-color: #5f5f5f;
         color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .button {
+    html[data-mode=light] .button {
         background-color: #f0f0f0;
         border-color: #d6d6d6;
         color: #283541

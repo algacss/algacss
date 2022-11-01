@@ -65,40 +65,40 @@ test('Testing list group component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .list {
+    html[data-mode=dark] .list {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .list .listHeader {
+    html[data-mode=dark] .list .listHeader {
         border-bottom-color: #5f5f5f
     }
-    [data-mode=dark] .list .listItem {
+    html[data-mode=dark] .list .listItem {
         border-bottom-color: #5f5f5f;
         color: #f2f2f2
     }
-    [data-mode=dark] .list .listItem:hover {
+    html[data-mode=dark] .list .listItem:hover {
         background-color: #242424
     }
-    [data-mode=dark] .list .listFooter {
+    html[data-mode=dark] .list .listFooter {
         border-top-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .list {
+    html[data-mode=light] .list {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .list .listHeader {
+    html[data-mode=light] .list .listHeader {
         border-bottom-color: #d9d9d9
     }
-    [data-mode=light] .list .listItem {
+    html[data-mode=light] .list .listItem {
         border-bottom-color: #d9d9d9;
         color: #283541
     }
-    [data-mode=light] .list .listItem:hover {
+    html[data-mode=light] .list .listItem:hover {
         background-color: #ededed
     }
-    [data-mode=light] .list .listFooter {
+    html[data-mode=light] .list .listFooter {
         border-top-color: #d9d9d9
     }
 }`
