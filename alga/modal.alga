@@ -1,21 +1,25 @@
-@alga modal {
-  .modal {
-    ref: position-absolute zIndex-30 top-0 left-0 width-100vw height-100vh;
+@define refs {
+  name: modal;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
+    ref: position-absolute zIndex-30 top-0 left-0 maxWidth-100vw maxHeight-100vh;
   }
    
-  .modalDialog {
-    ref: position-fixed zIndex-35 inset-0_3em_3em_0 width-100vw height-100vh display-none;
+  .{refs.name}Dialog {
+    ref: position-fixed zIndex-35 inset-0_3em_3em_0 width-100pct height-100pct display-none;
   }
   
-  .modal.active .modalDialog {
+  .{refs.name}.active .{refs.name}Dialog {
     ref: display-block padding-1.5rem backgroundColor-rgba(0,0,0,0.5);
   }
     
-  .modal.active .modalDialog.modalCenter {
+  .{refs.name}.active .{refs.name}Dialog.{refs.name}Center {
     ref: display-grid placeItems-center;
   }
     
-  .modalContent {
+  .{refs.name}Content {
     ref: backgroundColor-hexfff border-1px_solid_hexd9d9d9 marginRight-auto marginLeft-auto borderRadius-0.375rem;
     screen-ss: width-100pct marginRight-0.25rem marginLeft-0.25rem;
     screen-sr: width-500px;
@@ -24,34 +28,34 @@
     prefers-toLight: backgroundColor-hexfff color-hexd9d9d9 borderColor-hexfff;
   }
     
-  .modalFullscreen {
+  .{refs.name}Fullscreen {
     ref: padding-0;
   }
     
-  .modalFullscreen .modalContent {
+  .{refs.name}Fullscreen .{refs.name}Content {
     ref: width-100vw height-100vh borderRadius-0;
   }
     
-  .modalHeader, .modalFooter {
+  .{refs.name}Header, .{refs.name}Footer {
     ref: display-flex justifyContent-spaceBetween alignItems-center padding-0.75rem_1rem;
   }
     
-  .modalHeader {
+  .{refs.name}Header {
     ref: borderBottom-1px_solid_hexd9d9d9;
     prefers-dark: borderBottomColor-hex242424;
     prefers-toDark: borderBottomColor-hex242424;
     prefers-toLight: borderBottomColor-hexd9d9d9;
   }
     
-  .modalHeader .modalTitle {
+  .{refs.name}Header .{refs.name}Title {
     ref: marginTop-0 marginBottom-0 lineHeight-1.5 fontSize-1.25rem;
   }
     
-  .modalBody {
+  .{refs.name}Body {
     ref: padding-0.75rem_1rem overflowY-auto;
   }
     
-  .modalFooter {
+  .{refs.name}Footer {
     ref: borderTop-1px_solid_hexd9d9d9;
     prefers-dark: borderTopColor-hex242424;
     prefers-toDark: borderTopColor-hex242424;

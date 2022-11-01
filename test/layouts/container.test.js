@@ -6,15 +6,15 @@ test('Testing container component', async () => {
   }`
   const output = `.container {
     width: 100%;
-    max-width: auto;
-    margin-left: 0.375rem;
-    margin-right: 0.375rem
+    max-width: 100vw;
+    padding-left: 0.375rem;
+    padding-right: 0.375rem
 }
 .containerFluid {
     width: 100%;
-    max-width: auto;
-    margin-left: 0.375rem;
-    margin-right: 0.375rem
+    max-width: 100vw;
+    padding-left: 0.375rem;
+    padding-right: 0.375rem
 }
 @media (min-width: 600px) {
     .container {

@@ -7,15 +7,15 @@ test('Testing modal dialog component', async () => {
     z-index: 30;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh
+    max-width: 100vw;
+    max-height: 100vh
 }
 .modalDialog {
     position: fixed;
     z-index: 35;
     inset: 0 3em 3em 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: none
 }
 .modal.active .modalDialog {
