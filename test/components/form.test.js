@@ -164,7 +164,7 @@ select.select:not([multiple]) {
     html[data-mode=dark] .input::placeholder, html[data-mode=dark] .select::placeholder {
         color: #d4d4d4
     }
-    html[data-mode=dark] .input:focus, [data-mode=dark] .select:focus {
+    html[data-mode=dark] .input:focus, html[data-mode=dark] .select:focus {
         background-color: #242424
     }
     html[data-mode=dark] .input[disabled], html[data-mode=dark] .input[readonly], html[data-mode=dark] .input.disabled, html[data-mode=dark] .select[disabled], html[data-mode=dark] .select[readonly], html[data-mode=dark] .select.disabled {
@@ -193,7 +193,7 @@ select.select:not([multiple]) {
     html[data-mode=light] .input:focus, html[data-mode=light] .select:focus {
         background-color: #f7faff
     }
-    html[data-mode=light] .input[disabled], html[data-mode=light] .input[readonly], [data-mode=light] .input.disabled, [data-mode=light] .select[disabled], [data-mode=light] .select[readonly], [data-mode=light] .select.disabled {
+    html[data-mode=light] .input[disabled], html[data-mode=light] .input[readonly], html[data-mode=light] .input.disabled, html[data-mode=light] .select[disabled], html[data-mode=light] .select[readonly], html[data-mode=light] .select.disabled {
         background-color: #f0f0f0;
         border-color: #d6d6d6
     }
