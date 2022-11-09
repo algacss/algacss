@@ -16,8 +16,10 @@ test('Testing picker or dropdown component', async () => {
     position: fixed;
     z-index: 74;
     inset: 0 3em 3em 0;
-    width: 100vw;
-    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
     display: none
 }
 .picker.active .pickerBackdrop {

@@ -15,7 +15,7 @@ test('Testing form component', async () => {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #f9f9f9;
+    background-color: #fff;
     background-clip: padding-box;
     appearance: none;
     color: inherit;
@@ -184,7 +184,7 @@ select.select:not([multiple]) {
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .input, html[data-mode=light] .select {
-        background-color: #f9f9f9;
+        background-color: #fff;
         border-color: #d9d9d9
     }
     html[data-mode=light] .input::placeholder, html[data-mode=light] .select::placeholder {
@@ -216,7 +216,7 @@ select.select:not([multiple]) {
     width: 1.5em;
     height: 1.5em;
     appearance: none;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border: 1px solid #d9d9d9
 }
 .check .checkInput[type="checkbox"] {
@@ -278,6 +278,9 @@ select.select:not([multiple]) {
     .check .checkInput:checked[disabled], .check .checkInput:checked.disabled {
         background-color: #2f2f2f
     }
+    .check.switch .checkInput {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 0.25%29'/%3e%3c/svg%3e")
+    }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .check .checkInput {
@@ -291,10 +294,13 @@ select.select:not([multiple]) {
     html[data-mode=dark] .check .checkInput:checked[disabled], html[data-mode=dark] .check .checkInput:checked.disabled {
         background-color: #2f2f2f
     }
+    html[data-mode=dark] .check.switch .checkInput {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 0.25%29'/%3e%3c/svg%3e")
+    }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .check .checkInput {
-        background-color: #f9f9f9;
+        background-color: #fff;
         border-color: #d9d9d9
     }
     html[data-mode=light] .check .checkInput[disabled], html[data-mode=light] .check .checkInput.disabled {
@@ -303,6 +309,9 @@ select.select:not([multiple]) {
     }
     html[data-mode=light] .check .checkInput:checked[disabled], html[data-mode=light] .check .checkInput:checked.disabled {
         background-color: #bbb
+    }
+    html[data-mode=light] .check.switch .checkInput {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e")
     }
 }
 .group {
@@ -339,7 +348,7 @@ select.select:not([multiple]) {
     text-decoration: none;
     cursor: pointer;
     user-select: none;
-    background-color: #f0f0f0;
+    background-color: #fff;
     border: 1px solid #d6d6d6;
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
@@ -357,21 +366,30 @@ select.select:not([multiple]) {
     .button {
         background-color: #2f2f2f;
         border-color: #5f5f5f;
-        color: #5f5f5f
+        color: inherit
+    }
+    .button:hover {
+        background-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .button {
         background-color: #2f2f2f;
         border-color: #5f5f5f;
-        color: #5f5f5f
+        color: inherit
+    }
+    html[data-mode=dark] .button:hover {
+        background-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .button {
-        background-color: #f0f0f0;
+        background-color: #fff;
         border-color: #d6d6d6;
         color: #283541
+    }
+    html[data-mode=light] .button:hover {
+        background-color: #e9e9e9
     }
 }`
   await execute(input, output, {log: false, file: './examples/form/form.css'})

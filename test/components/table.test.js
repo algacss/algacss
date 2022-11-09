@@ -17,10 +17,10 @@ test('Testing table component', async () => {
     border-bottom: 1px solid rgba(0,0,0,0.25)
 }
 .tableBorder thead {
-    border-bottom: 3px solid rgba(0,0,0,0.25)
+    border-bottom: 1px solid rgba(0,0,0,0.25)
 }
 .tableBorder tfoot {
-    border-top: 3px solid rgba(0,0,0,0.25)
+    border-top: 1px solid rgba(0,0,0,0.25)
 }
 .tableBorder tr {
     border-bottom: 1px solid rgba(0,0,0,0.25)
@@ -31,8 +31,29 @@ test('Testing table component', async () => {
 .tableBorder th, .tableBorder td {
     border-left: 1px solid rgba(0,0,0,0.25)
 }
+.tableList {
+    border: 1px solid rgba(0,0,0,0.25)
+}
+.tableList thead {
+    border-bottom: 1px solid rgba(0,0,0,0.25)
+}
+.tableList tfoot {
+    border-top: 1px solid rgba(0,0,0,0.25)
+}
+.tableList tr {
+    border-bottom: 1px solid rgba(0,0,0,0.25)
+}
+.tableList tr:last-child {
+    border-bottom-width: 0px
+}
 .tableResponsive {
     overflow-x: auto
+}
+.tableFlush {
+    border: none
+}
+.tableFlush.tableBorder tr th:first-child, .tableFlush.tableBorder tr td:first-child {
+    border-left: none
 }
 @media (prefers-color-scheme: dark) {
     .tableBorder {
@@ -51,6 +72,18 @@ test('Testing table component', async () => {
     }
     .tableBorder th, .tableBorder td {
         border-left-color: rgba(255,255,255,0.25)
+    }
+    .tableList {
+        border-color: rgba(255,255,255,0.25)
+    }
+    .tableList thead {
+        border-bottom-color: rgba(255,255,255,0.25)
+    }
+    .tableList tfoot {
+        border-top-color: rgba(255,255,255,0.25)
+    }
+    .tableList tr {
+        border-bottom-color: rgba(255,255,255,0.25)
     }
 }
 @media (prefers-color-scheme: light) {
@@ -71,6 +104,18 @@ test('Testing table component', async () => {
     html[data-mode=dark] .tableBorder th, html[data-mode=dark] .tableBorder td {
         border-left-color: rgba(255,255,255,0.25)
     }
+    html[data-mode=dark] .tableList {
+        border-color: rgba(255,255,255,0.25)
+    }
+    html[data-mode=dark] .tableList thead {
+        border-bottom-color: rgba(255,255,255,0.25)
+    }
+    html[data-mode=dark] .tableList tfoot {
+        border-top-color: rgba(255,255,255,0.25)
+    }
+    html[data-mode=dark] .tableList tr {
+        border-bottom-color: rgba(255,255,255,0.25)
+    }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .tableBorder {
@@ -89,6 +134,18 @@ test('Testing table component', async () => {
     }
     html[data-mode=light] .tableBorder th, html[data-mode=light] .tableBorder td {
         border-left-color: rgba(0,0,0,0.25)
+    }
+    html[data-mode=light] .tableList {
+        border-color: rgba(0,0,0,0.25)
+    }
+    html[data-mode=light] .tableList thead {
+        border-bottom-color: rgba(0,0,0,0.25)
+    }
+    html[data-mode=light] .tableList tfoot {
+        border-top-color: rgba(0,0,0,0.25)
+    }
+    html[data-mode=light] .tableList tr {
+        border-bottom-color: rgba(0,0,0,0.25)
     }
 }`
   await execute(input, output, {log: false, file: './examples/table/table.css'})

@@ -27,11 +27,11 @@ All the main features:
 Alga CSS built on top of PostCSS, so before installing Alga CSS, you need to have PostCSS first and after that you can use NPM or Yarn to install this Alga CSS.
 
 ```sh
-npm install alga-css@next
+npm install alga-css --save-dev
 
 #or
 
-yarn add alga-css@next
+yarn add alga-css
 ```
 
 If you use tool that support PostCSS out of the box like Vite for instance, you just need to create a new config file which is `postcss.config.cjs` and add the code below to that file.

@@ -19,14 +19,14 @@
     prefers-toLight: borderTopColor-rgba(0,0,0,0.25) borderRightColor-rgba(0,0,0,0.25) borderBottomColor-rgba(0,0,0,0.25);
     
     thead {
-      ref: borderBottom-3px_solid_rgba(0,0,0,0.25);
+      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
       prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
       prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
       prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
     }
     
     tfoot {
-      ref: borderTop-3px_solid_rgba(0,0,0,0.25);
+      ref: borderTop-1px_solid_rgba(0,0,0,0.25);
       prefers-dark: borderTopColor-rgba(255,255,255,0.25);
       prefers-toDark: borderTopColor-rgba(255,255,255,0.25);
       prefers-toLight: borderTopColor-rgba(0,0,0,0.25);
@@ -50,8 +50,49 @@
       prefers-toLight: borderLeftColor-rgba(0,0,0,0.25);
     }
   }
+  
+  .{refs.name}List {
+    ref: border-1px_solid_rgba(0,0,0,0.25);
+    prefers-dark: borderColor-rgba(255,255,255,0.25);
+    prefers-toDark: borderColor-rgba(255,255,255,0.25);
+    prefers-toLight: borderColor-rgba(0,0,0,0.25);
+    
+    thead {
+      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+    }
+    
+    tfoot {
+      ref: borderTop-1px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderTopColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderTopColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderTopColor-rgba(0,0,0,0.25);
+    }
+    
+    tr {
+      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
+      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
+      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+    }
+    
+    tr:last-child {
+      ref: borderBottomWidth-0px;
+    }
+  }
    
   .{refs.name}Responsive {
     ref: overflowX-auto;
+  }
+  
+  .{refs.name}Flush {
+    ref: border-none;
+    
+    &.{refs.name}Border tr th:first-child,
+    &.{refs.name}Border tr td:first-child {
+      ref: borderLeft-none;
+    }
   }
 }
