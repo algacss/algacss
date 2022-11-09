@@ -24,7 +24,8 @@ test('Testing navBar component', async () => {
     justify-content: flex-start;
     flex-wrap: nowrap;
     align-items: center;
-    max-width: 240px
+    width: 100%;
+    max-width: 100%
 }
 .navBar .navWrap .navStart .navBrand {
     padding-top: 0.375rem;
@@ -93,13 +94,17 @@ test('Testing navBar component', async () => {
 .navBar .navWrap .navEnd .navMenu .navItem:last-child {
     padding-right: 0
 }
-@media (max-width: 599px) {
+@media (min-width: 768px) {
+    .navBar .navWrap .navStart {
+        max-width: 240px
+    }
+    .navBar .navWrap .navStart .navToggler.navMobile {
+        display: none
+    }
+}
+@media (max-width: 768px) {
     .navBar .navWrap {
         position: relative
-    }
-    .navBar .navWrap .navStart {
-        width: 100%;
-        max-width: 100%
     }
     .navBar .navWrap .navEnd {
         display: none;
@@ -139,11 +144,6 @@ test('Testing navBar component', async () => {
     }
     .navBar .navWrap .navEnd.active {
         display: flex
-    }
-}
-@media (min-width: 600px) {
-    .navBar .navWrap .navStart .navToggler.navMobile {
-        display: none
     }
 }`
   await execute(input, output, {log: false, file: './examples/navBar/navBar.css'})

@@ -8,6 +8,7 @@ test('Testing sideBar component', async () => {
     width: 240px;
     min-height: 100vh;
     height: 100%;
+    display: none;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     background-color: transparent;
@@ -126,9 +127,9 @@ test('Testing sideBar component', async () => {
 .sideMenu > .navItem:last-child, .sideNav > .navToggler:last-child {
     padding-right: 0
 }
-@media (max-width: 599px) {
+@media (min-width: 768px) {
     .sideBar {
-        display: none
+        display: block
     }
 }`
   await execute(input, output, {log: false, file: './examples/sideBar/sideBar.css'})

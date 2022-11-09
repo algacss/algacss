@@ -13,12 +13,12 @@
 
 @alga sideBar {
   .sideBar {
-    ref: position-relative zIndex-3 width-240px minHeight-100vh height-100pct;
+    ref: position-relative zIndex-3 width-240px minHeight-100vh height-100pct display-none;
     ref-paddingTop: {props.sizeY};
     ref-paddingBottom: {props.sizeY};
     ref-backgroundColor: {props.bgColor};
     ref-boxShadow: {props.shadow};
-    screen-ss: display-none;
+    screen-sm: display-block;
     
     .sideWrap {
       ref: display-flex flexDirection-column flexWrap-nowrap justifyContent-spaceBetween height-100pct minHeight-100vh;

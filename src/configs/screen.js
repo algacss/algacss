@@ -14,6 +14,11 @@ module.exports = {
     size: '768px',
     minmax: 'min'
   },
+  mb: {
+    alias: ['mobile'],
+    size: '768px',
+    minmax: 'max'
+  },
   md: {
     alias: ['medium', 'm'],
     size: '1024px',

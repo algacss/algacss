@@ -20,7 +20,8 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     align-items: center;
-    max-width: 240px
+    width: 100%;
+    max-width: 100%
 }
 .navBar .navWrap .navStart .navBrand {
     padding-top: 0.375rem;
@@ -45,8 +46,8 @@
     white-space: nowrap;
     cursor: pointer;
     appearance: none;
-    border: 0;
-    background-color: transparent
+    background: transparent;
+    border: none
 }
 .navBar .navWrap .navStart .navToggler svg, .navBar .navWrap .navStart .navToggler i {
     pointer-events: none;
@@ -78,7 +79,10 @@
     text-decoration: none;
     color: inherit;
     white-space: nowrap;
-    cursor: pointer
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    border: none
 }
 .navBar .navWrap .navEnd .navMenu .navItem:first-child {
     padding-left: 0
@@ -86,13 +90,17 @@
 .navBar .navWrap .navEnd .navMenu .navItem:last-child {
     padding-right: 0
 }
-@media (max-width: 599px) {
+@media (min-width: 768px) {
+    .navBar .navWrap .navStart {
+        max-width: 240px
+    }
+    .navBar .navWrap .navStart .navToggler.navMobile {
+        display: none
+    }
+}
+@media (max-width: 768px) {
     .navBar .navWrap {
         position: relative
-    }
-    .navBar .navWrap .navStart {
-        width: 100%;
-        max-width: 100%
     }
     .navBar .navWrap .navEnd {
         display: none;
@@ -105,7 +113,7 @@
         padding: 0.5rem 0px;
         background-color: #fff;
         min-width: 240px;
-        top: calc( 0.75rem *2+26px)
+        top: calc(0.75rem * 2 + 26px)
     }
     .navBar .navWrap .navEnd .navMenu {
         display: none;
@@ -132,10 +140,5 @@
     }
     .navBar .navWrap .navEnd.active {
         display: flex
-    }
-}
-@media (min-width: 600px) {
-    .navBar .navWrap .navStart .navToggler.navMobile {
-        display: none
     }
 }
