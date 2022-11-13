@@ -23,7 +23,7 @@
     color: #999;
     flex: 1 1 auto
 }
-.stepFeature {
+.stepItem .stepFeature {
     display: grid;
     place-items: center;
     margin-left: auto;
@@ -36,16 +36,115 @@
     color: #fff;
     border: 10px solid #fff
 }
+.stepItem .stepTitle {
+    margin-top: 0.25rem;
+    margin-bottom: 0.15rem
+}
+.stepItem .stepSubtitle {
+    margin: 0;
+    font-size: small
+}
 .stepItem.active {
     color: #428bca
 }
 .stepItem.active .stepFeature {
     background-color: #428bca
 }
-.stepTitle {
-    margin-top: 0.5rem;
-    margin-bottom: 0.375rem
+.stepFill:before {
+    content: none
 }
-.stepSubtitle {
-    margin: 0
+.stepFill .stepItem {
+    background-color: #f2f2f2;
+    display: flex;
+    text-align: left
+}
+.stepFill .stepItem .stepFeature {
+    background-color: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    color: inherit
+}
+.stepFill .stepItem .stepTitle {
+    margin-top: 0.75rem;
+    margin-bottom: 0px
+}
+.stepFill .stepItem .stepSubtitle {
+    margin-bottom: 0.75rem
+}
+.stepFill .stepItem.active {
+    background-color: #428bca;
+    color: #fff
+}
+.stepFill .stepItem.active .stepFeature {
+    background-color: #428bca
+}
+.stepArrow {
+    background-color: #f2f2f2;
+    border-left: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2
+}
+.stepArrow:before {
+    content: none
+}
+.stepArrow .stepItem {
+    display: flex;
+    text-align: left;
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2
+}
+.stepArrow .stepItem:not(:first-child) {
+    padding-left: 40px
+}
+.stepArrow .stepItem .stepFeature {
+    background-color: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    color: inherit
+}
+.stepArrow .stepItem .stepTitle {
+    margin-top: 0.75rem;
+    margin-bottom: 0px
+}
+.stepArrow .stepItem .stepSubtitle {
+    margin-bottom: 0.75rem
+}
+.stepArrow .stepItem:not(:last-child)::before, .stepArrow .stepItem:not(:last-child)::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    left: 100%;
+    top: 50%;
+    height: 0px;
+    width: 0px;
+    margin-top: -34px;
+    border: 34px solid transparent;
+    border-left-width: 40px;
+    transition: all .5s ease-in-out
+}
+.stepArrow .stepItem:not(:last-child):before {
+    border-left-color: currentColor;
+    z-index: 26
+}
+.stepArrow .stepItem:not(:last-child):after {
+    border-left-color: #f2f2f2;
+    z-index: 27;
+    margin-left: -1px
+}
+.stepArrow .stepItem.active {
+    background-color: #428bca;
+    color: #fff;
+    border-color: #428bca
+}
+.stepArrow .stepItem.active .stepFeature {
+    background-color: #428bca
+}
+.stepArrow .stepItem.active:before, .stepArrow .stepItem.active:after {
+    border-left-color: #428bca
 }

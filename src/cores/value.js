@@ -71,7 +71,7 @@ module.exports = (value, opt = {}) => {
     if(splitValues[2]) {
       newValue = newValue + splitValues[2]
     }
-  } else if(!specialValues.includes(newValue) && !newValue.includes('props') && !newValue.includes('refs')) {
+  } else if(!specialValues.includes(newValue) && !newValue.includes('props') && !newValue.includes('refs') && !newValue.includes(specialValues[0]) && !newValue.includes(specialValues[1])) {
     newValue = camelDash(newValue)
   }
   if(isNaN(newValue) === false && opt?.property) {

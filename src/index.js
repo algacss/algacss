@@ -125,9 +125,13 @@ function algacss(options) {
               }
             }
           }
+          let newBodyVar = []
+          if(config.components[param]?.[name]?.['body']) {
+            newBodyVar = config.components[param][name]['body']
+          }
           newNodes = [
             ...newNodes, 
-            ...declaration(config.components[param][name]['body'],
+            ...declaration(newBodyVar,
             {
               refs: config.components[param]['refs'],
               props: config.components[param]['props'], 
@@ -190,9 +194,13 @@ function algacss(options) {
               }
             }
           }
+          let newBodyVar = []
+          if(config.components[param]?.[name]?.['body']) {
+            newBodyVar = config.components[param][name]['body']
+          }
           newNodes = [
             ...newNodes, 
-            ...declaration(config.components[param][name]['body'],
+            ...declaration(newBodyVar,
             {
               refs: config.components[param]['refs'],
               props: config.components[param]['props'], 

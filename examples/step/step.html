@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>Step Wizard</title>
   <link href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../base/base.css" rel="stylesheet" />
+  <link href="../container/container.css" rel="stylesheet" />
   <link href="step.css" rel="stylesheet" />
   <style>
     *, ::after, ::before {
@@ -32,10 +34,92 @@
 </head>
 <body>
 
-  <div>
-    <div style="margin-bottom: 1.5rem;">
+  <div class="container">
+    <div style="margin-bottom: 2rem;">
       <label class="label">Step Wizard</label>
       <div class="step">
+        <div class="stepItem active">
+          <div class="stepFeature">
+            <i class="fa fa-home"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 1</h3>
+            <p class="stepSubtitle">Description 1</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-file"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 2</h3>
+            <p class="stepSubtitle">Description 2</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-cog"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 3</h3>
+            <p class="stepSubtitle">Description 3</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-trash"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 4</h3>
+            <p class="stepSubtitle">Description 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <label class="label">Fill Wizard</label>
+      <div class="step stepFill">
+        <div class="stepItem active">
+          <div class="stepFeature">
+            <i class="fa fa-home"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 1</h3>
+            <p class="stepSubtitle">Description 1</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-file"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 2</h3>
+            <p class="stepSubtitle">Description 2</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-cog"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 3</h3>
+            <p class="stepSubtitle">Description 3</p>
+          </div>
+        </div>
+        <div class="stepItem">
+          <div class="stepFeature">
+            <i class="fa fa-trash"></i>
+          </div>
+          <div class="stepBody">
+            <h3 class="stepTitle">Step 4</h3>
+            <p class="stepSubtitle">Description 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <label class="label">Arrow Wizard</label>
+      <div class="step stepArrow">
         <div class="stepItem active">
           <div class="stepFeature">
             <i class="fa fa-home"></i>

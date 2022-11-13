@@ -1,38 +1,141 @@
-@alga step {
-  .step {
+@define refs {
+  name: step;
+}
+
+@define props {
+  type: default, fill, arrow;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
     ref: position-relative display-flex flexWrap-nowrap justifyContent-spaceBetween alignItems-center;
+      
+    &::before {
+      ref-content: " ";
+      ref: position-absolute top-27px left-0 width-100pct height-8px;
+      ref: backgroundColor-hexeee borderRadius-3px zIndex-4;
+    }
   }
-    
-  .step::before {
-    ref-content: " ";
-    ref: position-absolute top-27px left-0 width-100pct height-8px;
-    ref: backgroundColor-hexeee borderRadius-3px zIndex-4;
-  }
-    
-  .stepItem {
+  
+  .{refs.name}Item {
     ref: position-relative textAlign-center zIndex-5 color-hex999;
     ref-flex: 1 1 auto;
-  }
     
-  .stepFeature {
-    ref: display-grid placeItems-center marginLeft-auto marginRight-auto textDecoration-none;
-    ref: width-60px height-60px borderRadius-50pct backgroundColor-hex999 color-hexfff;
-    ref-border: 10px solid #fff;
-  }
+    .{refs.name}Feature {
+      ref: display-grid placeItems-center marginLeft-auto marginRight-auto textDecoration-none;
+      ref: width-60px height-60px borderRadius-50pct backgroundColor-hex999 color-hexfff;
+      ref-border: 10px solid #fff;
+    }
     
-  .stepItem.active {
-    ref: color-hex428bca;
-  }
+    .{refs.name}Title {
+      ref: marginTop-0.25rem marginBottom-0.15rem;
+    }
     
-  .stepItem.active .stepFeature {
-    ref: backgroundColor-hex428bca;
-  }
+    .{refs.name}Subtitle {
+      ref: margin-0 fontSize-small;
+    }
     
-  .stepTitle {
-    ref: marginTop-0.5rem marginBottom-0.375rem;
+    &.active {
+      ref: color-hex428bca;
+      
+      .{refs.name}Feature {
+        ref: backgroundColor-hex428bca;
+      }
+    }
   }
+  
+  @if type has fill {
+    .{refs.name}Fill {
+      &:before {
+        ref: content-none;
+      }
     
-  .stepSubtitle {
-    ref: margin-0;
+      .{refs.name}Item {
+        ref: backgroundColor-hexf2f2f2 display-flex textAlign-left;
+        
+        .{refs.name}Feature {
+          ref: backgroundColor-transparent border-none width-auto height-auto marginLeft-1.5rem;
+          ref: marginRight-1.5rem color-inherit;
+        }
+      
+        .{refs.name}Title {
+          ref: marginTop-0.75rem marginBottom-0px;
+        }
+    
+        .{refs.name}Subtitle {
+          ref: marginBottom-0.75rem;
+        }
+    
+        &.active {
+          ref: backgroundColor-hex428bca color-hexfff;
+          
+          .{refs.name}Feature {
+            ref: backgroundColor-hex428bca;
+          }
+        }
+      }
+    }
+  }
+  
+  @if type has arrow {
+    .{refs.name}Arrow {
+      ref: backgroundColor-hexf2f2f2 borderLeft-1px_solid_hexd2d2d2 borderRight-1px_solid_hexd2d2d2;
+      
+      &:before {
+        ref: content-none;
+      }
+    
+      .{refs.name}Item {
+        ref: display-flex textAlign-left borderTop-1px_solid_hexd2d2d2;
+        ref: borderBottom-1px_solid_hexd2d2d2;
+        
+        &:not(:first-child) {
+          ref: paddingLeft-40px;
+        }
+        
+        .{refs.name}Feature {
+          ref: backgroundColor-transparent border-none width-auto height-auto marginLeft-1.5rem;
+          ref: marginRight-1.5rem color-inherit;
+        }
+      
+        .{refs.name}Title {
+          ref: marginTop-0.75rem marginBottom-0px;
+        }
+    
+        .{refs.name}Subtitle {
+          ref: marginBottom-0.75rem;
+        }
+    
+        &:not(:last-child)::before,
+        &:not(:last-child)::after {
+          ref-content: "";
+          ref: pointerEvents-none position-absolute display-block left-100pct top-50pct;
+          ref: height-0px width-0px marginTop-n34px border-34px_solid_transparent;
+          ref: borderLeftWidth-40px;
+          ref-transition: all .5s ease-in-out;
+        }
+        
+        &:not(:last-child):before {
+          ref: borderLeftColor-currentColor zIndex-26;
+        }
+        
+        &:not(:last-child):after {
+          ref: borderLeftColor-hexf2f2f2 zIndex-27 marginLeft-n1px;
+        }
+        
+        &.active {
+          ref: backgroundColor-hex428bca color-hexfff borderColor-hex428bca;
+          
+          .{refs.name}Feature {
+            ref: backgroundColor-hex428bca;
+          }
+          
+          &:before,
+          &:after {
+            ref: borderLeftColor-hex428bca;
+          }
+        }
+      }
+    }
   }
 }
