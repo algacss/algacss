@@ -71,7 +71,7 @@
         
         .navMenu {
           ref: display-flex justifyContent-flexStart flexWrap-nowrap alignItems-center;
-          screen-mb: display-none flexDirection-column minWidth-inherit;
+          screen-mb: flexDirection-column minWidth-inherit;
           
           .navItem {
             inject: navItem;
@@ -79,6 +79,9 @@
             
             &:hover {
               screen-mb: backgroundColor-hexcac7c7;
+              prefers-dark: backgroundColor-hex5f5f5f;
+              prefers-toDark: backgroundColor-hex5f5f5f;
+              prefers-toLight: backgroundColor-hexcac7c7;
             }
           }
           
@@ -91,14 +94,13 @@
             inject: navItemLastChild;
             screen-mb: padding-0.5rem_0.75rem minWidth-inherit;
           }
-          
-          &.active {
-            screen-mb: display-flex;
-          }
         }
         
         &.active {
           screen-mb: display-flex;
+          prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+          prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+          prefers-toLight: backgroundColor-hexfff borderColor-hexcac7c7;
         }
       }
     }

@@ -94,10 +94,9 @@ test('Testing sideBar component', async () => {
     padding-bottom: 0.5rem
 }
 .sideMenu > .sideItem.active {
-    background-color: rgba(0, 0, 0, 0.375);
+    background-color: rgba(0, 0, 0, 0.15);
     border-radius: 0.375rem;
     color: inherit;
-    font-weight: 700;
     margin-top: 2px;
     margin-bottom: 2px
 }

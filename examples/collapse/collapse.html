@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>sidebar</title>
+  <link rel="stylesheet" href="../base/base.css"/>
+  <link rel="stylesheet" href="../container/container.css"/>
+  <link rel="stylesheet" href="../sideBar/sideBar.css"/>
+  <link rel="stylesheet" href="collapse.css"/>
+</head>
+<body>
+
+  <div class="sideBar" style="box-shadow: 1px 1px 4px #cac7c7;">
+    <div class="sideWrap">
+      <div class="sideStart"></div>
+      <div class="sideAvatar"></div>
+      <div class="sideMain">
+        <h3 class="sideTitle"></h3>
+        <div class="sideMenu">
+          <a href="#" class="sideItem">Dashboard</a>
+          <div class="sideItem collapse">
+            <div class="collapseToggler" @click="collapseHandler">Menu 1</div>
+            <div class="collapseMenu">
+              <a href="#" class="collapseItem">Item 1</a>
+              <a href="#" class="collapseItem">Item 2</a>
+              <a href="#" class="collapseItem">Item 3</a>
+              <a href="#" class="collapseItem">Item 4</a>
+            </div>
+          </div>
+          <div class="sideItem collapse">
+            <div class="collapseToggler" @click="collapseHandler">Menu 2</div>
+            <div class="collapseMenu">
+              <a href="#" class="collapseItem">Item 1</a>
+              <a href="#" class="collapseItem">Item 2</a>
+              <a href="#" class="collapseItem">Item 3</a>
+              <a href="#" class="collapseItem">Item 4</a>
+            </div>
+          </div>
+          <a href="#" class="sideItem">Item 4</a>
+        </div>
+        <h3 class="sideTitle"></h3>
+        <div class="sideMenu"></div>
+      </div>
+      <div class="sideEnd"></div>
+    </div>
+  </div>
+
+</body>
+</html>

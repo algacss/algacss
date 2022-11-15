@@ -6,7 +6,7 @@
   itemFontSize: 1rem;
   itemPaddingX: 0.5rem;
   itemPaddingY: 0.5rem;
-  activeColor: rgba(0, 0, 0, 0.375);
+  activeColor: rgba(0, 0, 0, 0.15);
   activeText: inherit;
   activeRounded: 0.375rem;
 }
@@ -77,7 +77,7 @@
     ref-backgroundColor: {props.activeColor};
     ref-borderRadius: {props.activeRounded};
     ref-color: {props.activeText};
-    ref: fontWeight-700 marginTop-2px marginBottom-2px;
+    ref: marginTop-2px marginBottom-2px;
   }
   
   .sideNav > .navItem,

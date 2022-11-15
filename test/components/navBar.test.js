@@ -120,7 +120,6 @@ test('Testing navBar component', async () => {
         top: calc(0.75rem * 2 + 26px)
     }
     .navBar .navWrap .navEnd .navMenu {
-        display: none;
         flex-direction: column;
         min-width: inherit
     }
@@ -139,11 +138,35 @@ test('Testing navBar component', async () => {
         padding: 0.5rem 0.75rem;
         min-width: inherit
     }
-    .navBar .navWrap .navEnd .navMenu.active {
-        display: flex
-    }
     .navBar .navWrap .navEnd.active {
         display: flex
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .navBar .navWrap .navEnd .navMenu .navItem:hover {
+        background-color: #5f5f5f
+    }
+    .navBar .navWrap .navEnd.active {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .navBar .navWrap .navEnd .navMenu .navItem:hover {
+        background-color: #5f5f5f
+    }
+    html[data-mode=dark] .navBar .navWrap .navEnd.active {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .navBar .navWrap .navEnd .navMenu .navItem:hover {
+        background-color: #cac7c7
+    }
+    html[data-mode=light] .navBar .navWrap .navEnd.active {
+        background-color: #fff;
+        border-color: #cac7c7
     }
 }`
   await execute(input, output, {log: false, file: './examples/navBar/navBar.css'})
