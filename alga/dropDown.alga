@@ -1,0 +1,79 @@
+@define refs {
+  name: dropDown;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
+    ref: position-relative;
+    
+    &Toggler {
+      ref: whiteSpace-nowrap;
+    
+      &::after {
+        ref-content: "";
+        ref: display-inlineBlock marginLeft-0.255em verticalAlign-0.255em borderTop-0.3em_solid;
+        ref: borderRight-0.3em_solid_transparent borderBottom-0 borderLeft-0.3em_solid_transparent;
+      }
+    }
+      
+    &Backdrop {
+      ref: position-fixed zIndex-74 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;
+      ref: width-100pct height-100pct display-none cursor-default;
+    }
+    
+    &Menu {
+      ref: position-absolute zIndex-75 display-none minWidth-10rem padding-0.5rem_0px margin-0;
+      ref: fontSize-1rem color-inherit textAlign-left listStyle-none backgroundColor-hexfff;
+      ref: backgroundClip-paddingBox borderRadius-0.375rem top-100pct mnw-240px w-100pct;
+      ref-border: 1px solid #cccdce;
+      prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexfff borderColor-hexcccdce;
+      
+      .{refs.name}Item {
+        ref: display-block width-100pct padding-0.25rem_1rem clear-both fontWeight-400;
+        ref: color-inherit textAlign-inherit textDecoration-none whiteSpace-nowrap;
+        ref: backgroundColor-transparent border-0px;
+        
+        &:hover {
+          ref: backgroundColor-hexededed;
+          prefers-dark: backgroundColor-hex242424;
+          prefers-toDark: backgroundColor-hex242424;
+          prefers-toLight: backgroundColor-hexededed;
+        }
+        
+        &.active {
+          ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff;
+          ref: color-hexfff cursor-default;
+        }
+      }
+      
+      :not(hr).{refs.name}Divider {
+        ref: height-0px margin-0.5rem_0px overflow-hidden opacity-1;
+        ref-borderTop: 1px solid #cccdce;
+        prefers-dark: borderColor-hex5f5f5f;
+        prefers-toDark: borderColor-hex5f5f5f;
+        prefers-toLight: borderColor-hexcccdce;
+      }
+      
+      hr.{refs.name}Divider {
+        ref: opacity-0.375 color-hexcccdce;
+        prefers-dark: color-hex5f5f5f;
+        prefers-toDark: color-hex5f5f5f;
+        prefers-toLight: color-hexcccdce;
+      }
+      
+      &.{refs.name}Right {
+        ref: right-0px;
+      }
+    }
+    
+    &.active,
+    &.show {
+      .{refs.name}Backdrop,
+      .{refs.name}Menu {
+        ref: display-block;
+      }
+    }
+  }
+}

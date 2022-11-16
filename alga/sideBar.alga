@@ -1,7 +1,8 @@
 @define props {
   sizeX: 1rem;
   sizeY: 0.75rem;
-  bgColor: transparent;
+  bgColor: #f2f2f2;
+  bgColorDark: #2f2f2f;
   shadow: none;
   itemFontSize: 1rem;
   itemPaddingX: 0.5rem;
@@ -13,20 +14,39 @@
 
 @alga sideBar {
   .sideBar {
-    ref: position-relative zIndex-3 width-240px minHeight-100vh height-100pct display-none;
+    ref: position-relative width-240px minHeight-100vh height-100pct display-block;
     ref-paddingTop: {props.sizeY};
     ref-paddingBottom: {props.sizeY};
     ref-backgroundColor: {props.bgColor};
     ref-boxShadow: {props.shadow};
-    screen-sm: display-block;
+    screen-mb: display-none pi-fixed mnh-100vh h-100pct;
+    prefers-dark: backgroundColor-{props.bgColorDark};
+    prefers-toDark: backgroundColor-{props.bgColorDark};
+    prefers-toLight: backgroundColor-{props.bgColor};
+    
+    .sideBackdrop {
+      ref: position-fixed zIndex-14 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;
+      ref: width-100pct height-100pct display-none cursor-default;
+    }
     
     .sideWrap {
-      ref: display-flex flexDirection-column flexWrap-nowrap justifyContent-spaceBetween height-100pct minHeight-100vh;
+      ref: display-flex flexDirection-column flexWrap-nowrap justifyContent-spaceBetween;
+      ref: height-100pct minHeight-100vh position-relative zIndex-15;
       ref-paddingRight: {props.sizeX};
       ref-paddingLeft: {props.sizeX};
       
       .sideMain {
         ref: flexGrow-1;
+      }
+    }
+    
+    &.active {
+      ref: display-block;
+      screen-mb: display-block;
+      
+      .sideBackdrop {
+        ref: display-block;
+        prefers-sm: display-none;
       }
     }
   }

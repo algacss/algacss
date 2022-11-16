@@ -1,7 +1,8 @@
 @define props {
   sizeX: 1.5rem;
   sizeY: 0.75rem;
-  bgColor: transparent;
+  bgColor: #f2f2f2;
+  bgColorDark: #2f2f2f;
   shadow: none;
 }
 
@@ -24,6 +25,9 @@
     ref-paddingBottom: {props.sizeY};
     ref-backgroundColor: {props.bgColor};
     ref-boxShadow: {props.shadow};
+    prefers-dark: backgroundColor-{props.bgColorDark};
+    prefers-toDark: backgroundColor-{props.bgColorDark};
+    prefers-toLight: backgroundColor-{props.bgColor};
     
     .navWrap {
       ref: display-flex flexDirection-row flexWrap-nowrap alignItems-center justifyContent-spaceBetween;
@@ -68,21 +72,19 @@
       .navEnd {
         ref: display-flex justifyContent-spaceBetween flexWrap-nowrap alignItems-center flexGrow-1 paddingLeft-0.75rem;
         screen-mb: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({props.sizeY}_*_2_+_26px);
-        
+          
+        .navBackdrop {
+          ref: position-fixed zIndex-74 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;
+          ref: width-100pct height-100pct display-none cursor-default;
+        }
+    
         .navMenu {
           ref: display-flex justifyContent-flexStart flexWrap-nowrap alignItems-center;
-          screen-mb: flexDirection-column minWidth-inherit;
+          screen-mb: flexDirection-column minWidth-inherit position-relative zIndex-75;
           
           .navItem {
             inject: navItem;
             screen-mb: padding-0.5rem_0.75rem minWidth-inherit;
-            
-            &:hover {
-              screen-mb: backgroundColor-hexcac7c7;
-              prefers-dark: backgroundColor-hex5f5f5f;
-              prefers-toDark: backgroundColor-hex5f5f5f;
-              prefers-toLight: backgroundColor-hexcac7c7;
-            }
           }
           
           .navItem:first-child {
@@ -101,6 +103,18 @@
           prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
           prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
           prefers-toLight: backgroundColor-hexfff borderColor-hexcac7c7;
+          
+          .navBackdrop {
+            ref: display-block;
+            prefers-sm: display-none;
+          }
+          
+          .navMenu .navItem:hover {
+            screen-mb: backgroundColor-hexcac7c7;
+            prefers-dark: backgroundColor-hex5f5f5f;
+            prefers-toDark: backgroundColor-hex5f5f5f;
+            prefers-toLight: backgroundColor-hexcac7c7;
+          }
         }
       }
     }

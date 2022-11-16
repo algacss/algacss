@@ -5,7 +5,8 @@
   <title>Navbar</title>
   <link rel="stylesheet" href="../base/base.css"/>
   <link rel="stylesheet" href="../container/container.css"/>
-  <link rel="stylesheet" href="navBar.css" />
+  <link rel="stylesheet" href="../navBar/navBar.css"/>
+  <link rel="stylesheet" href="dropDown.css" />
 </head>
 <body>
 
@@ -25,15 +26,23 @@
           Icon 2
         </button>
       </div>
-      <div class="navEnd active">
-        <div class="navBackdrop"></div>
+      <div class="navEnd">
         <div class="navMenu">
           <a href="#" class="navItem">Item 1</a>
           <a href="#" class="navItem">Item 2</a>
         </div>
         <div class="navMenu">
           <a href="#" class="navItem">Item 3</a>
-          <a href="#" class="navItem">Item 4</a>
+          <div class="navItem dropDown show">
+            <div class="dropDownToggler">Item 4</div>
+            <div class="dropDownBackdrop"></div>
+            <div class="dropDownMenu dropDownRight">
+              <a href="#" class="dropDownItem">Profile</a>
+              <a href="#" class="dropDownItem">Settings</a>
+              <hr class="dropDownDivider">
+              <a href="#" class="dropDownItem">Logout</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -4,15 +4,25 @@ test('Testing sideBar component', async () => {
   const input = '@use sideBar;'
   const output = `.sideBar {
     position: relative;
-    z-index: 3;
     width: 240px;
     min-height: 100vh;
     height: 100%;
-    display: none;
+    display: block;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background-color: transparent;
+    background-color: #f2f2f2;
     box-shadow: none
+}
+.sideBar .sideBackdrop {
+    position: fixed;
+    z-index: 14;
+    inset: 0 3em 3em 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    display: none;
+    cursor: default
 }
 .sideBar .sideWrap {
     display: flex;
@@ -21,11 +31,19 @@ test('Testing sideBar component', async () => {
     justify-content: space-between;
     height: 100%;
     min-height: 100vh;
+    position: relative;
+    z-index: 15;
     padding-right: 1rem;
     padding-left: 1rem
 }
 .sideBar .sideWrap .sideMain {
     flex-grow: 1
+}
+.sideBar.active {
+    display: block
+}
+.sideBar.active .sideBackdrop {
+    display: block
 }
 .sideNav {
     display: flex;
@@ -127,8 +145,34 @@ test('Testing sideBar component', async () => {
     padding-right: 0
 }
 @media (min-width: 768px) {
+    .sideBar.active .sideBackdrop {
+        display: none
+    }
+}
+@media (max-width: 768px) {
     .sideBar {
+        display: none;
+        position: fixed;
+        min-height: 100vh;
+        height: 100%
+    }
+    .sideBar.active {
         display: block
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .sideBar {
+        background-color: #2f2f2f
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .sideBar {
+        background-color: #2f2f2f
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .sideBar {
+        background-color: #f2f2f2
     }
 }`
   await execute(input, output, {log: false, file: './examples/sideBar/sideBar.css'})

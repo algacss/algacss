@@ -7,7 +7,7 @@ test('Testing navBar component', async () => {
     z-index: 4;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background-color: transparent;
+    background-color: #f2f2f2;
     box-shadow: none
 }
 .navBar .navWrap {
@@ -71,6 +71,17 @@ test('Testing navBar component', async () => {
     flex-grow: 1;
     padding-left: 0.75rem
 }
+.navBar .navWrap .navEnd .navBackdrop {
+    position: fixed;
+    z-index: 74;
+    inset: 0 3em 3em 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    display: none;
+    cursor: default
+}
 .navBar .navWrap .navEnd .navMenu {
     display: flex;
     justify-content: flex-start;
@@ -94,11 +105,17 @@ test('Testing navBar component', async () => {
 .navBar .navWrap .navEnd .navMenu .navItem:last-child {
     padding-right: 0
 }
+.navBar .navWrap .navEnd.active .navBackdrop {
+    display: block
+}
 @media (min-width: 768px) {
     .navBar .navWrap .navStart {
         max-width: 240px
     }
     .navBar .navWrap .navStart .navToggler.navMobile {
+        display: none
+    }
+    .navBar .navWrap .navEnd.active .navBackdrop {
         display: none
     }
 }
@@ -121,14 +138,13 @@ test('Testing navBar component', async () => {
     }
     .navBar .navWrap .navEnd .navMenu {
         flex-direction: column;
-        min-width: inherit
+        min-width: inherit;
+        position: relative;
+        z-index: 75
     }
     .navBar .navWrap .navEnd .navMenu .navItem {
         padding: 0.5rem 0.75rem;
         min-width: inherit
-    }
-    .navBar .navWrap .navEnd .navMenu .navItem:hover {
-        background-color: #cac7c7
     }
     .navBar .navWrap .navEnd .navMenu .navItem:first-child {
         padding: 0.5rem 0.75rem;
@@ -141,32 +157,44 @@ test('Testing navBar component', async () => {
     .navBar .navWrap .navEnd.active {
         display: flex
     }
+    .navBar .navWrap .navEnd.active .navMenu .navItem:hover {
+        background-color: #cac7c7
+    }
 }
 @media (prefers-color-scheme: dark) {
-    .navBar .navWrap .navEnd .navMenu .navItem:hover {
-        background-color: #5f5f5f
+    .navBar {
+        background-color: #2f2f2f
     }
     .navBar .navWrap .navEnd.active {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
+    .navBar .navWrap .navEnd.active .navMenu .navItem:hover {
+        background-color: #5f5f5f
+    }
 }
 @media (prefers-color-scheme: light) {
-    html[data-mode=dark] .navBar .navWrap .navEnd .navMenu .navItem:hover {
-        background-color: #5f5f5f
+    html[data-mode=dark] .navBar {
+        background-color: #2f2f2f
     }
     html[data-mode=dark] .navBar .navWrap .navEnd.active {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
+    html[data-mode=dark] .navBar .navWrap .navEnd.active .navMenu .navItem:hover {
+        background-color: #5f5f5f
+    }
 }
 @media (prefers-color-scheme: dark) {
-    html[data-mode=light] .navBar .navWrap .navEnd .navMenu .navItem:hover {
-        background-color: #cac7c7
+    html[data-mode=light] .navBar {
+        background-color: #f2f2f2
     }
     html[data-mode=light] .navBar .navWrap .navEnd.active {
         background-color: #fff;
         border-color: #cac7c7
+    }
+    html[data-mode=light] .navBar .navWrap .navEnd.active .navMenu .navItem:hover {
+        background-color: #cac7c7
     }
 }`
   await execute(input, output, {log: false, file: './examples/navBar/navBar.css'})
