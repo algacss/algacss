@@ -1,7 +1,7 @@
 @define props {
   sizeX: 1.5rem;
   sizeY: 0.75rem;
-  bgColor: #f2f2f2;
+  bgColor: #fff;
   bgColorDark: #2f2f2f;
   shadow: none;
 }
@@ -20,7 +20,7 @@
 
 @alga navBar {
   .navBar {
-    ref: position-relative zIndex-4;
+    ref: position-relative zIndex-25 w-100pct;
     ref-paddingTop: {props.sizeY};
     ref-paddingBottom: {props.sizeY};
     ref-backgroundColor: {props.bgColor};

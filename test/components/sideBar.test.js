@@ -4,18 +4,19 @@ test('Testing sideBar component', async () => {
   const input = '@use sideBar;'
   const output = `.sideBar {
     position: relative;
+    z-index: 20;
     width: 240px;
     min-height: 100vh;
     height: 100%;
     display: block;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background-color: #f2f2f2;
+    background-color: #fff;
     box-shadow: none
 }
 .sideBar .sideBackdrop {
     position: fixed;
-    z-index: 14;
+    z-index: 18;
     inset: 0 3em 3em 0;
     max-width: 100vw;
     max-height: 100vh;
@@ -32,7 +33,7 @@ test('Testing sideBar component', async () => {
     height: 100%;
     min-height: 100vh;
     position: relative;
-    z-index: 15;
+    z-index: 19;
     padding-right: 1rem;
     padding-left: 1rem
 }
@@ -172,7 +173,7 @@ test('Testing sideBar component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .sideBar {
-        background-color: #f2f2f2
+        background-color: #fff
     }
 }`
   await execute(input, output, {log: false, file: './examples/sideBar/sideBar.css'})

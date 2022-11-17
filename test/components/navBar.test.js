@@ -4,10 +4,11 @@ test('Testing navBar component', async () => {
   const input = '@use navBar;'
   const output = `.navBar {
     position: relative;
-    z-index: 4;
+    z-index: 25;
+    width: 100%;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background-color: #f2f2f2;
+    background-color: #fff;
     box-shadow: none
 }
 .navBar .navWrap {
@@ -187,7 +188,7 @@ test('Testing navBar component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .navBar {
-        background-color: #f2f2f2
+        background-color: #fff
     }
     html[data-mode=light] .navBar .navWrap .navEnd.active {
         background-color: #fff;

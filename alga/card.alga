@@ -17,6 +17,8 @@
     ref-borderRadius: {props.rounded};
     ref: wordWrap-breakWord;
     prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;
   }
     
   .{refs.name} > *:first-child {
@@ -34,11 +36,15 @@
   .{refs.name}Header {
     ref: borderBottom-1px_solid_hexd9d9d9;
     prefers-dark: borderColor-hex242424;
+    prefers-toDark: borderColor-hex242424;
+    prefers-toLight: borderColor-hexd9d9d9;
   }
     
   .{refs.name}Footer {
     ref: borderTop-1px_solid_hexd9d9d9;
     prefers-dark: borderColor-hex242424;
+    prefers-toDark: borderColor-hex242424;
+    prefers-toLight: borderColor-hexd9d9d9;
   }
     
   .{refs.name}Body {

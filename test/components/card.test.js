@@ -55,6 +55,30 @@ test('Testing card or box component', async () => {
     .cardFooter {
         border-color: #242424
     }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .card, html[data-mode=dark] .box {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    html[data-mode=dark] .cardHeader {
+        border-color: #242424
+    }
+    html[data-mode=dark] .cardFooter {
+        border-color: #242424
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .card, html[data-mode=light] .box {
+        background-color: #fff;
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .cardHeader {
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .cardFooter {
+        border-color: #d9d9d9
+    }
 }`
   await execute(input, output, {log: false, file: './examples/card/card.css'})
 })
