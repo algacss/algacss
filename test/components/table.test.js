@@ -12,36 +12,36 @@ test('Testing table component', async () => {
     padding: 0.75rem
 }
 .tableBorder {
-    border-top: 1px solid rgba(0,0,0,0.25);
-    border-right: 1px solid rgba(0,0,0,0.25);
-    border-bottom: 1px solid rgba(0,0,0,0.25)
+    border-top: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9
 }
 .tableBorder thead {
-    border-bottom: 1px solid rgba(0,0,0,0.25)
+    border-bottom: 1px solid #d9d9d9
 }
 .tableBorder tfoot {
-    border-top: 1px solid rgba(0,0,0,0.25)
+    border-top: 1px solid #d9d9d9
 }
 .tableBorder tr {
-    border-bottom: 1px solid rgba(0,0,0,0.25)
+    border-bottom: 1px solid #d9d9d9
 }
 .tableBorder tr:last-child {
     border-bottom-width: 0px
 }
 .tableBorder th, .tableBorder td {
-    border-left: 1px solid rgba(0,0,0,0.25)
+    border-left: 1px solid #d9d9d9
 }
 .tableList {
-    border: 1px solid rgba(0,0,0,0.25)
+    border: 1px solid #d9d9d9
 }
 .tableList thead {
-    border-bottom: 1px solid rgba(0,0,0,0.25)
+    border-bottom: 1px solid #d9d9d9
 }
 .tableList tfoot {
-    border-top: 1px solid rgba(0,0,0,0.25)
+    border-top: 1px solid #d9d9d9
 }
 .tableList tr {
-    border-bottom: 1px solid rgba(0,0,0,0.25)
+    border-bottom: 1px solid #d9d9d9
 }
 .tableList tr:last-child {
     border-bottom-width: 0px
@@ -57,95 +57,95 @@ test('Testing table component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     .tableBorder {
-        border-top-color: rgba(255,255,255,0.25);
-        border-right-color: rgba(255,255,255,0.25);
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f;
+        border-right-color: #5f5f5f;
+        border-bottom-color: #5f5f5f
     }
     .tableBorder thead {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     .tableBorder tfoot {
-        border-top-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f
     }
     .tableBorder tr {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     .tableBorder th, .tableBorder td {
-        border-left-color: rgba(255,255,255,0.25)
+        border-left-color: #5f5f5f
     }
     .tableList {
-        border-color: rgba(255,255,255,0.25)
+        border-color: #5f5f5f
     }
     .tableList thead {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     .tableList tfoot {
-        border-top-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f
     }
     .tableList tr {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .tableBorder {
-        border-top-color: rgba(255,255,255,0.25);
-        border-right-color: rgba(255,255,255,0.25);
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f;
+        border-right-color: #5f5f5f;
+        border-bottom-color: #5f5f5f
     }
     html[data-mode=dark] .tableBorder thead {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     html[data-mode=dark] .tableBorder tfoot {
-        border-top-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f
     }
     html[data-mode=dark] .tableBorder tr {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     html[data-mode=dark] .tableBorder th, html[data-mode=dark] .tableBorder td {
-        border-left-color: rgba(255,255,255,0.25)
+        border-left-color: #5f5f5f
     }
     html[data-mode=dark] .tableList {
-        border-color: rgba(255,255,255,0.25)
+        border-color: #5f5f5f
     }
     html[data-mode=dark] .tableList thead {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
     html[data-mode=dark] .tableList tfoot {
-        border-top-color: rgba(255,255,255,0.25)
+        border-top-color: #5f5f5f
     }
     html[data-mode=dark] .tableList tr {
-        border-bottom-color: rgba(255,255,255,0.25)
+        border-bottom-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .tableBorder {
-        border-top-color: rgba(0,0,0,0.25);
-        border-right-color: rgba(0,0,0,0.25);
-        border-bottom-color: rgba(0,0,0,0.25)
+        border-top-color: #d9d9d9;
+        border-right-color: #d9d9d9;
+        border-bottom-color: #d9d9d9
     }
     html[data-mode=light] .tableBorder thead {
-        border-bottom-color: rgba(0,0,0,0.25)
+        border-bottom-color: #d9d9d9
     }
     html[data-mode=light] .tableBorder tfoot {
-        border-top-color: rgba(0,0,0,0.25)
+        border-top-color: #d9d9d9
     }
     html[data-mode=light] .tableBorder tr {
-        border-bottom-color: rgba(0,0,0,0.25)
+        border-bottom-color: #d9d9d9
     }
     html[data-mode=light] .tableBorder th, html[data-mode=light] .tableBorder td {
-        border-left-color: rgba(0,0,0,0.25)
+        border-left-color: #d9d9d9
     }
     html[data-mode=light] .tableList {
-        border-color: rgba(0,0,0,0.25)
+        border-color: #d9d9d9
     }
     html[data-mode=light] .tableList thead {
-        border-bottom-color: rgba(0,0,0,0.25)
+        border-bottom-color: #d9d9d9
     }
     html[data-mode=light] .tableList tfoot {
-        border-top-color: rgba(0,0,0,0.25)
+        border-top-color: #d9d9d9
     }
     html[data-mode=light] .tableList tr {
-        border-bottom-color: rgba(0,0,0,0.25)
+        border-bottom-color: #d9d9d9
     }
 }`
   await execute(input, output, {log: false, file: './examples/table/table.css'})

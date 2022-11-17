@@ -32,7 +32,8 @@ test('Testing modal dialog component', async () => {
     border: 1px solid #d9d9d9;
     margin-right: auto;
     margin-left: auto;
-    border-radius: 0.375rem
+    border-radius: 0.375rem;
+    color: inherit
 }
 .modalFullscreen {
     padding: 0
@@ -79,7 +80,6 @@ test('Testing modal dialog component', async () => {
 @media (prefers-color-scheme: dark) {
     .modalContent {
         background-color: #2f2f2f;
-        color: #f2f2f2;
         border-color: #5f5f5f
     }
     .modalHeader {
@@ -92,7 +92,6 @@ test('Testing modal dialog component', async () => {
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .modalContent {
         background-color: #2f2f2f;
-        color: #f2f2f2;
         border-color: #5f5f5f
     }
     html[data-mode=dark] .modalHeader {
@@ -105,7 +104,6 @@ test('Testing modal dialog component', async () => {
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .modalContent {
         background-color: #fff;
-        color: #d9d9d9;
         border-color: #fff
     }
     html[data-mode=light] .modalHeader {

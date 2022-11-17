@@ -3,7 +3,6 @@ const execute = require('../execute.js')
 test('Testing card or box component', async () => {
   const input = '@use card;'
   const output = `.card {
-    position: relative;
     display: flex;
     flex-direction: column
 }

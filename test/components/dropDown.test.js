@@ -58,7 +58,8 @@ test('Testing dropDown on navBar component', async () => {
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
-    border: 0px
+    border: 0px;
+    cursor: pointer
 }
 .dropDownMenu .dropDownItem:hover {
     background-color: #ededed

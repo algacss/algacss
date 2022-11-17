@@ -13,30 +13,30 @@
   }
 
   .{refs.name}Border {
-    ref: borderTop-1px_solid_rgba(0,0,0,0.25) borderRight-1px_solid_rgba(0,0,0,0.25) borderBottom-1px_solid_rgba(0,0,0,0.25);
-    prefers-dark: borderTopColor-rgba(255,255,255,0.25) borderRightColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25);
-    prefers-toDark: borderTopColor-rgba(255,255,255,0.25) borderRightColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25);
-    prefers-toLight: borderTopColor-rgba(0,0,0,0.25) borderRightColor-rgba(0,0,0,0.25) borderBottomColor-rgba(0,0,0,0.25);
+    ref: borderTop-1px_solid_hexd9d9d9 borderRight-1px_solid_hexd9d9d9 borderBottom-1px_solid_hexd9d9d9;
+    prefers-dark: borderTopColor-hex5f5f5f borderRightColor-hex5f5f5f borderBottomColor-hex5f5f5f;
+    prefers-toDark: borderTopColor-hex5f5f5f borderRightColor-hex5f5f5f borderBottomColor-hex5f5f5f;
+    prefers-toLight: borderTopColor-hexd9d9d9 borderRightColor-hexd9d9d9 borderBottomColor-hexd9d9d9;
     
     thead {
-      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+      ref: borderBottom-1px_solid_hexd9d9d9;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
     tfoot {
-      ref: borderTop-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderTopColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderTopColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderTopColor-rgba(0,0,0,0.25);
+      ref: borderTop-1px_solid_hexd9d9d9;
+      prefers-dark: borderTopColor-hex5f5f5f;
+      prefers-toDark: borderTopColor-hex5f5f5f;
+      prefers-toLight: borderTopColor-hexd9d9d9;
     }
     
     tr {
-      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+      ref: borderBottom-1px_solid_hexd9d9d9;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
     tr:last-child {
@@ -44,38 +44,38 @@
     }
     
     th, td {
-      ref: borderLeft-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderLeftColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderLeftColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderLeftColor-rgba(0,0,0,0.25);
+      ref: borderLeft-1px_solid_hexd9d9d9;
+      prefers-dark: borderLeftColor-hex5f5f5f;
+      prefers-toDark: borderLeftColor-hex5f5f5f;
+      prefers-toLight: borderLeftColor-hexd9d9d9;
     }
   }
   
   .{refs.name}List {
-    ref: border-1px_solid_rgba(0,0,0,0.25);
-    prefers-dark: borderColor-rgba(255,255,255,0.25);
-    prefers-toDark: borderColor-rgba(255,255,255,0.25);
-    prefers-toLight: borderColor-rgba(0,0,0,0.25);
+    ref: border-1px_solid_hexd9d9d9;
+    prefers-dark: borderColor-hex5f5f5f;
+    prefers-toDark: borderColor-hex5f5f5f;
+    prefers-toLight: borderColor-hexd9d9d9;
     
     thead {
-      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+      ref: borderBottom-1px_solid_hexd9d9d9;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
     tfoot {
-      ref: borderTop-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderTopColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderTopColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderTopColor-rgba(0,0,0,0.25);
+      ref: borderTop-1px_solid_hexd9d9d9;
+      prefers-dark: borderTopColor-hex5f5f5f;
+      prefers-toDark: borderTopColor-hex5f5f5f;
+      prefers-toLight: borderTopColor-hexd9d9d9;
     }
     
     tr {
-      ref: borderBottom-1px_solid_rgba(0,0,0,0.25);
-      prefers-dark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toDark: borderBottomColor-rgba(255,255,255,0.25);
-      prefers-toLight: borderBottomColor-rgba(0,0,0,0.25);
+      ref: borderBottom-1px_solid_hexd9d9d9;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexd9d9d9;
     }
     
     tr:last-child {

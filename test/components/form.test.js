@@ -271,6 +271,10 @@ select.select:not([multiple]) {
         background-color: #242424;
         border-color: #5f5f5f
     }
+    .check .checkInput:checked {
+        border-color: #1d84b6;
+        background-color: #1d84b6
+    }
     .check .checkInput[disabled], .check .checkInput.disabled {
         background-color: #2f2f2f;
         border-color: #5f5f5f
@@ -281,11 +285,18 @@ select.select:not([multiple]) {
     .check.switch .checkInput {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 0.25%29'/%3e%3c/svg%3e")
     }
+    .check.switch .checkInput:checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
+    }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .check .checkInput {
         background-color: #242424;
         border-color: #5f5f5f
+    }
+    html[data-mode=dark] .check .checkInput:checked {
+        border-color: #1d84b6;
+        background-color: #1d84b6
     }
     html[data-mode=dark] .check .checkInput[disabled], html[data-mode=dark] .check .checkInput.disabled {
         background-color: #2f2f2f;
@@ -297,11 +308,18 @@ select.select:not([multiple]) {
     html[data-mode=dark] .check.switch .checkInput {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 0.25%29'/%3e%3c/svg%3e")
     }
+    html[data-mode=dark] .check.switch .checkInput:checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
+    }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .check .checkInput {
         background-color: #fff;
         border-color: #d9d9d9
+    }
+    html[data-mode=light] .check .checkInput:checked {
+        border-color: #1d84b6;
+        background-color: #1d84b6
     }
     html[data-mode=light] .check .checkInput[disabled], html[data-mode=light] .check .checkInput.disabled {
         background-color: #f0f0f0;
@@ -312,6 +330,9 @@ select.select:not([multiple]) {
     }
     html[data-mode=light] .check.switch .checkInput {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e")
+    }
+    html[data-mode=light] .check.switch .checkInput:checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
     }
 }
 .group {

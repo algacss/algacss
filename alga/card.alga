@@ -9,7 +9,7 @@
 
 @alga {refs.name} {
   .{refs.name} {
-    ref: position-relative display-flex flexDirection-column;
+    ref: display-flex flexDirection-column;
   }
     
   .{refs.name}, .box {

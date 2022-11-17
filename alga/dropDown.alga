@@ -33,7 +33,7 @@
       .{refs.name}Item {
         ref: display-block width-100pct padding-0.25rem_1rem clear-both fontWeight-400;
         ref: color-inherit textAlign-inherit textDecoration-none whiteSpace-nowrap;
-        ref: backgroundColor-transparent border-0px;
+        ref: backgroundColor-transparent border-0px cursor-pointer;
         
         &:hover {
           ref: backgroundColor-hexededed;
