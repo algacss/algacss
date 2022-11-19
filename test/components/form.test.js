@@ -336,7 +336,6 @@ select.select:not([multiple]) {
     }
 }
 .group {
-    position: relative;
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: stretch

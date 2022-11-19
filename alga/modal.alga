@@ -52,7 +52,8 @@
   }
     
   .{refs.name}Body {
-    ref: padding-0.75rem_1rem overflowY-auto;
+    ref: padding-0.75rem_1rem overflowX-visible overflowY-auto;
+    ref-maxHeight: calc(100vh - 200px);
   }
     
   .{refs.name}Footer {

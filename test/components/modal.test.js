@@ -60,7 +60,9 @@ test('Testing modal dialog component', async () => {
 }
 .modalBody {
     padding: 0.75rem 1rem;
-    overflow-y: auto
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px)
 }
 .modalFooter {
     border-top: 1px solid #d9d9d9

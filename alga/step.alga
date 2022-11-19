@@ -13,7 +13,10 @@
     &::before {
       ref-content: " ";
       ref: position-absolute top-27px left-0 width-100pct height-8px;
-      ref: backgroundColor-hexeee borderRadius-3px zIndex-4;
+      ref: backgroundColor-hexf2f2f2 borderRadius-3px zIndex-4;
+      prefers-dark: backgroundColor-hex3f3f3f;
+      prefers-toDark: backgroundColor-hex3f3f3f;
+      prefers-toLight: backgroundColor-hexf2f2f2;
     }
   }
   
@@ -24,7 +27,10 @@
     .{refs.name}Feature {
       ref: display-grid placeItems-center marginLeft-auto marginRight-auto textDecoration-none;
       ref: width-60px height-60px borderRadius-50pct backgroundColor-hex999 color-hexfff;
-      ref-border: 10px solid #fff;
+      ref-border: 10px solid #eee;
+      prefers-dark: backgroundColor-hex2f2f2f borderColor-hex4f4f4f;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex4f4f4f;
+      prefers-toLight: backgroundColor-hex999 borderColor-hexeee;
     }
     
     .{refs.name}Title {
@@ -52,6 +58,9 @@
     
       .{refs.name}Item {
         ref: backgroundColor-hexf2f2f2 display-flex textAlign-left;
+        prefers-dark: backgroundColor-hex3f3f3f;
+        prefers-toDark: backgroundColor-hex3f3f3f;
+        prefers-toLight: backgroundColor-hexf2f2f2;
         
         .{refs.name}Feature {
           ref: backgroundColor-transparent border-none width-auto height-auto marginLeft-1.5rem;
@@ -80,6 +89,9 @@
   @if type has arrow {
     .{refs.name}Arrow {
       ref: backgroundColor-hexf2f2f2 borderLeft-1px_solid_hexd2d2d2 borderRight-1px_solid_hexd2d2d2;
+      prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hexf2f2f2 borderColor-hexd2d2d2;
       
       &:before {
         ref: content-none;
@@ -88,6 +100,9 @@
       .{refs.name}Item {
         ref: display-flex textAlign-left borderTop-1px_solid_hexd2d2d2;
         ref: borderBottom-1px_solid_hexd2d2d2;
+        prefers-dark: borderColor-hex5f5f5f;
+        prefers-toDark: borderColor-hex5f5f5f;
+        prefers-toLight: borderColor-hexd2d2d2;
         
         &:not(:first-child) {
           ref: paddingLeft-40px;
@@ -121,6 +136,9 @@
         
         &:not(:last-child):after {
           ref: borderLeftColor-hexf2f2f2 zIndex-27 marginLeft-n1px;
+          prefers-dark: borderLeftColor-hex2f2f2f;
+          prefers-toDark: borderLeftColor-hex2f2f2f;
+          prefers-toLight: borderLeftColor-hexf2f2f2;
         }
         
         &.active {
@@ -133,6 +151,9 @@
           &:before,
           &:after {
             ref: borderLeftColor-hex428bca;
+            prefers-dark: borderLeftColor-hex428bca;
+            prefers-toDark: borderLeftColor-hex428bca;
+            prefers-toLight: borderLeftColor-hex428bca;
           }
         }
       }

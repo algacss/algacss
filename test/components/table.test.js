@@ -47,7 +47,8 @@ test('Testing table component', async () => {
     border-bottom-width: 0px
 }
 .tableResponsive {
-    overflow-x: auto
+    overflow-x: auto;
+    overflow-y: visible
 }
 .tableFlush {
     border: none

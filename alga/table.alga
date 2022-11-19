@@ -84,7 +84,7 @@
   }
    
   .{refs.name}Responsive {
-    ref: overflowX-auto;
+    ref: overflowX-auto overflowY-visible;
   }
   
   .{refs.name}Flush {

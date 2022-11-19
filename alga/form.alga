@@ -215,7 +215,7 @@
   
   @if field has group {
     .group {
-      ref: position-relative display-inlineFlex flexWrap-nowrap alignItems-stretch;
+      ref: display-inlineFlex flexWrap-nowrap alignItems-stretch;
     }
       
     .group .groupItem {
