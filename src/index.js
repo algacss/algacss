@@ -42,7 +42,11 @@ function algacss(options) {
   
   const watcher = chokidar.watch(watchFiles, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
-    persistent: true
+    persistent: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 2000,
+      pollInterval: 100
+    }
   })
   
   watcher.on('change', path => {
