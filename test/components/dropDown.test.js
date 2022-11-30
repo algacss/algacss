@@ -6,7 +6,9 @@ test('Testing dropDown on navBar component', async () => {
     position: relative
 }
 .dropDownToggler {
-    white-space: nowrap
+    white-space: nowrap;
+    display: flex;
+    align-items: center
 }
 .dropDownToggler::after {
     content: "";

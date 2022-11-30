@@ -7,6 +7,8 @@
 
 @define props {
   field: label, input, check, group, button;
+  bgActive: #1d84b6;
+  bdActive: #1d84b6;
 }
 
 @alga {refs.name} {
@@ -54,6 +56,7 @@
       ref: color-hex9b9b9b userSelect-none pointerEvents-none;
     }
       
+    .input.plain,
     .input.plainText {
       ref: backgroundColor-transparent borderColor-transparent paddingLeft-0 paddingRight-0;
       prefers-dark: backgroundColor-transparent borderColor-transparent;
@@ -61,7 +64,7 @@
       prefers-toLight: backgroundColor-transparent borderColor-transparent;
     }
       
-    .input.valid,
+    .valid,
     .validated :valid {
       ref: borderColor-hex198754 backgroundColor-hexf1fff8;
       ref-paddingRight: calc(1.5em + .75rem);
@@ -84,7 +87,7 @@
       ref: backgroundColor-rgba(25,135,84,0.9) borderRadius-0.25rem;
     }
       
-    .input.invalid,
+    .invalid,
     .validated :invalid {
       ref: borderColor-hexdc3545 backgroundColor-hexfbf1f2;
       ref-paddingRight: calc(1.5em + .75rem);
@@ -154,10 +157,10 @@
     }
       
     .check .checkInput:checked {
-      ref: borderColor-hex1d84b6 backgroundColor-hex1d84b6;
-      prefers-dark: borderColor-hex1d84b6 backgroundColor-hex1d84b6;
-      prefers-toDark: borderColor-hex1d84b6 backgroundColor-hex1d84b6;
-      prefers-toLight: borderColor-hex1d84b6 backgroundColor-hex1d84b6;
+      ref: borderColor-{props.bdActive} backgroundColor-{props.bgActive};
+      prefers-dark: borderColor-{props.bdActive} backgroundColor-{props.bgActive};
+      prefers-toDark: borderColor-{props.bdActive} backgroundColor-{props.bgActive};
+      prefers-toLight: borderColor-{props.bdActive} backgroundColor-{props.bgActive};
     }
       
     .check .checkInput[disabled], .check .checkInput.disabled {

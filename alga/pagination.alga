@@ -1,5 +1,8 @@
 @define props {
   type: dense, sparse;
+  bgActive: #4c9bff;
+  fgActive: #fff;
+  bdActive: #4890eb;
 }
 
 @alga pagination {
@@ -77,6 +80,7 @@
   }
     
   .pagination .item.active .link {
-    ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff color-hexfff;
+    ref: pointerEvents-none borderColor-{props.bdActive} backgroundColor-{props.bgActive};
+    ref: color-{props.fgActive};
   }
 }

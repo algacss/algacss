@@ -7,7 +7,7 @@
     ref: position-relative;
     
     &Toggler {
-      ref: whiteSpace-nowrap;
+      ref: whiteSpace-nowrap display-flex alignItems-center;
     
       &::after {
         ref-content: "";

@@ -41,13 +41,13 @@ test('Testing form component', async () => {
     user-select: none;
     pointer-events: none
 }
-.input.plainText {
+.input.plain, .input.plainText {
     background-color: transparent;
     border-color: transparent;
     padding-left: 0;
     padding-right: 0
 }
-.input.valid, .validated :valid {
+.valid, .validated :valid {
     border-color: #198754;
     background-color: #f1fff8;
     padding-right: calc(1.5em + .75rem);
@@ -76,7 +76,7 @@ test('Testing form component', async () => {
     background-color: rgba(25,135,84,0.9);
     border-radius: 0.25rem
 }
-.input.invalid, .validated :invalid {
+.invalid, .validated :invalid {
     border-color: #dc3545;
     background-color: #fbf1f2;
     padding-right: calc(1.5em + .75rem);
@@ -145,14 +145,14 @@ select.select:not([multiple]) {
         background-color: #242424;
         border-color: #5f5f5f
     }
-    .input.plainText {
+    .input.plain, .input.plainText {
         background-color: transparent;
         border-color: transparent
     }
-    .input.valid, .validated :valid {
+    .valid, .validated :valid {
         background-color: #242424
     }
-    .input.invalid, .validated :invalid {
+    .invalid, .validated :invalid {
         background-color: #242424
     }
 }
@@ -171,14 +171,14 @@ select.select:not([multiple]) {
         background-color: #242424;
         border-color: #5f5f5f
     }
-    html[data-mode=dark] .input.plainText {
+    html[data-mode=dark] .input.plain, html[data-mode=dark] .input.plainText {
         background-color: transparent;
         border-color: transparent
     }
-    html[data-mode=dark] .input.valid, html[data-mode=dark] .validated :valid {
+    html[data-mode=dark] .valid, html[data-mode=dark] .validated :valid {
         background-color: #242424
     }
-    html[data-mode=dark] .input.invalid, html[data-mode=dark] .validated :invalid {
+    html[data-mode=dark] .invalid, html[data-mode=dark] .validated :invalid {
         background-color: #242424
     }
 }
@@ -197,14 +197,14 @@ select.select:not([multiple]) {
         background-color: #f0f0f0;
         border-color: #d6d6d6
     }
-    html[data-mode=light] .input.plainText {
+    html[data-mode=light] .input.plain, html[data-mode=light] .input.plainText {
         background-color: transparent;
         border-color: transparent
     }
-    html[data-mode=light] .input.valid, html[data-mode=light] .validated :valid {
+    html[data-mode=light] .valid, html[data-mode=light] .validated :valid {
         background-color: #f1fff8
     }
-    html[data-mode=light] .input.invalid, html[data-mode=light] .validated :invalid {
+    html[data-mode=light] .invalid, html[data-mode=light] .validated :invalid {
         background-color: #fbf1f2
     }
 }

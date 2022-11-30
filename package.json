@@ -1,6 +1,6 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-emerald-2",
+  "version": "1.0.0-emerald-3",
   "description": "Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties",
   "main": "./src/index.js",
   "bin": "./bin/algac",
