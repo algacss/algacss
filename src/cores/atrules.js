@@ -143,7 +143,14 @@ module.exports = (obj, ref, source, opts) => {
         
         let newRule = postcss.rule({ selector: '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
         if(opts.prefers[refs[0]]?.selector) {
-          newRule = postcss.rule({ selector: opts.prefers[refs[0]].selector+' .'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+          newRule = postcss.rule({ selector: 'html'+opts.prefers[refs[0]].selector+' .'+ref
+            .replaceAll(':', '\\:')
+            .replaceAll('.', '\\.')
+            .replaceAll(',', '\\,')
+            .replaceAll('/', '\\/')
+            .replaceAll('(', '\\(')
+            .replaceAll(')', '\\)')
+          , source: source })
         }
         //const declVal = postcss.decl({ prop: camelDash(refs[1]), value: value(refs[2], opts) })
         //newRule.append(declVal)

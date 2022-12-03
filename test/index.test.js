@@ -5,6 +5,7 @@ test('Reading css classes from file', async () => {
   //await execute()
   let result = await postcss([
     algacss({
+      mode: '.{theme}-mode',
       extract: [
         './test/vue/**/*.vue',
         './test/js-html/**/*.js',

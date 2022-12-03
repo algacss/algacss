@@ -30,6 +30,21 @@ function algacss(options) {
     helpers: []
   }
   
+  if(options?.mode) {
+    config.prefers = Object.assign({}, config.prefers, {
+      toDark: {
+        media: 'prefers-color-scheme',
+        selector: options.mode.replaceAll('{theme}', 'dark'),
+        prefers: 'light'
+      },
+      toLight: {
+        media: 'prefers-color-scheme',
+        selector: options.mode.replaceAll('{theme}', 'light'),
+        prefers: 'dark'
+      }
+    })
+  }
+  
   const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers, color: config.color}
   
   let watchFiles = []

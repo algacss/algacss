@@ -5,6 +5,7 @@ test('Reading provide/inject feature from file', async () => {
   //await execute()
   let result = await postcss([
     algacss({
+      mode: '.{theme}-mode',
       //src: './test/alga/**/*.alga'
       src: './test/alga/provide.alga'
     })
