@@ -344,17 +344,30 @@ select.select:not([multiple]) {
     flex: 1 1 auto;
     border-radius: 0
 }
-.group .groupItem:first-child {
+.group:not(.groupList) .groupItem:first-child {
     border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
-    border-right: none
+    border-bottom-left-radius: 0.375rem
 }
-.group .groupItem:last-child {
+.group:not(.groupList) .groupItem:last-child {
     border-top-right-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem
 }
-.group :not(.groupItem:first-child):not(.groupItem:last-child) {
-    border-right: none
+.group:not(.groupList) .groupItem:not(:last-child) {
+    border-right-color: transparent
+}
+.group.groupList {
+    flex-direction: column
+}
+.group.groupList .groupItem:first-child {
+    border-top-right-radius: 0.375rem;
+    border-top-left-radius: 0.375rem
+}
+.group.groupList .groupItem:last-child {
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem
+}
+.group.groupList .groupItem:not(:last-child) {
+    border-bottom-color: transparent
 }
 .group .input:focus, .group .select:focus {
     border-color: #d9d9d9

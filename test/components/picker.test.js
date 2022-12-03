@@ -31,7 +31,7 @@ test('Testing picker or dropdown component', async () => {
 }
 .select.pickerToggler {
     padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-right: 2.25rem;
     cursor: default
 }
 .pickerContent {

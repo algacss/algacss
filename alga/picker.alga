@@ -28,7 +28,7 @@
   }
     
   .select.pickerToggler {
-    ref: paddingLeft-0.75rem paddingRight-0.75rem cursor-default;
+    ref: paddingLeft-0.75rem paddingRight-2.25rem cursor-default;
   }
    
   .pickerContent {
