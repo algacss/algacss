@@ -12,16 +12,17 @@
 <br/>
 
 # Alga CSS
-Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](https://algacss.com 'Alga CSS')
+Alga CSS is a scope or component-first CSS toolkit for quickly mix or compose CSS components and properties, visit [https://algacss.com](https://algacss.com 'Alga CSS').
 
 Older version only work on Unix/Linux based operating system, if you're using Windows, that mean you need to use the newest version otherwise the default directives won't work (I mean all the CSS components from alga directory not being read), this is because of bug that I have fixed now.
+
+The documentation is still in development stage, so we expected it will finish around 2024. Because of that, if you use this Alga CSS, please check the examples folder, I put all the HTML/UI testing files in that folder and test folder as well.
 
 All the main features:
 1. Created for scoped CSS
 2. As a PostCSS plugin
-3. Composing or mixing CSS components
-5. Custom CSS helpers (preset, define, color, screen, etc.)
-6. Extract classes from Vue, HTML (Petite-Vue, Alpine.js), Astro, Svelte, and JSX/TSX
+3. Can be store as a CSS component
+4. Extract classes from any major JS Frameworks
 
 ## Installation and Setup
 Alga CSS built on top of PostCSS, so before installing Alga CSS, you need to have PostCSS first and after that you can use NPM or Yarn to install this Alga CSS.
