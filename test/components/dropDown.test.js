@@ -93,6 +93,10 @@ test('Testing dropDown on navBar component', async () => {
 .dropDown.show .dropDownBackdrop, .dropDown.show .dropDownMenu {
     display: block
 }
+.dropDown.dropDownUp .dropDownMenu {
+    top: auto;
+    bottom: 100%
+}
 @media (prefers-color-scheme: dark) {
     .dropDownMenu {
         background-color: #2f2f2f;

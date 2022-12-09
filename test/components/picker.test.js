@@ -91,15 +91,28 @@ test('Testing picker or dropdown component', async () => {
 }
 .pickerEnd .pickerContent {
     right: 0;
-    left: auto
+    left: auto;
+    text-align: left
 }
-.picker.suggestion.active .input.pickerToggler, .picker.suggestion.active .select.pickerToggler {
+.pickerUp .pickerContent {
+    bottom: 2.5rem;
+    top: auto
+}
+.picker:not(.pickerUp).suggestion.active .input.pickerToggler, .picker:not(.pickerUp).suggestion.active .select.pickerToggler {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0
 }
-.picker.suggestion.active .pickerContent {
+.picker:not(.pickerUp).suggestion.active .pickerContent {
     border-top-right-radius: 0;
     border-top-left-radius: 0
+}
+.picker.pickerUp.suggestion.active .input.pickerToggler, .picker.pickerUp.suggestion.active .select.pickerToggler {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0
+}
+.picker.pickerUp.suggestion.active .pickerContent {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
 }
 .picker.active .pickerContent {
     display: block

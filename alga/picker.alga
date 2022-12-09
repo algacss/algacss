@@ -98,16 +98,29 @@
   }
   
   .pickerEnd .pickerContent {
-    ref: right-0 left-auto;
+    ref: right-0 left-auto textAlign-left;
   }
   
-  .picker.suggestion.active .input.pickerToggler,
-  .picker.suggestion.active .select.pickerToggler {
+  .pickerUp .pickerContent {
+    ref: bottom-2.5rem top-auto;
+  }
+  
+  .picker:not(.pickerUp).suggestion.active .input.pickerToggler,
+  .picker:not(.pickerUp).suggestion.active .select.pickerToggler {
     ref: borderBottomRightRadius-0 borderBottomLeftRadius-0;
   }
   
-  .picker.suggestion.active .pickerContent {
+  .picker:not(.pickerUp).suggestion.active .pickerContent {
     ref: borderTopRightRadius-0 borderTopLeftRadius-0;
+  }
+  
+  .picker.pickerUp.suggestion.active .input.pickerToggler,
+  .picker.pickerUp.suggestion.active .select.pickerToggler {
+    ref: borderTopRightRadius-0 borderTopLeftRadius-0;
+  }
+  
+  .picker.pickerUp.suggestion.active .pickerContent {
+    ref: borderBottomRightRadius-0 borderBottomLeftRadius-0;
   }
   
   .picker.active .pickerContent {

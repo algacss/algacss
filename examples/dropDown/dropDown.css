@@ -2,7 +2,9 @@
     position: relative
 }
 .dropDownToggler {
-    white-space: nowrap
+    white-space: nowrap;
+    display: flex;
+    align-items: center
 }
 .dropDownToggler::after {
     content: "";
@@ -54,7 +56,8 @@
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
-    border: 0px
+    border: 0px;
+    cursor: pointer
 }
 .dropDownMenu .dropDownItem:hover {
     background-color: #ededed
@@ -85,6 +88,10 @@
 }
 .dropDown.show .dropDownBackdrop, .dropDown.show .dropDownMenu {
     display: block
+}
+.dropDown.dropDownUp .dropDownMenu {
+    top: auto;
+    bottom: 100%
 }
 @media (prefers-color-scheme: dark) {
     .dropDownMenu {

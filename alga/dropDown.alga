@@ -75,5 +75,11 @@
         ref: display-block;
       }
     }
+    
+    &.{refs.name}Up {
+      .{refs.name}Menu {
+        ref: top-auto bottom-100pct;
+      }
+    }
   }
 }

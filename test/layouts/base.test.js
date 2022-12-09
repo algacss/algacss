@@ -23,6 +23,12 @@ html {
     background-color: #fff;
     color: #15181c
 }
+html[data-mode=light] {
+    color-scheme: only light
+}
+html[data-mode=dark] {
+    color-scheme: only dark
+}
 body {
     font-family: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
     background-color: #fff;

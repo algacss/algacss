@@ -19,6 +19,12 @@ html {
     background-color: #fff;
     color: #15181c
 }
+html[data-mode=light] {
+    color-scheme: only light
+}
+html[data-mode=dark] {
+    color-scheme: only dark
+}
 body {
     font-family: Inter, Avenir, 'Calibri', Arial, sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'Apple Color Emoji', 'Segoe UI Emoji';
     background-color: #fff;
@@ -140,7 +146,7 @@ img, svg {
         background-color: #242424;
         color: #e2e2e2
     }
-    [data-mode=dark] body {
+    html[data-mode=dark] body {
         background-color: #242424;
         color: #e2e2e2
     }
@@ -150,7 +156,7 @@ img, svg {
         background-color: #fff;
         color: #15181c
     }
-    [data-mode=light] body {
+    html[data-mode=light] body {
         background-color: #fff;
         color: #15181c
     }

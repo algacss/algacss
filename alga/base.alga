@@ -7,7 +7,8 @@
   fontSize: 1rem;
   fontWeight: 400;
   lineHeight: 1.5;
-  charset: false;
+  colorSchemeLight: [data-mode=light];
+  colorSchemeDark: [data-mode=dark];
 }
 
 @alga base {
@@ -30,6 +31,14 @@
     prefers-dark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toDark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toLight: backgroundColor-{props.bgLight} color-{props.fgLight};
+  }
+  
+  html{props.colorSchemeLight} {
+    ref-colorScheme: only light;
+  }
+  
+  html{props.colorSchemeDark} {
+    ref-colorScheme: only dark;
   }
   
   body {
