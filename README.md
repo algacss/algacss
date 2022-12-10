@@ -44,12 +44,8 @@ module.exports = {
   plugins: [
     algacss({
       extract: [
-        './src/**/*.vue', 
         './src/**/*.html', 
-        './src/**/*.astro', 
-        './src/**/*.svelte', 
-        './src/**/*.jsx', 
-        './src/**/*.tsx'
+        './src/**/*.{otherFormat}'
       ],
       src: './src/styles/*.alga'
     })

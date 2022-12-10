@@ -223,16 +223,9 @@ function readPath(rp, opts) {
 module.exports = (paths, opts) => {
   let component = {}
   
-  const coreFiles = fs.readdirSync(path.resolve(__dirname, './../../alga'))
-  if(coreFiles) {
-    for(let file of coreFiles) {
-      if(file.endsWith('alga.css') || file.endsWith('.alga')) {
-        if(file.includes(opts.componentName)) {
-          component = Object.assign({}, component, readPath(path.resolve(__dirname, './../../alga') + '/' + file, opts))
-          break;
-        }
-      }
-    }
+  const coreFile = path.resolve(__dirname, './../../alga/'+opts.componentName+'.alga')
+  if(fs.existsSync(coreFile)) {
+    component = Object.assign({}, component, readPath(coreFile, opts))
   }
   
   if(typeof paths === 'string') {
