@@ -37,7 +37,7 @@ module.exports = (ref, source, opts) => {
         newRule.append(bgDeclVal)
         const bdDeclVal = postcss.decl({ prop: 'border-color', value: value(newValue, opts) + ' !important', source: source })
         newRule.append(bdDeclVal)
-        const fgDeclVal = postcss.decl({ prop: 'color', value: '#fff', source: source })
+        const fgDeclVal = postcss.decl({ prop: 'color', value: '#fff !important', source: source })
         newRule.append(fgDeclVal)
       } else if(Object.keys(shorts).includes(refs[1])) {
         const newShorts = shorts[refs[1]]
@@ -82,7 +82,7 @@ module.exports = (ref, source, opts) => {
         newRule.append(bgDeclVal)
         const bdDeclVal = postcss.decl({ prop: 'border-color', value: value(newValue, opts) + ' !important', source: source })
         newRule.append(bdDeclVal)
-        const fgDeclVal = postcss.decl({ prop: 'color', value: '#fff', source: source })
+        const fgDeclVal = postcss.decl({ prop: 'color', value: '#fff !important', source: source })
         newRule.append(fgDeclVal)
       } else if(Object.keys(shorts).includes(refs[0])) {
         const newShorts = shorts[refs[0]]

@@ -72,9 +72,9 @@
       ref: backgroundRepeat-noRepeat;
       ref-backgroundPosition: right calc(.375em + .1875rem) center;
       ref-backgroundSize: calc(.75em + .375rem) calc(.75em + .375rem);
-      prefers-dark: backgroundColor-hex242424;
-      prefers-toDark: backgroundColor-hex242424;
-      prefers-toLight: backgroundColor-hexf1fff8;
+      prefers-dark: backgroundColor-hex242424 borderColor-hex198754;
+      prefers-toDark: backgroundColor-hex242424 borderColor-hex198754;
+      prefers-toLight: backgroundColor-hexf1fff8 borderColor-hex198754;
     }
       
     .validMessage {
@@ -95,9 +95,9 @@
       ref: backgroundRepeat-noRepeat;
       ref-backgroundPosition: right calc(.375em + .1875rem) center;
       ref-backgroundSize: calc(.75em + .375rem) calc(.75em + .375rem);
-      prefers-dark: backgroundColor-hex242424;
-      prefers-toDark: backgroundColor-hex242424;
-      prefers-toLight: backgroundColor-hexfbf1f2;
+      prefers-dark: backgroundColor-hex242424 borderColor-hexdc3545;
+      prefers-toDark: backgroundColor-hex242424 borderColor-hexdc3545;
+      prefers-toLight: backgroundColor-hexfbf1f2 borderColor-hexdc3545;
     }
       
     .invalidMessage {

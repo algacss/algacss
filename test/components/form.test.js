@@ -150,10 +150,12 @@ select.select:not([multiple]) {
         border-color: transparent
     }
     .valid, .validated :valid {
-        background-color: #242424
+        background-color: #242424;
+        border-color: #198754
     }
     .invalid, .validated :invalid {
-        background-color: #242424
+        background-color: #242424;
+        border-color: #dc3545
     }
 }
 @media (prefers-color-scheme: light) {
@@ -176,10 +178,12 @@ select.select:not([multiple]) {
         border-color: transparent
     }
     html[data-mode=dark] .valid, html[data-mode=dark] .validated :valid {
-        background-color: #242424
+        background-color: #242424;
+        border-color: #198754
     }
     html[data-mode=dark] .invalid, html[data-mode=dark] .validated :invalid {
-        background-color: #242424
+        background-color: #242424;
+        border-color: #dc3545
     }
 }
 @media (prefers-color-scheme: dark) {
@@ -202,10 +206,12 @@ select.select:not([multiple]) {
         border-color: transparent
     }
     html[data-mode=light] .valid, html[data-mode=light] .validated :valid {
-        background-color: #f1fff8
+        background-color: #f1fff8;
+        border-color: #198754
     }
     html[data-mode=light] .invalid, html[data-mode=light] .validated :invalid {
-        background-color: #fbf1f2
+        background-color: #fbf1f2;
+        border-color: #dc3545
     }
 }
 .check {
