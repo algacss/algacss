@@ -41,7 +41,7 @@
     }
     
     &.active {
-      ref: display-block;
+      ref: display-block overflowY-auto;
       screen-mb: display-block;
       
       .sideBackdrop {

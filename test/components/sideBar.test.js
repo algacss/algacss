@@ -41,7 +41,8 @@ test('Testing sideBar component', async () => {
     flex-grow: 1
 }
 .sideBar.active {
-    display: block
+    display: block;
+    overflow-y: auto
 }
 .sideBar.active .sideBackdrop {
     display: block
