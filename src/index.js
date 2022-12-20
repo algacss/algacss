@@ -105,6 +105,21 @@ function algacss(options) {
   
   return {
     Once (root, {Rule, Declaration, AtRule}) {
+      root.walkAtRules('define', rule => {
+        if(rule.params?.trim() === 'states') {
+          if(rule?.nodes) {
+            for(let node of rule.nodes) {
+              if(node.type === 'decl' && node?.prop) {
+                config.states[node.prop] = {
+                  value: node.value,
+                  source: node.source
+                }
+              }
+            }
+          }
+        }
+      })
+      
       root.walkAtRules('use', rule => {
         let param = rule.params.trim()
         let name = param

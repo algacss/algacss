@@ -18,9 +18,22 @@ const processStyle = (value = '') => {
     }
   }
   
+  const argvKeys = Object.keys(argv).filter(i => i !== '_')
+  
+  let renderCss = `@use ${path.basename(value).split('.')[0]};`
+  if(argvKeys.length >= 1) {
+    let newCssProp = '{'
+    for(let argvKey of argvKeys) {
+      newCssProp += `${argvKey}: ${argv[argvKey]};`
+    }
+    newCssProp += '}'
+    
+    renderCss = `@use ${path.basename(value).split('.')[0]} ${newCssProp}`
+  }
+  
   let result = postcss([
     algacss(option)
-  ]).process(`@use ${path.basename(value).split('.')[0]};`, { from: undefined })
+  ]).process(renderCss, { from: value })
   
   return result.css
 }
