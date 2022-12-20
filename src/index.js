@@ -9,6 +9,7 @@ const color = require('./configs/color.js')
 
 // Cores
 const component = require('./cores/component.js')
+const componentTwo = require('./cores/component2.js')
 const declaration = require('./cores/declaration.js')
 const extraction = require('./cores/extraction.js')
 const render = require('./cores/render.js')
@@ -27,7 +28,8 @@ function algacss(options) {
     color: Object.assign({}, color, options?.color),
     components: {},
     extract: {raws: [], rules: []},
-    helpers: []
+    helpers: [],
+    states: {}
   }
   
   if(options?.mode) {
@@ -111,7 +113,68 @@ function algacss(options) {
           param = prms[0].trim()
           name = prms[1].trim()
         }
-        if(!name.includes('helpers') && !config.components[name]) {
+        
+        /* Component v2 */
+        
+        if(name.includes('helpers') || param.includes('helpers')) {
+          if(root.source?.input?.from) {
+            config.helpers.push(root.source.input.from)
+          }
+          config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
+          
+          if(config.extract.rules.length >= 1) {
+            root.append(...config.extract.rules)
+          }
+          rule.remove()
+        } else {
+          let fileName = param
+          let componentName = name
+          
+          let newProps = {}
+          if(rule?.nodes) {
+            for(let node of rule.nodes) {
+              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
+                const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
+                for(let ruleNode of node.nodes) {
+                  if(ruleNodeName === 'props') {
+                    if(ruleNode.type === 'decl' && ruleNode?.prop) {
+                      newProps[ruleNode.prop] = {
+                        value: ruleNode.value,
+                        source: ruleNode.source
+                      }
+                    }
+                  }
+                }
+              } else {
+                if(node.type === 'decl' && node?.prop) {
+                  newProps[node.prop] = {
+                    value: node.value,
+                    source: node.source
+                  }
+                }
+              }
+            }
+          }
+          
+          const newComponentTwo = componentTwo(options?.src, fileName, componentName, {
+            props: Object.assign({}, config.states, newProps),
+            preset: config.preset, 
+            screen: config.screen, 
+            state: config.state, 
+            prefers: config.prefers, 
+            color: config.color
+          })
+          
+          if(newComponentTwo) {
+            rule.replaceWith(newComponentTwo)
+          } else {
+            rule.remove()
+          }
+        }
+        
+        /* Component v1 */
+        
+        /*if(!name.includes('helpers') && !config.components[name]) {
           config.components = Object.assign({}, config.components, component(options?.src, {...opts, componentName: name}))
         }
         if(name.includes('helpers') || param.includes('helpers')) {
@@ -169,7 +232,7 @@ function algacss(options) {
           rule.replaceWith(newRoot)
         } else {
           rule.remove()
-        }
+        }*/
       })
       
       root.walkAtRules('ref', rule => {
