@@ -8,6 +8,8 @@
     ref: borderLeft-5px_solid_hexc3c0c0 borderRadius-0.375rem;
     ref: backgroundColor-hexf1ebeb padding-1rem color-hex5c5b5b;
     prefers-dark: backgroundColor-hex2f2f2f color-hexe2e2e2 borderColor-hex828181;
+    prefers-toDark: backgroundColor-hex2f2f2f color-hexe2e2e2 borderColor-hex828181;
+    prefers-toLight: backgroundColor-hexf1ebeb color-hex5c5b5b borderColor-hexc3c0c0;
     
     .alertContent {
       ref: flexGrow-1;
@@ -38,6 +40,8 @@
     .alert.alertSuccess {
       ref: borderColor-hex008200 backgroundColor-hexbaffba color-hex2d5a2d;
       prefers-dark: backgroundColor-hex1f6a1f color-hexd4ffd4;
+      prefers-toDark: backgroundColor-hex1f6a1f color-hexd4ffd4;
+      prefers-toLight: backgroundColor-hexbaffba color-hex2d5a2d;
     }
   }
   
@@ -45,6 +49,8 @@
     .alert.alertInfo {
       ref: borderColor-hex0061eb backgroundColor-hexcde2ff color-hex364150;
       prefers-dark: backgroundColor-hex1d4985 color-hexddebff;
+      prefers-toDark: backgroundColor-hex1d4985 color-hexddebff;
+      prefers-toLight: backgroundColor-hexcde2ff color-hex364150;
     }
   }
   
@@ -52,6 +58,8 @@
     .alert.alertWarning {
       ref: borderColor-hexeb8f00 backgroundColor-hexfce2ba color-hex635540;
       prefers-dark: backgroundColor-hex8e6528 color-hexffedd1;
+      prefers-toDark: backgroundColor-hex8e6528 color-hexffedd1;
+      prefers-toLight: backgroundColor-hexfce2ba color-hex635540;
     }
   }
   
@@ -59,6 +67,8 @@
     .alert.alertError {
       ref: borderColor-hexc10202 backgroundColor-hexfec4c4 color-hex5c3939;
       prefers-dark: backgroundColor-hexa53737 color-hexffeaea;
+      prefers-toDark: backgroundColor-hexa53737 color-hexffeaea;
+      prefers-toLight: backgroundColor-hexfec4c4 color-hex5c3939;
     }
   }
   
@@ -79,6 +89,8 @@
         ref: backgroundColor-hexfff color-hex595959 width-500px marginRight-auto marginLeft-auto borderRadius-0.375rem;
         ref-boxShadow: 0 5px 22px 0 rgba(0,0,0,0.2);
         prefers-dark: backgroundColor-hex2f2f2f color-hexe2e2e2 borderColor-hexe2e2e2;
+        prefers-toDark: backgroundColor-hex2f2f2f color-hexe2e2e2 borderColor-hexe2e2e2;
+        prefers-toLight: backgroundColor-hexfff color-hex595959 borderColor-hexfff;
       }
     }
     &.active .alertDialog {

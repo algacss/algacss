@@ -85,21 +85,6 @@ test('Testing step wizard component', async () => {
 .stepFill .stepItem.active .stepFeature {
     background-color: #428bca
 }
-@media (prefers-color-scheme: dark) {
-    .stepFill .stepItem {
-        background-color: #3f3f3f
-    }
-}
-@media (prefers-color-scheme: light) {
-    html[data-mode=dark] .stepFill .stepItem {
-        background-color: #3f3f3f
-    }
-}
-@media (prefers-color-scheme: dark) {
-    html[data-mode=light] .stepFill .stepItem {
-        background-color: #f2f2f2
-    }
-}
 .stepArrow {
     background-color: #f2f2f2;
     border-left: 1px solid #d2d2d2;
@@ -168,6 +153,16 @@ test('Testing step wizard component', async () => {
     border-left-color: #428bca
 }
 @media (prefers-color-scheme: dark) {
+    .step::before {
+        background-color: #3f3f3f
+    }
+    .stepItem .stepFeature {
+        background-color: #2f2f2f;
+        border-color: #4f4f4f
+    }
+    .stepFill .stepItem {
+        background-color: #3f3f3f
+    }
     .stepArrow {
         background-color: #2f2f2f;
         border-color: #5f5f5f
@@ -183,6 +178,16 @@ test('Testing step wizard component', async () => {
     }
 }
 @media (prefers-color-scheme: light) {
+    html[data-mode=dark] .step::before {
+        background-color: #3f3f3f
+    }
+    html[data-mode=dark] .stepItem .stepFeature {
+        background-color: #2f2f2f;
+        border-color: #4f4f4f
+    }
+    html[data-mode=dark] .stepFill .stepItem {
+        background-color: #3f3f3f
+    }
     html[data-mode=dark] .stepArrow {
         background-color: #2f2f2f;
         border-color: #5f5f5f
@@ -198,6 +203,16 @@ test('Testing step wizard component', async () => {
     }
 }
 @media (prefers-color-scheme: dark) {
+    html[data-mode=light] .step::before {
+        background-color: #f2f2f2
+    }
+    html[data-mode=light] .stepItem .stepFeature {
+        background-color: #999;
+        border-color: #eee
+    }
+    html[data-mode=light] .stepFill .stepItem {
+        background-color: #f2f2f2
+    }
     html[data-mode=light] .stepArrow {
         background-color: #f2f2f2;
         border-color: #d2d2d2
@@ -210,33 +225,6 @@ test('Testing step wizard component', async () => {
     }
     html[data-mode=light] .stepArrow .stepItem.active:before, html[data-mode=light] .stepArrow .stepItem.active:after {
         border-left-color: #428bca
-    }
-}
-@media (prefers-color-scheme: dark) {
-    .step::before {
-        background-color: #3f3f3f
-    }
-    .stepItem .stepFeature {
-        background-color: #2f2f2f;
-        border-color: #4f4f4f
-    }
-}
-@media (prefers-color-scheme: light) {
-    html[data-mode=dark] .step::before {
-        background-color: #3f3f3f
-    }
-    html[data-mode=dark] .stepItem .stepFeature {
-        background-color: #2f2f2f;
-        border-color: #4f4f4f
-    }
-}
-@media (prefers-color-scheme: dark) {
-    html[data-mode=light] .step::before {
-        background-color: #f2f2f2
-    }
-    html[data-mode=light] .stepItem .stepFeature {
-        background-color: #999;
-        border-color: #eee
     }
 }`
   await execute(input, output, {log: false, file: './examples/step/step.css'})

@@ -33,27 +33,6 @@ test('Testing tags, tag input, and badge component', async () => {
     justify-content: flex-start;
     gap: 0.5rem
 }
-@media (prefers-color-scheme: dark) {
-    .tag {
-        background-color: #2f2f2f;
-        color: #fff;
-        border-color: #5f5f5f
-    }
-}
-@media (prefers-color-scheme: light) {
-    html[data-mode=dark] .tag {
-        background-color: #2f2f2f;
-        color: #fff;
-        border-color: #5f5f5f
-    }
-}
-@media (prefers-color-scheme: dark) {
-    html[data-mode=light] .tag {
-        background-color: #f2f2f2;
-        color: #2f2f2f;
-        border-color: #d9d9d9
-    }
-}
 .taggable {
     width: auto
 }
@@ -120,45 +99,6 @@ test('Testing tags, tag input, and badge component', async () => {
     border-top-left-radius: 0;
     display: block
 }
-@media (prefers-color-scheme: dark) {
-    .tagContent {
-        background-color: #2f2f2f;
-        border-color: #5f5f5f
-    }
-    .tagContent .tagItem {
-        border-bottom-color: #5f5f5f;
-        color: #f2f2f2
-    }
-    .tagContent .tagItem:hover {
-        background-color: #242424
-    }
-}
-@media (prefers-color-scheme: light) {
-    html[data-mode=dark] .tagContent {
-        background-color: #2f2f2f;
-        border-color: #5f5f5f
-    }
-    html[data-mode=dark] .tagContent .tagItem {
-        border-bottom-color: #5f5f5f;
-        color: #f2f2f2
-    }
-    html[data-mode=dark] .tagContent .tagItem:hover {
-        background-color: #242424
-    }
-}
-@media (prefers-color-scheme: dark) {
-    html[data-mode=light] .tagContent {
-        background-color: #fff;
-        border-color: #d9d9d9
-    }
-    html[data-mode=light] .tagContent .tagItem {
-        border-bottom-color: #d9d9d9;
-        color: #283541
-    }
-    html[data-mode=light] .tagContent .tagItem:hover {
-        background-color: #ededed
-    }
-}
 .badge {
     display: inline;
     margin-top: 0px;
@@ -176,6 +116,60 @@ test('Testing tags, tag input, and badge component', async () => {
 }
 .badgeRound {
     border-radius: 99px
+}
+@media (prefers-color-scheme: dark) {
+    .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+    .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+    html[data-mode=dark] .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    html[data-mode=dark] .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    html[data-mode=dark] .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .tag {
+        background-color: #f2f2f2;
+        color: #2f2f2f;
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .tagContent {
+        background-color: #fff;
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .tagContent .tagItem {
+        border-bottom-color: #d9d9d9;
+        color: #283541
+    }
+    html[data-mode=light] .tagContent .tagItem:hover {
+        background-color: #ededed
+    }
 }`
   await execute(input, output, {log: false, file: './examples/tags/tags.css'})
 })

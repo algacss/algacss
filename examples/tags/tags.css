@@ -17,7 +17,8 @@
 }
 .tag.groupItem:last-child {
     padding-right: 5px;
-    padding-left: 5px
+    padding-left: 5px;
+    cursor: pointer
 }
 .tag.groupItem svg {
     pointer-events: none
@@ -28,38 +29,16 @@
     justify-content: flex-start;
     gap: 0.5rem
 }
-@media (prefers-color-scheme: dark) {
-    .tag {
-        background-color: #2f2f2f;
-        color: #fff;
-        border-color: #5f5f5f
-    }
-}
-@media (prefers-color-scheme: light) {
-    [data-mode=dark] .tag {
-        background-color: #2f2f2f;
-        color: #fff;
-        border-color: #5f5f5f
-    }
-}
-@media (prefers-color-scheme: dark) {
-    [data-mode=light] .tag {
-        background-color: #f2f2f2;
-        color: #2f2f2f;
-        border-color: #d9d9d9
-    }
-}
 .taggable {
     width: auto
 }
 .tagWrap {
     display: block;
-    position: relative;
-    z-index: 6
+    position: relative
 }
 .tagBackdrop {
     position: fixed;
-    z-index: 5;
+    z-index: 74;
     inset: 0 3em 3em 0;
     width: 100vw;
     height: 100vh;
@@ -81,7 +60,7 @@
 }
 .tagContent {
     position: absolute;
-    z-index: 7;
+    z-index: 75;
     top: 100%;
     left: 0;
     background-color: #fff;
@@ -98,7 +77,8 @@
     padding: 0.675rem 0.75rem;
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
-    color: #283541
+    color: #283541;
+    cursor: pointer
 }
 .tagContent .tagItem:last-child {
     border-bottom: 0
@@ -114,45 +94,6 @@
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     display: block
-}
-@media (prefers-color-scheme: dark) {
-    .tagContent {
-        background-color: #2f2f2f;
-        border-color: #5f5f5f
-    }
-    .tagContent .tagItem {
-        border-bottom-color: #5f5f5f;
-        color: #f2f2f2
-    }
-    .tagContent .tagItem:hover {
-        background-color: #242424
-    }
-}
-@media (prefers-color-scheme: light) {
-    [data-mode=dark] .tagContent {
-        background-color: #2f2f2f;
-        border-color: #5f5f5f
-    }
-    [data-mode=dark] .tagContent .tagItem {
-        border-bottom-color: #5f5f5f;
-        color: #f2f2f2
-    }
-    [data-mode=dark] .tagContent .tagItem:hover {
-        background-color: #242424
-    }
-}
-@media (prefers-color-scheme: dark) {
-    [data-mode=light] .tagContent {
-        background-color: #fff;
-        border-color: #d9d9d9
-    }
-    [data-mode=light] .tagContent .tagItem {
-        border-bottom-color: #d9d9d9;
-        color: #283541
-    }
-    [data-mode=light] .tagContent .tagItem:hover {
-        background-color: #ededed
-    }
 }
 .badge {
     display: inline;
@@ -171,4 +112,58 @@
 }
 .badgeRound {
     border-radius: 99px
+}
+@media (prefers-color-scheme: dark) {
+    .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+    .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .tag {
+        background-color: #2f2f2f;
+        color: #fff;
+        border-color: #5f5f5f
+    }
+    html[data-mode=dark] .tagContent {
+        background-color: #2f2f2f;
+        border-color: #5f5f5f
+    }
+    html[data-mode=dark] .tagContent .tagItem {
+        border-bottom-color: #5f5f5f;
+        color: #f2f2f2
+    }
+    html[data-mode=dark] .tagContent .tagItem:hover {
+        background-color: #242424
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .tag {
+        background-color: #f2f2f2;
+        color: #2f2f2f;
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .tagContent {
+        background-color: #fff;
+        border-color: #d9d9d9
+    }
+    html[data-mode=light] .tagContent .tagItem {
+        border-bottom-color: #d9d9d9;
+        color: #283541
+    }
+    html[data-mode=light] .tagContent .tagItem:hover {
+        background-color: #ededed
+    }
 }

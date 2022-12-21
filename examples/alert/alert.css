@@ -35,44 +35,20 @@
     background-color: #baffba;
     color: #2d5a2d
 }
-@media (prefers-color-scheme: dark) {
-    .alert.alertSuccess {
-        background-color: #1f6a1f;
-        color: #d4ffd4
-    }
-}
 .alert.alertInfo {
     border-color: #0061eb;
     background-color: #cde2ff;
     color: #364150
-}
-@media (prefers-color-scheme: dark) {
-    .alert.alertInfo {
-        background-color: #1d4985;
-        color: #ddebff
-    }
 }
 .alert.alertWarning {
     border-color: #eb8f00;
     background-color: #fce2ba;
     color: #635540
 }
-@media (prefers-color-scheme: dark) {
-    .alert.alertWarning {
-        background-color: #8e6528;
-        color: #ffedd1
-    }
-}
 .alert.alertError {
     border-color: #c10202;
     background-color: #fec4c4;
     color: #5c3939
-}
-@media (prefers-color-scheme: dark) {
-    .alert.alertError {
-        background-color: #a53737;
-        color: #ffeaea
-    }
 }
 .alertModal {
     position: absolute;
@@ -179,9 +155,81 @@
         color: #e2e2e2;
         border-color: #828181
     }
+    .alert.alertSuccess {
+        background-color: #1f6a1f;
+        color: #d4ffd4
+    }
+    .alert.alertInfo {
+        background-color: #1d4985;
+        color: #ddebff
+    }
+    .alert.alertWarning {
+        background-color: #8e6528;
+        color: #ffedd1
+    }
+    .alert.alertError {
+        background-color: #a53737;
+        color: #ffeaea
+    }
     .alertModal .alertDialog .alertContent {
         background-color: #2f2f2f;
         color: #e2e2e2;
         border-color: #e2e2e2
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .alert {
+        background-color: #2f2f2f;
+        color: #e2e2e2;
+        border-color: #828181
+    }
+    html[data-mode=dark] .alert.alertSuccess {
+        background-color: #1f6a1f;
+        color: #d4ffd4
+    }
+    html[data-mode=dark] .alert.alertInfo {
+        background-color: #1d4985;
+        color: #ddebff
+    }
+    html[data-mode=dark] .alert.alertWarning {
+        background-color: #8e6528;
+        color: #ffedd1
+    }
+    html[data-mode=dark] .alert.alertError {
+        background-color: #a53737;
+        color: #ffeaea
+    }
+    html[data-mode=dark] .alertModal .alertDialog .alertContent {
+        background-color: #2f2f2f;
+        color: #e2e2e2;
+        border-color: #e2e2e2
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .alert {
+        background-color: #f1ebeb;
+        color: #5c5b5b;
+        border-color: #c3c0c0
+    }
+    html[data-mode=light] .alert.alertSuccess {
+        background-color: #baffba;
+        color: #2d5a2d
+    }
+    html[data-mode=light] .alert.alertInfo {
+        background-color: #cde2ff;
+        color: #364150
+    }
+    html[data-mode=light] .alert.alertWarning {
+        background-color: #fce2ba;
+        color: #635540
+    }
+    html[data-mode=light] .alert.alertError {
+        background-color: #fec4c4;
+        color: #5c3939
+    }
+    html[data-mode=light] .alertModal .alertDialog .alertContent {
+        background-color: #fff;
+        color: #595959;
+        border-color: #fff
     }
 }

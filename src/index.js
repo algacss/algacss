@@ -9,7 +9,7 @@ const color = require('./configs/color.js')
 
 // Cores
 const component = require('./cores/component.js')
-const componentTwo = require('./cores/component2.js')
+const componentTwo = require('./cores/component21.js')
 const declaration = require('./cores/declaration.js')
 const extraction = require('./cores/extraction.js')
 const render = require('./cores/render.js')
