@@ -49,7 +49,7 @@ const declaration = (body, defs, opts) => {
     } else {
       const itemValues = Object.entries(item[itemKey].value)
       let selectorItemKey = itemKey
-      if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
+      /*if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
         selectorItemKey = itemKey
                           .replaceAll(/refs\((\w+)\)/g, '<=>refs===$1<=>')
                           .replaceAll(/props\((\w+)\)/g, '<=>props===$1<=>')
@@ -60,7 +60,7 @@ const declaration = (body, defs, opts) => {
           }
           return i
         }).filter(i => i !== '').join('')
-      }
+      }*/
       const newRule = postcss.rule({ selector: selectorItemKey, source: item[itemKey].source })
       for(let [key, val] of itemValues) {
         const sourceItemVal = val.source
@@ -182,7 +182,7 @@ const declaration = (body, defs, opts) => {
       }
       for(let [itemKey, itemValue] of Object.entries(entryVal.value)) {
         let selectorItemKey = itemKey
-        if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
+        /*if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
           selectorItemKey = itemKey
                             .replaceAll(/refs\((\w+)\)/g, '<=>refs===$1<=>')
                             .replaceAll(/props\((\w+)\)/g, '<=>props===$1<=>')
@@ -193,7 +193,7 @@ const declaration = (body, defs, opts) => {
             }
             return i
           }).filter(i => i !== '').join('')
-        }
+        }*/
         const newRule = postcss.rule({ selector: selectorItemKey, source: entryVal.source })
         for(let [key, val] of Object.entries(itemValue)) {
           if(typeof val.value === 'string') {
@@ -272,7 +272,7 @@ const declaration = (body, defs, opts) => {
       let newAtRule = postcss.atRule({ name: 'media', params: `(${entryVal.media}: ${entryVal.prefers})`, source: entryVal.source })
       for(let [itemKey, itemValue] of Object.entries(entryVal.value)) {
         let selectorItemKey = itemKey
-        if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
+        /*if(selectorItemKey.includes('refs(') || selectorItemKey.includes('props(')) {
           selectorItemKey = itemKey
                             .replaceAll(/refs\((\w+)\)/g, '<=>refs===$1<=>')
                             .replaceAll(/props\((\w+)\)/g, '<=>props===$1<=>')
@@ -283,7 +283,7 @@ const declaration = (body, defs, opts) => {
             }
             return i
           }).filter(i => i !== '').join('')
-        }
+        }*/
         let newRule = postcss.rule({ selector: selectorItemKey, source: entryVal.source })
         if(entryVal?.selector) {
           if(selectorItemKey.trim() === 'html') {

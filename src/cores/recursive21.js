@@ -1,10 +1,10 @@
 const screen = require('../configs/screen.js')
 const camelDash = require('../helpers/camelDash.js')
-const reference = require('./reference.js')
-const selector = require('./selector.js')
+const reference = require('./reference21.js')
+const selector = require('./selector21.js')
 
 function recursiveFunc(root, prm, opt = {}) {
-  let param = (root.type === 'rule') ? selector(root, prm) : ''
+  let param = (root.type === 'rule') ? selector(root, prm, opt) : ''
   const recursiveArr = []
   const recursiveObj = {}
   recursiveObj[param] = {
@@ -89,7 +89,7 @@ function recursiveFunc(root, prm, opt = {}) {
                 
             for(let ifnode of node.nodes) {
               if(ifnode.type === 'rule') {
-                for(let par of selector(ifnode, param).split(',')) {
+                for(let par of selector(ifnode, param, opt).split(',')) {
                   recursiveArr.push(recursiveFunc(ifnode, par.trim(), opt))
                 }
               }
@@ -105,7 +105,7 @@ function recursiveFunc(root, prm, opt = {}) {
                 
             for(let ifnode of node.nodes) {
               if(ifnode.type === 'rule') {
-                for(let par of selector(ifnode, param).split(',')) {
+                for(let par of selector(ifnode, param, opt).split(',')) {
                   recursiveArr.push(recursiveFunc(ifnode, par.trim(), opt))
                 }
               }
@@ -114,7 +114,53 @@ function recursiveFunc(root, prm, opt = {}) {
           }
         }
         
-      } else if(node.type === 'rule') {
+      } else if(node.type === 'atrule' && node.name === 'for') {
+          if('nodes' in node) {
+            const forParams = node?.params?.trim() || ''
+            const forProps = opt.props
+            const forRefs = opt.refs
+            
+            if(forParams.includes(' in ')) {
+              const splitKey = forParams.split(/\sin\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+              
+                const firstVal = splitKey[0].trim()
+                const lastVal = forProps?.[splitKey[1].trim()]?.value.replaceAll(' ', '').split(',').filter(i => i !== '') || forRefs?.[splitKey[1].trim()]?.value.replaceAll(' ', '').split(',').filter(i => i !== '') || []
+                for(let forItem of lastVal) {
+                  if(forItem) {
+                    for(let fornode of node.nodes) {
+                      if(fornode.type === 'rule') {
+                        for(let par of selector(fornode, param, {...opt, [firstVal]: forItem}).split(',')) {
+                          recursiveArr.push(recursiveFunc(fornode, par.trim(), {...opt, [firstVal]: forItem}))
+                        }
+                      }
+                    }
+                  }
+                }
+                
+              }
+            } else if(forParams.includes(' of ')) {
+              const splitKey = forParams.split(/\sof\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+                
+                const firstVal = splitKey[0].trim()
+                const lastVal =  (isNaN(splitKey[1].trim()) === false) ? Number(splitKey[1].trim()) : 0
+                
+                for(let i = 1; i <= lastVal; i++) {
+                  for(let fornode of node.nodes) {
+                    if(fornode.type === 'rule') {
+                      for(let par of selector(fornode, param, {...opt, [firstVal]: i}).split(',')) {
+                        recursiveArr.push(recursiveFunc(fornode, par.trim(), {...opt, [firstVal]: i}))
+                      }
+                    }
+                  }
+                }
+                
+              }
+            }
+            
+          }
+        } else if(node.type === 'rule') {
         for(let par of param.split(',')) {
           recursiveArr.push(recursiveFunc(node, par.trim(), opt))
         }

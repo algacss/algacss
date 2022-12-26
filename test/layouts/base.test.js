@@ -117,14 +117,14 @@ summary {
     display: list-item
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    margin-top: 0.5rem;
+    margin-top: 0px;
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2
 }
 .p, p {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem
+    margin-top: 0px;
+    margin-bottom: 1rem
 }
 .mark, mark {
     background-color: #707070;

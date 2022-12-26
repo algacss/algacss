@@ -5,7 +5,7 @@ const path = require('path')
 const screen = require('../configs/screen.js')
 const camelDash = require('../helpers/camelDash.js')
 const randomChar = require('../helpers/randomChar.js')
-const reference = require('./reference.js')
+const reference = require('./reference21.js')
 const recursive = require('./recursive21.js')
 const declaration = require('./declaration21.js')
 
@@ -213,6 +213,54 @@ function readPath(rp, fileName, componentName, opts) {
                     'provide': component[fileName]['provide']
                   })
                   defineObj['content'][randId].push(ifRecursiveDefineObj.body)
+                }
+                
+              }
+            }
+            
+          }
+        } else if(dnode.type === 'atrule' && dnode.name === 'for') {
+          if('nodes' in dnode) {
+            const forParams = dnode?.params?.trim() || ''
+            const forProps = Object.assign({}, component[fileName]['props'], opts.props)
+            const forRefs = component[fileName]?.['refs'] || {}
+            
+            if(forParams.includes(' in ')) {
+              const splitKey = forParams.split(/\sin\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+              
+                const firstVal = splitKey[0].trim()
+                const lastVal = forProps?.[splitKey[1].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '') || forRefs?.[splitKey[1].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '') || []
+                for(let forItem of lastVal) {
+                  if(forItem) {
+                    for(let fornode of dnode.nodes) {
+                      let forRecursiveDefineObj = recursive(fornode, {
+                        ...refOpt,
+                        'provide': component[fileName]['provide'],
+                        [firstVal]: forItem
+                      })
+                      defineObj['content'][randId].push(forRecursiveDefineObj.body)
+                    }
+                  }
+                }
+                
+              }
+            } else if(forParams.includes(' of ')) {
+              const splitKey = forParams.split(/\sof\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+                
+                const firstVal = splitKey[0].trim()
+                const lastVal =  (isNaN(splitKey[1].trim()) === false) ? Number(splitKey[1].trim()) : 0
+                
+                for(let i = 1; i <= Number(lastVal); i++) {
+                  for(let fornode of dnode.nodes) {
+                    let forRecursiveDefineObj = recursive(fornode, {
+                      ...refOpt,
+                      'provide': component[fileName]['provide'],
+                      [firstVal]: i
+                    })
+                    defineObj['content'][randId].push(forRecursiveDefineObj.body)
+                  }
                 }
                 
               }

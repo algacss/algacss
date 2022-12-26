@@ -7,6 +7,7 @@
   bg: #360f29;
   fg: #c7c7c7;
   marginX: 2rem;
+  variants: red, green, blue;
 }
 
 @alga {refs.name} {
@@ -18,7 +19,7 @@
       ref: w-240px bgColor-{props.bg} fg-{props.fg};
       ref-backgroundImage: linear-gradient(to top left, {props.bg}, #97414d77);
     }
-
+    
     &Content {
 
       .{refs.class}Header {
@@ -61,4 +62,17 @@
       }
     }
   }
+  
+  @for variant in variants {
+    .variant{cap.variant} {
+      ref: color-{lower.variant} bdColor-{each.variant};
+    }
+  }
+
+  @for num of 10 {
+    .number-{each.num} {
+      ref: p-{each.num} m-{each.num};
+    }
+  }
+    
 }
