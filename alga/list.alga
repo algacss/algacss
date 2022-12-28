@@ -19,7 +19,7 @@
     
     .listMenu {
       ref: overflowY-auto;
-      props-maxHeight: calc(menu * 36px);
+      ref-maxHeight: calc({props.menu} * 36px);
     }
     
     .listItem {
@@ -55,8 +55,14 @@
     }
   }
   
-  .list.sizing {
+  .list.sizing,
+  .listSize {
     ref: overflowY-auto;
-    props-maxHeight: calc(menu * 36px);
+    ref-maxHeight: calc({props.menu} * 36px);
+  }
+  
+  .list.flush,
+  .listFlush {
+    ref: border-none borderRadius-0px;
   }
 }

@@ -18,7 +18,7 @@
     border-bottom: 1px solid #d9d9d9;
     text-decoration: none;
     color: #283541;
-    cursor: default
+    cursor: pointer
 }
 .list .listItem:last-child {
     border-bottom: 0
@@ -30,15 +30,20 @@
     pointer-events: none;
     border-color: #4890eb;
     background-color: #4c9bff;
-    color: #fff
+    color: #fff;
+    cursor: default
 }
 .list .listFooter {
     padding: 0.5rem;
     border-top: 1px solid #d9d9d9
 }
-.list.sizing {
+.list.sizing, .listSize {
     overflow-y: auto;
     max-height: calc(10 * 36px)
+}
+.list.flush, .listFlush {
+    border: none;
+    border-radius: 0px
 }
 @media (prefers-color-scheme: dark) {
     .list {
@@ -60,40 +65,40 @@
     }
 }
 @media (prefers-color-scheme: light) {
-    [data-mode=dark] .list {
+    html[data-mode=dark] .list {
         background-color: #2f2f2f;
         border-color: #5f5f5f
     }
-    [data-mode=dark] .list .listHeader {
+    html[data-mode=dark] .list .listHeader {
         border-bottom-color: #5f5f5f
     }
-    [data-mode=dark] .list .listItem {
+    html[data-mode=dark] .list .listItem {
         border-bottom-color: #5f5f5f;
         color: #f2f2f2
     }
-    [data-mode=dark] .list .listItem:hover {
+    html[data-mode=dark] .list .listItem:hover {
         background-color: #242424
     }
-    [data-mode=dark] .list .listFooter {
+    html[data-mode=dark] .list .listFooter {
         border-top-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
-    [data-mode=light] .list {
+    html[data-mode=light] .list {
         background-color: #fff;
         border-color: #d9d9d9
     }
-    [data-mode=light] .list .listHeader {
+    html[data-mode=light] .list .listHeader {
         border-bottom-color: #d9d9d9
     }
-    [data-mode=light] .list .listItem {
+    html[data-mode=light] .list .listItem {
         border-bottom-color: #d9d9d9;
         color: #283541
     }
-    [data-mode=light] .list .listItem:hover {
+    html[data-mode=light] .list .listItem:hover {
         background-color: #ededed
     }
-    [data-mode=light] .list .listFooter {
+    html[data-mode=light] .list .listFooter {
         border-top-color: #d9d9d9
     }
 }

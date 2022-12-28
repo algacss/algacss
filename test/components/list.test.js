@@ -41,9 +41,13 @@ test('Testing list group component', async () => {
     padding: 0.5rem;
     border-top: 1px solid #d9d9d9
 }
-.list.sizing {
+.list.sizing, .listSize {
     overflow-y: auto;
     max-height: calc(10 * 36px)
+}
+.list.flush, .listFlush {
+    border: none;
+    border-radius: 0px
 }
 @media (prefers-color-scheme: dark) {
     .list {
