@@ -5,6 +5,7 @@
 @alga list {
   .list {
     ref: width-100pct backgroundColor-hexfff border-1px_solid_hexd9d9d9 borderRadius-0.375rem;
+    ref: margin-0px padding-0px;
     prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toLight: backgroundColor-hexfff borderColor-hexd9d9d9;

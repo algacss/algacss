@@ -226,8 +226,7 @@ select.select:not([multiple]) {
     border-color: #d9d9d9
 }
 .button {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     font-weight: 400;
     color: #283541;
     text-align: center;

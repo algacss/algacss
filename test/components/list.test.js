@@ -6,7 +6,9 @@ test('Testing list group component', async () => {
     width: 100%;
     background-color: #fff;
     border: 1px solid #d9d9d9;
-    border-radius: 0.375rem
+    border-radius: 0.375rem;
+    margin: 0px;
+    padding: 0px
 }
 .list .listHeader {
     padding: 0.5rem;
