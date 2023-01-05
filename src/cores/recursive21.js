@@ -28,6 +28,9 @@ function recursiveFunc(root, prm, opt = {}) {
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, splitRefsObj)
       } else if(node.type === 'decl' && node.prop.startsWith('props-')) {
         let splitProps = node.prop.split('-')[1]
+        if('preset' in opt && Object.keys(opt.preset).includes(splitProps)) {
+          splitProps = opt.preset[splitProps]
+        }
         let splitPropsObj = {}
         splitPropsObj[camelDash(splitProps)] = {
           value: '{'+node.value+'}',

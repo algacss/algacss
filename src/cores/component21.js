@@ -70,6 +70,9 @@ function readPath(rp, fileName, componentName, opts) {
           defineObj[param].value = Object.assign({}, defineObj[param].value, splitRefsObj)
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('props-')) {
           let splitProps = dnode.prop.split('-')[1]
+          if('preset' in opts && Object.keys(opts.preset).includes(splitProps)) {
+            splitProps = opts.preset[splitProps]
+          }
           let splitPropsObj = {}
           splitPropsObj[splitProps] = {
             value: '{'+dnode.value+'}',
