@@ -197,6 +197,11 @@ test('Testing navBar component', async () => {
     html[data-mode=light] .navBar .navWrap .navEnd.active .navMenu .navItem:hover {
         background-color: #cac7c7
     }
+}
+@media print {
+    .navBar {
+        display: none
+    }
 }`
   await execute(input, output, {log: false, file: './examples/navBar/navBar.css'})
 })

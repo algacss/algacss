@@ -11,6 +11,11 @@ const declaration = (body, defs, opts) => {
   const screen = Object.assign({}, flatScreen(opts.screen))
   const state = Object.assign({}, statusValue(opts.state))
   const prefers = Object.assign({}, statusValue(opts.prefers))
+  const print = {
+    value: {},
+    status: false,
+    source: undefined
+  }
   const newColor = opts?.color || color
   let ruleArray = []
   let atRuleArray = []
@@ -36,7 +41,7 @@ const declaration = (body, defs, opts) => {
             }
           } else {
             let declVal = undefined
-            if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
+            /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               let newDeclVal = val.value.replace('{', '').replace('}', '').trim()
               const splitDeclVal = newDeclVal.split(/\(|\)|\s|,/g).filter(i => i !== '')
               if(Number(splitDeclVal.length) === 1) {
@@ -49,7 +54,7 @@ const declaration = (body, defs, opts) => {
                 }
                 declVal = postcss.decl({ prop: key.trim(), value: newDeclVal, source: sourceItemVal })
               }
-            } else {
+            } else {*/
               declVal = postcss.decl({ prop: key.trim(), value: val.value.trim().split(' ').map(i => {
                 if(i.startsWith('refs(') || i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
@@ -106,7 +111,7 @@ const declaration = (body, defs, opts) => {
                 }
                 return i
               }).join(' ').trim(), source: sourceItemVal })
-            }
+            //}
             newRule.append(declVal)
           }
         } else {
@@ -126,7 +131,14 @@ const declaration = (body, defs, opts) => {
               prefers[splitKey[1]].source = sourceItemVal
               
             }
+          } else {
+            if(key === 'print') {
+              print['value'][itemKey] = Object.assign({}, print['value'][itemKey], val)
+              print['status'] = true
+              print['source'] = sourceItemVal
+            }
           }
+          
         }
       }
       
@@ -150,9 +162,9 @@ const declaration = (body, defs, opts) => {
         for(let [key, val] of Object.entries(itemValue)) {
           if(typeof val.value === 'string') {
             let declVal = undefined
-            if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
+            /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
-            } else {
+            } else {*/
               declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
                 if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
@@ -209,7 +221,7 @@ const declaration = (body, defs, opts) => {
                 }
                 return i
               }).join(' ').trim(), source: val.source })
-            }
+            //}
             newRule.append(declVal)
           }
         }
@@ -238,9 +250,9 @@ const declaration = (body, defs, opts) => {
         for(let [key, val] of Object.entries(itemValue)) {
           if(typeof val.value === 'string') {
             let declVal = undefined
-            if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
+            /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
-            } else {
+            } else {*/
               declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
                 if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
@@ -297,7 +309,7 @@ const declaration = (body, defs, opts) => {
                 }
                 return i
               }).join(' ').trim(), source: val.source })
-            }
+            //}
             newRule.append(declVal)
           }
         }
@@ -305,6 +317,82 @@ const declaration = (body, defs, opts) => {
       }
       atRuleArray.push(newAtRule)
     }
+  }
+  
+  if(print['status']) {
+    let newAtRule = postcss.atRule({ name: 'media', params: 'print', source: print['source'] })
+    for(let [itemKey, itemValue] of Object.entries(print['value'])) {
+      let selectorItemKey = itemKey
+      let newRule = postcss.rule({ selector: selectorItemKey, source: print['source'] })
+      for(let [key, val] of Object.entries(itemValue)) {
+        if(typeof val.value === 'string') {
+          let declVal = undefined
+            /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
+              declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
+            } else {*/
+            declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
+                if(i.startsWith('props(')) {
+                  const arrowValues = i.split(/\(|\)/g)
+                  i = defs[arrowValues[0]][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
+                } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
+                  const splitValues = i.split(/\(|\)|\,/g)
+                  let colorValue = splitValues[1]
+                  let amtValue = splitValues[2]
+                  if(colorValue.includes('hex')) {
+                    colorValue = colorValue.replaceAll('hex', '')
+                  }
+                  if(Object.keys(newColor).includes(colorValue)) {
+                    colorValue = newColor[colorValue]
+                  }
+                  if(splitValues[0] === 'darken') {
+                    amtValue = '-' + amtValue
+                  }
+                  i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
+                } else if(i.startsWith('calc(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
+                    }
+                    return item
+                  }).join('')
+                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
+                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
+                    if(item.trim().startsWith('props(')) {
+                      const splitValues = item.trim().split(/\(|\)/g)
+                      item = defs[splitValues[0]][splitValues[1]].value || item
+                      if(splitValues[2]) {
+                        item = item + splitValues[2]
+                      }
+                    }
+                    return item
+                  }).join('')
+                  
+                  if(i.startsWith('add(')) {
+                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
+                  } else if(i.startsWith('sub(')) {
+                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
+                  } else if(i.startsWith('div(')) {
+                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
+                  } else if(i.startsWith('times(')) {
+                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
+                  }
+              }
+              return i
+            }).join(' ').trim(), source: val.source })
+          //}
+          newRule.append(declVal)
+        }
+      }
+      newAtRule.append(newRule)
+    }
+    atRuleArray.push(newAtRule)
   }
   
   return [...ruleArray.flat(), ...atRuleArray]

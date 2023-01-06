@@ -176,6 +176,11 @@ test('Testing sideBar component', async () => {
     html[data-mode=light] .sideBar {
         background-color: #fff
     }
+}
+@media print {
+    .sideBar {
+        display: none
+    }
 }`
   await execute(input, output, {log: false, file: './examples/sideBar/sideBar.css'})
 })

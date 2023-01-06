@@ -196,6 +196,67 @@ module.exports = (obj, ref, source, opts) => {
         
         newObj[refs[0]].append(newRule)
       }
+    } else if(refs[0] === 'print') {
+      if([...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[1])) {
+        if(!newObj[refs[0]]) {
+          newObj[refs[0]] = postcss.atRule({ name: 'media', params: 'print', source: source })
+        }
+        
+        let newRule = postcss.rule({ selector: '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+        if(opts.prefers[refs[0]]?.selector) {
+          newRule = postcss.rule({ selector: 'html'+opts.prefers[refs[0]].selector+' .'+ref
+            .replaceAll(':', '\\:')
+            .replaceAll('.', '\\.')
+            .replaceAll(',', '\\,')
+            .replaceAll('/', '\\/')
+            .replaceAll('(', '\\(')
+            .replaceAll(')', '\\)')
+          , source: source })
+        }
+        //const declVal = postcss.decl({ prop: camelDash(refs[1]), value: value(refs[2], opts) })
+        //newRule.append(declVal)
+        if(Object.keys(newColor).includes(refs[1])) {
+          let newNum = 0
+          if(refs[3] || isNaN(refs[2]) === false) {
+            newNum = refs[3]
+          }
+          let newValue = `lighten(${refs[1]},${newNum})`
+          if(refs[2] === 'dark') {
+            newValue = `darken(${refs[1]},${newNum})`
+          }
+          const bgDeclVal = postcss.decl({ prop: 'background-color', value: value(newValue, opts) + ' !important', source: source })
+          newRule.append(bgDeclVal)
+          const bdDeclVal = postcss.decl({ prop: 'border-color', value: value(newValue, opts) + ' !important', source: source })
+          newRule.append(bdDeclVal)
+          const fgDeclVal = postcss.decl({ prop: 'color', value: '#fff !important', source: source })
+          newRule.append(fgDeclVal)
+        } else if(Object.keys(shorts).includes(refs[1])) {
+          const newShorts = shorts[refs[1]]
+          for(let newShort of newShorts) {
+            const refOpt = {
+              ...opts,
+              property: newShort
+            }
+            const declVal = postcss.decl({ prop: camelDash(newShort), value: value(refs[2], refOpt) + ' !important', source: source })
+            newRule.append(declVal)
+          }
+        } else {
+          // Switch from preset to real property like m to margin
+          if(Object.keys(newPreset).includes(refs[1])) {
+            refs[1] = newPreset[refs[1]]
+          }
+          
+          const refOpt = {
+            ...opts,
+            property: refs[1]
+          }
+          
+          const declVal = postcss.decl({ prop: camelDash(refs[1]), value: value(refs[2], refOpt) + ' !important', source: source })
+          newRule.append(declVal)
+        }
+        
+        newObj[refs[0]].append(newRule)
+      }
     }
   }
   

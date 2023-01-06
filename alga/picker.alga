@@ -51,7 +51,7 @@
     
     .pickerMenu {
       ref: overflowY-auto;
-      props-maxHeight: calc(menu * 42px);
+      ref-maxHeight: calc({props.menu} * 42px);
     }
     
     .pickerItem {
@@ -89,7 +89,7 @@
   
   .pickerContent.pickerSizing {
     ref: overflowY-auto;
-    props-maxHeight: calc(menu * 42px);
+    ref-maxHeight: calc({props.menu} * 42px);
   }
   
   .suggestion .pickerContent,

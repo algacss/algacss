@@ -53,6 +53,10 @@ function readPath(rp, fileName, componentName, opts) {
         value: {},
         source: rnode.source
       }
+      let screenObj = {}
+      let stateObj = {}
+      let prefersObj = {}
+      let printObj = {}
       for(let dnode of rnode.nodes) {
         // Extracting content of provide
         if(dnode.type === 'decl' && dnode.prop === 'ref') {
@@ -68,7 +72,7 @@ function readPath(rp, fileName, componentName, opts) {
             source: dnode.source
           }
           defineObj[param].value = Object.assign({}, defineObj[param].value, splitRefsObj)
-        } else if(dnode.type === 'decl' && dnode.prop.startsWith('props-')) {
+        }/* else if(dnode.type === 'decl' && dnode.prop.startsWith('props-')) {
           let splitProps = dnode.prop.split('-')[1]
           if('preset' in opts && Object.keys(opts.preset).includes(splitProps)) {
             splitProps = opts.preset[splitProps]
@@ -79,18 +83,18 @@ function readPath(rp, fileName, componentName, opts) {
             source: dnode.source
           }
           defineObj[param].value = Object.assign({}, defineObj[param].value, splitPropsObj)
-        } else if(dnode.type === 'decl' && dnode.prop.startsWith('screen-')) {
-          let screenObj = {}
+        }*/ else if(dnode.type === 'decl' && dnode.prop.startsWith('screen-')) {
           screenObj[dnode.prop] = Object.assign({}, screenObj[dnode.prop], reference(dnode, refOpt))
           defineObj[param].value = Object.assign({}, defineObj[param].value, screenObj)
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('state-')) {
-          let stateObj = {}
           stateObj[dnode.prop] = Object.assign({}, stateObj[dnode.prop], reference(dnode, refOpt))
           defineObj[param].value = Object.assign({}, defineObj[param].value, stateObj)
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('prefers-')) {
-          let prefersObj = {}
           prefersObj[dnode.prop] = Object.assign({}, prefersObj[dnode.prop], reference(dnode, refOpt))
           defineObj[param].value = Object.assign({}, defineObj[param].value, prefersObj)
+        } else if(dnode.type === 'decl' && dnode.prop === 'print') {
+          printObj[dnode.prop] = Object.assign({}, printObj[dnode.prop], reference(dnode, refOpt))
+          defineObj[param].value = Object.assign({}, defineObj[param].value, printObj)
         } else if(dnode.type === 'decl' && dnode.prop.startsWith('webkit-')) {
           let splitRefs = dnode.prop.split('-')[1]
           let splitRefsObj = {}

@@ -28,6 +28,7 @@
     prefers-dark: backgroundColor-{props.bgColorDark};
     prefers-toDark: backgroundColor-{props.bgColorDark};
     prefers-toLight: backgroundColor-{props.bgColor};
+    print: display-none;
     
     .navWrap {
       ref: display-flex flexDirection-row flexWrap-nowrap alignItems-center justifyContent-spaceBetween;

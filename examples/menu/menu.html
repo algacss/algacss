@@ -5,6 +5,7 @@
   <title>Nav and Menu</title>
   <link href="../base/base.css" rel="stylesheet" />
   <link href="../layoutPage/container.css" rel="stylesheet" />
+  <link href="../card/card.css" rel="stylesheet" />
   <link href="menu.css" rel="stylesheet" />
   <style>
     body {
@@ -27,7 +28,7 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="container" style="padding: 1.5rem;">
     <h1>Nav</h1>
     <ul class="nav custom">
       <li class="item active"><a href="#" class="link" aria-current="page">Nav Item 1</a></li>
@@ -68,6 +69,19 @@
       <li class="item"><a href="#" class="link">Nav Item 4</a></li>
       <li class="item disabled"><a href="#" class="link">Nav Item 5</a></li>
     </ul>
+    <h1>Card Tabs</h1>
+    <div class="card">
+      <ul class="nav tab" style="padding-left: 0.75rem;padding-top: 0.75rem;">
+        <li class="item active"><a href="#" class="link" aria-current="page">Nav Item 1</a></li>
+        <li class="item"><a href="#" class="link">Nav Item 2</a></li>
+        <li class="item"><a href="#" class="link">Nav Item 3</a></li>
+        <li class="item"><a href="#" class="link">Nav Item 4</a></li>
+        <li class="item disabled"><a href="#" class="link">Nav Item 5</a></li>
+      </ul>
+      <div class="cardBody">
+        This is the body
+      </div>
+    </div>
   </div>
   
 </body>

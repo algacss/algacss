@@ -23,6 +23,7 @@
     prefers-dark: backgroundColor-{props.bgColorDark};
     prefers-toDark: backgroundColor-{props.bgColorDark};
     prefers-toLight: backgroundColor-{props.bgColor};
+    print: display-none;
     
     .sideBackdrop {
       ref: position-fixed zIndex-18 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;

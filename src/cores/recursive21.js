@@ -12,6 +12,10 @@ function recursiveFunc(root, prm, opt = {}) {
     source: root.source
   }
   if('nodes' in root && Array.isArray(root.nodes) && root.nodes.length >= 1) {
+    let screenObj = {}
+    let stateObj = {}
+    let prefersObj = {}
+    let printObj = {}
     for(let node of root.nodes) {
       if(node.type === 'decl' && node.prop === 'ref') {
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, reference(node, opt))
@@ -26,7 +30,7 @@ function recursiveFunc(root, prm, opt = {}) {
           source: node.source
         }
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, splitRefsObj)
-      } else if(node.type === 'decl' && node.prop.startsWith('props-')) {
+      }/* else if(node.type === 'decl' && node.prop.startsWith('props-')) {
         let splitProps = node.prop.split('-')[1]
         if('preset' in opt && Object.keys(opt.preset).includes(splitProps)) {
           splitProps = opt.preset[splitProps]
@@ -37,7 +41,7 @@ function recursiveFunc(root, prm, opt = {}) {
           source: node.source
         }
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, splitPropsObj)
-      } else if(node.type === 'decl' && node.prop === 'inject') {
+      }*/ else if(node.type === 'decl' && node.prop === 'inject') {
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, opt.provide[node.value].value)
       } else if(node.type === 'decl' && node.prop === 'inject-props') {
         let injectPropsObj = {}
@@ -47,17 +51,17 @@ function recursiveFunc(root, prm, opt = {}) {
         }
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, injectPropsObj)
       } else if(node.type === 'decl' && node.prop.startsWith('screen-')) {
-        let screenObj = {}
         screenObj[node.prop] = Object.assign({}, screenObj[node.prop], reference(node, opt))
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, screenObj)
       } else if(node.type === 'decl' && node.prop.startsWith('state-')) {
-        let stateObj = {}
         stateObj[node.prop] = Object.assign({}, stateObj[node.prop], reference(node, opt))
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, stateObj)
       } else if(node.type === 'decl' && node.prop.startsWith('prefers-')) {
-        let prefersObj = {}
         prefersObj[node.prop] = Object.assign({}, prefersObj[node.prop], reference(node, opt))
         recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, prefersObj)
+      } else if(node.type === 'decl' && node.prop === 'print') {
+        printObj[node.prop] = Object.assign({}, printObj[node.prop], reference(node, opt))
+        recursiveObj[param].value = Object.assign({}, recursiveObj[param].value, printObj)
       } else if(node.type === 'decl' && node.prop.startsWith('webkit-')) {
         let splitRefs = node.prop.split('-')[1]
         let splitRefsObj = {}
