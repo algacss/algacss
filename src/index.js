@@ -118,6 +118,7 @@ function algacss(options) {
             }
           }
         }
+        rule.remove()
       })
       
       root.walkAtRules('use', rule => {

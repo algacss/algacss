@@ -9,6 +9,8 @@
   lineHeight: 1.5;
   colorSchemeLight: [data-mode=light];
   colorSchemeDark: [data-mode=dark];
+  headingMarginBottom: 0.5rem;
+  paragraphMarginBottom: 1rem;
 }
 
 @alga base {
@@ -150,11 +152,11 @@
   
   .h1, .h2, .h3, .h4, .h5, .h6, 
   h1, h2, h3, h4, h5, h6 {
-    ref: marginTop-0px marginBottom-0.5rem fontWeight-500 lineHeight-1.2;
+    ref: marginTop-0px marginBottom-{props.headingMarginBottom} fontWeight-500 lineHeight-1.2;
   }
   
   .p, p {
-    ref: marginTop-0px marginBottom-1rem;
+    ref: marginTop-0px marginBottom-{props.paragraphMarginBottom};
   }
   
   .mark, mark {
