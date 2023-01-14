@@ -18,6 +18,7 @@ test('Testing menu component', async () => {
     border-radius: 0.25rem;
     color: #2f2f2f;
     text-decoration: none;
+    cursor: pointer;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 .nav > .item:hover > .link, .menu > .item:hover > .link {

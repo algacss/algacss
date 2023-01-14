@@ -1,0 +1,26 @@
+@define refs {
+  name: slideLeft;
+}
+
+@define props {
+  duration: 0.5s;
+}
+
+@alga {refs.name} {
+  .{refs.name}-enter-active {
+    ref-animation: {refs.name} {props.duration};
+  }
+  .{refs.name}-leave-active {
+    ref-animation: {refs.name} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.name} {
+    0% {
+      ref: visibility-visible;
+      ref-transform: translate3d(100%,0,0);
+    }
+    100% {
+      ref-transform: translateZ(0);
+    }
+  }
+}

@@ -17,7 +17,8 @@
     
   .nav > .item > .link,
   .{refs.name} > .item > .link {
-    ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex2f2f2f textDecoration-none;
+    ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex2f2f2f;
+    ref: textDecoration-none cursor-default;
     ref-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     prefers-dark: color-inherit;
     prefers-toDark: color-inherit;
