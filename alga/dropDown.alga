@@ -7,11 +7,11 @@
     ref: position-relative;
     
     &Toggler {
-      ref: whiteSpace-nowrap display-flex alignItems-center;
+      ref: whiteSpace-nowrap;
     
       &::after {
         ref-content: "";
-        ref: display-inlineBlock marginLeft-0.255em verticalAlign-0.255em borderTop-0.3em_solid;
+        ref: display-inlineBlock marginLeft-0.255em verticalAlign-middle borderTop-0.3em_solid;
         ref: borderRight-0.3em_solid_transparent borderBottom-0 borderLeft-0.3em_solid_transparent;
       }
     }

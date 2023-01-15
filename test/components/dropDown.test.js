@@ -6,15 +6,13 @@ test('Testing dropDown on navBar component', async () => {
     position: relative
 }
 .dropDownToggler {
-    white-space: nowrap;
-    display: flex;
-    align-items: center
+    white-space: nowrap
 }
 .dropDownToggler::after {
     content: "";
     display: inline-block;
     margin-left: 0.255em;
-    vertical-align: 0.255em;
+    vertical-align: middle;
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
     border-bottom: 0;

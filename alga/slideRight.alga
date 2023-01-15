@@ -1,5 +1,5 @@
 @define refs {
-  name: slideLeft;
+  name: slideRight;
 }
 
 @define props {
