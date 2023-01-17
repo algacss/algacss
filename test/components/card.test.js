@@ -78,6 +78,14 @@ test('Testing card or box component', async () => {
     html[data-mode=light] .cardFooter {
         border-color: #d9d9d9
     }
+}
+@media print {
+    .card, .box {
+        border: none
+    }
+    .cardHeader, .cardFooter {
+        display: none
+    }
 }`
   await execute(input, output, {log: false, file: './examples/card/card.css'})
 })

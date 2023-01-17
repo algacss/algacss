@@ -417,6 +417,11 @@ select.select:not([multiple]) {
     html[data-mode=light] .button:hover {
         background-color: #e9e9e9
     }
+}
+@media print {
+    .button {
+        display: none
+    }
 }`
   await execute(input, output, {log: false, file: './examples/form/form.css'})
 })

@@ -79,6 +79,20 @@ test('Testing container component', async () => {
         margin-left: auto;
         margin-right: auto
     }
+}
+@media print {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0px;
+        margin: 0px
+    }
+    .containerFluid {
+        width: 100%;
+        max-width: 100%;
+        padding: 0px;
+        margin: 0px
+    }
 }`
   await execute(input, output, {log: false, file: './examples/container/container.css'})
 })

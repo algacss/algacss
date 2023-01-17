@@ -222,8 +222,7 @@ select.select:not([multiple]) {
     border-color: #d9d9d9
 }
 .button {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     font-weight: 400;
     color: #283541;
     text-align: center;
@@ -413,5 +412,10 @@ select.select:not([multiple]) {
     }
     html[data-mode=light] .button:hover {
         background-color: #e9e9e9
+    }
+}
+@media print {
+    .button {
+        display: none
     }
 }

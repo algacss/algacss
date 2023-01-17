@@ -14,9 +14,7 @@
 # Alga CSS
 Alga CSS is a scope or component oriented CSS toolkit for quickly reuse CSS components via `@use` directive and it can be stored in `.alga` format file as a custom CSS component using `@alga` directive and also it has many built-in customizable CSS properties that can be directly inserted to HTML Element class, visit [https://algacss.com](https://algacss.com 'Alga CSS').
 
-This Alga CSS is still in a beta version, so it is not stable yet, a lot of features or built-in components need to be added and for the documentation is also still in the development stage, so we expected it will finish around 2024 and it will be stable after that. Because of that, if you use this Alga CSS, please check the examples folder, I put all the HTML/UI testing files in that folder and test folder as well.
-
-Moreover, we're prioritizing this Alga CSS for all of the projects that being handled by the Author both personal projects and the client projects, so we built all the components according to the client need and their feedback.
+This Alga CSS is still in a beta version, so it is not stable yet, a lot of features or built-in components need to be added and for the documentation is also still in the development stage, so we expected it will finish around 2024. Because of that, if you use this Alga CSS, please check the examples folder, I put all the HTML/UI testing files in that folder and test folder as well.
 
 All the main features:
 1. Created for scoped CSS
