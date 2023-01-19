@@ -66,6 +66,14 @@
       &.{refs.name}Right {
         ref: right-0px;
       }
+      
+      &.dropOver {
+        ref: top-n100pct;
+      }
+      
+      &.dropUp {
+        ref: top-n125px;
+      }
     }
     
     &.active,

@@ -4,8 +4,8 @@
 
 @define props {
   divider: "/";
-  parentColor: #0d6efd;
-  activeColor: #4a5568;
+  fgActive: #4a5568;
+  fgHover: #0d6efd;
   dividerColor: inherit;
 }
 
@@ -19,23 +19,22 @@
   }
     
   .{refs.name}Item + .{refs.name}Item::before {
-    ref: float-left paddingRight-0.5rem;
-    ref-color: {props.dividerColor};
-    ref-content: {props.divider};
+    ref: float-left paddingRight-0.5rem color-{props.dividerColor} content-{props.divider};
   }
     
   .{refs.name}Item a {
-    ref: color-hex0d6efd textDecoration-none;
+    ref: color-inherit textDecoration-none;
   }
     
-  .{refs.name}Item.active a,
+  .{refs.name}Item.active a {
+    ref: pointerEvents-none color-{props.fgActive};
+  }
+  
   .{refs.name}Item.disabled a {
-    ref: pointerEvents-none;
-    ref-color: {props.activeColor};
+    ref: pointerEvents-none opacity-0.6;
   }
-    
+  
   .{refs.name}Item:not(.active):not(.disabled):hover a {
-    ref-color: {props.parentColor};
-    ref: textDecoration-underline;
+    ref: textDecoration-underline color-{props.fgHover};
   }
 }

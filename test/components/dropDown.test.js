@@ -85,6 +85,12 @@ test('Testing dropDown on navBar component', async () => {
 .dropDownMenu.dropDownRight {
     right: 0px
 }
+.dropDownMenu.dropOver {
+    top: -100%
+}
+.dropDownMenu.dropUp {
+    top: -125px
+}
 .dropDown.active .dropDownBackdrop, .dropDown.active .dropDownMenu {
     display: block
 }

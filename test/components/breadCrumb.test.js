@@ -20,16 +20,20 @@ test('Testing breadCrumb component', async () => {
     content: "/"
 }
 .breadCrumbItem a {
-    color: #0d6efd;
+    color: inherit;
     text-decoration: none
 }
-.breadCrumbItem.active a, .breadCrumbItem.disabled a {
+.breadCrumbItem.active a {
     pointer-events: none;
     color: #4a5568
 }
+.breadCrumbItem.disabled a {
+    pointer-events: none;
+    opacity: 0.6
+}
 .breadCrumbItem:not(.active):not(.disabled):hover a {
-    color: #0d6efd;
-    text-decoration: underline
+    text-decoration: underline;
+    color: #0d6efd
 }`
   await execute(input, output, {log: false, file: './examples/breadcrumb/breadcrumb.css'})
 })
