@@ -31,7 +31,8 @@ function algacss(options) {
     extract: {raws: [], rules: []},
     helpers: [],
     states: {},
-    important: options?.important === false ? false : true
+    important: options?.important === false ? false : true,
+    directive: options?.directive === 'layer' ? 'layer' : 'use'
   }
   
   if(options?.mode) {
@@ -74,12 +75,20 @@ function algacss(options) {
       readFile(newHelperFile, (err, data) => {
         if (err) throw err;
         let newData = data.toString()
-        if(newData.includes('@use helpers-')) {
-          newData = newData.replace(/\@use helpers-.*\;/, '@use helpers-'+ randomChar() +';')
+        if(newData.includes('@'+config.directive+' helpers-')) {
+          if(config.directive === 'layer') {
+            newData = newData.replace(/\@layer helpers-.*\;/, '@layer helpers-'+ randomChar() +';')
+          } else {
+            newData = newData.replace(/\@use helpers-.*\;/, '@use helpers-'+ randomChar() +';')
+          }
         } else {
-          newData = newData.replace('@use helpers;', '@use helpers-'+ randomChar() +';')
+          if(config.directive === 'layer') {
+            newData = newData.replace('@layer helpers;', '@layer helpers-'+ randomChar() +';')
+          } else {
+            newData = newData.replace('@use helpers;', '@use helpers-'+ randomChar() +';')
+          }
         }
-        if(newData.includes('@use helpers')) {
+        if(newData.includes('@'+config.directive+' helpers')) {
           writeFile(newHelperFile, newData, (err) => {
             if (err) throw err;
           })
@@ -123,146 +132,191 @@ function algacss(options) {
         rule.remove()
       })
       
-      root.walkAtRules('use', rule => {
-        let param = rule.params.trim()
-        let name = param
-        if(param.includes('.')) {
-          const prms = param.split('.')
-          param = prms[0].trim()
-          name = prms[1].trim()
-        }
-        
-        /* Component v2 */
-        
-        if(name.includes('helpers') || param.includes('helpers')) {
-          if(root.source?.input?.from) {
-            config.helpers.push(root.source.input.from)
-          }
-          config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
-          
-          if(config.important) {
-            if(config.extract.rules.length >= 1) {
-              root.append(...config.extract.rules)
-            }
-            rule.remove()
-          } else {
-            const newLayer = layer(config.extract.rules, name, rule.source)
-            
-            rule.replaceWith(newLayer.use)
-            root.append(newLayer.alga)
-          }
-        } else {
-          let fileName = param
-          let componentName = name
-          
-          let newProps = {}
-          if(rule?.nodes) {
-            for(let node of rule.nodes) {
-              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
-                const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
-                for(let ruleNode of node.nodes) {
-                  if(ruleNodeName === 'props') {
-                    if(ruleNode.type === 'decl' && ruleNode?.prop) {
-                      newProps[ruleNode.prop] = {
-                        value: ruleNode.value,
-                        source: ruleNode.source
-                      }
-                    }
-                  }
+      root.walkAtRules(config.directive, rule => {
+        if(config.directive === 'layer') {
+          if(!rule.nodes) {
+            const paramInArray = rule.params.split(',')
+            for(let prmArr of paramInArray) {
+              let param = prmArr.trim()
+              let name = param
+              if(param.includes('.')) {
+                const prms = param.split('.')
+                param = prms[0].trim()
+                name = prms[1].trim()
+              }
+              if(!rule.params.includes(',') && (name.includes('helpers') || param.includes('helpers'))) {
+                if(root.source?.input?.from) {
+                  config.helpers.push(root.source.input.from)
+                }
+                config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
+                
+                if(config.extract.rules.length >= 1) {
+                  rule.append(...config.extract.rules)
                 }
               } else {
-                if(node.type === 'decl' && node?.prop) {
-                  newProps[node.prop] = {
-                    value: node.value,
-                    source: node.source
+                let fileName = param
+                let componentName = name
+                
+                const newComponentTwo = componentTwo(options?.src, fileName, componentName, {
+                  props: Object.assign({}, config.states),
+                  preset: config.preset, 
+                  screen: config.screen, 
+                  state: config.state, 
+                  prefers: config.prefers, 
+                  color: config.color
+                })
+                
+                if(newComponentTwo) {
+                  if(!rule.params.includes(',')) {
+                    rule.append(newComponentTwo)
+                  } else {
+                    const newLayer = layer(newComponentTwo, componentName, rule.source)
+                    root.append(newLayer)
                   }
                 }
               }
             }
           }
+        } else {
+          let param = rule.params.trim()
+          let name = param
+          if(param.includes('.')) {
+            const prms = param.split('.')
+            param = prms[0].trim()
+            name = prms[1].trim()
+          }
           
-          const newComponentTwo = componentTwo(options?.src, fileName, componentName, {
-            props: Object.assign({}, config.states, newProps),
-            preset: config.preset, 
-            screen: config.screen, 
-            state: config.state, 
-            prefers: config.prefers, 
-            color: config.color
-          })
+          /* Component v2 */
           
-          if(newComponentTwo) {
+          if(name.includes('helpers') || param.includes('helpers')) {
+            if(root.source?.input?.from) {
+              config.helpers.push(root.source.input.from)
+            }
+            config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
+            
             if(config.important) {
-              rule.replaceWith(newComponentTwo)
+              if(config.extract.rules.length >= 1) {
+                root.append(...config.extract.rules)
+              }
+              rule.remove()
             } else {
-              const newLayer = layer(newComponentTwo, componentName, rule.source)
+              const newLayer = layer(config.extract.rules, name, rule.source)
+              
               rule.replaceWith(newLayer)
             }
           } else {
-            rule.remove()
-          }
-        }
-        
-        /* Component v1 */
-        
-        /*if(!name.includes('helpers') && !config.components[name]) {
-          config.components = Object.assign({}, config.components, component(options?.src, {...opts, componentName: name}))
-        }
-        if(name.includes('helpers') || param.includes('helpers')) {
-          if(root.source?.input?.from) {
-            config.helpers.push(root.source.input.from)
-          }
-          config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
-          
-          if(config.extract.rules.length >= 1) {
-            root.append(...config.extract.rules)
-          }
-          rule.remove()
-        } else if(config.components[name]) {
-          let newNodes = []
-          if(rule?.nodes) {
-            for(let node of rule.nodes) {
-              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
-                const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
-                for(let ruleNode of node.nodes) {
-                  if(ruleNodeName === 'props') {
-                    if(ruleNode.prop in config.components[param][ruleNodeName]) {
-                      config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+            let fileName = param
+            let componentName = name
+            
+            let newProps = {}
+            if(rule?.nodes) {
+              for(let node of rule.nodes) {
+                if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
+                  const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
+                  for(let ruleNode of node.nodes) {
+                    if(ruleNodeName === 'props') {
+                      if(ruleNode.type === 'decl' && ruleNode?.prop) {
+                        newProps[ruleNode.prop] = {
+                          value: ruleNode.value,
+                          source: ruleNode.source
+                        }
+                      }
+                    }
+                  }
+                } else {
+                  if(node.type === 'decl' && node?.prop) {
+                    newProps[node.prop] = {
+                      value: node.value,
+                      source: node.source
                     }
                   }
                 }
-              } else {
-                if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
-                  config.components[param]['props'][node.prop].value = node.value
-                }
               }
             }
-          }
-          let newBodyVar = []
-          if(config.components[param]?.[name]?.['body']) {
-            newBodyVar = config.components[param][name]['body']
-          }
-          newNodes = [
-            ...newNodes, 
-            ...declaration(newBodyVar,
-            {
-              refs: config.components[param]['refs'],
-              props: config.components[param]['props'], 
-              provide: config.components[param]['provide']
-            },
-            {
-              screen: config.screen,
+            
+            const newComponentTwo = componentTwo(options?.src, fileName, componentName, {
+              props: Object.assign({}, config.states, newProps),
+              preset: config.preset, 
+              screen: config.screen, 
               state: config.state, 
               prefers: config.prefers, 
               color: config.color
             })
-          ]
-          const newRoot = config.components[param]['root']
-          newRoot.removeAll()
-          newRoot.append(...newNodes)
-          rule.replaceWith(newRoot)
-        } else {
-          rule.remove()
-        }*/
+            
+            if(newComponentTwo) {
+              if(config.important) {
+                rule.replaceWith(newComponentTwo)
+              } else {
+                const newLayer = layer(newComponentTwo, componentName, rule.source)
+                rule.replaceWith(newLayer)
+              }
+            } else {
+              rule.remove()
+            }
+          }
+          
+          /* Component v1 */
+          
+          /*if(!name.includes('helpers') && !config.components[name]) {
+            config.components = Object.assign({}, config.components, component(options?.src, {...opts, componentName: name}))
+          }
+          if(name.includes('helpers') || param.includes('helpers')) {
+            if(root.source?.input?.from) {
+              config.helpers.push(root.source.input.from)
+            }
+            config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
+            
+            if(config.extract.rules.length >= 1) {
+              root.append(...config.extract.rules)
+            }
+            rule.remove()
+          } else if(config.components[name]) {
+            let newNodes = []
+            if(rule?.nodes) {
+              for(let node of rule.nodes) {
+                if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
+                  const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
+                  for(let ruleNode of node.nodes) {
+                    if(ruleNodeName === 'props') {
+                      if(ruleNode.prop in config.components[param][ruleNodeName]) {
+                        config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+                      }
+                    }
+                  }
+                } else {
+                  if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
+                    config.components[param]['props'][node.prop].value = node.value
+                  }
+                }
+              }
+            }
+            let newBodyVar = []
+            if(config.components[param]?.[name]?.['body']) {
+              newBodyVar = config.components[param][name]['body']
+            }
+            newNodes = [
+              ...newNodes, 
+              ...declaration(newBodyVar,
+              {
+                refs: config.components[param]['refs'],
+                props: config.components[param]['props'], 
+                provide: config.components[param]['provide']
+              },
+              {
+                screen: config.screen,
+                state: config.state, 
+                prefers: config.prefers, 
+                color: config.color
+              })
+            ]
+            const newRoot = config.components[param]['root']
+            newRoot.removeAll()
+            newRoot.append(...newNodes)
+            rule.replaceWith(newRoot)
+          } else {
+            rule.remove()
+          }*/
+        }
       })
       
       root.walkAtRules('ref', rule => {

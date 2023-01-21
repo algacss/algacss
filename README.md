@@ -49,6 +49,7 @@ module.exports = {
   plugins: [
     algacss({
       important: false, /*you may want to render style inside @layer cascading inheritance*/
+      directive: 'use', /*insert 'layer' if you want a valid CSS, @layer instead of @use*/
       mode: '[data-mode={theme}]', /*you can replace it with '.{theme}-mode' */
       extract: [
         './src/**/*.html', 
@@ -124,18 +125,18 @@ We provide `.alga` format file for storing styles as a component within `@alga` 
 Usually we use `props` to permanently changes the specific property value, but sometime we want to change all the values at one without having to replace it one by one, so here is why we provide state management and it must be put on top of all components.
 
 ```css
-@base;
-@container;
-@componentOne {
+@use base;
+@use container;
+@use componentOne {
   bgActive: red;
 }
-@componentTwo {
+@use componentTwo {
   bgActive: red;
 }
-@componentThere {
+@use componentThere {
   bgActive: red;
 }
-@helpers;
+@use helpers;
 ```
 
 Rather than passing value via props to each component one by one, we can use `@define state` instead, so we can rewrite all the component property values by just one line of code.
@@ -145,13 +146,36 @@ Rather than passing value via props to each component one by one, we can use `@d
   bgActive: red;
 }
 
-@base;
-@container;
-@componentOne;
-@componentTwo;
-@componentThere;
-@helpers;
+@use base;
+@use container;
+@use componentOne;
+@use componentTwo;
+@use componentThere;
+@use helpers;
 ```
+
+## @layer instead of @use
+
+Moreover, you may want to use only valid CSS syntax in any style sheets both global style or scoped style, so Alga CSS also provide a customizable directive, but only 2 values accepted which is either `use` or `layer` available.
+
+```css
+@define states {
+  bgActive: red;
+}
+
+@layer base;
+@layer container;
+@layer componentOne;
+@layer componentTwo;
+@layer componentThere;
+@layer helpers;
+
+/* or */
+@layer base, container, componentOne, componentTwo, componentThere;
+@layer helpers;
+```
+
+Just one caveat, for `@layer helpers;` cannot be stack together with other components and also for `props` only can be passed via state management or `@define states`.
 
 ## Class Name Structure
 Alga CSS uses special character `-` to gab classes from HTML elements or Vue components, and it uses `:` for breakpoints and states and also `_` as a divider or separator of css values.
