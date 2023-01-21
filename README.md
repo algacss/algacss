@@ -21,8 +21,9 @@ This Alga CSS is still in a beta version, so it is not stable yet, a lot of feat
 All the main features:
 1. Created for scoped CSS
 2. As a PostCSS plugin
-3. Can be store as a CSS component
-4. Extract classes from any major JS Frameworks
+3. Can be stored as an Alga component (`@alga` directive and `.alga` format file)
+4. And then can be converted to CSS component (`@layer` cascading inheritance)
+5. Extract classes from any major JS Frameworks
 
 ## Installation and Setup
 Alga CSS built on top of PostCSS, so before installing Alga CSS, you need to have PostCSS first and after that you can use NPM or Yarn to install this Alga CSS.
@@ -33,6 +34,10 @@ npm install alga-css --save-dev
 #or
 
 yarn add alga-css
+
+#or for testing (with next tag)
+
+npm install alga-css@next --save-dev
 ```
 
 If you use tool that support PostCSS out of the box like Vite for instance, you just need to create a new config file which is `postcss.config.cjs` and add the code below to that file.
@@ -43,7 +48,7 @@ const algacss = require('alga-css')
 module.exports = {
   plugins: [
     algacss({
-      important: false, /*you may want to render style inside @layer cascade inheritance*/
+      important: false, /*you may want to render style inside @layer cascading inheritance*/
       mode: '[data-mode={theme}]', /*you can replace it with '.{theme}-mode' */
       extract: [
         './src/**/*.html', 
@@ -56,48 +61,30 @@ module.exports = {
 }
 ```
 
-## Class Name Structure
-Alga CSS uses special character `-` to gab classes from HTML elements or Vue components, and it uses `:` for breakpoints and states and also `_` as a divider or separator of css values.
+## Compiling to CSS Cascading Inheritance
+Alga CSS support converting component from `.alga` format file to `.css` file and it will compile all the code within `@alga` directive and place it inside `@layer` cascading inheritance and it can be imported directly to another CSS file or maybe injected to JS Framework via specific tools.
+
+```sh
+npx alga-css navBar ./path/to/navBar.css
+
+#or
+
+npx alga-css ./folder/navBar.alga ./folder/navBar.css
+```
+
+The command line above will generate a new CSS file with `@layer` cascading inheritance inside it after being executed in the terminal.
 
 ```css
-/* highly recommended */
-<span class="marginTop-0.75rem padding-10px md:marginTop-5pct color-rgb(205,45,67) backgroundColor-hexfff"></span>
-
-.className {
-  ref: marginTop-0.75rem padding-10px color-rgb(205,45,67) backgroundColor-hexfff;
-  screen-md: marginTop-5pct;
+/* ./folder/navBar.css */
+@layer navBar {
+  .navBar {
+    ...
+  }
 }
-
-/* class structure: property (camelCase for prop name and prop value separated by - or dash) */
-justifyContent-spaceBetween
-
-/* class structure: unit size (pct is unit size in percent) */
-width-100pct
-height-250px
-padding-1.75rem
-
-/* class structure: screen, ss (extra small), sr (smaller), sm (small), md (medium), lg (large), lr (larger), ls (largest), wd (wide), wr (wider) */
-ss:paddingLeft-3px
-
-/* class structure: mode */
-dark:backgroundColor-hex242424
-light:backgroundColor-hexf2f2f2
-
-/* (prefers-color-scheme: light) { [data-mode=dark] .backgroundColor-hex242424 {} } */
-toDark:backgroundColor-hex242424
-
-/* (prefers-color-scheme: dark) { [data-mode=light] .backgroundColor-hexf2f2f2 {} } */
-toLight:backgroundColor-hexf2f2f2
-
-mode:backgroundColor-hexfff /* for [data-mode=dark] .backgroundColor-hexfff {} */
-
-/* class structure: state */
-hover:backgroundColor-hex2f2f2f
-facus:paddingLeft-3px
 ```
 
 ## CSS Component
-We provide `.alga` format file for creating CSS component and can be converted to `@layer` cascade inheritance within `.css` file.
+We provide `.alga` format file for storing styles as a component within `@alga` directive and can be converted to `@layer` cascade inheritance within `.css` file, this only happen if the `important` option has been set to `false`, this is because in the pass all utility-classes of Alga CSS rely on `!important` to override the css property value from certain component.
 
 ```css
 /* navBar.alga */
@@ -133,18 +120,75 @@ We provide `.alga` format file for creating CSS component and can be converted t
 }
 ```
 
-## Mixin and Composing CSS Component
-to compose the CSS component.
+## State Management
+Usually we use `props` to permanently changes the specific property value, but sometime we want to change all the values at one without having to replace it one by one, so here is why we provide state management and it must be put on top of all components.
 
 ```css
-/* layout.alga */
+@base;
+@container;
+@componentOne {
+  bgActive: red;
+}
+@componentTwo {
+  bgActive: red;
+}
+@componentThere {
+  bgActive: red;
+}
+@helpers;
+```
 
-@import 'navBar.alga'
+Rather than passing value via props to each component one by one, we can use `@define state` instead, so we can rewrite all the component property values by just one line of code.
 
-@alga layout {
-  use: navBar;
+```css
+@define states {
+  bgActive: red;
 }
 
-@use layout;
+@base;
+@container;
+@componentOne;
+@componentTwo;
+@componentThere;
+@helpers;
 ```
+
+## Class Name Structure
+Alga CSS uses special character `-` to gab classes from HTML elements or Vue components, and it uses `:` for breakpoints and states and also `_` as a divider or separator of css values.
+
+```css
+/* highly recommended */
+<span class="marginTop-0.75rem padding-10px md:marginTop-5pct color-rgb(205,45,67) backgroundColor-hexfff"></span>
+
+.className {
+  ref: marginTop-0.75rem padding-10px color-rgb(205,45,67) backgroundColor-hexfff;
+  screen-md: marginTop-5pct;
+}
+
+/* class structure: property (camelCase for prop name and prop value separated by - or dash) */
+justifyContent-spaceBetween
+
+/* class structure: unit size (pct is unit size in percent) */
+width-100pct
+height-250px
+padding-1.75rem
+
+/* class structure: screen, ss (extra small), sr (smaller), sm (small), md (medium), lg (large), lr (larger), ls (largest), wd (wide), wr (wider) */
+ss:paddingLeft-3px
+
+/* class structure: mode */
+dark:backgroundColor-hex242424
+light:backgroundColor-hexf2f2f2
+
+/* (prefers-color-scheme: light) { [data-mode=dark] .backgroundColor-hex242424 {} } */
+toDark:backgroundColor-hex242424
+
+/* (prefers-color-scheme: dark) { [data-mode=light] .backgroundColor-hexf2f2f2 {} } */
+toLight:backgroundColor-hexf2f2f2
+
+/* class structure: state */
+hover:backgroundColor-hex2f2f2f
+facus:paddingLeft-3px
+```
+
 
