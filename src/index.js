@@ -31,7 +31,7 @@ function algacss(options) {
     extract: {raws: [], rules: []},
     helpers: [],
     states: {},
-    important: options?.important || true
+    important: options?.important === false ? false : true
   }
   
   if(options?.mode) {
@@ -195,9 +195,7 @@ function algacss(options) {
               rule.replaceWith(newComponentTwo)
             } else {
               const newLayer = layer(newComponentTwo, componentName, rule.source)
-              
-              rule.replaceWith(newLayer.use)
-              root.append(newLayer.alga)
+              rule.replaceWith(newLayer)
             }
           } else {
             rule.remove()

@@ -5,6 +5,7 @@ test('Reading refs/props feature from alga file', async () => {
   //await execute()
   let result = await postcss([
     algacss({
+      important: false,
       //src: './test/alga/**/*.alga'
       src: './test/alga/define.alga'
     })

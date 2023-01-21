@@ -14,6 +14,8 @@
 # Alga CSS
 Alga CSS is a scope or component oriented CSS toolkit for quickly reuse CSS components via `@use` directive and it can be stored in `.alga` format file as a custom CSS component using `@alga` directive and also it has many built-in customizable CSS properties that can be directly inserted to HTML Element class, visit [https://algacss.com](https://algacss.com 'Alga CSS').
 
+Now, Alga CSS support converting `.alga` component file with `@alga` directive to a `.css` file with `@layer` cascading inheritance, this is for you that don't want to use Alga CSS directly on your project. But, Alga CSS has a lot of modern and powerful features that you may want to try.
+
 This Alga CSS is still in a beta version, so it is not stable yet, a lot of features or built-in components need to be added and for the documentation is also still in the development stage, so we expected it will finish around 2024. Because of that, if you use this Alga CSS, please check the examples folder, I put all the HTML/UI testing files in that folder and test folder as well.
 
 All the main features:
@@ -41,11 +43,14 @@ const algacss = require('alga-css')
 module.exports = {
   plugins: [
     algacss({
+      important: false, /*you may want to render style inside @layer cascade inheritance*/
+      mode: '[data-mode={theme}]', /*you can replace it with '.{theme}-mode' */
       extract: [
         './src/**/*.html', 
         './src/**/*.{otherFormat}'
       ],
-      src: './src/styles/*.alga'
+      src: './src/styles/*.alga',
+      plugins: []
     })
   ]
 }
@@ -92,7 +97,7 @@ facus:paddingLeft-3px
 ```
 
 ## CSS Component
-We provide alga format `.alga` for creating CSS component.
+We provide `.alga` format file for creating CSS component and can be converted to `@layer` cascade inheritance within `.css` file.
 
 ```css
 /* navBar.alga */
@@ -112,9 +117,19 @@ We provide alga format `.alga` for creating CSS component.
   }
 }
 
-/* navBar.vue <style scoped> */
+/* navBar.vue <style scoped> or app.css */
 @use navBar {
   size: 20px;
+}
+
+/* set 'important: false' to render all the style within @layer */
+@layer navBar {
+  .navBar {
+    position: relative;
+    z-index: 3;
+    paddingTop: 20px; /* 0.75rem is the default that being override via props */
+    paddingBottom: 20px;
+  }
 }
 ```
 

@@ -14,6 +14,7 @@ const processStyle = (value = '') => {
   let option = {}
   if(value !== '') {
     option = {
+      important: false,
       src: value
     }
   }
@@ -39,9 +40,9 @@ const processStyle = (value = '') => {
 }
 
 if(sourceFile) {
-  if(sourceFile?.endsWith('.alga') || sourceFile?.endsWith('.alga.css')) {
+  if(sourceFile?.endsWith('.alga')) {
     let content = processStyle(sourceFile)
-    let targetPath = targetFile || sourceFile.replace('.alga.css', '').replace('.alga', '') + '.css'
+    let targetPath = targetFile || sourceFile.replace('.alga', '.css')
     
     if(targetFile) {
       targetPath = path.join(cwd, targetPath)
@@ -57,7 +58,7 @@ if(sourceFile) {
     console.log('Status: created')
   } else {
     let content = processStyle(sourceFile)
-    let targetPath = targetFile || sourceFile.replace('.alga.css', '').replace('.alga', '') + '.css'
+    let targetPath = targetFile || sourceFile.replace('.alga', '.css')
     
     if(targetFile) {
       targetPath = path.join(cwd, targetPath)
