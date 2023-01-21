@@ -17,7 +17,7 @@ test('Testing breadCrumb component', async () => {
     float: left;
     padding-right: 0.5rem;
     color: inherit;
-    content: "/"
+    content: "›"
 }
 .breadCrumbItem a {
     color: inherit;

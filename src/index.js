@@ -14,6 +14,7 @@ const declaration = require('./cores/declaration.js')
 const extraction = require('./cores/extraction.js')
 const render = require('./cores/render.js')
 const packages = require('./cores/package.js')
+const layer = require('./cores/layer.js')
 
 // Helpers
 const randomChar = require('./helpers/randomChar.js')
@@ -29,7 +30,8 @@ function algacss(options) {
     components: {},
     extract: {raws: [], rules: []},
     helpers: [],
-    states: {}
+    states: {},
+    important: options?.important || true
   }
   
   if(options?.mode) {
@@ -47,7 +49,7 @@ function algacss(options) {
     })
   }
   
-  const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers, color: config.color}
+  const opts = {preset: config.preset, screen: config.screen, state: config.state, prefers: config.prefers, color: config.color, important: config.important}
   
   let watchFiles = []
   if(options?.extract) {
@@ -138,10 +140,17 @@ function algacss(options) {
           }
           config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
           
-          if(config.extract.rules.length >= 1) {
-            root.append(...config.extract.rules)
+          if(config.important) {
+            if(config.extract.rules.length >= 1) {
+              root.append(...config.extract.rules)
+            }
+            rule.remove()
+          } else {
+            const newLayer = layer(config.extract.rules, name, rule.source)
+            
+            rule.replaceWith(newLayer.use)
+            root.append(newLayer.alga)
           }
-          rule.remove()
         } else {
           let fileName = param
           let componentName = name
@@ -182,7 +191,14 @@ function algacss(options) {
           })
           
           if(newComponentTwo) {
-            rule.replaceWith(newComponentTwo)
+            if(config.important) {
+              rule.replaceWith(newComponentTwo)
+            } else {
+              const newLayer = layer(newComponentTwo, componentName, rule.source)
+              
+              rule.replaceWith(newLayer.use)
+              root.append(newLayer.alga)
+            }
           } else {
             rule.remove()
           }

@@ -3,7 +3,7 @@
 }
 
 @define props {
-  divider: "/";
+  divider: "›";
   fgActive: #4a5568;
   fgHover: #0d6efd;
   dividerColor: inherit;

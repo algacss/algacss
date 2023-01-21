@@ -178,12 +178,32 @@ function readPath(rp, fileName, componentName, opts) {
             keyframeDefineObj['@keyframes '+paramDnode] = []
             for(let kfnode of dnode.nodes) {
               let keyframeRecursiveDefineObj = recursive(kfnode, {
+                ...refOpt,
                 'provide': component[fileName]['provide']
               })
               keyframeDefineObj['@keyframes '+paramDnode].push(keyframeRecursiveDefineObj.body)
             }
             keyframeDefineObj['@keyframes '+paramDnode] = keyframeDefineObj['@keyframes '+paramDnode].flat()
             defineObj['content'][randId].push(keyframeDefineObj)
+          }
+        } else if(dnode.type === 'atrule' && dnode.name === 'paper') {
+          if('nodes' in dnode) {
+            let paramDnode = dnode.params.trim()
+            if(paramDnode.startsWith('refs(') || paramDnode.startsWith('props(')) {
+              const arrowDnodeParams = paramDnode.split(/\(|\)/g)
+              paramDnode = component[fileName][arrowDnodeParams[0]][arrowDnodeParams[1]].value
+            }
+            let paperDefineObj = {}
+            paperDefineObj['@page '+paramDnode] = []
+            for(let kfnode of dnode.nodes) {
+              let paperRecursiveDefineObj = recursive(kfnode, {
+                ...refOpt,
+                'provide': component[fileName]['provide']
+              })
+              paperDefineObj['@page '+paramDnode].push(paperRecursiveDefineObj.body)
+            }
+            paperDefineObj['@page '+paramDnode] = paperDefineObj['@page '+paramDnode].flat()
+            defineObj['content'][randId].push(paperDefineObj)
           }
         } else if(dnode.type === 'atrule' && dnode.name === 'if') {
           if('nodes' in dnode) {

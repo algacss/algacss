@@ -2,6 +2,7 @@ const postcss = require('postcss')
 const flatScreen = require('../helpers/flatScreen.js')
 const statusValue = require('../helpers/statusValue.js')
 const color = require('../configs/color.js')
+const camelDash = require('../helpers/camelDash.js')
 const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 
 const declaration = (body, defs, opts) => {
@@ -17,6 +18,7 @@ const declaration = (body, defs, opts) => {
     source: undefined
   }
   const newColor = opts?.color || color
+  let atFirstRuleArray = []
   let ruleArray = []
   let atRuleArray = []
   
@@ -27,6 +29,18 @@ const declaration = (body, defs, opts) => {
       const newAtRule = postcss.atRule({ name: 'keyframes', params: itemKey.replace('@keyframes ', '').trim(), source: Object.values(itemValue[0])[0].source })
       newAtRule.append([...declaration(itemValue, defs, opts)])
       ruleArray.push(newAtRule)
+    } else if(itemKey.startsWith('@page ')) {
+      const itemValue = Object.values(item)[0]
+      let paperValue = itemKey.replace('@page ', '').trim()
+      let paperAtRule = postcss.atRule({ name: 'page', source: Object.values(itemValue[0])[0].source })
+      if(['blank', 'first', 'left', 'right'].includes(paperValue)) {
+        paperValue = ':'+paperValue
+        paperAtRule = postcss.atRule({ name: 'page', params: paperValue, source: Object.values(itemValue[0])[0].source })
+      } else if(['topLeftCorner', 'topLeft', 'topCenter', 'topRight', 'topRightCorner', 'bottomLeftCorner', 'bottomLeft', 'bottomCenter', 'bottomRight', 'bottomRightCorner', 'leftTop', 'leftMiddle', 'leftBottom', 'rightTop', 'rightMiddle', 'rightBottom'].includes(paperValue)) {
+        paperAtRule = postcss.atRule({ name: 'page', params: paperValue, source: Object.values(itemValue[0])[0].source })
+      }
+      paperAtRule.append([...declaration(itemValue, defs, opts)])
+      atFirstRuleArray.push(paperAtRule)
     } else {
       const itemValues = Object.entries(item[itemKey].value)
       let selectorItemKey = itemKey
@@ -395,7 +409,7 @@ const declaration = (body, defs, opts) => {
     atRuleArray.push(newAtRule)
   }
   
-  return [...ruleArray.flat(), ...atRuleArray]
+  return [...atFirstRuleArray, ...ruleArray.flat(), ...atRuleArray]
 }
 
 module.exports = declaration
