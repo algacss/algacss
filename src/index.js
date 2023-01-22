@@ -194,16 +194,11 @@ function algacss(options) {
             }
             config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
             
-            if(config.important) {
-              if(config.extract.rules.length >= 1) {
-                root.append(...config.extract.rules)
-              }
-              rule.remove()
-            } else {
-              const newLayer = layer(config.extract.rules, name, rule.source)
-              
-              rule.replaceWith(newLayer)
+            if(config.extract.rules.length >= 1) {
+              root.append(...config.extract.rules)
             }
+            rule.remove()
+            
           } else {
             let fileName = param
             let componentName = name
