@@ -376,7 +376,12 @@ function algacss(options) {
           ]
           const newRoot = config.components[param]['root']
           newRoot.removeAll()
-          newRoot.append(...newNodes)
+          if(config.important) {
+            newRoot.append(...newNodes)
+          } else {
+            const newLayer = layer(newNodes, name, rule.source)
+            newRoot.replaceWith(newLayer)
+          }
           newPackNodes.push(newRoot)
         }
       }

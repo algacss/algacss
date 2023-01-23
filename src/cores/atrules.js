@@ -13,7 +13,7 @@ module.exports = (obj, ref, source, opts) => {
   const newPreset = opts?.preset || preset
   const newState = opts?.state || state
   const newColor = opts?.color || color
-  const newImportant = opts?.important || true
+  const newImportant = opts?.important === false ? false : true
   
   const refs = ref.trim().split(/-|:/).filter(i => i !== '')
   
