@@ -1,9 +1,15 @@
-@define props {
-  menu: 10;
+@define refs {
+  name: picker;
 }
 
-@alga picker {
-  .picker {
+@define props {
+  menu: 10;
+  bgActive: #4c9bff;
+  bdActive: #4890eb;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
     ref: width-auto;
   }
     
@@ -74,7 +80,7 @@
     }
     
     .pickerItem.active {
-      ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff;
+      ref: pointerEvents-none borderColor-{props.bdActive} backgroundColor-{props.bgActive};
       ref: color-hexfff cursor-default;
     }
     
