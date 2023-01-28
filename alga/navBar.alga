@@ -1,9 +1,10 @@
 @define props {
-  sizeX: 1.5rem;
-  sizeY: 0.75rem;
-  bgColor: #fff;
-  bgColorDark: #2f2f2f;
-  shadow: none;
+  padX: 1.5rem;
+  padY: 0.75rem;
+  bgLight: #fff;
+  bgDark: #2f2f2f;
+  sdLight: none;
+  sdDark: none;
 }
 
 @provide navItem {
@@ -20,20 +21,17 @@
 
 @alga navBar {
   .navBar {
-    ref: position-relative zIndex-25 w-100pct;
-    ref-paddingTop: {props.sizeY};
-    ref-paddingBottom: {props.sizeY};
-    ref-backgroundColor: {props.bgColor};
-    ref-boxShadow: {props.shadow};
-    prefers-dark: backgroundColor-{props.bgColorDark};
-    prefers-toDark: backgroundColor-{props.bgColorDark};
-    prefers-toLight: backgroundColor-{props.bgColor};
+    ref: position-relative zIndex-25 w-100pct paddingTop-{props.padY} paddingBottom-{props.padY};
+    ref: backgroundColor-{props.bgLight} boxShadow-{props.sdLight};
+    prefers-dark: backgroundColor-{props.bgDark} boxShadow-{props.sdDark};
+    prefers-toDark: backgroundColor-{props.bgDark} boxShadow-{props.sdDark};
+    prefers-toLight: backgroundColor-{props.bgLight} boxShadow-{props.sdLight};
     print: display-none;
     
     .navWrap {
       ref: display-flex flexDirection-row flexWrap-nowrap alignItems-center justifyContent-spaceBetween;
-      ref-paddingRight: {props.sizeX};
-      ref-paddingLeft: {props.sizeX};
+      ref-paddingRight: {props.padX};
+      ref-paddingLeft: {props.padX};
       screen-mb: position-relative;
       
       .navStart {
@@ -72,7 +70,7 @@
       
       .navEnd {
         ref: display-flex justifyContent-spaceBetween flexWrap-nowrap alignItems-center flexGrow-1 paddingLeft-0.75rem;
-        screen-mb: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({props.sizeY}_*_2_+_26px);
+        screen-mb: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({props.padY}_*_2_+_26px);
           
         .navBackdrop {
           ref: position-fixed zIndex-74 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;

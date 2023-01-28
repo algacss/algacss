@@ -380,7 +380,7 @@ function algacss(options) {
             newRoot.append(...newNodes)
           } else {
             const newLayer = layer(newNodes, name, rule.source)
-            newRoot.replaceWith(newLayer)
+            newRoot.append(newLayer)
           }
           newPackNodes.push(newRoot)
         }

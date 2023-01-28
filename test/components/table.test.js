@@ -46,15 +46,17 @@ test('Testing table component', async () => {
 .tableList tr:last-child {
     border-bottom-width: 0px
 }
-.tableResponsive {
-    overflow-x: auto;
-    overflow-y: visible
-}
 .tableFlush {
     border: none
 }
 .tableFlush.tableBorder tr th:first-child, .tableFlush.tableBorder tr td:first-child {
     border-left: none
+}
+@media (max-width: 1200px) {
+    .tableResponsive {
+        overflow-x: auto;
+        overflow-y: visible
+    }
 }
 @media (prefers-color-scheme: dark) {
     .tableBorder {

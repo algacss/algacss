@@ -84,7 +84,7 @@
   }
    
   .{refs.name}Responsive {
-    ref: overflowX-auto overflowY-visible;
+    screen-tb: overflowX-auto overflowY-visible;
   }
   
   .{refs.name}Flush {

@@ -24,6 +24,11 @@ module.exports = {
     size: '1024px',
     minmax: 'min'
   },
+  tb: {
+    alias: ['tablet'],
+    size: '1200px',
+    minmax: 'max'
+  },
   lg: {
     alias: ['large', 'l'],
     size: '1280px',
