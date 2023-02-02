@@ -164,17 +164,20 @@ test('Testing sideBar component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     .sideBar {
-        background-color: #2f2f2f
+        background-color: #2f2f2f;
+        box-shadow: none
     }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .sideBar {
-        background-color: #2f2f2f
+        background-color: #2f2f2f;
+        box-shadow: none
     }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .sideBar {
-        background-color: #fff
+        background-color: #fff;
+        box-shadow: none
     }
 }
 @media print {

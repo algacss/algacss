@@ -164,7 +164,8 @@ test('Testing navBar component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     .navBar {
-        background-color: #2f2f2f
+        background-color: #2f2f2f;
+        box-shadow: none
     }
     .navBar .navWrap .navEnd.active {
         background-color: #2f2f2f;
@@ -176,7 +177,8 @@ test('Testing navBar component', async () => {
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .navBar {
-        background-color: #2f2f2f
+        background-color: #2f2f2f;
+        box-shadow: none
     }
     html[data-mode=dark] .navBar .navWrap .navEnd.active {
         background-color: #2f2f2f;
@@ -188,7 +190,8 @@ test('Testing navBar component', async () => {
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .navBar {
-        background-color: #fff
+        background-color: #fff;
+        box-shadow: none
     }
     html[data-mode=light] .navBar .navWrap .navEnd.active {
         background-color: #fff;
