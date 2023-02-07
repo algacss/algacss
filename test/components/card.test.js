@@ -49,10 +49,10 @@ test('Testing card or box component', async () => {
         border-color: #5f5f5f
     }
     .cardHeader {
-        border-color: #242424
+        border-bottom-color: #5f5f5f
     }
     .cardFooter {
-        border-color: #242424
+        border-top-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: light) {
@@ -61,10 +61,10 @@ test('Testing card or box component', async () => {
         border-color: #5f5f5f
     }
     html[data-mode=dark] .cardHeader {
-        border-color: #242424
+        border-bottom-color: #5f5f5f
     }
     html[data-mode=dark] .cardFooter {
-        border-color: #242424
+        border-top-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: dark) {
@@ -73,10 +73,10 @@ test('Testing card or box component', async () => {
         border-color: #d9d9d9
     }
     html[data-mode=light] .cardHeader {
-        border-color: #d9d9d9
+        border-bottom-color: #d9d9d9
     }
     html[data-mode=light] .cardFooter {
-        border-color: #d9d9d9
+        border-top-color: #d9d9d9
     }
 }
 @media print {
