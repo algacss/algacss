@@ -1,0 +1,61 @@
+@define refs {
+  name: backX;
+  left: backLeft;
+  right: backRight;
+}
+
+@define props {
+  duration: 0.5s;
+}
+
+@alga {refs.name} {
+  .{refs.left}-enter-active,
+  html[dir=rtl] .{refs.right}-enter-active {
+    ref-animation: {refs.name} {props.duration};
+  }
+  
+  .{refs.left}-leave-active,
+  html[dir=rtl] .{refs.right}-leave-active {
+    ref-animation: {refs.name} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.left} {
+    0% {
+      ref: opacity-0.7;
+      ref-transform: translateX(-2000px) scale(.7);
+    }
+    80% {
+      ref: opacity-0.7;
+      ref-transform: translateX(0) scale(.7);
+    }
+    100% {
+      ref: opacity-1;
+      ref-transform: scale(1);
+    }
+  }
+  
+  .{refs.right}-enter-active,
+  html[dir=rtl] .{refs.left}-enter-active {
+    ref-animation: {refs.name} {props.duration};
+  }
+  
+  .{refs.right}-leave-active,
+  html[dir=rtl] .{refs.left}-leave-active {
+    ref-animation: {refs.name} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.right} {
+    0% {
+      ref: opacity-0.7;
+      ref-transform: translateX(2000px) scale(.7);
+    }
+    80% {
+      ref: opacity-0.7;
+      ref-transform: translateX(0) scale(.7);
+    }
+    100% {
+      ref: opacity-1;
+      ref-transform: scale(1);
+    }
+  }
+}

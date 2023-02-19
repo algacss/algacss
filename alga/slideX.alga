@@ -1,0 +1,51 @@
+@define refs {
+  name: slideX;
+  left: slideLeft;
+  right: slideRight;
+}
+
+@define props {
+  duration: 0.5s;
+}
+
+@alga {refs.name} {
+  .{refs.left}-enter-active,
+  html[dir=rtl] .{refs.right}-enter-active {
+    ref-animation: {refs.left} {props.duration};
+  }
+  
+  .{refs.left}-leave-active,
+  html[dir=rtl] .{refs.right}-leave-active {
+    ref-animation: {refs.left} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.left} {
+    0% {
+      ref: visibility-visible;
+      ref-transform: translate3d(-100%,0,0);
+    }
+    100% {
+      ref-transform: translateZ(0);
+    }
+  }
+  
+  .{refs.right}-enter-active,
+  html[dir=rtl] .{refs.left}-enter-active {
+    ref-animation: {refs.right} {props.duration};
+  }
+  
+  .{refs.right}-leave-active,
+  html[dir=rtl] .{refs.left}-leave-active {
+    ref-animation: {refs.right} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.right} {
+    0% {
+      ref: visibility-visible;
+      ref-transform: translate3d(100%,0,0);
+    }
+    100% {
+      ref-transform: translateZ(0);
+    }
+  }
+}

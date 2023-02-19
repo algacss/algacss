@@ -1,0 +1,15 @@
+module.exports = [
+  'direction', 
+  'display',
+  'captionSide', 
+  'bottom', 
+  'left', 
+  'order', 
+  'position', 
+  'right', 
+  'tableLayout', 
+  'top', 
+  'visibility', 
+  'zIndex', 
+  'inset', 
+]

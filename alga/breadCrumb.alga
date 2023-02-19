@@ -12,29 +12,37 @@
 @alga {refs.name} {
   .{refs.name} {
     ref: display-flex flexWrap-wrap padding-0_0 marginTop-0 marginBottom-1rem listStyle-none;
-  }
     
-  .{refs.name}Item {
-    ref: padding-0_0.5rem_0_0;
-  }
-    
-  .{refs.name}Item + .{refs.name}Item::before {
-    ref: float-left paddingRight-0.5rem color-{props.dividerColor} content-{props.divider};
-  }
-    
-  .{refs.name}Item a {
-    ref: color-inherit textDecoration-none;
-  }
-    
-  .{refs.name}Item.active a {
-    ref: pointerEvents-none color-{props.fgActive};
+    .{refs.name}Item {
+      ref: padding-0_0.5rem_0_0;
+      
+      & + &::before {
+        ref: float-left paddingRight-0.5rem color-{props.dividerColor} content-{props.divider};
+      }
+        
+      & a {
+        ref: color-inherit textDecoration-none;
+      }
+        
+      &.active a {
+        ref: pointerEvents-none color-{props.fgActive};
+      }
+      
+      &.disabled a {
+        ref: pointerEvents-none opacity-0.6;
+      }
+      
+      &:not(.active):not(.disabled):hover a {
+        ref: textDecoration-underline color-{props.fgHover};
+      }
+    }
   }
   
-  .{refs.name}Item.disabled a {
-    ref: pointerEvents-none opacity-0.6;
-  }
-  
-  .{refs.name}Item:not(.active):not(.disabled):hover a {
-    ref: textDecoration-underline color-{props.fgHover};
+  html[dir=rtl] .{refs.name} {
+    .{refs.name}Item {
+      & + &::before {
+        ref: float-right paddingRight-0px paddingLeft-0.5rem;
+      }
+    }
   }
 }

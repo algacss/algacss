@@ -6,6 +6,7 @@ test('Testing menu component', async () => {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
+    padding-right: 0;
     margin: 0;
     list-style: none
 }
