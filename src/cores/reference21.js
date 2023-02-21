@@ -7,7 +7,19 @@ module.exports = (ref, opt = {}) => {
   let references = {}
   const newPreset = opt?.preset || preset
   
-  const refs = ref.value.split(' ').filter(i => i !== '')
+  const refs = ref.value.split(' ').filter(i => i !== '').map(item => {
+    if(item.startsWith('mx-')) {
+      item = [item.replace('mx-', 'mr-'), item.replace('mx-', 'ml-')]
+    } else if(item.startsWith('my-')) {
+      item = [item.replace('my-', 'mt-'), item.replace('my-', 'mb-')]
+    } else if(item.startsWith('px-')) {
+      item = [item.replace('px-', 'pr-'), item.replace('px-', 'pl-')]
+    } else if(item.startsWith('py-')) {
+      item = [item.replace('py-', 'pt-'), item.replace('py-', 'pb-')]
+    }
+    return item
+  }).flat()
+  
   for(let rf of refs) {
     const props = rf.trim().split('-').filter(i => i !== '')
     

@@ -21,8 +21,12 @@ module.exports = (ref, source, opts) => {
       refs[1] = opts.preset[refs[1]]
     }*/
     
-    if(Object.keys(newState).includes(refs[0])) {
-      const newRule = postcss.rule({ selector: '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')+''+opts.state[refs[0]].state, source: source })
+    if(['rtl', 'ltr', ...Object.keys(newState)].includes(refs[0])) {
+      const newReplacedSelector = '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')
+      let newRule = postcss.rule({ selector: newReplacedSelector+''+opts.state[refs[0]].state, source: source })
+      if(['rtl', 'ltr'].includes(refs[0])) {
+        newRule = postcss.rule({ selector: `html[dir=${refs[0]}] `+newReplacedSelector, source: source })
+      }
       //const declVal = postcss.decl({ prop: camelDash(refs[1]), value: value(refs[2]) })
       //newRule.append(declVal)
       if(Object.keys(newColor).includes(refs[1])) {

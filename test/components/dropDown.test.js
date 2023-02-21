@@ -1,6 +1,6 @@
 const execute = require('../execute.js')
 
-test('Testing dropDown on navBar component', async () => {
+test('Testing dropDown on navBar component with RTL', async () => {
   const input = '@use dropDown;'
   const output = `.dropDown {
     position: relative
@@ -100,6 +100,11 @@ test('Testing dropDown on navBar component', async () => {
 .dropDown.dropDownUp .dropDownMenu {
     top: auto;
     bottom: 100%
+}
+html[dir=rtl] .dropDownMenu.dropDownRight {
+    right: auto;
+    left: 0;
+    text-align: right
 }
 @media (prefers-color-scheme: dark) {
     .dropDownMenu {

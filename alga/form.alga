@@ -14,7 +14,7 @@
 @alga {refs.name} {
   @if field has label {
     .label {
-      ref: display-block marginBottom-0.25rem color-inherit;
+      ref: display-block marginBottom-0.375rem color-inherit;
     }
   }
   
@@ -198,7 +198,7 @@
     }
       
     .check .checkLabel {
-      ref: display-inlineBlock paddingLeft-0.25rem;
+      ref: display-inlineBlock paddingLeft-0.5rem paddingRight-0.5rem;
     }
       
     .check.switch .checkInput {

@@ -90,4 +90,12 @@
       }
     }
   }
+  
+  html[dir=rtl] .{refs.name} {
+    &Menu {
+      &.{refs.name}Right {
+        ref: right-auto left-0 textAlign-right;
+      }
+    }
+  }
 }

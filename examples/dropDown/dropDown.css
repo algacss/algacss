@@ -2,15 +2,13 @@
     position: relative
 }
 .dropDownToggler {
-    white-space: nowrap;
-    display: flex;
-    align-items: center
+    white-space: nowrap
 }
 .dropDownToggler::after {
     content: "";
     display: inline-block;
     margin-left: 0.255em;
-    vertical-align: 0.255em;
+    vertical-align: middle;
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
     border-bottom: 0;
@@ -83,6 +81,12 @@
 .dropDownMenu.dropDownRight {
     right: 0px
 }
+.dropDownMenu.dropOver {
+    top: -100%
+}
+.dropDownMenu.dropUp {
+    top: -125px
+}
 .dropDown.active .dropDownBackdrop, .dropDown.active .dropDownMenu {
     display: block
 }
@@ -92,6 +96,11 @@
 .dropDown.dropDownUp .dropDownMenu {
     top: auto;
     bottom: 100%
+}
+html[dir=rtl] .dropDownMenu.dropDownRight {
+    right: auto;
+    left: 0;
+    text-align: right
 }
 @media (prefers-color-scheme: dark) {
     .dropDownMenu {

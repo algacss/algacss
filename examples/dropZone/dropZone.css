@@ -12,7 +12,9 @@
     clip: rect(1px, 1px, 1px, 1px)
 }
 .dropZone .dropZoneWrap {
-    border: 3px dashed currentColor;
+    border-width: 3px;
+    border-style: dashed;
+    border-color: currentColor;
     box-shadow: -1px 5px 25px -9px rgba(0, 0, 0, 0.2)
 }
 .dropZone .dropZoneWrap .dropZoneLabel {
@@ -35,7 +37,7 @@
     margin: 0px
 }
 .dropZone .dropZoneWrap .dropZoneBody .dropZoneTitle {
-    color: #333
+    color: inherit
 }
 .dropZone .dropZoneWrap .dropZoneBody .dropZoneText {
     color: #737373
