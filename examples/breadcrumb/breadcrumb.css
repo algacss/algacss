@@ -9,12 +9,6 @@
 .breadCrumb .breadCrumbItem {
     padding: 0 0.5rem 0 0
 }
-.breadCrumb .breadCrumbItem + .breadCrumb .breadCrumbItem::before {
-    float: left;
-    padding-right: 0.5rem;
-    color: inherit;
-    content: "›"
-}
 .breadCrumb .breadCrumbItem a {
     color: inherit;
     text-decoration: none
@@ -31,7 +25,13 @@
     text-decoration: underline;
     color: #0d6efd
 }
-html[dir=rtl] .breadCrumb .breadCrumbItem + html[dir=rtl] .breadCrumb .breadCrumbItem::before {
+.breadCrumbItem + .breadCrumbItem::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: inherit;
+    content: "›"
+}
+html[dir=rtl] .breadCrumbItem::before {
     float: right;
     padding-right: 0px;
     padding-left: 0.5rem

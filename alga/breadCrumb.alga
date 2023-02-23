@@ -15,11 +15,7 @@
     
     .{refs.name}Item {
       ref: padding-0_0.5rem_0_0;
-      
-      & + &::before {
-        ref: float-left paddingRight-0.5rem color-{props.dividerColor} content-{props.divider};
-      }
-        
+       
       & a {
         ref: color-inherit textDecoration-none;
       }
@@ -38,11 +34,11 @@
     }
   }
   
-  html[dir=rtl] .{refs.name} {
-    .{refs.name}Item {
-      & + &::before {
-        ref: float-right paddingRight-0px paddingLeft-0.5rem;
-      }
-    }
+  .{refs.name}Item + .{refs.name}Item::before {
+    ref: float-left paddingRight-0.5rem color-{props.dividerColor} content-{props.divider};
+  }
+       
+  html[dir=rtl] .{refs.name}Item::before {
+    ref: float-right paddingRight-0px paddingLeft-0.5rem;
   }
 }
