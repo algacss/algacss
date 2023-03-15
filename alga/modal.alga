@@ -6,6 +6,10 @@
   width: 500px;
 }
 
+@provide headerFooter {
+  ref: display-flex justifyContent-spaceBetween alignItems-center padding-0.75rem_1rem;
+}
+
 @alga {refs.name} {
   .{refs.name} {
     ref: position-absolute zIndex-30 top-0 left-0 maxWidth-100vw maxHeight-100vh;
@@ -13,14 +17,18 @@
    
   .{refs.name}Dialog {
     ref: position-fixed zIndex-35 inset-0_3em_3em_0 width-100pct height-100pct display-none;
-  }
-  
-  .{refs.name}.active .{refs.name}Dialog {
-    ref: display-block padding-1.5rem backgroundColor-rgba(0,0,0,0.5);
-  }
     
-  .{refs.name}.active .{refs.name}Dialog.{refs.name}Center {
-    ref: display-grid placeItems-center;
+    html[dir=rtl] & {
+      ref: inset-0_0_3em_3em;
+    }
+      
+    .{refs.name}.active & {
+      ref: display-block padding-1.5rem backgroundColor-rgba(0,0,0,0.5);
+      
+      &.{refs.name}Center {
+        ref: display-grid placeItems-center;
+      }
+    }
   }
     
   .{refs.name}Content {
@@ -34,33 +42,31 @@
     
   .{refs.name}Fullscreen {
     ref: padding-0;
-  }
-    
-  .{refs.name}Fullscreen .{refs.name}Content {
-    ref: width-100vw height-100vh borderRadius-0;
-  }
-    
-  .{refs.name}Header, .{refs.name}Footer {
-    ref: display-flex justifyContent-spaceBetween alignItems-center padding-0.75rem_1rem;
+      
+    .{refs.name}Content {
+      ref: width-100vw height-100vh borderRadius-0;
+    }
   }
     
   .{refs.name}Header {
+    inject: headerFooter;
     ref: borderBottom-1px_solid_hexd9d9d9;
     prefers-dark: borderBottomColor-hex242424;
     prefers-toDark: borderBottomColor-hex242424;
     prefers-toLight: borderBottomColor-hexd9d9d9;
-  }
     
-  .{refs.name}Header .{refs.name}Title {
-    ref: marginTop-0 marginBottom-0 lineHeight-1.5 fontSize-1.25rem;
+    .{refs.name}Title {
+      ref: marginTop-0 marginBottom-0 lineHeight-1.5 fontSize-1.25rem;
+    }
   }
-    
+  
   .{refs.name}Body {
     ref: padding-0.75rem_1rem overflowX-visible overflowY-auto;
     ref-maxHeight: calc(100vh - 200px);
   }
     
   .{refs.name}Footer {
+    inject: headerFooter;
     ref: borderTop-1px_solid_hexd9d9d9;
     prefers-dark: borderTopColor-hex242424;
     prefers-toDark: borderTopColor-hex242424;

@@ -18,6 +18,9 @@ test('Testing modal dialog component', async () => {
     height: 100%;
     display: none
 }
+html[dir=rtl] .modalDialog {
+    inset: 0 0 3em 3em
+}
 .modal.active .modalDialog {
     display: block;
     padding: 1.5rem;
@@ -43,13 +46,11 @@ test('Testing modal dialog component', async () => {
     height: 100vh;
     border-radius: 0
 }
-.modalHeader, .modalFooter {
+.modalHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1rem
-}
-.modalHeader {
+    padding: 0.75rem 1rem;
     border-bottom: 1px solid #d9d9d9
 }
 .modalHeader .modalTitle {
@@ -65,6 +66,10 @@ test('Testing modal dialog component', async () => {
     max-height: calc(100vh - 200px)
 }
 .modalFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
     border-top: 1px solid #d9d9d9
 }
 @media (max-width: 599px) {

@@ -17,12 +17,24 @@ test('Testing tags, tag input, and badge component', async () => {
     border: 1px solid #d9d9d9
 }
 .tag.groupItem:first-child {
-    cursor: default
+    cursor: default;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px
+}
+html[dir=rtl] .tag.groupItem:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px
 }
 .tag.groupItem:last-child {
     padding-right: 5px;
     padding-left: 5px;
-    cursor: pointer
+    cursor: pointer;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px
+}
+html[dir=rtl] .tag.groupItem:last-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px
 }
 .tag.groupItem svg {
     pointer-events: none
@@ -47,6 +59,9 @@ test('Testing tags, tag input, and badge component', async () => {
     width: 100vw;
     height: 100vh;
     display: none
+}
+html[dir=rtl] .tagBackdrop {
+    inset: 0 0 3em 3em
 }
 .taggable.active .tagBackdrop {
     display: block
@@ -111,8 +126,12 @@ test('Testing tags, tag input, and badge component', async () => {
     font-size: 0.75rem;
     font-weight: bold
 }
+html[dir=rtl] .badge {
+    margin-left: 0px;
+    margin-right: 0.15rem
+}
 .badgeTop {
-    margin-top: -0.375rem
+    margin-top: -0.5em
 }
 .badgeRound {
     border-radius: 99px
@@ -134,6 +153,9 @@ test('Testing tags, tag input, and badge component', async () => {
     .tagContent .tagItem:hover {
         background-color: #242424
     }
+    .badge {
+        background-color: #5f5f5f
+    }
 }
 @media (prefers-color-scheme: light) {
     html[data-mode=dark] .tag {
@@ -152,6 +174,9 @@ test('Testing tags, tag input, and badge component', async () => {
     html[data-mode=dark] .tagContent .tagItem:hover {
         background-color: #242424
     }
+    html[data-mode=dark] .badge {
+        background-color: #5f5f5f
+    }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .tag {
@@ -169,6 +194,9 @@ test('Testing tags, tag input, and badge component', async () => {
     }
     html[data-mode=light] .tagContent .tagItem:hover {
         background-color: #ededed
+    }
+    html[data-mode=light] .badge {
+        background-color: #283541
     }
 }`
   await execute(input, output, {log: false, file: './examples/tags/tags.css'})

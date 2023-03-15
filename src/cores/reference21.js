@@ -21,7 +21,7 @@ module.exports = (ref, opt = {}) => {
   }).flat()
   
   for(let rf of refs) {
-    const props = rf.trim().split('-').filter(i => i !== '')
+    const props = rf.replace('--', '-n').replaceAll('_-', '_n').trim().split('-').filter(i => i !== '')
     
     if(!rf.includes(':') && props.length >= 2) { // && Number(props.length) === 2
       if([...properties, ...Object.keys(newPreset)].includes(props[0])) {

@@ -4,7 +4,6 @@
 }
 
 @alga tags {
-  
   @if type has tag {
     .tag {
       ref: display-inlineFlex alignItems-center borderRadius-0.375rem textDecoration-none cursor-pointer;
@@ -14,18 +13,27 @@
       prefers-dark: backgroundColor-hex2f2f2f color-hexfff borderColor-hex5f5f5f;
       prefers-toDark: backgroundColor-hex2f2f2f color-hexfff borderColor-hex5f5f5f;
       prefers-toLight: backgroundColor-hexf2f2f2 color-hex2f2f2f borderColor-hexd9d9d9;
-    }
-    
-    .tag.groupItem:first-child {
-      ref: cursor-default;
-    }
-    
-    .tag.groupItem:last-child {
-      ref: paddingRight-5px paddingLeft-5px cursor-pointer;
-    }
-    
-    .tag.groupItem svg {
-      ref: pointerEvents-none;
+      
+      &.groupItem:first-child {
+        ref: cursor-default borderTopRightRadius-0px borderBottomRightRadius-0px;
+        
+        html[dir=rtl] & {
+          ref: borderTopLeftRadius-0px borderBottomLeftRadius-0px;
+        }
+      }
+      
+      &.groupItem:last-child {
+        ref: paddingRight-5px paddingLeft-5px cursor-pointer;
+        ref: borderTopLeftRadius-0px borderBottomLeftRadius-0px;
+        
+        html[dir=rtl] & {
+          ref: borderTopRightRadius-0px borderBottomRightRadius-0px;
+        }
+      }
+      
+      &.groupItem svg {
+        ref: pointerEvents-none;
+      }
     }
     
     .tags {
@@ -44,10 +52,14 @@
      
     .tagBackdrop {
       ref: position-fixed zIndex-74 inset-0_3em_3em_0 width-100vw height-100vh display-none;
-    }
       
-    .taggable.active .tagBackdrop {
-      ref: display-block;
+      html[dir=rtl] & {
+        ref: inset-0_0_3em_3em;
+      }
+      
+      .taggable.active & {
+        ref: display-block;
+      }
     }
       
     .input.tagToggler {
@@ -100,10 +112,18 @@
       ref: display-inline marginTop-0px marginLeft-0.15rem padding-3px_7.5px;
       ref: borderRadius-0.375rem textDecoration-none backgroundColor-hex283541;
       ref: color-hexfff fontSize-0.75rem fontWeight-bold;
+      prefers-dark: backgroundColor-hex5f5f5f;
+      prefers-toDark: backgroundColor-hex5f5f5f;
+      prefers-toLight: backgroundColor-hex283541;
+      
+      html[dir=rtl] & {
+        ref: marginLeft-0px marginRight-0.15rem;
+      }
+    
     }
     
     .badgeTop {
-      ref: marginTop-n0.375rem;
+      ref: marginTop-n0.5em;
     }
     
     .badgeRound {

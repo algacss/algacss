@@ -14,7 +14,7 @@ module.exports = (ref, source, opts) => {
   const newColor = opts?.color || color
   const newImportant = opts?.important === false ? false : true
   
-  const refs = ref.trim().split(/-|:/).filter(i => i !== '')
+  const refs = ref.replace('--', '-n').replaceAll('_-', '_n').trim().split(/-|:/).filter(i => i !== '')
   
   if(ref.includes(':') && [...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[1])) { // for state colon like hover or active
     /*if('preset' in opts && Object.keys(opts.preset).includes(refs[1])) {

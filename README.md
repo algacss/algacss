@@ -33,7 +33,7 @@ npm install alga-css --save-dev
 
 #or
 
-yarn add alga-css
+yarn add alga-css --dev
 
 #or for testing (with next tag)
 
