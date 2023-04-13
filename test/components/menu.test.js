@@ -26,7 +26,7 @@ test('Testing menu component', async () => {
     background-color: #ededed
 }
 .nav > .item.active > .link, .menu > .item.active > .link {
-    background-color: #0d6efd;
+    background-color: #07f;
     color: #fff
 }
 .menu > .item > .link {
@@ -51,9 +51,9 @@ test('Testing menu component', async () => {
     color: #363d46
 }
 .nav.custom > .item.active > .link {
-    border-bottom-color: #0d6efd;
+    border-bottom-color: #07f;
     background-color: #ebf4ff;
-    color: #0d6efd
+    color: #07f
 }
 .menu.custom > .item:not(.active):hover > .link {
     border-left-color: #7d8ca4;
@@ -61,9 +61,9 @@ test('Testing menu component', async () => {
     color: #363d46
 }
 .menu.custom > .item.active > .link {
-    border-left-color: #0d6efd;
+    border-left-color: #07f;
     background-color: #ebf4ff;
-    color: #0d6efd
+    color: #07f
 }
 .nav.tab {
     border-bottom: 1px solid #dee2e6

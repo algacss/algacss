@@ -1,5 +1,8 @@
 @define props {
   menu: 10;
+  bgActive: #07f;
+  fgActive: #fff;
+  bdActive: #06e;
 }
 
 @alga list {
@@ -43,7 +46,7 @@
     }
     
     .listItem.active {
-      ref: pointerEvents-none borderColor-hex4890eb backgroundColor-hex4c9bff;
+      ref: pointerEvents-none borderColor-{props.bdActive} backgroundColor-{props.bgActive};
       ref: color-hexfff cursor-default;
     }
     

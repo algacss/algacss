@@ -1,8 +1,8 @@
 @define props {
   type: dense, sparse;
-  bgActive: #4c9bff;
+  bgActive: #07f;
   fgActive: #fff;
-  bdActive: #4890eb;
+  bdActive: #06e;
 }
 
 @alga pagination {

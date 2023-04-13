@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
+    padding-right: 0;
     margin: 0;
     list-style: none
 }
@@ -14,13 +15,14 @@
     border-radius: 0.25rem;
     color: #2f2f2f;
     text-decoration: none;
+    cursor: default;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 .nav > .item:hover > .link, .menu > .item:hover > .link {
     background-color: #ededed
 }
 .nav > .item.active > .link, .menu > .item.active > .link {
-    background-color: #0d6efd;
+    background-color: #07f;
     color: #fff
 }
 .menu > .item > .link {
@@ -45,9 +47,9 @@
     color: #363d46
 }
 .nav.custom > .item.active > .link {
-    border-bottom-color: #0d6efd;
+    border-bottom-color: #07f;
     background-color: #ebf4ff;
-    color: #0d6efd
+    color: #07f
 }
 .menu.custom > .item:not(.active):hover > .link {
     border-left-color: #7d8ca4;
@@ -55,9 +57,9 @@
     color: #363d46
 }
 .menu.custom > .item.active > .link {
-    border-left-color: #0d6efd;
+    border-left-color: #07f;
     background-color: #ebf4ff;
-    color: #0d6efd
+    color: #07f
 }
 .nav.tab {
     border-bottom: 1px solid #dee2e6

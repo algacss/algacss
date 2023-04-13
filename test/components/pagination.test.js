@@ -79,8 +79,8 @@ test('Testing pagination component', async () => {
 }
 .pagination .item.active .link {
     pointer-events: none;
-    border-color: #4890eb;
-    background-color: #4c9bff;
+    border-color: #06e;
+    background-color: #07f;
     color: #fff
 }
 @media (prefers-color-scheme: dark) {

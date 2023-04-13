@@ -4,6 +4,8 @@
 
 @define props {
   type: custom, tab;
+  bgActive: #07f;
+  fgActive: #fff;
 }
 
 @alga {refs.name} {
@@ -35,7 +37,7 @@
     
   .nav > .item.active > .link,
   .{refs.name} > .item.active > .link {
-    ref: backgroundColor-hex0d6efd color-hexfff;
+    ref: backgroundColor-{props.bgActive} color-{props.fgActive};
   }
     
   .{refs.name} > .item > .link {
@@ -63,7 +65,7 @@
     }
     
     .nav.custom > .item.active > .link {
-      ref: borderBottomColor-hex0d6efd backgroundColor-hexebf4ff color-hex0d6efd;
+      ref: borderBottomColor-{props.bgActive} backgroundColor-hexebf4ff color-{props.bgActive};
       prefers-dark: backgroundColor-hex2f2f2f;
       prefers-toDark: backgroundColor-hex2f2f2f;
       prefers-toLight: backgroundColor-hexebf4ff;
@@ -77,7 +79,7 @@
     }
     
     .{refs.name}.custom > .item.active > .link {
-      ref: borderLeftColor-hex0d6efd backgroundColor-hexebf4ff color-hex0d6efd;
+      ref: borderLeftColor-{props.bgActive} backgroundColor-hexebf4ff color-{props.bgActive};
       prefers-dark: backgroundColor-hex2f2f2f;
       prefers-toDark: backgroundColor-hex2f2f2f;
       prefers-toLight: backgroundColor-hexebf4ff;

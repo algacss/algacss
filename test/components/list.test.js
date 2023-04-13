@@ -34,8 +34,8 @@ test('Testing list group component', async () => {
 }
 .list .listItem.active {
     pointer-events: none;
-    border-color: #4890eb;
-    background-color: #4c9bff;
+    border-color: #06e;
+    background-color: #07f;
     color: #fff;
     cursor: default
 }
