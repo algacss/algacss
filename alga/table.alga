@@ -11,7 +11,7 @@
       ref: textAlign-left verticalAlign-middle padding-0.75rem;
     }
   }
-
+  
   .{refs.name}Border {
     ref: borderTop-1px_solid_hexd9d9d9 borderRight-1px_solid_hexd9d9d9 borderBottom-1px_solid_hexd9d9d9;
     prefers-dark: borderTopColor-hex5f5f5f borderRightColor-hex5f5f5f borderBottomColor-hex5f5f5f;
@@ -93,6 +93,13 @@
     &.{refs.name}Border tr th:first-child,
     &.{refs.name}Border tr td:first-child {
       ref: borderLeft-none;
+    }
+  }
+  
+  html[dir=rtl] .{refs.name} {
+    tr th,
+    tr td {
+      ref: textAlign-right;
     }
   }
 }

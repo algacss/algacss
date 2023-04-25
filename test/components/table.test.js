@@ -52,6 +52,9 @@ test('Testing table component', async () => {
 .tableFlush.tableBorder tr th:first-child, .tableFlush.tableBorder tr td:first-child {
     border-left: none
 }
+html[dir=rtl] .table tr th, html[dir=rtl] .table tr td {
+    text-align: right
+}
 @media (max-width: 1200px) {
     .tableResponsive {
         overflow-x: auto;
