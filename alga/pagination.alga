@@ -3,7 +3,7 @@
   bgActive: #07f;
   fgActive: #fff;
   bdActive: #06e;
-  rounded: 5px;
+  rd: 5px;
 }
 
 @alga pagination {
@@ -29,11 +29,11 @@
     }
   
     .pagination.dense .item:first-child .link {
-      ref: borderTopLeftRadius-{props.rounded} borderBottomLeftRadius-{props.rounded};
+      ref: borderTopLeftRadius-{props.rd} borderBottomLeftRadius-{props.rd};
     }
     
     .pagination.dense .item:last-child .link {
-      ref: borderRightWidth-1px borderTopRightRadius-{props.rounded} borderBottomRightRadius-{props.rounded};
+      ref: borderRightWidth-1px borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
     }
     
     .pagination.dense .item.ellipsis .link {
@@ -47,7 +47,7 @@
     
   @if type has sparse {
     .pagination.sparse .item .link {
-      ref: border-1px_solid_hexcbcbcb marginLeft-0.25rem marginRight-0.25rem borderRadius-{props.rounded} minWidth-10px textAlign-center;
+      ref: border-1px_solid_hexcbcbcb marginLeft-0.25rem marginRight-0.25rem borderRadius-{props.rd} minWidth-10px textAlign-center;
       prefers-dark: borderColor-rgba(255,255,255,0.25);
       prefers-toDark: borderColor-rgba(255,255,255,0.25);
       prefers-toLight: borderColor-hexcbcbcb;

@@ -9,7 +9,8 @@
   field: label, input, check, group, button;
   bgActive: #1d84b6;
   bdActive: #1d84b6;
-  rounded: 0.375rem;
+  rd: 0.375rem;
+  rdBox: 0.375rem;
 }
 
 @alga {refs.name} {
@@ -23,7 +24,7 @@
     .input, .select {
       ref: display-block width-100pct padding-0.5rem_0.75rem margin-0 fontSize-1rem fontWeight-400;
       ref: lineHeight-1.5 backgroundColor-hexfff backgroundClip-paddingBox appearance-none;
-      ref: color-inherit border-1px_solid_hexd9d9d9 borderRadius-{props.rounded} outline-0;
+      ref: color-inherit border-1px_solid_hexd9d9d9 borderRadius-{props.rd} outline-0;
       ref-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
       prefers-dark: backgroundColor-hex242424 borderColor-hex5f5f5f;
       prefers-toDark: backgroundColor-hex242424 borderColor-hex5f5f5f;
@@ -116,7 +117,7 @@
     }
       
     textarea.input {
-      ref: minHeight-6.5rem resize-none;
+      ref: minHeight-6.5rem resize-none borderRadius-{props.rdBox};
     }
       
     .select:not([multiple]) {
@@ -284,7 +285,7 @@
     .button {
       ref: display-inlineBlock fontWeight-400 color-hex283541 textAlign-center;
       ref: textDecoration-none cursor-pointer userSelect-none backgroundColor-hexfff;
-      ref: border-1px_solid_hexd6d6d6 padding-0.5rem_0.75rem fontSize-1rem borderRadius-{props.rounded};
+      ref: border-1px_solid_hexd6d6d6 padding-0.5rem_0.75rem fontSize-1rem borderRadius-{props.rd};
       ref-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f color-inherit;
       prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f color-inherit;

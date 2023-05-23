@@ -110,7 +110,8 @@ test('Testing form component with', async () => {
 }
 textarea.input {
     min-height: 6.5rem;
-    resize: none
+    resize: none;
+    border-radius: 0.375rem
 }
 .select:not([multiple]) {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");

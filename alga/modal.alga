@@ -4,7 +4,7 @@
 
 @define props {
   width: 500px;
-  corner: 0.375rem;
+  rdBox: 0.375rem;
 }
 
 @provide headerFooter {
@@ -33,7 +33,7 @@
   }
     
   .{refs.name}Content {
-    ref: backgroundColor-hexfff border-1px_solid_hexd9d9d9 marginRight-auto marginLeft-auto borderRadius-{props.corner} color-inherit;
+    ref: backgroundColor-hexfff border-1px_solid_hexd9d9d9 marginRight-auto marginLeft-auto borderRadius-{props.rdBox} color-inherit;
     screen-ss: width-100pct marginRight-0.25rem marginLeft-0.25rem;
     screen-sr: width-{props.width};
     prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
