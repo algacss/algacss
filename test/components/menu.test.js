@@ -70,8 +70,8 @@ test('Testing menu component', async () => {
 }
 .nav.tab > .item > .link {
     border-radius: 0px;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+    border-top-left-radius: calc( 0.75rem / 2);
+    border-top-right-radius: calc( 0.75rem / 2);
     background-color: transparent;
     border: 1px solid transparent;
     margin-bottom: -1px

@@ -2,6 +2,10 @@
   name: dropDown;
 }
 
+@define props {
+  rdBox: 0.75rem;
+}
+
 @alga {refs.name} {
   .{refs.name} {
     ref: position-relative;
@@ -24,7 +28,7 @@
     &Menu {
       ref: position-absolute zIndex-75 display-none minWidth-10rem padding-0.5rem_0px margin-0;
       ref: fontSize-1rem color-inherit textAlign-left listStyle-none backgroundColor-hexfff;
-      ref: backgroundClip-paddingBox borderRadius-0.375rem top-100pct mnw-240px w-100pct;
+      ref: backgroundClip-paddingBox borderRadius-calc(_{props.rdBox}_/_2) top-100pct mnw-240px w-100pct;
       ref-border: 1px solid #cccdce;
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
       prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;

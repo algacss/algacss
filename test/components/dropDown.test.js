@@ -42,7 +42,7 @@ test('Testing dropDown on navBar component with RTL', async () => {
     list-style: none;
     background-color: #fff;
     background-clip: padding-box;
-    border-radius: 0.375rem;
+    border-radius: calc( 0.75rem / 2);
     top: 100%;
     width: 100%;
     border: 1px solid #cccdce

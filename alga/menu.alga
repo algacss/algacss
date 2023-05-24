@@ -6,6 +6,7 @@
   type: custom, tab;
   bgActive: #07f;
   fgActive: #fff;
+  rdBox: 0.75rem;
 }
 
 @alga {refs.name} {
@@ -95,7 +96,8 @@
     }
     
     .nav.tab > .item > .link {
-      ref: borderRadius-0px borderTopLeftRadius-0.25rem borderTopRightRadius-0.25rem backgroundColor-transparent;
+      ref: borderRadius-0px borderTopLeftRadius-calc(_{props.rdBox}_/_2);
+      ref: borderTopRightRadius-calc(_{props.rdBox}_/_2) backgroundColor-transparent;
       ref: border-1px_solid_transparent marginBottom-n1px;
     }
     
