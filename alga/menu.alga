@@ -21,7 +21,7 @@
   .nav > .item > .link,
   .{refs.name} > .item > .link {
     ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex2f2f2f;
-    ref: textDecoration-none cursor-default;
+    ref: textDecoration-none cursor-pointer;
     ref-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     prefers-dark: color-inherit;
     prefers-toDark: color-inherit;
@@ -38,7 +38,7 @@
     
   .nav > .item.active > .link,
   .{refs.name} > .item.active > .link {
-    ref: backgroundColor-{props.bgActive} color-{props.fgActive};
+    ref: backgroundColor-{props.bgActive} color-{props.fgActive} cursor-default;
   }
     
   .{refs.name} > .item > .link {

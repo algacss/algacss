@@ -19,7 +19,7 @@ test('Testing menu component', async () => {
     border-radius: 0.25rem;
     color: #2f2f2f;
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 .nav > .item:hover > .link, .menu > .item:hover > .link {
@@ -27,7 +27,8 @@ test('Testing menu component', async () => {
 }
 .nav > .item.active > .link, .menu > .item.active > .link {
     background-color: #07f;
-    color: #fff
+    color: #fff;
+    cursor: default
 }
 .menu > .item > .link {
     padding-top: 0.75rem;

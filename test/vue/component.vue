@@ -9,5 +9,8 @@
     <span class="primary-light-20 bgColor-lighten(006efd,0) hover:primary-light md:hover:primary-light md:hover:mt-2px">
       color
     </span>
+    <span class="rtl:ml-2 ltr:mr-2">
+      direction
+    </span>
   </div>
 </template>

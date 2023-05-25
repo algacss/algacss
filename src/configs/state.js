@@ -16,5 +16,11 @@ module.exports = {
   },
   checked: {
     state: ':checked'
+  },
+  ltr: {
+    state: 'html[dir=ltr]'
+  },
+  rtl: {
+    state: 'html[dir=rtl]'
   }
 }

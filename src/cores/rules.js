@@ -25,7 +25,7 @@ module.exports = (ref, source, opts) => {
       const newReplacedSelector = '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')
       let newRule = postcss.rule({ selector: newReplacedSelector+''+opts.state[refs[0]].state, source: source })
       if(['rtl', 'ltr'].includes(refs[0])) {
-        newRule = postcss.rule({ selector: `html[dir=${refs[0]}] `+newReplacedSelector, source: source })
+        newRule = postcss.rule({ selector: opts.state[refs[0]].state+' '+newReplacedSelector, source: source })
       }
       //const declVal = postcss.decl({ prop: camelDash(refs[1]), value: value(refs[2]) })
       //newRule.append(declVal)
