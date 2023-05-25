@@ -16,10 +16,11 @@ test('Testing menu component', async () => {
 .nav > .item > .link, .menu > .item > .link {
     display: block;
     padding: 0.675rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: calc( 0.75rem / 2);
     color: #2f2f2f;
     text-decoration: none;
     cursor: pointer;
+    white-space: nowrap;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 .nav > .item:hover > .link, .menu > .item:hover > .link {
@@ -38,35 +39,60 @@ test('Testing menu component', async () => {
     flex: 1 1 auto;
     text-align: center
 }
+.nav.pill {
+    flex-wrap: nowrap;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden
+}
+.nav.custom {
+    flex-wrap: nowrap;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden
+}
 .nav.custom > .item > .link {
-    border-top: 2px solid transparent;
-    border-bottom: 4px solid transparent
+    border-radius: 0px
 }
 .menu.custom > .item > .link {
-    border-right: 2px solid transparent;
-    border-left: 4px solid transparent
+    border-radius: 0px
 }
 .nav.custom > .item:not(.active):hover > .link {
-    border-bottom-color: #7d8ca4;
-    background-color: #f1f2f3;
+    box-shadow: inset 0px -3px #7d8ca4;
     color: #363d46
 }
+html[dir=rtl] .nav.custom > .item:not(.active):hover > .link {
+    box-shadow: inset 0px -3px #7d8ca4
+}
 .nav.custom > .item.active > .link {
-    border-bottom-color: #07f;
-    background-color: #ebf4ff;
+    box-shadow: inset 0px -3px #07f;
+    background-color: #fff;
+    color: #07f
+}
+html[dir=rtl] .nav.custom > .item.active > .link {
+    box-shadow: inset 0px -3px #07f;
     color: #07f
 }
 .menu.custom > .item:not(.active):hover > .link {
-    border-left-color: #7d8ca4;
-    background-color: #f6f8f9;
+    box-shadow: inset 3px 0px #7d8ca4;
     color: #363d46
 }
+html[dir=rtl] .menu.custom > .item:not(.active):hover > .link {
+    box-shadow: inset -3px 0px #7d8ca4
+}
 .menu.custom > .item.active > .link {
-    border-left-color: #07f;
-    background-color: #ebf4ff;
+    box-shadow: inset 3px 0px #07f;
+    background-color: #fff;
     color: #07f
 }
+html[dir=rtl] .menu.custom > .item.active > .link {
+    box-shadow: inset -3px 0px #07f
+}
 .nav.tab {
+    flex-wrap: nowrap;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     border-bottom: 1px solid #dee2e6
 }
 .nav.tab > .item > .link {
@@ -93,14 +119,12 @@ test('Testing menu component', async () => {
         background-color: #5f5f5f
     }
     .nav.custom > .item:not(.active):hover > .link {
-        background-color: #2f2f2f;
         color: inherit
     }
     .nav.custom > .item.active > .link {
         background-color: #2f2f2f
     }
     .menu.custom > .item:not(.active):hover > .link {
-        background-color: #2f2f2f;
         color: inherit
     }
     .menu.custom > .item.active > .link {
@@ -125,14 +149,12 @@ test('Testing menu component', async () => {
         background-color: #5f5f5f
     }
     html[data-mode=dark] .nav.custom > .item:not(.active):hover > .link {
-        background-color: #2f2f2f;
         color: inherit
     }
     html[data-mode=dark] .nav.custom > .item.active > .link {
         background-color: #2f2f2f
     }
     html[data-mode=dark] .menu.custom > .item:not(.active):hover > .link {
-        background-color: #2f2f2f;
         color: inherit
     }
     html[data-mode=dark] .menu.custom > .item.active > .link {
@@ -157,18 +179,16 @@ test('Testing menu component', async () => {
         background-color: #ededed
     }
     html[data-mode=light] .nav.custom > .item:not(.active):hover > .link {
-        background-color: #f6f8f9;
         color: #363d46
     }
     html[data-mode=light] .nav.custom > .item.active > .link {
-        background-color: #ebf4ff
+        background-color: #fff
     }
     html[data-mode=light] .menu.custom > .item:not(.active):hover > .link {
-        background-color: #f6f8f9;
         color: #363d46
     }
     html[data-mode=light] .menu.custom > .item.active > .link {
-        background-color: #ebf4ff
+        background-color: #fff
     }
     html[data-mode=light] .nav.tab {
         border-bottom-color: #dee2e6
@@ -179,6 +199,11 @@ test('Testing menu component', async () => {
     html[data-mode=light] .nav.tab > .item.active > .link {
         background-color: #fff;
         border-color: #dee2e6 #dee2e6 transparent
+    }
+}
+@media print {
+    .nav, .menu {
+        display: none
     }
 }`
   await execute(input, output, {log: false, file: './examples/menu/menu.css'})

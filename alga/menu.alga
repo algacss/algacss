@@ -3,7 +3,7 @@
 }
 
 @define props {
-  type: custom, tab;
+  type: pill, custom, tab;
   bgActive: #07f;
   fgActive: #fff;
   rdBox: 0.75rem;
@@ -12,6 +12,7 @@
 @alga {refs.name} {
   .nav, .{refs.name} {
     ref: display-flex flexWrap-wrap paddingLeft-0 paddingRight-0 margin-0 listStyle-none;
+    print: display-none;
   }
     
   .{refs.name} {
@@ -20,8 +21,8 @@
     
   .nav > .item > .link,
   .{refs.name} > .item > .link {
-    ref: display-block padding-0.675rem_1rem borderRadius-0.25rem color-hex2f2f2f;
-    ref: textDecoration-none cursor-pointer;
+    ref: display-block padding-0.675rem_1rem borderRadius-calc(_{props.rdBox}_/_2) color-hex2f2f2f;
+    ref: textDecoration-none cursor-pointer whiteSpace-nowrap;
     ref-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     prefers-dark: color-inherit;
     prefers-toDark: color-inherit;
@@ -49,46 +50,73 @@
     ref: flex-1_1_auto textAlign-center;
   }
   
+  @if type has pill {
+    .nav.pill {
+      ref: flexWrap-nowrap width-auto overflowX-auto overflowY-hidden;
+    }
+  }
+  
   @if type has custom {
+    .nav.custom {
+      ref: flexWrap-nowrap width-auto overflowX-auto overflowY-hidden;
+    }
+    
     .nav.custom > .item > .link {
-      ref: borderTop-2px_solid_transparent borderBottom-4px_solid_transparent;
+      ref: borderRadius-0px;
     }
     
     .{refs.name}.custom > .item > .link {
-      ref: borderRight-2px_solid_transparent borderLeft-4px_solid_transparent;
+      ref: borderRadius-0px;
     }
     
     .nav.custom > .item:not(.active):hover > .link {
-      ref: borderBottomColor-hex7d8ca4 backgroundColor-hexf1f2f3 color-hex363d46;
-      prefers-dark: backgroundColor-hex2f2f2f color-inherit;
-      prefers-toDark: backgroundColor-hex2f2f2f color-inherit;
-      prefers-toLight: backgroundColor-hexf6f8f9 color-hex363d46;
+      ref: boxShadow-inset_0px_n3px_hex7d8ca4 color-hex363d46;
+      prefers-dark: color-inherit;
+      prefers-toDark: color-inherit;
+      prefers-toLight: color-hex363d46;
+    }
+    
+    html[dir=rtl] .nav.custom > .item:not(.active):hover > .link {
+      ref: boxShadow-inset_0px_n3px_hex7d8ca4;
     }
     
     .nav.custom > .item.active > .link {
-      ref: borderBottomColor-{props.bgActive} backgroundColor-hexebf4ff color-{props.bgActive};
+      ref: boxShadow-inset_0px_n3px_{props.bgActive} backgroundColor-hexfff color-{props.bgActive};
       prefers-dark: backgroundColor-hex2f2f2f;
       prefers-toDark: backgroundColor-hex2f2f2f;
-      prefers-toLight: backgroundColor-hexebf4ff;
+      prefers-toLight: backgroundColor-hexfff;
+    }
+    
+    html[dir=rtl] .nav.custom > .item.active > .link {
+      ref: boxShadow-inset_0px_n3px_{props.bgActive} color-{props.bgActive};
     }
     
     .{refs.name}.custom > .item:not(.active):hover > .link {
-      ref: borderLeftColor-hex7d8ca4 backgroundColor-hexf6f8f9 color-hex363d46;
-      prefers-dark: backgroundColor-hex2f2f2f color-inherit;
-      prefers-toDark: backgroundColor-hex2f2f2f color-inherit;
-      prefers-toLight: backgroundColor-hexf6f8f9 color-hex363d46;
+      ref: boxShadow-inset_3px_0px_hex7d8ca4 color-hex363d46;
+      prefers-dark: color-inherit;
+      prefers-toDark: color-inherit;
+      prefers-toLight: color-hex363d46;
+    }
+    
+    html[dir=rtl] .{refs.name}.custom > .item:not(.active):hover > .link {
+      ref: boxShadow-inset_n3px_0px_hex7d8ca4;
     }
     
     .{refs.name}.custom > .item.active > .link {
-      ref: borderLeftColor-{props.bgActive} backgroundColor-hexebf4ff color-{props.bgActive};
+      ref: boxShadow-inset_3px_0px_{props.bgActive} backgroundColor-hexfff color-{props.bgActive};
       prefers-dark: backgroundColor-hex2f2f2f;
       prefers-toDark: backgroundColor-hex2f2f2f;
-      prefers-toLight: backgroundColor-hexebf4ff;
+      prefers-toLight: backgroundColor-hexfff;
+    }
+    
+    html[dir=rtl] .{refs.name}.custom > .item.active > .link {
+      ref: boxShadow-inset_n3px_0px_{props.bgActive};
     }
   }
   
   @if type has tab {
     .nav.tab {
+      ref: flexWrap-nowrap width-auto overflowX-auto overflowY-hidden;
       ref: borderBottom-1px_solid_hexdee2e6;
       prefers-dark: borderBottomColor-hex5f5f5f;
       prefers-toDark: borderBottomColor-hex5f5f5f;

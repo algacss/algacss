@@ -231,11 +231,11 @@
       }
         
       &:not(.groupList) .groupItem:first-child {
-        ref: borderTopLeftRadius-0.375rem borderBottomLeftRadius-0.375rem;
+        ref: borderTopLeftRadius-{props.rd} borderBottomLeftRadius-{props.rd};
       }
         
       &:not(.groupList) .groupItem:last-child {
-        ref: borderTopRightRadius-0.375rem borderBottomRightRadius-0.375rem;
+        ref: borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
       }
         
       &:not(.groupList) .groupItem:not(:last-child) {
@@ -247,11 +247,11 @@
       ref: flexDirection-column;
       
       .groupItem:first-child {
-        ref: borderTopRightRadius-0.375rem borderTopLeftRadius-0.375rem;
+        ref: borderTopRightRadius-{props.rd} borderTopLeftRadius-{props.rd};
       }
         
       .groupItem:last-child {
-        ref: borderBottomRightRadius-0.375rem borderBottomLeftRadius-0.375rem;
+        ref: borderBottomRightRadius-{props.rd} borderBottomLeftRadius-{props.rd};
       }
         
       .groupItem:not(:last-child) {
@@ -267,12 +267,12 @@
     html[dir=rtl] .group {
       &:not(.groupList) .groupItem:first-child {
         ref: borderTopLeftRadius-0px borderBottomLeftRadius-0px;
-        ref: borderTopRightRadius-0.375rem borderBottomRightRadius-0.375rem;
+        ref: borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
       }
         
       &:not(.groupList) .groupItem:last-child {
         ref: borderTopRightRadius-0px borderBottomRightRadius-0px;
-        ref: borderTopLeftRadius-0.375rem borderBottomLeftRadius-0.375rem;
+        ref: borderTopLeftRadius-{props.rd} borderBottomLeftRadius-{props.rd};
       }
         
       &:not(.groupList) .groupItem:not(:last-child) {
