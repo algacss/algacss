@@ -4,19 +4,27 @@
 
 @define props {
   size: medium;
+  srWidth: 576px;
+  smWidth: 720px;
+  mdWidth: 996px;
+  lgWidth: 1200px;
+  lrWidth: 1366px;
+  lsWidth: 1440px;
+  wdWidth: 1440px;
+  wrWidth: 1440px;
 }
 
 @alga {refs.name} {
   .{refs.name} {
     ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-    screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-    screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-    screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-    screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
-    screen-lr: width-100pct maxWidth-1366px marginLeft-auto marginRight-auto;
-    screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
-    screen-wd: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
-    screen-wr: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
+    screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+    screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+    screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+    screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
+    screen-lr: width-100pct maxWidth-{props.lrWidth} marginLeft-auto marginRight-auto;
+    screen-ls: width-100pct maxWidth-{props.lsWidth} marginLeft-auto marginRight-auto;
+    screen-wd: width-100pct maxWidth-{props.wdWidth} marginLeft-auto marginRight-auto;
+    screen-wr: width-100pct maxWidth-{props.wrWidth} marginLeft-auto marginRight-auto;
     print: width-100pct maxWidth-100pct padding-0px margin-0px;
   }
   
@@ -28,7 +36,7 @@
   @if size is smaller {
     .{refs.name}Smaller {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -36,8 +44,8 @@
   @if size is small {
     .{refs.name}Small {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -45,9 +53,9 @@
   @if size is medium {
     .{refs.name}Medium {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -55,10 +63,10 @@
   @if size is large {
     .{refs.name}Large {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-      screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -66,11 +74,11 @@
   @if size is larger {
     .{refs.name}Larger {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-      screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
-      screen-lr: width-100pct maxWidth-1366px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-{props.lrWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -78,12 +86,12 @@
   @if size is largest {
     .{refs.name}Largest {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-      screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
-      screen-lr: width-100pct maxWidth-1366px marginLeft-auto marginRight-auto;
-      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-{props.lrWidth} marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-{props.lsWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -91,13 +99,13 @@
   @if size is wide {
     .{refs.name}Wide {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-      screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
-      screen-lr: width-100pct maxWidth-1366px marginLeft-auto marginRight-auto;
-      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
-      screen-wd: width-100pct maxWidth-2048px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-{props.lrWidth} marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-{props.lsWidth} marginLeft-auto marginRight-auto;
+      screen-wd: width-100pct maxWidth-{props.wdWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
@@ -105,14 +113,14 @@
   @if size is wider {
     .{refs.name}Wider {
       ref: width-100pct maxWidth-100vw paddingLeft-0.375rem paddingRight-0.375rem;
-      screen-sr: width-100pct maxWidth-576px marginLeft-auto marginRight-auto;
-      screen-sm: width-100pct maxWidth-720px marginLeft-auto marginRight-auto;
-      screen-md: width-100pct maxWidth-996px marginLeft-auto marginRight-auto;
-      screen-lg: width-100pct maxWidth-1200px marginLeft-auto marginRight-auto;
-      screen-lr: width-100pct maxWidth-1366px marginLeft-auto marginRight-auto;
-      screen-ls: width-100pct maxWidth-1440px marginLeft-auto marginRight-auto;
-      screen-wd: width-100pct maxWidth-2048px marginLeft-auto marginRight-auto;
-      screen-wr: width-100pct maxWidth-3440px marginLeft-auto marginRight-auto;
+      screen-sr: width-100pct maxWidth-{props.srWidth} marginLeft-auto marginRight-auto;
+      screen-sm: width-100pct maxWidth-{props.smWidth} marginLeft-auto marginRight-auto;
+      screen-md: width-100pct maxWidth-{props.mdWidth} marginLeft-auto marginRight-auto;
+      screen-lg: width-100pct maxWidth-{props.lgWidth} marginLeft-auto marginRight-auto;
+      screen-lr: width-100pct maxWidth-{props.lrWidth} marginLeft-auto marginRight-auto;
+      screen-ls: width-100pct maxWidth-{props.lsWidth} marginLeft-auto marginRight-auto;
+      screen-wd: width-100pct maxWidth-{props.wdWidth} marginLeft-auto marginRight-auto;
+      screen-wr: width-100pct maxWidth-{props.wrWidth} marginLeft-auto marginRight-auto;
       print: width-100pct maxWidth-100pct padding-0px margin-0px;
     }
   }
