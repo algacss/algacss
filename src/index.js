@@ -132,6 +132,72 @@ function algacss(options) {
         rule.remove()
       })
       
+      const pluginLoader = () => {
+        let newPackNodes = []
+        const filterPackNodes = []
+        for(let rule of config.inits) {
+          let param = rule.params.trim()
+          let name = param
+          if(param.includes('.')) {
+            const prms = param.split('.')
+            param = prms[0].trim()
+            name = prms[1].trim()
+          }
+          if(!filterPackNodes.includes(param) && config.components[param]) {
+            filterPackNodes.push(param)
+            let newNodes = []
+            if(rule?.nodes) {
+              for(let node of rule.nodes) {
+                if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
+                  const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
+                  for(let ruleNode of node.nodes) {
+                    if(ruleNodeName === 'props') {
+                      if(ruleNode.prop in config.components[param][ruleNodeName]) {
+                        config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
+                      }
+                    }
+                  }
+                } else {
+                  if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
+                    config.components[param]['props'][node.prop].value = node.value
+                  }
+                }
+              }
+            }
+            let newBodyVar = []
+            if(config.components[param]?.[name]?.['body']) {
+              newBodyVar = config.components[param][name]['body']
+            }
+            newNodes = [
+              ...newNodes, 
+              ...declaration(newBodyVar,
+              {
+                refs: config.components[param]['refs'],
+                props: config.components[param]['props'], 
+                provide: config.components[param]['provide']
+              },
+              {
+                screen: config.screen,
+                state: config.state, 
+                prefers: config.prefers, 
+                color: config.color
+              })
+            ]
+            const newRoot = config.components[param]['root']
+            newRoot.removeAll()
+            if(config.important) {
+              newRoot.append(...newNodes)
+            } else {
+              const newLayer = layer(newNodes, name, rule.source)
+              newRoot.append(newLayer)
+            }
+            newPackNodes.push(newRoot)
+          }
+        }
+        
+        return newPackNodes.flat()
+      }
+      
       root.walkAtRules(config.directive, rule => {
         if(config.directive === 'layer') {
           if(!rule.nodes) {
@@ -153,6 +219,8 @@ function algacss(options) {
                 if(config.extract.rules.length >= 1) {
                   rule.append(...config.extract.rules)
                 }
+              } else if(!rule.params.includes(',') && (name.includes('modules') || param.includes('modules'))) {
+                rule.append(...pluginLoader())
               } else {
                 let fileName = param
                 let componentName = name
@@ -198,7 +266,9 @@ function algacss(options) {
               root.append(...config.extract.rules)
             }
             rule.remove()
-            
+          } else if(!rule.params.includes(',') && (name.includes('modules') || param.includes('modules'))) {
+            rule.append(...pluginLoader())
+            rule.remove()
           } else {
             let fileName = param
             let componentName = name
@@ -323,69 +393,6 @@ function algacss(options) {
           rule.remove()
         }
       })
-      
-      let newPackNodes = []
-      const filterPackNodes = []
-      for(let rule of config.inits) {
-        let param = rule.params.trim()
-        let name = param
-        if(param.includes('.')) {
-          const prms = param.split('.')
-          param = prms[0].trim()
-          name = prms[1].trim()
-        }
-        if(!filterPackNodes.includes(param) && config.components[param]) {
-          filterPackNodes.push(param)
-          let newNodes = []
-          if(rule?.nodes) {
-            for(let node of rule.nodes) {
-              if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
-                const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
-                for(let ruleNode of node.nodes) {
-                  if(ruleNodeName === 'props') {
-                    if(ruleNode.prop in config.components[param][ruleNodeName]) {
-                      config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
-                    }
-                  }
-                }
-              } else {
-                if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
-                  config.components[param]['props'][node.prop].value = node.value
-                }
-              }
-            }
-          }
-          let newBodyVar = []
-          if(config.components[param]?.[name]?.['body']) {
-            newBodyVar = config.components[param][name]['body']
-          }
-          newNodes = [
-            ...newNodes, 
-            ...declaration(newBodyVar,
-            {
-              refs: config.components[param]['refs'],
-              props: config.components[param]['props'], 
-              provide: config.components[param]['provide']
-            },
-            {
-              screen: config.screen,
-              state: config.state, 
-              prefers: config.prefers, 
-              color: config.color
-            })
-          ]
-          const newRoot = config.components[param]['root']
-          newRoot.removeAll()
-          if(config.important) {
-            newRoot.append(...newNodes)
-          } else {
-            const newLayer = layer(newNodes, name, rule.source)
-            newRoot.append(newLayer)
-          }
-          newPackNodes.push(newRoot)
-        }
-      }
-      root.append(...newPackNodes.flat())
       
     }
   }

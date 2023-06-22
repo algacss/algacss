@@ -1,0 +1,45 @@
+@define refs {
+  name: offCanvas;
+}
+
+@define props {
+  width: 500px;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
+    ref: position-absolute zIndex-25 top-0 left-0 maxWidth-100vw maxHeight-100vh;
+  }
+   
+  .{refs.name}Backdrop {
+    ref: position-fixed zIndex-26 inset-0_3em_3em_0 width-100pct height-100pct display-none;
+    ref: backgroundColor-rgba(0,0,0,0.5);
+    
+    html[dir=rtl] & {
+      ref: inset-0_0_3em_3em;
+    }
+  }
+  
+  .{refs.name}Content {
+    ref: backgroundColor-hexfff border-1px_solid_hexd9d9d9 marginRight-auto display-none;
+    ref: width-240px height-100pct maxHeight-100vh overflowY-auto;
+    prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
+    prefers-toLight: backgroundColor-hexfff borderColor-hexfff;
+    
+    html[dir=rtl] & {
+      ref: marginLeft-auto;
+    }
+    
+    html[dir=rtl] .{refs.name}.right & {
+      ref: marginLeft-auto;
+    }
+  }
+  
+  .{refs.name}.active {
+    .{refs.name}Backdrop,
+    .{refs.name}Content {
+      ref: display-block;
+    }
+  }
+}
