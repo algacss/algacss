@@ -136,6 +136,7 @@ Usually we use `props` to permanently changes the specific property value, but s
 @use componentThere {
   bgActive: red;
 }
+@use modules;
 @use helpers;
 ```
 
@@ -151,6 +152,7 @@ Rather than passing value via props to each component one by one, we can use `@d
 @use componentOne;
 @use componentTwo;
 @use componentThere;
+@use modules;
 @use helpers;
 ```
 
@@ -168,14 +170,16 @@ Moreover, you may want to use only valid CSS syntax in any style sheets both glo
 @layer componentOne;
 @layer componentTwo;
 @layer componentThere;
+@layer modules;
 @layer helpers;
 
 /* or */
 @layer base, container, componentOne, componentTwo, componentThere;
+@layer modules;
 @layer helpers;
 ```
 
-Just one caveat, for `@layer helpers;` cannot be stack together with other components and also for `props` only can be passed via state management or `@define states`.
+Just one caveat, for `@layer modules;` and `@layer helpers;` cannot be stack together with other components and also for `props` only can be passed via state management or `@define states`.
 
 ## Class Name Structure
 Alga CSS uses special character `-` to gab classes from HTML elements or Vue components, and it uses `:` for breakpoints and states and also `_` as a divider or separator of css values.

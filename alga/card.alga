@@ -23,11 +23,13 @@
   }
     
   .{refs.name} > *:first-child {
-    ref: borderTopRightRadius-0.25rem borderTopLeftRadius-0.25rem;
+    ref-borderTopRightRadius: {props.rdBox};
+    ref-borderTopLeftRadius: {props.rdBox};
   }
     
   .{refs.name} > *:last-child {
-    ref: borderBottomRightRadius-0.25rem borderBottomLeftRadius-0.25rem;
+    ref-borderBottomRightRadius: {props.rdBox};
+    ref-borderBottomLeftRadius: {props.rdBox};
   }
     
   .{refs.name}Header, .{refs.name}Footer {

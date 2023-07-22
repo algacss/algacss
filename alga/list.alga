@@ -1,5 +1,6 @@
 @define props {
   menu: 10;
+  rdBox: 0.375rem;
   bgActive: #07f;
   fgActive: #fff;
   bdActive: #06e;
@@ -7,7 +8,8 @@
 
 @alga list {
   .list {
-    ref: width-100pct backgroundColor-hexfff border-1px_solid_hexd9d9d9 borderRadius-0.375rem;
+    ref: width-100pct backgroundColor-hexfff border-1px_solid_hexd9d9d9;
+    ref-borderRadius: {props.rdBox};
     ref: margin-0px padding-0px;
     prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
