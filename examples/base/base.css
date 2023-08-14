@@ -36,6 +36,24 @@ body {
     color: #15181c;
     min-height: 100vh
 }
+.a, a {
+    text-decoration: none;
+    color: #007bff
+}
+.a :hover {
+    text-decoration: underline;
+    color: #0056b3
+}
+a :hover {
+    text-decoration: underline;
+    color: #0056b3
+}
+.a :visited {
+    color: #0056b3
+}
+a :visited {
+    color: #0056b3
+}
 hr {
     height: 0;
     color: inherit
@@ -124,10 +142,10 @@ summary {
     margin-bottom: 1rem
 }
 code, kbd, samp, pre, .mark, mark {
-    background-color: #707070;
+    background-color: #2f2f2f;
     border-radius: 0.25rem;
     color: #fff;
-    padding: .1875em .375rem
+    padding: .1875em .5rem
 }
 img, svg {
     vertical-align: middle

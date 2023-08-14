@@ -9,6 +9,11 @@
   lineHeight: 1.5;
   colorSchemeLight: [data-mode=light];
   colorSchemeDark: [data-mode=dark];
+  highlightColor: #2f2f2f;
+  linkColor: #007bff;
+  linkDecor: none;
+  linkHoverColor: #0056b3;
+  linkHoverDecor: underline;
   headingColor: inherit;
   headingMarginBottom: 0.5rem;
   paragraphMarginBottom: 1rem;
@@ -50,6 +55,18 @@
     prefers-dark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toDark: backgroundColor-{props.bgDark} color-{props.fgDark};
     prefers-toLight: backgroundColor-{props.bgLight} color-{props.fgLight};
+  }
+  
+  .a, a {
+    ref: textDecoration-{props.linkDecor} color-{props.linkColor};
+    
+    :hover {
+      ref: textDecoration-{props.linkHoverDecor} color-{props.linkHoverColor};
+    }
+    
+    :visited {
+      ref: color-{props.linkHoverColor};
+    }
   }
   
   hr {
@@ -155,6 +172,11 @@
   h1, h2, h3, h4, h5, h6 {
     ref: marginTop-0px marginBottom-{props.headingMarginBottom} fontWeight-500 lineHeight-1.2;
     ref: color-{props.headingColor};
+    
+    a,
+    a:hover {
+      color: {props.headingColor};
+    }
   }
   
   .p, p {
@@ -166,8 +188,8 @@
   samp,
   pre,
   .mark, mark {
-    ref: backgroundColor-hex707070 borderRadius-0.25rem color-hexfff;
-    ref-padding: .1875em .375rem;
+    ref: backgroundColor-{props.highlightColor} borderRadius-0.25rem color-hexfff;
+    ref-padding: .1875em .5rem;
   }
   
   img, svg {
