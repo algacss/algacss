@@ -120,13 +120,14 @@ summary {
     margin-top: 0px;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    line-height: 1.2
+    line-height: 1.2;
+    color: inherit
 }
 .p, p {
     margin-top: 0px;
     margin-bottom: 1rem
 }
-.mark, mark {
+code, kbd, samp, pre, .mark, mark {
     background-color: #707070;
     border-radius: 0.25rem;
     color: #fff;

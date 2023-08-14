@@ -9,6 +9,7 @@
   lineHeight: 1.5;
   colorSchemeLight: [data-mode=light];
   colorSchemeDark: [data-mode=dark];
+  headingColor: inherit;
   headingMarginBottom: 0.5rem;
   paragraphMarginBottom: 1rem;
 }
@@ -153,12 +154,17 @@
   .h1, .h2, .h3, .h4, .h5, .h6, 
   h1, h2, h3, h4, h5, h6 {
     ref: marginTop-0px marginBottom-{props.headingMarginBottom} fontWeight-500 lineHeight-1.2;
+    ref: color-{props.headingColor};
   }
   
   .p, p {
     ref: marginTop-0px marginBottom-{props.paragraphMarginBottom};
   }
   
+  code,
+  kbd,
+  samp,
+  pre,
   .mark, mark {
     ref: backgroundColor-hex707070 borderRadius-0.25rem color-hexfff;
     ref-padding: .1875em .375rem;
