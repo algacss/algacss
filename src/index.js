@@ -220,7 +220,7 @@ function algacss(options) {
                   rule.append(...config.extract.rules)
                 }
               } else if(!rule.params.includes(',') && (name.includes('modules') || param.includes('modules'))) {
-                rule.append(...pluginLoader())
+                rule.replaceWith(...pluginLoader())
               } else {
                 let fileName = param
                 let componentName = name
