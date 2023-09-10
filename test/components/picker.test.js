@@ -38,7 +38,7 @@ test('Testing picker or dropdown component', async () => {
 .pickerContent {
     position: absolute;
     z-index: 75;
-    top: 2.5rem;
+    top: 2.45rem;
     left: 0;
     min-width: 240px;
     background-color: #fff;

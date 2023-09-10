@@ -1,5 +1,6 @@
 const chokidar = require('chokidar')
-const { readFile, writeFile } = require('fs')
+const { readFile, writeFile } = require('node:fs')
+const { resolve } = require('node:path')
 // Configs
 const preset = require('./configs/preset.js')
 const screen = require('./configs/screen.js')
@@ -99,7 +100,8 @@ function algacss(options) {
   
   if(options?.plugins && Number(options?.plugins.length) >= 1) {
     const newPlugins = options?.plugins.map(item => {
-      return './node_modules/'+item+'/*.alga'
+      //return './node_modules/'+item+'/*.alga'
+      return resolve(item+'/*.alga')
     })
     const newComponent = packages(newPlugins, opts)
     config.components = Object.assign({}, config.components, newComponent)
