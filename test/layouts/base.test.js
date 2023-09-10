@@ -44,18 +44,18 @@ body {
     text-decoration: none;
     color: #007bff
 }
-.a :hover {
+.a:hover {
     text-decoration: underline;
     color: #0056b3
 }
-a :hover {
+a:hover {
     text-decoration: underline;
     color: #0056b3
 }
-.a :visited {
+.a:visited {
     color: #0056b3
 }
-a :visited {
+a:visited {
     color: #0056b3
 }
 hr {

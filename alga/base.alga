@@ -60,11 +60,11 @@
   .a, a {
     ref: textDecoration-{props.linkDecor} color-{props.linkColor};
     
-    :hover {
+    &:hover {
       ref: textDecoration-{props.linkHoverDecor} color-{props.linkHoverColor};
     }
     
-    :visited {
+    &:visited {
       ref: color-{props.linkHoverColor};
     }
   }
