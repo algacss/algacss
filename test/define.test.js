@@ -7,7 +7,8 @@ test('Reading refs/props feature from alga file', async () => {
     algacss({
       important: false,
       //src: './test/alga/**/*.alga'
-      src: './test/alga/define.alga'
+      src: './test/alga/define.alga',
+build: true
     })
   ]).process(`@use define {
     bg: #242424;

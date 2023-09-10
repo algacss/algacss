@@ -7,7 +7,8 @@ test('Reading provide/inject feature from file', async () => {
     algacss({
       mode: '.{theme}-mode',
       //src: './test/alga/**/*.alga'
-      src: './test/alga/provide.alga'
+      src: './test/alga/provide.alga',
+build: true
     })
   ]).process(`@use provide;`, { from: undefined })
   console.log(result.css)

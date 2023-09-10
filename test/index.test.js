@@ -12,7 +12,8 @@ test('Reading css classes from file', async () => {
         './test/js-html/app.jsx',
         './test/js-html/app.tsx',
         './test/js-html/app.svelte'
-      ]
+      ],
+build: true
     })
   ]).process(`@use helpers; @ref objectFit-cover verticalAlign-middle;`, { from: undefined })
   console.log(result.css)
