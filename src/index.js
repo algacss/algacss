@@ -236,10 +236,18 @@ function algacss(options) {
                 
                 if(newComponentTwo) {
                   if(!rule.params.includes(',')) {
-                    rule.append(newComponentTwo)
+                    if(config.important) {
+                      rule.replaceWith(newComponentTwo)
+                    } else {
+                      rule.append(newComponentTwo)
+                    }
                   } else {
-                    const newLayer = layer(newComponentTwo, componentName, rule.source)
-                    root.append(newLayer)
+                    if(config.important) {
+                      root.append(newComponentTwo)
+                    } else {
+                      const newLayer = layer(newComponentTwo, componentName, rule.source)
+                      root.append(newLayer)
+                    }
                   }
                 }
               }
