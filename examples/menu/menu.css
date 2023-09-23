@@ -87,8 +87,6 @@ html[dir=rtl] .menu.custom > .item.active > .link {
 .nav.tab {
     flex-wrap: nowrap;
     width: auto;
-    overflow-x: auto;
-    overflow-y: hidden;
     border-bottom: 1px solid #dee2e6
 }
 .nav.tab > .item > .link {

@@ -25,12 +25,15 @@
 }
 .input:focus, .select:focus {
     border-color: #1d84b6;
-    background-color: #f7faff
+    background-color: #f7faff;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent
 }
 .input[disabled], .input[readonly], .input.disabled, .select[disabled], .select[readonly], .select.disabled {
     border-color: #d6d6d6;
     background-color: #f0f0f0;
-    cursor: default
+    cursor: default;
+    box-shadow: none
 }
 .input[disabled], .input.disabled, .select[disabled], .select.disabled {
     color: #9b9b9b;
@@ -41,7 +44,8 @@
     background-color: transparent;
     border-color: transparent;
     padding-left: 0;
-    padding-right: 0
+    padding-right: 0;
+    box-shadow: none
 }
 .valid, .validated :valid {
     border-color: #198754;
@@ -106,7 +110,8 @@
 }
 textarea.input {
     min-height: 6.5rem;
-    resize: none
+    resize: none;
+    border-radius: 0.375rem
 }
 .select:not([multiple]) {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
@@ -206,7 +211,7 @@ select.select:not([multiple]) {
     border-bottom-right-radius: 0.375rem
 }
 .group:not(.groupList) .groupItem:not(:last-child) {
-    border-right-color: transparent
+    margin-right: -1px
 }
 .group.groupList {
     flex-direction: column
@@ -220,10 +225,12 @@ select.select:not([multiple]) {
     border-bottom-left-radius: 0.375rem
 }
 .group.groupList .groupItem:not(:last-child) {
-    border-bottom-color: transparent
+    margin-bottom: -1px
 }
 .group .input:focus, .group .select:focus {
-    border-color: #d9d9d9
+    border-color: #d9d9d9;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent
 }
 html[dir=rtl] .group:not(.groupList) .groupItem:first-child {
     border-top-left-radius: 0px;
@@ -238,7 +245,7 @@ html[dir=rtl] .group:not(.groupList) .groupItem:last-child {
     border-bottom-left-radius: 0.375rem
 }
 html[dir=rtl] .group:not(.groupList) .groupItem:not(:last-child) {
-    border-right-color: transparent
+    margin-left: -1px
 }
 .button {
     display: inline-block;

@@ -11,6 +11,19 @@
   bdActive: #1d84b6;
   rd: 0.375rem;
   rdBox: 0.375rem;
+  focusType: noShadow;
+}
+
+@provide noShadow {
+  ref-boxShadow: none;
+}
+
+@provide shadow {
+  ref-boxShadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent;
+}
+
+@provide insetShadow {
+  ref-boxShadow: inset 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent;
 }
 
 @alga {refs.name} {
@@ -39,7 +52,8 @@
     }
       
     .input:focus, .select:focus {
-      ref: borderColor-hex1d84b6 backgroundColor-hexf7faff;
+      ref: borderColor-hex1d84b6 backgroundColor-hexf7faff zIndex-1;
+      inject-props: focusType;
       prefers-dark: backgroundColor-hex242424;
       prefers-toDark: backgroundColor-hex242424;
       prefers-toLight: backgroundColor-hexf7faff;
@@ -47,7 +61,7 @@
       
     .input[disabled], .input[readonly], .input.disabled,
     .select[disabled], .select[readonly], .select.disabled {
-      ref: borderColor-hexd6d6d6 backgroundColor-hexf0f0f0 cursor-default;
+      ref: borderColor-hexd6d6d6 backgroundColor-hexf0f0f0 cursor-default boxShadow-none;
       prefers-dark: backgroundColor-hex242424 borderColor-hex5f5f5f;
       prefers-toDark: backgroundColor-hex242424 borderColor-hex5f5f5f;
       prefers-toLight: backgroundColor-hexf0f0f0 borderColor-hexd6d6d6;
@@ -60,7 +74,7 @@
       
     .input.plain,
     .input.plainText {
-      ref: backgroundColor-transparent borderColor-transparent paddingLeft-0 paddingRight-0;
+      ref: backgroundColor-transparent borderColor-transparent paddingLeft-0 paddingRight-0 boxShadow-none;
       prefers-dark: backgroundColor-transparent borderColor-transparent;
       prefers-toDark: backgroundColor-transparent borderColor-transparent;
       prefers-toLight: backgroundColor-transparent borderColor-transparent;
@@ -239,7 +253,7 @@
       }
         
       &:not(.groupList) .groupItem:not(:last-child) {
-        ref: borderRightColor-transparent;
+        ref: marginRight-n1px;
       }
     }
     
@@ -255,13 +269,14 @@
       }
         
       .groupItem:not(:last-child) {
-        ref: borderBottomColor-transparent;
+        ref: marginBottom-n1px;
       }
     }
     
     .group .input:focus,
     .group .select:focus {
-        ref: borderColor-hexd9d9d9;
+        ref: borderColor-hexd9d9d9 zIndex-1;
+        inject-props: focusType;
     }
     
     html[dir=rtl] .group {
@@ -276,7 +291,7 @@
       }
         
       &:not(.groupList) .groupItem:not(:last-child) {
-        ref: borderRightColor-transparent;
+        ref: marginLeft-n1px;
       }
     }
   }

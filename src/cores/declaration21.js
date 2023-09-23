@@ -76,6 +76,13 @@ const declaration = (body, defs, opts) => {
                   if(arrowValues[2]) {
                     i = i + arrowValues[2]
                   }
+                } else if(i.startsWith('nrefs(') || i.startsWith('nprops(')) {
+                  const arrowValues = i.split(/\(|\)/g)
+                  i = defs[arrowValues[0].replace('n', '')][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
+                  i = '-'+i
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -186,6 +193,13 @@ const declaration = (body, defs, opts) => {
                   if(arrowValues[2]) {
                     i = i + arrowValues[2]
                   }
+                } else if(i.startsWith('nprops(')) {
+                  const arrowValues = i.split(/\(|\)/g)
+                  i = defs[arrowValues[0].replace('n', '')][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
+                  i = '-'+i
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -274,6 +288,13 @@ const declaration = (body, defs, opts) => {
                   if(arrowValues[2]) {
                     i = i + arrowValues[2]
                   }
+                } else if(i.startsWith('nprops(')) {
+                  const arrowValues = i.split(/\(|\)/g)
+                  i = defs[arrowValues[0].replace('n', '')][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
+                  i = '-'+i
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]
@@ -351,6 +372,13 @@ const declaration = (body, defs, opts) => {
                   if(arrowValues[2]) {
                     i = i + arrowValues[2]
                   }
+                } else if(i.startsWith('nprops(')) {
+                  const arrowValues = i.split(/\(|\)/g)
+                  i = defs[arrowValues[0].replace('n', '')][arrowValues[1]].value || i
+                  if(arrowValues[2]) {
+                    i = i + arrowValues[2]
+                  }
+                  i = '-'+i
                 } else if(i.startsWith('lighten(') || i.startsWith('darken(')) {
                   const splitValues = i.split(/\(|\)|\,/g)
                   let colorValue = splitValues[1]

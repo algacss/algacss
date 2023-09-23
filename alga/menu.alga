@@ -116,7 +116,7 @@
   
   @if type has tab {
     .nav.tab {
-      ref: flexWrap-nowrap width-auto overflowX-auto overflowY-hidden;
+      ref: flexWrap-nowrap width-auto;
       ref: borderBottom-1px_solid_hexdee2e6;
       prefers-dark: borderBottomColor-hex5f5f5f;
       prefers-toDark: borderBottomColor-hex5f5f5f;

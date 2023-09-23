@@ -1,7 +1,9 @@
 const execute = require('../execute.js')
 
 test('Testing form component with', async () => {
-  const input = `@use form;`
+  const input = `@use form {
+    focusType: shadow;
+  }`
   const output = `.label {
     display: block;
     margin-bottom: 0.375rem;
@@ -29,12 +31,15 @@ test('Testing form component with', async () => {
 }
 .input:focus, .select:focus {
     border-color: #1d84b6;
-    background-color: #f7faff
+    background-color: #f7faff;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent
 }
 .input[disabled], .input[readonly], .input.disabled, .select[disabled], .select[readonly], .select.disabled {
     border-color: #d6d6d6;
     background-color: #f0f0f0;
-    cursor: default
+    cursor: default;
+    box-shadow: none
 }
 .input[disabled], .input.disabled, .select[disabled], .select.disabled {
     color: #9b9b9b;
@@ -45,7 +50,8 @@ test('Testing form component with', async () => {
     background-color: transparent;
     border-color: transparent;
     padding-left: 0;
-    padding-right: 0
+    padding-right: 0;
+    box-shadow: none
 }
 .valid, .validated :valid {
     border-color: #198754;
@@ -211,7 +217,7 @@ select.select:not([multiple]) {
     border-bottom-right-radius: 0.375rem
 }
 .group:not(.groupList) .groupItem:not(:last-child) {
-    border-right-color: transparent
+    margin-right: -1px
 }
 .group.groupList {
     flex-direction: column
@@ -225,10 +231,12 @@ select.select:not([multiple]) {
     border-bottom-left-radius: 0.375rem
 }
 .group.groupList .groupItem:not(:last-child) {
-    border-bottom-color: transparent
+    margin-bottom: -1px
 }
 .group .input:focus, .group .select:focus {
-    border-color: #d9d9d9
+    border-color: #d9d9d9;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent
 }
 html[dir=rtl] .group:not(.groupList) .groupItem:first-child {
     border-top-left-radius: 0px;
@@ -243,7 +251,7 @@ html[dir=rtl] .group:not(.groupList) .groupItem:last-child {
     border-bottom-left-radius: 0.375rem
 }
 html[dir=rtl] .group:not(.groupList) .groupItem:not(:last-child) {
-    border-right-color: transparent
+    margin-left: -1px
 }
 .button {
     display: inline-block;
