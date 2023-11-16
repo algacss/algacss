@@ -35,7 +35,7 @@ function algacss(options) {
     directive: options?.directive === 'layer' ? 'layer' : 'use',
     build: false
   }
-  
+
   if(options?.mode) {
     config.prefers = Object.assign({}, config.prefers, {
       toDark: {
@@ -99,6 +99,16 @@ function algacss(options) {
   })
   
   if(options?.build) {
+    config.build = true
+    watcher.close()
+  }
+  
+  if(process.env?.npm_lifecycle_event?.startsWith('build')) {
+    config.build = true
+    watcher.close()
+  }
+
+  if(process.env?.npm_lifecycle_event?.startsWith('test')) {
     watcher.close()
   }
   

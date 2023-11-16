@@ -26,6 +26,9 @@ html[dir=rtl] .modalDialog {
     padding: 1.5rem;
     background-color: rgba(0,0,0,0.5)
 }
+.modal.active .modalDialog.modalFullscreen {
+    padding: 0
+}
 .modal.active .modalDialog.modalCenter {
     display: grid;
     place-items: center
@@ -37,9 +40,6 @@ html[dir=rtl] .modalDialog {
     margin-left: auto;
     border-radius: 0.375rem;
     color: inherit
-}
-.modalFullscreen {
-    padding: 0
 }
 .modalFullscreen .modalContent {
     width: 100vw;
@@ -64,6 +64,9 @@ html[dir=rtl] .modalDialog {
     overflow-x: visible;
     overflow-y: auto;
     max-height: calc(100vh - 200px)
+}
+.modalFullscreen .modalBody {
+    max-height: none
 }
 .modalFooter {
     display: flex;

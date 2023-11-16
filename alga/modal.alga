@@ -25,6 +25,10 @@
       
     .{refs.name}.active & {
       ref: display-block padding-1.5rem backgroundColor-rgba(0,0,0,0.5);
+
+      &.{refs.name}Fullscreen {
+        ref: padding-0;
+      }
       
       &.{refs.name}Center {
         ref: display-grid placeItems-center;
@@ -39,16 +43,12 @@
     prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f;
     prefers-toLight: backgroundColor-hexfff borderColor-hexfff;
-  }
-    
-  .{refs.name}Fullscreen {
-    ref: padding-0;
-      
-    .{refs.name}Content {
+
+    .{refs.name}Fullscreen & {
       ref: width-100vw height-100vh borderRadius-0;
     }
   }
-    
+  
   .{refs.name}Header {
     inject: headerFooter;
     ref: borderBottom-1px_solid_hexd9d9d9;
@@ -64,6 +64,10 @@
   .{refs.name}Body {
     ref: padding-0.75rem_1rem overflowX-visible overflowY-auto;
     ref-maxHeight: calc(100vh - 200px);
+
+    .{refs.name}Fullscreen & {
+      ref: maxHeight-none;
+    }
   }
     
   .{refs.name}Footer {

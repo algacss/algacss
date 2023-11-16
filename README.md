@@ -60,7 +60,8 @@ module.exports = {
         './src/**/*.{otherFormat}'
       ],
       src: './src/styles/*.alga',
-      plugins: []
+      plugins: [],
+      build: true /*If you want to automatically deploy it to Netlify, Vercel, etc. 'false' is the default value for development only or locally build, so it will watch any changes on the files and auto update the helpers directive.*/
     })
   ]
 }

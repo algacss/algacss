@@ -1,6 +1,6 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-beta-37",
+  "version": "1.0.0-beta-38",
   "description": "Alga CSS is a component oriented CSS toolkit for quickly reuse CSS components and it can be stored in .alga format file as a custom CSS component and also it has many built-in customizable CSS properties that can be directly inserted to HTML Element class",
   "main": "./src/index.js",
   "bin": "./bin/algac",
@@ -31,13 +31,13 @@
   },
   "homepage": "https://github.com/algacss/algacss#readme",
   "devDependencies": {
-    "eslint": "^8.7.0",
-    "jest": "^27.4.7",
-    "postcss": "^8.4.14"
+    "eslint": "^8.53.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.4.31"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
-    "glob": "^7.2.0",
-    "minimist": "^1.2.6"
+    "glob": "^10.3.10",
+    "minimist": "^1.2.8"
   }
 }
