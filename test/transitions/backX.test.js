@@ -3,10 +3,10 @@ const execute = require('../execute.js')
 test('Testing backLeft, backRight and RTL transition', async () => {
   const input = `@use backX;`
   const output = `.backLeft-enter-active, html[dir=rtl] .backRight-enter-active {
-    animation: backX 0.5s
+    animation: backLeft 0.5s
 }
 .backLeft-leave-active, html[dir=rtl] .backRight-leave-active {
-    animation: backX 0.5s reverse
+    animation: backLeft 0.5s reverse
 }
 @keyframes backLeft {
     0% {
@@ -23,10 +23,10 @@ test('Testing backLeft, backRight and RTL transition', async () => {
     }
 }
 .backRight-enter-active, html[dir=rtl] .backLeft-enter-active {
-    animation: backX 0.5s
+    animation: backRight 0.5s
 }
 .backRight-leave-active, html[dir=rtl] .backLeft-leave-active {
-    animation: backX 0.5s reverse
+    animation: backRight 0.5s reverse
 }
 @keyframes backRight {
     0% {

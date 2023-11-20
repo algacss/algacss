@@ -11,12 +11,12 @@
 @alga {refs.name} {
   .{refs.left}-enter-active,
   html[dir=rtl] .{refs.right}-enter-active {
-    ref-animation: {refs.name} {props.duration};
+    ref-animation: {refs.left} {props.duration};
   }
   
   .{refs.left}-leave-active,
   html[dir=rtl] .{refs.right}-leave-active {
-    ref-animation: {refs.name} {props.duration} reverse;
+    ref-animation: {refs.left} {props.duration} reverse;
   }
   
   @keyframes {refs.left} {
@@ -36,12 +36,12 @@
   
   .{refs.right}-enter-active,
   html[dir=rtl] .{refs.left}-enter-active {
-    ref-animation: {refs.name} {props.duration};
+    ref-animation: {refs.right} {props.duration};
   }
   
   .{refs.right}-leave-active,
   html[dir=rtl] .{refs.left}-leave-active {
-    ref-animation: {refs.name} {props.duration} reverse;
+    ref-animation: {refs.right} {props.duration} reverse;
   }
   
   @keyframes {refs.right} {
