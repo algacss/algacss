@@ -1,6 +1,6 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-beta-39",
+  "version": "1.0.0-beta-40",
   "description": "Alga CSS is a component oriented CSS toolkit for quickly reuse CSS components and it can be stored in .alga format file as a custom CSS component and also it has many built-in customizable CSS properties that can be directly inserted to HTML Element class",
   "main": "./src/index.js",
   "bin": "./bin/algac",

@@ -109,7 +109,7 @@ test('Testing navBar component', async () => {
 .navBar .navWrap .navEnd.active .navBackdrop {
     display: block
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .navBar .navWrap .navStart {
         max-width: 240px
     }
@@ -120,7 +120,7 @@ test('Testing navBar component', async () => {
         display: none
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .navBar .navWrap {
         position: relative
     }

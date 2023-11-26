@@ -146,12 +146,12 @@ test('Testing sideBar component', async () => {
 .sideMenu > .navItem:last-child, .sideNav > .navToggler:last-child {
     padding-right: 0
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .sideBar.active .sideBackdrop {
         display: none
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .sideBar {
         display: none;
         position: fixed;
