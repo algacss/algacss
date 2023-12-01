@@ -20,9 +20,21 @@
   }
    
   @if type has dense {
+    .pagination.dense .item {
+      ref: marginRight-n1px backgroundColor-hexffffff;
+
+      html[dir=rtl] & {
+        ref: marginRight-0px marginLeft-n1px;
+      }
+    }
+
+    .pagination.dense .item.active {
+      ref: zIndex-1;
+    }
+
     .pagination.dense .item .link {
-      ref: borderStyle-solid borderColor-hexcbcbcb borderTopWidth-1px borderBottomWidth-1px borderRightWidth-0px;
-      ref: borderLeftWidth-1px minWidth-10px textAlign-center;
+      ref: borderStyle-solid borderColor-hexcbcbcb borderWidth-1px;
+      ref: minWidth-10px textAlign-center;
       prefers-dark: borderColor-rgba(255,255,255,0.25);
       prefers-toDark: borderColor-rgba(255,255,255,0.25);
       prefers-toLight: borderColor-hexcbcbcb;
@@ -30,15 +42,25 @@
   
     .pagination.dense .item:first-child .link {
       ref: borderTopLeftRadius-{props.rd} borderBottomLeftRadius-{props.rd};
+
+      html[dir=rtl] & {
+        ref: borderTopLeftRadius-0px borderBottomLeftRadius-0px;
+        ref: borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
+      }
     }
     
     .pagination.dense .item:last-child .link {
-      ref: borderRightWidth-1px borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
+      ref: borderTopRightRadius-{props.rd} borderBottomRightRadius-{props.rd};
+
+      html[dir=rtl] & {
+        ref: borderTopRightRadius-0px borderBottomRightRadius-0px;
+        ref: borderTopLeftRadius-{props.rd} borderBottomLeftRadius-{props.rd};
+      }
     }
     
     .pagination.dense .item.ellipsis .link {
-      ref: pointerEvents-none paddingLeft-0.675rem paddingRight-0.675rem borderRightColor-hexededed borderTopColor-hexededed;
-      ref: borderBottomColor-hexededed backgroundColor-hexf4f4f4 color-hex4a5568;
+      ref: pointerEvents-none paddingLeft-0.675rem paddingRight-0.675rem;
+      ref: backgroundColor-hexf4f4f4 color-hex4a5568;
       prefers-dark: borderRightColor-rgba(255,255,255,0.25) borderTopColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25) backgroundColor-hex2f2f2f color-inherit;
       prefers-toDark: borderRightColor-rgba(255,255,255,0.25) borderTopColor-rgba(255,255,255,0.25) borderBottomColor-rgba(255,255,255,0.25) backgroundColor-hex2f2f2f color-inherit;
       prefers-toLight: borderRightColor-hexededed borderTopColor-hexededed borderBottomColor-hexededed backgroundColor-hexf4f4f4 color-hex4a5568;

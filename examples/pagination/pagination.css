@@ -16,13 +16,21 @@
 .pagination .item .link svg, .pagination .item .link i {
     pointer-events: none
 }
+.pagination.dense .item {
+    margin-right: -1px;
+    background-color: #ffffff
+}
+html[dir=rtl] .pagination.dense .item {
+    margin-right: 0px;
+    margin-left: -1px
+}
+.pagination.dense .item.active {
+    z-index: 1
+}
 .pagination.dense .item .link {
     border-style: solid;
     border-color: #cbcbcb;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 0px;
-    border-left-width: 1px;
+    border-width: 1px;
     min-width: 10px;
     text-align: center
 }
@@ -30,18 +38,26 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px
 }
-.pagination.dense .item:last-child .link {
-    border-right-width: 1px;
+html[dir=rtl] .pagination.dense .item:first-child .link {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px
+}
+.pagination.dense .item:last-child .link {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px
+}
+html[dir=rtl] .pagination.dense .item:last-child .link {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px
 }
 .pagination.dense .item.ellipsis .link {
     pointer-events: none;
     padding-left: 0.675rem;
     padding-right: 0.675rem;
-    border-right-color: #ededed;
-    border-top-color: #ededed;
-    border-bottom-color: #ededed;
     background-color: #f4f4f4;
     color: #4a5568
 }
