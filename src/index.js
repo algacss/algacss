@@ -8,8 +8,7 @@ const prefers = require('./configs/prefers.js')
 const color = require('./configs/color.js')
 
 // Cores
-const component = require('./cores/component.js')
-const componentTwo = require('./cores/component21.js')
+const componentTwo = require('./cores/component.js')
 const declaration = require('./cores/declaration.js')
 const extraction = require('./cores/extraction.js')
 const render = require('./cores/render.js')
@@ -277,8 +276,6 @@ function algacss(options) {
             name = prms[1].trim()
           }
           
-          /* Component v2 */
-          
           if(name.includes('helpers') || param.includes('helpers')) {
             if(root.source?.input?.from) {
               config.helpers.push(root.source.input.from)
@@ -341,68 +338,6 @@ function algacss(options) {
               rule.remove()
             }
           }
-          
-          /* Component v1 */
-          
-          /*if(!name.includes('helpers') && !config.components[name]) {
-            config.components = Object.assign({}, config.components, component(options?.src, {...opts, componentName: name}))
-          }
-          if(name.includes('helpers') || param.includes('helpers')) {
-            if(root.source?.input?.from) {
-              config.helpers.push(root.source.input.from)
-            }
-            config.extract = extraction(options?.extract, rule.source, {...opts, extract: config.extract})
-            
-            if(config.extract.rules.length >= 1) {
-              root.append(...config.extract.rules)
-            }
-            rule.remove()
-          } else if(config.components[name]) {
-            let newNodes = []
-            if(rule?.nodes) {
-              for(let node of rule.nodes) {
-                if(node.type === 'rule' && (rule?.nodes?.length || 0) >= 1) {
-                  const ruleNodeName = node.selector.replace(/\#|\./, '').trim()
-                  for(let ruleNode of node.nodes) {
-                    if(ruleNodeName === 'props') {
-                      if(ruleNode.prop in config.components[param][ruleNodeName]) {
-                        config.components[param][ruleNodeName][ruleNode.prop].value = ruleNode.value
-                      }
-                    }
-                  }
-                } else {
-                  if(node.type === 'decl' && String(node?.prop) in config.components[param]['props']) {
-                    config.components[param]['props'][node.prop].value = node.value
-                  }
-                }
-              }
-            }
-            let newBodyVar = []
-            if(config.components[param]?.[name]?.['body']) {
-              newBodyVar = config.components[param][name]['body']
-            }
-            newNodes = [
-              ...newNodes, 
-              ...declaration(newBodyVar,
-              {
-                refs: config.components[param]['refs'],
-                props: config.components[param]['props'], 
-                provide: config.components[param]['provide']
-              },
-              {
-                screen: config.screen,
-                state: config.state, 
-                prefers: config.prefers, 
-                color: config.color
-              })
-            ]
-            const newRoot = config.components[param]['root']
-            newRoot.removeAll()
-            newRoot.append(...newNodes)
-            rule.replaceWith(newRoot)
-          } else {
-            rule.remove()
-          }*/
         }
       })
       

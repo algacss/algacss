@@ -22,6 +22,9 @@
   @if type has dense {
     .pagination.dense .item {
       ref: marginRight-n1px backgroundColor-hexffffff;
+      prefers-dark: backgroundColor-hex2f2f2f;
+      prefers-toDark: backgroundColor-hex2f2f2f;
+      prefers-toLight: backgroundColor-hexffffff;
 
       html[dir=rtl] & {
         ref: marginRight-0px marginLeft-n1px;

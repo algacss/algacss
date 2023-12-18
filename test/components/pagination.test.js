@@ -100,6 +100,9 @@ html[dir=rtl] .pagination.dense .item:last-child .link {
     color: #fff
 }
 @media (prefers-color-scheme: dark) {
+    .pagination.dense .item {
+        background-color: #2f2f2f
+    }
     .pagination.dense .item .link {
         border-color: rgba(255,255,255,0.25)
     }
@@ -122,6 +125,9 @@ html[dir=rtl] .pagination.dense .item:last-child .link {
     }
 }
 @media (prefers-color-scheme: light) {
+    html[data-mode=dark] .pagination.dense .item {
+        background-color: #2f2f2f
+    }
     html[data-mode=dark] .pagination.dense .item .link {
         border-color: rgba(255,255,255,0.25)
     }
@@ -144,6 +150,9 @@ html[dir=rtl] .pagination.dense .item:last-child .link {
     }
 }
 @media (prefers-color-scheme: dark) {
+    html[data-mode=light] .pagination.dense .item {
+        background-color: #ffffff
+    }
     html[data-mode=light] .pagination.dense .item .link {
         border-color: #cbcbcb
     }

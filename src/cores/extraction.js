@@ -58,7 +58,9 @@ module.exports = (paths, source, options) => {
   
   const newExtract = []
   let newStateExtract = {}
-  for(let ref of Array.from(new Set(extract))) {
+  const refs = Array.from(new Set(extract))
+
+  for(let ref of refs) {
     if(!options.extract.raws.includes(ref)) {
       newExtract.push(...rules(ref, source, options))
       newStateExtract = Object.assign({}, atrules(newStateExtract, ref, source, options))
@@ -66,7 +68,7 @@ module.exports = (paths, source, options) => {
   }
   
   return {
-    raws: Array.from(new Set([...options.extract.raws, ...extract])),
+    raws: Array.from(new Set([...options.extract.raws, ...refs])),
     rules: [...options.extract.rules, ...newExtract, ...Object.values(newStateExtract)]
   }
 }

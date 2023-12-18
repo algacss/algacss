@@ -54,6 +54,7 @@ function readPath(rp, opts) {
       const refOpt = {
         ...opts,
         refs: component[componentName]['refs'] || {},
+        scopes: component[componentName]['scopes'] || {},
         props: component[componentName]['props'] || {}
       }
       const defineObj = {}
@@ -145,6 +146,7 @@ function readPath(rp, opts) {
       const refOpt = {
         ...opts,
         refs: component[componentName]['refs'] || {},
+        scopes: component[componentName]['scopes'] || {},
         props: component[componentName]['props'] || {}
       }
           
@@ -164,6 +166,7 @@ function readPath(rp, opts) {
         if(dnode.type === 'atrule' && dnode.name === 'use') {
           if('params' in dnode && dnode.params !== '') {
             component[componentName]['refs'] = Object.assign({}, component[componentName]['refs'], component[componentName]['modules'][dnode.params.trim()]['refs'])
+            component[componentName]['scopes'] = Object.assign({}, component[componentName]['scopes'], component[componentName]['modules'][dnode.params.trim()]['scopes'])
             component[componentName]['props'] = Object.assign({}, component[componentName]['props'], component[componentName]['modules'][dnode.params.trim()]['props'])
             component[componentName]['provide'] = Object.assign({}, component[componentName]['provide'], component[componentName]['modules'][dnode.params.trim()]['provide'])
             defineObj['content'][randId].push(component[componentName]['modules'][dnode.params.trim()][dnode.params.trim()]['body'])
@@ -174,6 +177,11 @@ function readPath(rp, opts) {
             if(paramDnode.startsWith('refs(') || paramDnode.startsWith('props(')) {
               const arrowDnodeParams = paramDnode.split(/\(|\)/g)
               paramDnode = component[componentName][arrowDnodeParams[0]][arrowDnodeParams[1]].value
+            }
+            if(paramDnode.startsWith('scopes(')) {
+              const arrowDnodeParams = paramDnode.split(/\(|\)/g)
+              let scopeParamDnode = component[componentName][arrowDnodeParams[0]][arrowDnodeParams[1]].value
+              paramDnode = `var(--scope-${arrowDnodeParams[1]}, ${scopeParamDnode})`
             }
             let keyframeDefineObj = {}
             keyframeDefineObj['@keyframes '+paramDnode] = []
@@ -186,19 +194,120 @@ function readPath(rp, opts) {
             keyframeDefineObj['@keyframes '+paramDnode] = keyframeDefineObj['@keyframes '+paramDnode].flat()
             defineObj['content'][randId].push(keyframeDefineObj)
           }
-        } else if(dnode.type === 'atrule' && dnode.name === 'if') {
+        } else if(dnode.type === 'atrule' && dnode.name === 'paper') {
           if('nodes' in dnode) {
-            let ifDefineObj = {}
-            ifDefineObj['@if '+dnode.params.trim()] = []
-            for(let ifnode of dnode.nodes) {
-              let ifRecursiveDefineObj = recursive(ifnode, {
+            let paramDnode = dnode.params.trim()
+            if(paramDnode.startsWith('refs(') || paramDnode.startsWith('props(')) {
+              const arrowDnodeParams = paramDnode.split(/\(|\)/g)
+              paramDnode = component[componentName][arrowDnodeParams[0]][arrowDnodeParams[1]].value
+            }
+            if(paramDnode.startsWith('scopes(')) {
+              const arrowDnodeParams = paramDnode.split(/\(|\)/g)
+              let scopeParamDnode = component[componentName][arrowDnodeParams[0]][arrowDnodeParams[1]].value
+              paramDnode = `var(--scope-${arrowDnodeParams[1]}, ${scopeParamDnode})`
+            }
+            let paperDefineObj = {}
+            paperDefineObj['@page '+paramDnode] = []
+            for(let kfnode of dnode.nodes) {
+              let paperRecursiveDefineObj = recursive(kfnode, {
                 ...refOpt,
                 'provide': component[componentName]['provide']
               })
-              ifDefineObj['@if '+dnode.params.trim()].push(ifRecursiveDefineObj.body)
+              paperDefineObj['@page '+paramDnode].push(paperRecursiveDefineObj.body)
             }
-            ifDefineObj['@if '+dnode.params.trim()] = ifDefineObj['@if '+dnode.params.trim()].flat()
-            defineObj['content'][randId].push(ifDefineObj)
+            paperDefineObj['@page '+paramDnode] = paperDefineObj['@page '+paramDnode].flat()
+            defineObj['content'][randId].push(paperDefineObj)
+          }
+        } else if(dnode.type === 'atrule' && dnode.name === 'if') {
+          if('nodes' in dnode) {
+            const ifParams = dnode?.params?.trim() || ''
+            const ifProps = Object.assign({}, component[componentName]['props'], opts.props)
+            const ifRefs = component[componentName]?.['refs'] || {}
+            
+            if(ifParams.includes(' is ')) {
+              const splitKey = ifParams.split(/\sis\s/g).filter(i => i !== '')
+              if(
+                (ifProps?.[splitKey[0].trim()] && ifProps[splitKey[0].trim()].value === splitKey[1].trim()) ||
+                (ifRefs?.[splitKey[0].trim()] && ifRefs[splitKey[0].trim()].value === splitKey[1].trim())
+              ) {
+                
+                for(let ifnode of dnode.nodes) {
+                  let ifRecursiveDefineObj = recursive(ifnode, {
+                    ...refOpt,
+                    'provide': component[componentName]['provide']
+                  })
+                  defineObj['content'][randId].push(ifRecursiveDefineObj.body)
+                }
+                
+              }
+            } else if(ifParams.includes(' has ')) {
+              const splitKey = ifParams.split(/\shas\s/g).filter(i => i !== '')
+              if(
+                (ifProps?.[splitKey[0].trim()] && ifProps[splitKey[0].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '').includes(splitKey[1].trim())) ||
+                (ifRefs?.[splitKey[0].trim()] && ifRefs[splitKey[0].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '').includes(splitKey[1].trim()))
+              ) {
+                
+                for(let ifnode of dnode.nodes) {
+                  let ifRecursiveDefineObj = recursive(ifnode, {
+                    ...refOpt,
+                    'provide': component[componentName]['provide']
+                  })
+                  defineObj['content'][randId].push(ifRecursiveDefineObj.body)
+                }
+                
+              }
+            }
+            
+          }
+        } else if(dnode.type === 'atrule' && dnode.name === 'for') {
+          if('nodes' in dnode) {
+            const forParams = dnode?.params?.trim() || ''
+            const forProps = Object.assign({}, component[componentName]['props'], opts.props)
+            const forRefs = component[componentName]?.['refs'] || {}
+            
+            if(forParams.includes(' in ')) {
+              const splitKey = forParams.split(/\sin\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+              
+                const firstVal = splitKey[0].trim()
+                const lastVal = forProps?.[splitKey[1].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '') || forRefs?.[splitKey[1].trim()].value.replaceAll(' ', '').split(',').filter(i => i !== '') || []
+                for(let forItem of lastVal) {
+                  if(forItem) {
+                    for(let fornode of dnode.nodes) {
+                      let forRecursiveDefineObj = recursive(fornode, {
+                        ...refOpt,
+                        'provide': component[componentName]['provide'],
+                        'each': firstVal,
+                        [firstVal]: forItem
+                      })
+                      defineObj['content'][randId].push(forRecursiveDefineObj.body)
+                    }
+                  }
+                }
+                
+              }
+            } else if(forParams.includes(' of ')) {
+              const splitKey = forParams.split(/\sof\s/g).filter(i => i !== '')
+              if(Number(splitKey.length) === 2) {
+                
+                const firstVal = splitKey[0].trim()
+                const lastVal =  (isNaN(splitKey[1].trim()) === false) ? Number(splitKey[1].trim()) : 0
+                
+                for(let i = 1; i <= Number(lastVal); i++) {
+                  for(let fornode of dnode.nodes) {
+                    let forRecursiveDefineObj = recursive(fornode, {
+                      ...refOpt,
+                      'provide': component[componentName]['provide'],
+                      'each': firstVal,
+                      [firstVal]: i
+                    })
+                    defineObj['content'][randId].push(forRecursiveDefineObj.body)
+                  }
+                }
+                
+              }
+            }
+            
           }
         } else {
           let recursiveDefineObj = recursive(dnode, {

@@ -1,0 +1,28 @@
+@define refs {
+  name: columns;
+}
+
+@define scopes {
+  gutterX: 1.5rem;
+  gutterY: 0px;
+}
+
+@alga {refs.name} {
+  .cols {
+    ref: display-flex flexWrap-wrap;
+    ref-marginTop: calc({scopes.gutterY} * -1);
+    ref-marginRight: calc({scopes.gutterX} * -0.5);
+    ref-marginLeft: calc({scopes.gutterX} * -0.5);
+    
+    & > * {
+      ref: flexShrink-0 width-100pct maxWidth-100pct;
+      ref-paddingRight: calc({scopes.gutterX} * 0.5);
+      ref-paddingLeft: calc({scopes.gutterX} * 0.5);
+      ref-marginTop: {scopes.gutterY};
+    }
+
+    & .col {
+      ref: flex-1_0_0pct;
+    }
+  }
+}

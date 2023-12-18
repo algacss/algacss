@@ -16,7 +16,13 @@ module.exports = (ref, source, opts) => {
   
   const refs = ref.replace('--', '-n').replaceAll('_-', '_n').trim().split(/-|:/).filter(i => i !== '')
   
-  if(ref.includes(':') && [...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[1])) { // for state colon like hover or active
+  if(ref.includes(':') && refs[0] === 'scope') {
+    const newReplacedSelector = '.'+ref.replaceAll(':', '\\:').replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')
+    const newRule = postcss.rule({ selector: newReplacedSelector, source: source })
+    const declVal = postcss.decl({ prop: '--scope-'+refs[1], value: refs[2], source: source })
+    newRule.append(declVal)
+    arr.push(newRule)
+  } else if(ref.includes(':') && [...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[1])) { // for state colon like hover or active
     /*if('preset' in opts && Object.keys(opts.preset).includes(refs[1])) {
       refs[1] = opts.preset[refs[1]]
     }*/
@@ -71,8 +77,89 @@ module.exports = (ref, source, opts) => {
       
       arr.push(newRule)
     }
-  } else { // for class that not have colon
-    if([...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[0])) {
+  } else { // for a class that not have a colon in it
+    if(['ms', 'me', 'ps', 'pe'].includes(refs[0])) {
+      const refDirectionMode = {
+        ms: [{ltr: 'marginLeft'}, {rtl: 'marginRight'}],
+        me: [{ltr: 'marginRight'}, {rtl: 'marginLeft'}],
+        ps: [{ltr: 'paddingLeft'}, {rtl: 'paddingRight'}],
+        pe: [{ltr: 'paddingRight'}, {rtl: 'paddingLeft'}]
+      }
+      let newRule = null
+      for(let dirMode of refDirectionMode[refs[0]]) {
+        if(dirMode.ltr) {
+          newRule = postcss.rule({ selector: opts.state['ltr'].state+' .'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+          const refOpt = {
+            ...opts,
+            property: dirMode.ltr
+          }
+          const declVal = postcss.decl({ prop: camelDash(dirMode.ltr), value: value(refs[1], refOpt) + (newImportant ? ' !important' : ''), source: source })
+          newRule.append(declVal)
+        } else if(dirMode.rtl) {
+          newRule = postcss.rule({ selector: opts.state['rtl'].state+' .'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+          const refOpt = {
+            ...opts,
+            property: dirMode.rtl
+          }
+          const declVal = postcss.decl({ prop: camelDash(dirMode.rtl), value: value(refs[1], refOpt) + (newImportant ? ' !important' : ''), source: source })
+          newRule.append(declVal)
+        }
+      }
+      arr.push(newRule)
+    } else if(['cols', 'col', 'offset'].includes(refs[0])) {
+      if('col' === refs[0]) {
+        const newRule = postcss.rule({ selector: '.cols .'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+        let valNum = 'auto';
+        if(isNaN(refs[1]) === false) {
+          valNum = 8.33333333 * Number(refs[1])
+          valNum = String(valNum)+'%'
+        }
+        const newCols = [
+          {prop: 'flex', value: '0 0 auto'},
+          {prop: 'width', value: valNum},
+        ]
+        for(let newCol of newCols) {
+          const declVal = postcss.decl({ prop: camelDash(newCol.prop), value: newCol.value + (newImportant ? ' !important' : ''), source: source })
+          newRule.append(declVal)
+        }
+        arr.push(newRule)
+      } else if('offset' === refs[0]) {
+        for(let offset = 0; offset < 2; offset++){
+          const dirMode = offset >= 1 ?  opts.state['rtl'].state+' ' : ''
+          const newRule = postcss.rule({ selector: dirMode+'.cols .'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
+          let valNum = 'auto';
+          if(isNaN(refs[1]) === false) {
+            valNum = 8.33333333 * Number(refs[1])
+            valNum = String(valNum)+'%'
+          }
+          const newCols = [
+            {prop: 'flex', value: '0 0 auto'},
+            {prop: (offset >= 1 ? 'marginRight' : 'marginLeft'), value: valNum},
+          ]
+          for(let newCol of newCols) {
+            const declVal = postcss.decl({ prop: camelDash(newCol.prop), value: newCol.value + (newImportant ? ' !important' : ''), source: source })
+            newRule.append(declVal)
+          }
+          arr.push(newRule)
+        }
+      } else {
+        const newRule = postcss.rule({ selector: '.'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)')+' > *', source: source })
+        let valNum = 'auto';
+        if(isNaN(refs[1]) === false) {
+          valNum = 100 / Number(refs[1])
+          valNum = String(valNum)+'%'
+        }
+        const newCols = [
+          {prop: 'flex', value: '0 0 auto'},
+          {prop: 'width', value: valNum},
+        ]
+        for(let newCol of newCols) {
+          const declVal = postcss.decl({ prop: camelDash(newCol.prop), value: newCol.value + (newImportant ? ' !important' : ''), source: source })
+          newRule.append(declVal)
+        }
+        arr.push(newRule)
+      }
+    } else if([...properties, ...Object.keys(newPreset), ...Object.keys(newColor), ...Object.keys(shorts)].includes(refs[0])) {
       const newRule = postcss.rule({ selector: '.'+ref.replaceAll('.', '\\.').replaceAll(',', '\\,').replaceAll('/', '\\/').replaceAll('(', '\\(').replaceAll(')', '\\)'), source: source })
       if(Object.keys(newColor).includes(refs[0])) {
         let newNum = 0
