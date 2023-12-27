@@ -20,7 +20,7 @@ Alga CSS is intended for speed up the development process, in other words, it mu
 
 Alga CSS is still in a development stage (as always), until all of the advanced components has been added to it, so after that I can release this as a stable version, first, to achieve this I have to look into a real life problem, I mean I need more inputs from what people or client want according to their preferenced. Thus, the development of Alga CSS will be slow.
 
-Even though it's slow in progress, as long as its benefit me (the Maintainer), I will go for it. Currently I have used Alga CSS almost all of my projects and some of my client projects. We're not using Alga CSS for production, I used it on a development project only with other toolings or bundlers.
+Even though it's slow in progress, as long as its benefit me (the Maintainer), I will go for it. Currently I have used Alga CSS almost all of my projects and some of my client projects. We're not using Alga CSS in a production, I used it when develop the app only with other toolings or bundlers.
 
 All the main features:
 1. Created for scoped CSS
@@ -60,8 +60,7 @@ module.exports = {
         './src/**/*.{otherFormat}'
       ],
       src: './src/styles/*.alga',
-      plugins: [],
-      build: true /*If you want to automatically deploy it to Netlify, Vercel, etc. 'false' is the default value for development only or locally build, so it will watch any changes on the files and auto update the helpers directive.*/
+      plugins: []
     })
   ]
 }
@@ -120,8 +119,8 @@ We provide `.alga` format file for storing styles as a component within `@alga` 
   .navBar {
     position: relative;
     z-index: 3;
-    paddingTop: 20px; /* 0.75rem is the default that being override via props */
-    paddingBottom: 20px;
+    padding-top: 20px; /* 0.75rem is the default that being override via props */
+    padding-bottom: 20px;
   }
 }
 ```
