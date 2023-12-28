@@ -2,6 +2,7 @@ const camelDash = require('../helpers/camelDash.js')
 const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 const capValue = require('../helpers/capValue.js')
 const camelValue = require('../helpers/camelValue.js')
+const svgHelper = require('../helpers/svgHelper.js')
 const values = require('../configs/values.js')
 const units = require('../configs/units.js')
 const color = require('../configs/color.js')
@@ -32,7 +33,7 @@ module.exports = (value, opt = {}) => {
       amtValue = '-' + amtValue
     }
     newValue = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-  }
+  }  
   else if(newValue.trim().startsWith('calc(')) {
     newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll('scopes(', '_scopes(').replaceAll(')', ')_').split('_').map(item => {
       if(item.trim().startsWith('refs(')) {
@@ -111,7 +112,7 @@ module.exports = (value, opt = {}) => {
     if(splitValues[2]) {
       newValue = newValue + splitValues[2]
     }
-  } 
+  }
   else if(!specialValues.includes(newValue) && !newValue.includes('(') && !newValue.includes(')') && !newValue.includes(specialValues[0]) && !newValue.includes(specialValues[1])) {
     newValue = camelDash(newValue)
   }
@@ -152,6 +153,9 @@ module.exports = (value, opt = {}) => {
   }
   if(newValue.includes('hex')) {
     newValue = newValue.replaceAll('hex', '#')
+  }
+  if(newValue.trim().startsWith('svg(')) {
+    newValue = svgHelper(newValue)
   }
   return newValue
 }

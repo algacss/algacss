@@ -3,6 +3,7 @@ const flatScreen = require('../helpers/flatScreen.js')
 const statusValue = require('../helpers/statusValue.js')
 const color = require('../configs/color.js')
 const camelDash = require('../helpers/camelDash.js')
+const svgHelper = require('../helpers/svgHelper.js')
 const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 
 const declaration = (body, defs, opts) => {
@@ -70,7 +71,7 @@ const declaration = (body, defs, opts) => {
                 declVal = postcss.decl({ prop: key.trim(), value: newDeclVal, source: sourceItemVal })
               }
             } else {*/
-              declVal = postcss.decl({ prop: key.trim(), value: val.value.trim().split(' ').map(i => {
+              let checkDeclVal = val.value.trim().split(' ').map(i => {
                 if(i.startsWith('refs(') || i.startsWith('props(') || i.startsWith('scopes(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   if(i.startsWith('scopes(')) {
@@ -144,7 +145,13 @@ const declaration = (body, defs, opts) => {
                   }
                 }
                 return i
-              }).join(' ').trim(), source: sourceItemVal })
+              }).join(' ').trim()
+
+              if(checkDeclVal.startsWith('svg(')) {
+                checkDeclVal = svgHelper(checkDeclVal)
+              }
+
+              declVal = postcss.decl({ prop: key.trim(), value: checkDeclVal, source: sourceItemVal })
             //}
             newRule.append(declVal)
           }

@@ -116,7 +116,7 @@
   
   @if type has tab {
     .nav.tab {
-      ref: flexWrap-nowrap width-auto;
+      ref: flexWrap-nowrap width-auto position-relative zIndex-15;
       ref: borderBottom-1px_solid_hexdee2e6;
       prefers-dark: borderBottomColor-hex5f5f5f;
       prefers-toDark: borderBottomColor-hex5f5f5f;
@@ -141,6 +141,36 @@
       prefers-dark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f_hex5f5f5f_transparent;
       prefers-toDark: backgroundColor-hex2f2f2f borderColor-hex5f5f5f_hex5f5f5f_transparent;
       prefers-toLight: backgroundColor-hexfff borderColor-hexdee2e6_hexdee2e6_transparent;
+    }
+
+    .tabResponsive {
+      ref: position-relative overflowX-hidden overflowY-hidden;
+    }
+
+    .tabResponsive .tab {
+      ref: borderBottom-none position-relative;
+    }
+
+    .tabResponsive:not(.hidden):hover .tab::before {
+      ref-content: ' ';
+      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{props.bgActive}}" class="bi bi-caret-left-fill" viewBox="0 0 16 16"><path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/></svg>');
+      ref: backgroundPosition-center backgroundRepeat-noRepeat position-absolute zIndex-16;
+      ref: top-13pct left-0 width-36px height-36px;
+    }
+    .tabResponsive:not(.hidden):hover .tab::after {
+      ref-content: ' ';
+      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{props.bgActive}}" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>');
+      ref: backgroundPosition-center backgroundRepeat-noRepeat position-absolute zIndex-16;
+      ref: top-13pct right-0 width-36px height-36px;
+    }
+
+    .tabResponsive::before {
+      ref-content: ' ';
+      ref: position-absolute zIndex-14 left-0 bottom-0px width-100pct height-1px;
+      ref: borderBottom-1px_solid_hexdee2e6;
+      prefers-dark: borderBottomColor-hex5f5f5f;
+      prefers-toDark: borderBottomColor-hex5f5f5f;
+      prefers-toLight: borderBottomColor-hexdee2e6;
     }
   }
   

@@ -91,6 +91,8 @@ html[dir=rtl] .menu.custom > .item.active > .link {
 .nav.tab {
     flex-wrap: nowrap;
     width: auto;
+    position: relative;
+    z-index: 15;
     border-bottom: 1px solid #dee2e6
 }
 .nav.tab > .item > .link {
@@ -108,6 +110,49 @@ html[dir=rtl] .menu.custom > .item.active > .link {
     color: inherit;
     background-color: #fff;
     border-color: #dee2e6 #dee2e6 transparent
+}
+.tabResponsive {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden
+}
+.tabResponsive .tab {
+    border-bottom: none;
+    position: relative
+}
+.tabResponsive:not(.hidden):hover .tab::before {
+    content: ' ';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill=' %2307f ' class='bi bi-caret-left-fill' viewBox='0 0 16 16'%3E%3Cpath d='m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 16;
+    top: 13%;
+    left: 0;
+    width: 36px;
+    height: 36px
+}
+.tabResponsive:not(.hidden):hover .tab::after {
+    content: ' ';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill=' %2307f ' class='bi bi-caret-right-fill' viewBox='0 0 16 16'%3E%3Cpath d='m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 16;
+    top: 13%;
+    right: 0;
+    width: 36px;
+    height: 36px
+}
+.tabResponsive::before {
+    content: ' ';
+    position: absolute;
+    z-index: 14;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #dee2e6
 }
 @media (prefers-color-scheme: dark) {
     .nav > .item > .link, .menu > .item > .link {
@@ -137,6 +182,9 @@ html[dir=rtl] .menu.custom > .item.active > .link {
     .nav.tab > .item.active > .link {
         background-color: #2f2f2f;
         border-color: #5f5f5f #5f5f5f transparent
+    }
+    .tabResponsive::before {
+        border-bottom-color: #5f5f5f
     }
 }
 @media (prefers-color-scheme: light) {
@@ -168,6 +216,9 @@ html[dir=rtl] .menu.custom > .item.active > .link {
         background-color: #2f2f2f;
         border-color: #5f5f5f #5f5f5f transparent
     }
+    html[data-mode=dark] .tabResponsive::before {
+        border-bottom-color: #5f5f5f
+    }
 }
 @media (prefers-color-scheme: dark) {
     html[data-mode=light] .nav > .item > .link, html[data-mode=light] .menu > .item > .link {
@@ -197,6 +248,9 @@ html[dir=rtl] .menu.custom > .item.active > .link {
     html[data-mode=light] .nav.tab > .item.active > .link {
         background-color: #fff;
         border-color: #dee2e6 #dee2e6 transparent
+    }
+    html[data-mode=light] .tabResponsive::before {
+        border-bottom-color: #dee2e6
     }
 }
 @media print {

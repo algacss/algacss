@@ -10,7 +10,7 @@ const recursive = require('./recursive.js')
 
 function readPath(rp, opts) {
   const component = {}
-  const data = fs.readFileSync(rp, 'utf8')
+  let data = fs.readFileSync(rp, 'utf8')
   
   const splitFilePath = rp.split('/')[Number(rp.split('/').length) - 1]
   const splitFileName = splitFilePath.split('.')[0]
@@ -19,7 +19,11 @@ function readPath(rp, opts) {
   component[componentName]['modules'] = {}
   component[componentName]['inits'] = []
   
-  const root = postcss.parse(data.replaceAll(/\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}/g, '$1($2)'), { from: rp })
+  if(!data) return;
+  data = data.replaceAll(/\{\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}\}/g, ' $1($2) ')
+          .replaceAll(/\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}/g, '$1($2)')
+  
+  const root = postcss.parse(data, { from: rp })
   component[componentName]['root'] = root
   
   for(let rnode of root.nodes) {
