@@ -135,7 +135,7 @@ test('Testing navBar component', async () => {
         padding: 0.5rem 0px;
         background-color: #fff;
         min-width: 240px;
-        top: calc(0.75rem * 2 + 26px)
+        top: calc( 0.75rem * 2 + 26px)
     }
     .navBar .navWrap .navEnd .navMenu {
         flex-direction: column;

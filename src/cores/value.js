@@ -3,6 +3,7 @@ const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 const capValue = require('../helpers/capValue.js')
 const camelValue = require('../helpers/camelValue.js')
 const svgHelper = require('../helpers/svgHelper.js')
+const calcHelper = require('../helpers/calcHelper.js')
 const values = require('../configs/values.js')
 const units = require('../configs/units.js')
 const color = require('../configs/color.js')
@@ -33,58 +34,6 @@ module.exports = (value, opt = {}) => {
       amtValue = '-' + amtValue
     }
     newValue = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-  }  
-  else if(newValue.trim().startsWith('calc(')) {
-    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll('scopes(', '_scopes(').replaceAll(')', ')_').split('_').map(item => {
-      if(item.trim().startsWith('refs(')) {
-        const splitValues = item.trim().split(/\(|\)/g)
-        item = opt[splitValues[0]][splitValues[1]].value || item
-        if(splitValues[2]) {
-          item = item + splitValues[2]
-        }
-      } else if(item.trim().startsWith('scopes(')) {
-        const splitValues = item.trim().split(/\(|\)/g)
-        let scopeItem = defs[splitValues[0]][splitValues[1]].value || null
-        if(scopeItem) {
-          item = `var(--scope-${splitValues[1]}, ${scopeItem})`
-        }
-        if(splitValues[2]) {
-          item = item + splitValues[2]
-        }
-      }
-      return item
-    }).join('')
-  }
-  else if(newValue.trim().startsWith('add(') || newValue.trim().startsWith('sub(') || newValue.trim().startsWith('div(') || newValue.trim().startsWith('times(')) {
-    newValue = newValue.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll('scopes(', '_scopes(').replaceAll(')', ')_').split('_').map(item => {
-      if(item.trim().startsWith('refs(')) {
-        const splitValues = item.trim().split(/\(|\)/g)
-        item = opt[splitValues[0]][splitValues[1]].value || item
-        if(splitValues[2]) {
-          item = item + splitValues[2]
-        }
-      } else if(item.trim().startsWith('scopes(')) {
-        const splitValues = item.trim().split(/\(|\)/g)
-        let scopeItem = defs[splitValues[0]][splitValues[1]].value || null
-        if(scopeItem) {
-          item = `var(--scope-${splitValues[1]}, ${scopeItem})`
-        }
-        if(splitValues[2]) {
-          item = item + splitValues[2]
-        }
-      }
-      return item
-    }).join('')
-    
-    if(newValue.trim().startsWith('add(')) {
-      newValue = newValue.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
-    } else if(newValue.trim().startsWith('sub(')) {
-      newValue = newValue.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
-    } else if(newValue.trim().startsWith('div(')) {
-      newValue = newValue.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
-    } else if(newValue.trim().startsWith('times(')) {
-      newValue = newValue.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
-    }
   }
   else if(newValue.trim().startsWith('refs(') || newValue.trim().startsWith('props(') || newValue.trim().startsWith('scopes(')) {
     const splitValues = newValue.trim().split(/\(|\)/g)
@@ -96,7 +45,7 @@ module.exports = (value, opt = {}) => {
     if(splitValues[2]) {
       newValue = newValue + splitValues[2]
     }
-  } 
+  }
   else if(newValue.trim().startsWith('cap(') || newValue.trim().startsWith('camel(') || newValue.trim().startsWith('lower(') || newValue.trim().startsWith('upper(') || newValue.trim().startsWith('each(')) {
     const splitValues = newValue.trim().split(/\(|\)/g)
     newValue = opt[splitValues[1].trim()] || newValue
@@ -156,6 +105,8 @@ module.exports = (value, opt = {}) => {
   }
   if(newValue.trim().startsWith('svg(')) {
     newValue = svgHelper(newValue)
+  } else if(newValue.trim().startsWith('add(') || newValue.trim().startsWith('sub(') || newValue.trim().startsWith('div(') || newValue.trim().startsWith('times(')) {
+    newValue = calcHelper(newValue)
   }
   return newValue
 }

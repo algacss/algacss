@@ -25,7 +25,7 @@
     
     .listMenu {
       ref: overflowY-auto;
-      ref-maxHeight: calc({props.menu} * 36px);
+      ref-maxHeight: times({{props.menu}},36px);
     }
     
     .listItem {
@@ -64,7 +64,7 @@
   .list.sizing,
   .listSize {
     ref: overflowY-auto;
-    ref-maxHeight: calc({props.menu} * 36px);
+    ref-maxHeight: times({{props.menu}},36px);
   }
   
   .list.flush,

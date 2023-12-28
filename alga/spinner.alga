@@ -13,8 +13,8 @@
     ref: marginRight-0px marginBottom-0px;
     ref-height: {props.size};
     ref-width: {props.size};
-    ref-marginTop: div({props.size},2);
-    ref-marginLeft: div({props.size},2);
+    ref-marginTop: div({{props.size}},2);
+    ref-marginLeft: div({{props.size}},2);
     ref-border: {props.borderSize} solid rgba(255, 255, 255, 0.75);
     ref-border-top: {props.borderSize} solid #f77372;
     animation: spin 1s infinite linear;

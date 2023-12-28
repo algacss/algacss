@@ -1,16 +1,16 @@
 .cols {
     display: flex;
     flex-wrap: wrap;
-    margin-top: calc(var(--scope-gutterY, 0px) * -1);
-    margin-right: calc(var(--scope-gutterX, 1.5rem) * -0.5);
-    margin-left: calc(var(--scope-gutterX, 1.5rem) * -0.5)
+    margin-top: calc(scopes(gutterY) * -1);
+    margin-right: calc(scopes(gutterX) * -0.5);
+    margin-left: calc(scopes(gutterX) * -0.5)
 }
 .cols > * {
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding-right: calc(var(--scope-gutterX, 1.5rem) * 0.5);
-    padding-left: calc(var(--scope-gutterX, 1.5rem) * 0.5);
+    padding-right: calc(scopes(gutterX) * 0.5);
+    padding-left: calc(scopes(gutterX) * 0.5);
     margin-top: var(--scope-gutterY, 0px)
 }
 .cols .col {

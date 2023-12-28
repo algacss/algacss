@@ -20,7 +20,7 @@ function readPath(rp, opts) {
   component[componentName]['inits'] = []
   
   if(!data) return;
-  data = data.replaceAll(/\{\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}\}/g, ' $1($2) ')
+  data = data.replaceAll(/\{\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}\}/g, '_$1($2)_')
           .replaceAll(/\{([A-Za-z0-9\-\_]+)\.([A-Za-z0-9\-\_]+)\}/g, '$1($2)')
   
   const root = postcss.parse(data, { from: rp })

@@ -21,8 +21,9 @@
     
   .nav > .item > .link,
   .{refs.name} > .item > .link {
-    ref: display-block padding-0.675rem_1rem borderRadius-calc(_{props.rdBox}_/_2) color-hex2f2f2f;
-    ref: textDecoration-none cursor-pointer whiteSpace-nowrap;
+    ref: display-block padding-0.675rem_1rem;
+    ref-borderRadius: div({{props.rdBox}},2);
+    ref: color-hex2f2f2f textDecoration-none cursor-pointer whiteSpace-nowrap;
     ref-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
     prefers-dark: color-inherit;
     prefers-toDark: color-inherit;
@@ -124,9 +125,10 @@
     }
     
     .nav.tab > .item > .link {
-      ref: borderRadius-0px borderTopLeftRadius-calc(_{props.rdBox}_/_2);
-      ref: borderTopRightRadius-calc(_{props.rdBox}_/_2) backgroundColor-transparent;
-      ref: border-1px_solid_transparent marginBottom-n1px;
+      ref: borderRadius-0px;
+      ref-borderTopLeftRadius: div({{props.rdBox}},2);
+      ref-borderTopRightRadius: div({{props.rdBox}},2);
+      ref: backgroundColor-transparent border-1px_solid_transparent marginBottom-n1px;
     }
     
     .nav.tab > .item:not(.active):hover > .link {
@@ -153,15 +155,21 @@
 
     .tabResponsive:not(.hidden):hover .tab::before {
       ref-content: ' ';
-      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{props.bgActive}}" class="bi bi-caret-left-fill" viewBox="0 0 16 16"><path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/></svg>');
+      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="{{props.bgActive}}" class="bi bi-caret-left-fill" viewBox="0 0 16 16"><path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/></svg>');
       ref: backgroundPosition-center backgroundRepeat-noRepeat position-absolute zIndex-16;
       ref: top-13pct left-0 width-36px height-36px;
     }
+
     .tabResponsive:not(.hidden):hover .tab::after {
       ref-content: ' ';
-      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{props.bgActive}}" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>');
+      ref-backgroundImage: svg('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="{{props.bgActive}}" class="bi bi-caret-right-fill" viewBox="0 0 16 16"><path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/></svg>');
       ref: backgroundPosition-center backgroundRepeat-noRepeat position-absolute zIndex-16;
       ref: top-13pct right-0 width-36px height-36px;
+    }
+
+    .card .tabResponsive:not(.hidden):hover .tab::before,
+    .card .tabResponsive:not(.hidden):hover .tab::after {
+      ref: top-30pct;
     }
 
     .tabResponsive::before {

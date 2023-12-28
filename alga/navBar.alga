@@ -70,7 +70,7 @@
       
       .navEnd {
         ref: display-flex justifyContent-spaceBetween flexWrap-nowrap alignItems-center flexGrow-1 paddingLeft-0.75rem;
-        screen-tb: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({props.padY}_*_2_+_26px);
+        screen-tb: display-none position-absolute width-auto right-10px border-1px_solid_hexcac7c7 flexDirection-column borderRadius-5px padding-0.5rem_0px backgroundColor-hexfff minWidth-240px top-calc({{props.padY}}*_2_+_26px);
           
         .navBackdrop {
           ref: position-fixed zIndex-74 inset-0_3em_3em_0 maxWidth-100vw maxHeight-100vh;

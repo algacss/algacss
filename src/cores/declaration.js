@@ -4,6 +4,7 @@ const statusValue = require('../helpers/statusValue.js')
 const color = require('../configs/color.js')
 const camelDash = require('../helpers/camelDash.js')
 const svgHelper = require('../helpers/svgHelper.js')
+const calcHelper = require('../helpers/calcHelper.js')
 const lightenDarkenColor = require('../helpers/lightenDarkenColor.js')
 
 const declaration = (body, defs, opts) => {
@@ -71,7 +72,7 @@ const declaration = (body, defs, opts) => {
                 declVal = postcss.decl({ prop: key.trim(), value: newDeclVal, source: sourceItemVal })
               }
             } else {*/
-              let checkDeclVal = val.value.trim().split(' ').map(i => {
+              let checkDeclVal = val.value.trim().replaceAll('_', ' ').split(' ').map(i => {
                 if(i.startsWith('refs(') || i.startsWith('props(') || i.startsWith('scopes(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   if(i.startsWith('scopes(')) {
@@ -103,52 +104,14 @@ const declaration = (body, defs, opts) => {
                     amtValue = '-' + amtValue
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-                } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll('scopes(', '_scopes(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(') || item.trim().startsWith('scopes(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      if(item.trim().startsWith('scopes(')) {
-                        item = `var(--scope-${splitValues[1]}, ${defs[splitValues[0]][splitValues[1]].value || item})`
-                      } else {
-                        item = defs[splitValues[0]][splitValues[1]].value || item
-                      }
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll('refs(', '_refs(').replaceAll('scopes(', '_scopes(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('refs(') || item.trim().startsWith('props(') || item.trim().startsWith('scopes(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      if(item.trim().startsWith('scopes(')) {
-                        item = `var(--scope-${splitValues[1]}, ${defs[splitValues[0]][splitValues[1]].value || item})`
-                      } else {
-                        item = defs[splitValues[0]][splitValues[1]].value || item
-                      }
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                  
-                  if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
-                  } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
-                  } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
-                  } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
-                  }
                 }
                 return i
               }).join(' ').trim()
 
               if(checkDeclVal.startsWith('svg(')) {
                 checkDeclVal = svgHelper(checkDeclVal)
+              } else if(checkDeclVal.startsWith('add(') || checkDeclVal.startsWith('sub(') || checkDeclVal.startsWith('div(') || checkDeclVal.startsWith('times(')) {
+                checkDeclVal = calcHelper(checkDeclVal)
               }
 
               declVal = postcss.decl({ prop: key.trim(), value: checkDeclVal, source: sourceItemVal })
@@ -206,7 +169,7 @@ const declaration = (body, defs, opts) => {
             /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
             } else {*/
-              declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
+              let checkDeclVal = val.value.replaceAll('_', ' ').split(' ').map(i => {
                 if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
@@ -234,41 +197,17 @@ const declaration = (body, defs, opts) => {
                     amtValue = '-' + amtValue
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-                } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                  
-                  if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
-                  } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
-                  } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
-                  } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
-                  }
                 }
                 return i
-              }).join(' ').trim(), source: val.source })
+              }).join(' ').trim()
+
+              if(checkDeclVal.startsWith('svg(')) {
+                checkDeclVal = svgHelper(checkDeclVal)
+              } else if(checkDeclVal.startsWith('add(') || checkDeclVal.startsWith('sub(') || checkDeclVal.startsWith('div(') || checkDeclVal.startsWith('times(')) {
+                checkDeclVal = calcHelper(checkDeclVal)
+              }
+
+              declVal = postcss.decl({ prop: key.trim(), value: checkDeclVal, source: val.source })
             //}
             newRule.append(declVal)
           }
@@ -301,7 +240,7 @@ const declaration = (body, defs, opts) => {
             /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
             } else {*/
-              declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
+              let checkDeclVal = val.value.replaceAll('_', ' ').split(' ').map(i => {
                 if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
@@ -329,41 +268,17 @@ const declaration = (body, defs, opts) => {
                     amtValue = '-' + amtValue
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-                } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                  
-                  if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
-                  } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
-                  } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
-                  } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
-                  }
                 }
                 return i
-              }).join(' ').trim(), source: val.source })
+              }).join(' ').trim()
+
+              if(checkDeclVal.startsWith('svg(')) {
+                checkDeclVal = svgHelper(checkDeclVal)
+              } else if(checkDeclVal.startsWith('add(') || checkDeclVal.startsWith('sub(') || checkDeclVal.startsWith('div(') || checkDeclVal.startsWith('times(')) {
+                checkDeclVal = calcHelper(checkDeclVal)
+              }
+
+              declVal = postcss.decl({ prop: key.trim(), value: checkDeclVal, source: val.source })
             //}
             newRule.append(declVal)
           }
@@ -385,7 +300,7 @@ const declaration = (body, defs, opts) => {
             /*if(val.value.trim().startsWith('{') && val.value.trim().endsWith('}')) {
               declVal = postcss.decl({ prop: key.trim(), value: props[val.value.replace('{', '').replace('}', '').trim()].value, source: props[val.value.replace('{', '').replace('}', '').trim()].source })
             } else {*/
-            declVal = postcss.decl({ prop: key.trim(), value: val.value.split(' ').map(i => {
+              let checkDeclVal = val.value.replaceAll('_', ' ').split(' ').map(i => {
                 if(i.startsWith('props(')) {
                   const arrowValues = i.split(/\(|\)/g)
                   i = defs[arrowValues[0]][arrowValues[1]].value || i
@@ -413,41 +328,17 @@ const declaration = (body, defs, opts) => {
                     amtValue = '-' + amtValue
                   }
                   i = '#'+ lightenDarkenColor(colorValue.replaceAll('#', ''), Number(amtValue))
-                } else if(i.startsWith('calc(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                } else if(i.startsWith('add(') || i.startsWith('sub(') || i.startsWith('div(') || i.startsWith('times(')) {
-                  i = i.replaceAll('props(', '_props(').replaceAll(')', ')_').split('_').map(item => {
-                    if(item.trim().startsWith('props(')) {
-                      const splitValues = item.trim().split(/\(|\)/g)
-                      item = defs[splitValues[0]][splitValues[1]].value || item
-                      if(splitValues[2]) {
-                        item = item + splitValues[2]
-                      }
-                    }
-                    return item
-                  }).join('')
-                  
-                  if(i.startsWith('add(')) {
-                    i = i.replace('add', 'calc').replace(/\,|\s\,/g, ' + ')
-                  } else if(i.startsWith('sub(')) {
-                    i = i.replace('sub', 'calc').replace(/\,|\s\,/g, ' - ')
-                  } else if(i.startsWith('div(')) {
-                    i = i.replace('div', 'calc').replace(/\,|\s\,/g, ' / ')
-                  } else if(i.startsWith('times(')) {
-                    i = i.replace('times', 'calc').replace(/\,|\s\,/g, ' * ')
-                  }
+                }
+                return i
+              }).join(' ').trim()
+
+              if(checkDeclVal.startsWith('svg(')) {
+                checkDeclVal = svgHelper(checkDeclVal)
+              } else if(checkDeclVal.startsWith('add(') || checkDeclVal.startsWith('sub(') || checkDeclVal.startsWith('div(') || checkDeclVal.startsWith('times(')) {
+                checkDeclVal = calcHelper(checkDeclVal)
               }
-              return i
-            }).join(' ').trim(), source: val.source })
+
+              declVal = postcss.decl({ prop: key.trim(), value: checkDeclVal, source: val.source })
           //}
           newRule.append(declVal)
         }
