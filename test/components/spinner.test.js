@@ -14,7 +14,9 @@ test('Testing spinner component', async () => {
     width: 25px;
     margin-top: calc(25px / 2);
     margin-left: calc(25px / 2);
-    border: 5px solid #f77372
+    border: 5px solid #f2f2f2;
+    border-top: 5px solid #07f;
+    animation: spin 1s infinite linear
 }
 @keyframes spin {
     from {
@@ -22,6 +24,24 @@ test('Testing spinner component', async () => {
     }
     to {
         transform: rotate(359deg)
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .spinner {
+        border-color: #5f5f5f;
+        border-top-color: #07f
+    }
+}
+@media (prefers-color-scheme: light) {
+    html[data-mode=dark] .spinner {
+        border-color: #5f5f5f;
+        border-top-color: #07f
+    }
+}
+@media (prefers-color-scheme: dark) {
+    html[data-mode=light] .spinner {
+        border-color: #f2f2f2;
+        border-top-color: #07f
     }
 }`
   await execute(input, output, {log: false, file: './examples/spinner/spinner.css'})

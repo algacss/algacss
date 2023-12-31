@@ -118,7 +118,8 @@ html[dir=rtl] .menu.custom > .item.active > .link {
 }
 .tabResponsive .tab {
     border-bottom: none;
-    position: relative
+    position: relative;
+    overflow: hidden
 }
 .tabResponsive:not(.hidden):hover .tabResponsivePrev {
     content: ' ';

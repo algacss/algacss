@@ -150,7 +150,7 @@
     }
 
     .tabResponsive .tab {
-      ref: borderBottom-none position-relative;
+      ref: borderBottom-none position-relative overflow-hidden;
     }
 
     .tabResponsive:not(.hidden):hover .tabResponsivePrev {
