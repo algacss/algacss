@@ -4,9 +4,6 @@ test('Testing spinner component', async () => {
   const input = '@use spinner;'
   const output = `.spinner {
     display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
     border-radius: 50%;
     margin-right: 0px;
     margin-bottom: 0px;

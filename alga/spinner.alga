@@ -12,7 +12,7 @@
 
 @alga {refs.name} {
   .{refs.name} {
-    ref: display-block position-absolute top-50pct left-50pct borderRadius-50pct;
+    ref: display-block borderRadius-50pct;
     ref: marginRight-0px marginBottom-0px;
     ref-height: {props.size};
     ref-width: {props.size};
