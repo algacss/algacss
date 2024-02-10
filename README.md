@@ -12,18 +12,10 @@
 <br/>
 
 # Alga CSS
-Alga CSS is a component oriented CSS toolkit for quickly reuse CSS components via `@use` directive and it can be stored in `.alga` format file as a custom CSS component using `@alga` directive and also it has many built-in customizable CSS properties that can be directly inserted to HTML Element class, visit [https://algacss.com](https://algacss.com 'Alga CSS').
-
-Now, Alga CSS support converting `.alga` component file with `@alga` directive to a `.css` file with `@layer` cascading inheritance in it.
-
-Alga CSS is intended for speed up the development process, in other words, it must help me quickly develop and use CSS components, I mean it will generated CSS files or syntax when we produce or build them. Sometime I only need to inject a code of CSS component (in CSS not Alga CSS) into an existing client project, this way can help me save time.
-
-Alga CSS is still in a development stage (as always), until all of the advanced components has been added to it, so after that I can release this as a stable version, first, to achieve this I have to look into a real life problem, I mean I need more inputs from what people or client want according to their preferenced. Thus, the development of Alga CSS will be slow.
-
-Even though it's slow in progress, as long as its benefit me (the Maintainer), I will go for it. Currently I have used Alga CSS almost all of my projects and some of my client projects. We're not using Alga CSS in a production, I used it when develop the app only with other toolings or bundlers.
+Alga CSS is a component oriented CSS framework for quickly inject, reuse or compose the style in a single file and can be called inside JavaScript framework SFC file. It can help build any Web Application faster by using defualt component first and then the component or the style can be modified to what the Client/Customer want.
 
 All the main features:
-1. Created for scoped CSS
+1. Created for global/scoped CSS
 2. As a PostCSS plugin
 3. Can be stored as an Alga component (`@alga` directive and `.alga` format file)
 4. And then can be converted to CSS component (`@layer` cascading inheritance)

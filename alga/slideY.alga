@@ -1,0 +1,53 @@
+@define refs {
+  name: slideY;
+  top: slideTop;
+  down: slideDown;
+  bottom: slideBottom;
+  up: slideUp;
+}
+
+@define props {
+  duration: 0.5s;
+}
+
+@alga {refs.name} {
+  .{refs.top}-enter-active,
+  .{refs.down}-enter-active {
+    ref-animation: {refs.top} {props.duration};
+  }
+  
+  .{refs.top}-leave-active,
+  .{refs.down}-leave-active {
+    ref-animation: {refs.top} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.top} {
+    from {
+      ref: visibility-visible;
+      ref-transform: translate3d(0, -100%, 0);
+    }
+    to {
+      ref-transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .{refs.bottom}-enter-active,
+  .{refs.up}-enter-active {
+    ref-animation: {refs.bottom} {props.duration};
+  }
+  
+  .{refs.bottom}-leave-active,
+  .{refs.up}-leave-active {
+    ref-animation: {refs.bottom} {props.duration} reverse;
+  }
+  
+  @keyframes {refs.bottom} {
+    from {
+      ref: visibility-visible;
+      ref-transform: translate3d(0, 100%, 0);
+    }
+    to {
+      ref-transform: translate3d(0, 0, 0);
+    }
+  }
+}
