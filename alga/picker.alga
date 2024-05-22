@@ -35,6 +35,7 @@
     
   .select.pickerToggler {
     ref: paddingLeft-0.75rem paddingRight-2.25rem cursor-default fontSize-inherit;
+    ref: textOverflow-ellipsis overflow-hidden whiteSpace-nowrap width-100pct;
   }
    
   .pickerContent {

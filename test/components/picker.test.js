@@ -33,7 +33,11 @@ test('Testing picker or dropdown component', async () => {
     padding-left: 0.75rem;
     padding-right: 2.25rem;
     cursor: default;
-    font-size: inherit
+    font-size: inherit;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%
 }
 .pickerContent {
     position: absolute;

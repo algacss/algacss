@@ -59,7 +59,8 @@ test('Testing alert component', async () => {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh
+    height: 100vh;
+    display: none
 }
 .alertModal .alertBackdrop {
     position: fixed;
@@ -68,9 +69,6 @@ test('Testing alert component', async () => {
     width: 100vw;
     height: 100vh;
     display: none
-}
-.alertModal.active .alertBackdrop {
-    display: block
 }
 .alertModal .alertDialog {
     position: fixed;
@@ -87,7 +85,7 @@ test('Testing alert component', async () => {
     border-radius: 0.375rem;
     box-shadow: 0 5px 22px 0 rgba(0,0,0,0.2)
 }
-.alertModal.active .alertDialog {
+.alertModal.active, .alertModal.active .alertBackdrop, .alertModal.active .alertDialog {
     display: block
 }
 .alertModal.active .alertDialog.alertCenter {

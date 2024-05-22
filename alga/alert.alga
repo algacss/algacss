@@ -73,13 +73,10 @@
   }
   
   .alertModal {
-    ref: position-absolute top-0 left-0 width-100vw height-100vh;
+    ref: position-absolute top-0 left-0 width-100vw height-100vh display-none;
     
     .alertBackdrop {
       ref: position-fixed zIndex-30 inset-0_3em_3em_0 width-100vw height-100vh display-none;
-    }
-    &.active .alertBackdrop {
-      ref: display-block;
     }
     
     .alertDialog {
@@ -93,6 +90,9 @@
         prefers-toLight: backgroundColor-hexfff color-hex595959 borderColor-hexfff;
       }
     }
+
+    &.active,
+    &.active .alertBackdrop,
     &.active .alertDialog {
       ref: display-block;
     }

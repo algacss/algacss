@@ -8,7 +8,11 @@ test('Testing modal dialog component', async () => {
     top: 0;
     left: 0;
     max-width: 100vw;
-    max-height: 100vh
+    max-height: 100vh;
+    display: none
+}
+.modal.active {
+    display: block
 }
 .modalDialog {
     position: fixed;
