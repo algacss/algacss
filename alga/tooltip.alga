@@ -1,0 +1,36 @@
+@define refs {
+  name: tooltip;
+}
+
+@define props {
+  width: 140px;
+  bgLight: #555;
+  fgLight: #fff;
+  x: 50pct;
+  y: 150pct;
+}
+
+@alga {refs.name} {
+  .{refs.name} {
+    ref: position-relative display-inlineBlock;
+
+    .{refs.name}Content {
+      ref: visibility-hidden width-{props.width} backgroundColor-{props.bgLight} color-{props.fgLight} textAlign-center;
+      ref: borderRadius-6px padding-5px position-absolute zIndex-1 bottom-{props.y} left-{props.x};
+      ref: marginLeft-n75px opacity-0 transition-opacity_0.3s;
+    }
+    
+    .{refs.name}Content::after {
+      ref-content: "";
+      ref: position-absolute top-100pct left-50pct marginLeft-n5px borderWidth-5px borderStyle-solid;
+      ref: borderColor-{props.bgLight}_transparent_transparent_transparent;
+    }
+    
+    &.active .{refs.name}Content,
+    &.show .{refs.name}Content,
+    &.{refs.name}Active:active .{refs.name}Content,
+    &.{refs.name}Hover:hover .{refs.name}Content {
+      ref: visibility-visible opacity-1;
+    }
+  }
+}
