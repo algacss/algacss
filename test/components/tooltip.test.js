@@ -1,4 +1,8 @@
-.tooltip {
+const execute = require('../execute.js')
+
+test('Testing tooltip component', async () => {
+  const input = '@use tooltip;'
+  const output = `.tooltip {
     position: relative;
     display: inline-block
 }
@@ -31,4 +35,6 @@
 .tooltip.active .tooltipContent, .tooltip.show .tooltipContent, .tooltip.tooltipActive:active .tooltipContent, .tooltip.tooltipHover:hover .tooltipContent {
     visibility: visible;
     opacity: 1
-}
+}`
+  await execute(input, output, {log: false, file: './examples/tooltip/tooltip.css'})
+})

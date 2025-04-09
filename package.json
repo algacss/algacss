@@ -1,6 +1,6 @@
 {
   "name": "alga-css",
-  "version": "1.0.0-beta-50",
+  "version": "1.0.0-beta-51",
   "description": "Alga CSS is a component oriented CSS framework for quickly inject, reuse or compose the style in a single file and can be called inside JavaScript framework SFC file",
   "main": "./src/index.js",
   "bin": {
