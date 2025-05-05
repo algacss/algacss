@@ -32,7 +32,7 @@ function readPath(rp, opts) {
       const param = rnode.params.replaceAll(/\'|\"|\`/g, '').trim()
       const paramFilePaths = param.split(/\/|\./)
       const paramFileName = paramFilePaths[Number(paramFilePaths.length) - 2]
-      const paramParentFolder = rp.split('/')[Number(rp.split('/').length) - 2]
+      const paramParentFolder = opts.libraryName //rp.split('/')[Number(rp.split('/').length) - 2]
       let newPrmUrl = param
       if(param.startsWith('./')) {
         newPrmUrl = param.replace('./', './node_modules/'+paramParentFolder+'/')
@@ -346,19 +346,21 @@ module.exports = (paths, opts) => {
   let component = {}
   
   if(typeof paths === 'string') {
+    const libraryName = paths.replace('./node_modules/', '').replace('/*.alga', '')
     const files = glob.sync(paths, {})
     for(let file of files) {
       if(file.endsWith('alga.css') || file.endsWith('.alga')) {
-        component = Object.assign({}, component, readPath(file, opts))
+        component = Object.assign({}, component, readPath(file, {...opts, libraryName}))
       }
     }
   } else if(Array.isArray(paths)) {
     for(let p of Array.from(paths)) {
       if(typeof p === 'string') {
+        const libraryName = p.replace('./node_modules/', '').replace('/*.alga', '')
         const files = glob.sync(p, {})
         for(let file of files) {
           if(file.endsWith('alga.css') || file.endsWith('.alga')) {
-            component = Object.assign({}, component, readPath(file, opts))
+            component = Object.assign({}, component, readPath(file, {...opts, libraryName}))
           }
         }
       }
